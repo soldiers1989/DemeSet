@@ -1,0 +1,70 @@
+﻿@using ZF.Web.Models.File
+@{
+    ViewBag.Title = "主讲教师新增(修改)";
+}
+<link href="~/Libs/select2-4.0.6/css/select2.min.css" rel="stylesheet" />
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>教师名称：</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="TeachersName" name="TeachersName">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label> 擅长科目：</label><input id="TheLabel" name="TheLabel" class="form-control" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>是否在名师频道：</label>
+                    <input name="IsFamous" type="radio" checked="checked"  value="0"/>否
+                    <input name="IsFamous" type="radio" value="1"/>是
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label> 所属项目：</label> <select id="ProjectId" name="ProjectId" class="form-control" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label> 教学风格：</label>
+                    <script id="TeachStyle" name="TeachStyle" type="text/plain">
+                    </script>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>简介：</label>
+                    <script id="Synopsis" name="Synopsis" type="text/plain">
+                    </script>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>讲师照片</label>
+                    @Html.Partial( "UploadFilePartialView", new UploadFileDto( )
+               {
+                   UploadId = "IdFile",
+                   KeyId = ViewBag.Id,
+                   UploadContentType = "jpg,png",
+                   Type = 0
+               } )
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" style="float:right;" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Libs/select2-4.0.6/js/select2.min.js"></script>
+<script src="~/Libs/select2-4.0.6/js/i18n/zh-CN.js"></script>
+<script src="~/Libs/ueditor/ueditor.config.js"></script>
+<script src="~/Libs/ueditor/ueditor.all.js"></script>
+<script src="~/Libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="~/Views/CourseOnTeachers/AddOrEdit.js"></script>

@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<div class="prism-player" id="J_prismPlayer" style="position: absolute"></div>
+<input type="hidden" id="Id" name="Id" value="@ViewBag.Id"/>
+<script>
+    topevery.ajax({
+        url: 'api/CourseVideo/GetVideo',
+        data: JSON.stringify({ Id: $("#Id").val() })
+    }, function (data) {
+        if (data.Result) {
+            var row = data.Result;
+            var player = new Aliplayer({
+                id: 'J_prismPlayer',
+                width: '98%',
+                height: '98%',
+                cover: row.CoverURL,
+                autoplay: false,
+                format: "m3u8",
+                vid: row.VideoUrl,
+                source: row.VideoUrl,
+            }, function (player) {
+            });
+        }
+    });
+
+</script>

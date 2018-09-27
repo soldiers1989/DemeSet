@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+    <title>进入考试答题</title>
+</head>
+<body class="body">
+    <input type="hidden" id="PaperId" value="@ViewBag.PaperId"/>
+    <input type="hidden" id="PaperRecordsId" value="@ViewBag.PaperRecordsId" />
+    <div id="paperInfo">
+
+    </div>
+        <script type="text/html" id="paperInfo_html">
+            <div class="dati_h2">
+                <h2>{{PaperName}}</h2>
+            </div>
+
+            <div class="dati_mx">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr>
+                            <td class="bor">试卷分数<b>{{ScoreSum}}分</b></td>
+                            <td class="bor">答题时间<b>{{TestTime}}分</b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="bor">已答题人数<b>{{UseTime}}</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="dati_anniu">
+                <a onclick="startTest();">开始练习</a>
+            </div>
+            
+            <div class="dati_js">
+                <h3>试卷介绍</h3>
+                <h4>一 标题介绍</h4>
+                {{each Structures}}
+                <p>
+                    {{$index+1}}、{{$value.QuestionTypeId | formatterSubjectType}}（共{{$value.Count}}题，每题{{$value.Score/$value.Count}}分，共{{$value.Score}}分。）
+                </p>
+                {{/each}}
+                <h4>二 考前必读</h4>
+                <p>
+                    1.如果你准备好了，就点击”开始练习“按钮开始考试。<br>
+                    2.选项前的单选框（）表示该题只能选择一个答案。<br>
+                    3.选项前的复选框（）表示该题可以选择一个或多个答案。
+                </p>
+            </div>
+        </script>
+</body>
+</html>
+<script src="http://code.jquery.com/jquery-2.2.3.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<script type="text/javascript">
+    $(function () {
+        topevery.ajaxwx({ url: "api/CoursePaperRecord/GetPaperInfo?paperId=" + $("#PaperId").val() }, function (data) {
+            console.log(data);
+            $('#paperInfo').html(template('paperInfo_html',data.Result));
+
+        })
+    })
+
+    function startTest() {
+        window.location.href = "/jjs/MyPaperTest/PaperPractice?PaperId=" + $('#PaperId').val() + "&paperRecordsId=" + $('#PaperRecordsId').val();
+    }
+
+    template.helper("formatterSubjectType", function (subjectType) {
+        switch (parseInt(subjectType)) {
+            case 1:
+                return "单选题";
+            case 2:
+                return "多选题";
+            case 3:
+                return "判断题";
+            case 7:
+                return "案例分析题";
+            default: "";
+        }
+    })
+
+
+</script>

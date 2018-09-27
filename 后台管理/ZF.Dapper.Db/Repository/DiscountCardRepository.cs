@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ZF.Core.Entity;
+using ZF.Core.IRepository;
+using ZF.Dapper.Db.Repository;
+
+namespace ZF.Dapper.Db.Repository
+{
+   public class DiscountCardRepository: BaseRepositoryEntity<Discount_Card>, IDiscount_CardRepository
+    {
+    }
+}

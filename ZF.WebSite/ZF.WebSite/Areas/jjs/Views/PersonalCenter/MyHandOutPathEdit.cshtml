@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <title>地址详情</title>
+</head>
+<body>
+<div class="dzxq_box">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+            <td><i>*</i>收件人</td>
+        </tr>
+        <tr>
+            <td><input maxlength="20" id="consigneeName" type="text"></td>
+        </tr>
+        <tr>
+            <td class="dzxq_padding"><i>*</i>所在地区</td>
+        </tr>
+        <tr>
+            <td>
+                <select name="province" id="province">
+                    <option value="">请选择</option>
+                </select>
+                <select name="city" id="city">
+                </select>
+                <select name="town" id="town">
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="dzxq_padding"><i>*</i>详细地址</td>
+        </tr>
+        <tr>
+            <td><input id="consigneeAddress" type="text"></td>
+        </tr>
+        <tr>
+            <td class="dzxq_padding"><i>*</i>手机号码</td>
+        </tr>
+        <tr>
+            <td><input id="consigneeMobile" onblur="phoneIsvalidata(this)" type="text"></td>
+        </tr>
+        <tr>
+            <td class="dzxq_padding">邮编</td>
+        </tr>
+        <tr>
+            <td><input id="consigneeEmail" type="text"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+    <input type="hidden" id="handid" value="@ViewBag.handid"/>
+    <div class="jrzf-list06" style="color:red;" id="consigneeAddressNote"></div>
+    <div class="dzxq_anniu"><a href="javascript:;" onclick="addAddress();" >保存收货地址</a></div>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/js/area.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/js/select.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/PersonalCenter/MyHandOutPathEdit.js?v=1.0"></script>

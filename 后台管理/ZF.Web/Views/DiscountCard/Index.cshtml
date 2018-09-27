@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<link href="~/Libs/select2-4.0.6/css/select2.min.css" rel="stylesheet" />
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a></a>/<a></a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-12 box">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group col-xs-12">
+                <input class="btn btn-success add_btn" type="button" value="添加">&nbsp;
+                <input class="btn btn-info edit_btn" type="button" value="编辑">&nbsp;
+                <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+
+                <label class="">学习卡名称：</label>
+                <input class="form-control" id="QCourseName" name="CourseName" />
+                <label class="">可用于购买课程：</label>
+                <select class="form-control" id="QTargetCourseId" name="TargetCourse" />
+                <label class="">有效期：</label>
+                <input class="form-control Wdate" onFocus="WdatePicker({ el: 'QBeginDate', dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'QEndDate\')}' })" id="QBeginDate" name="BeginDate" style="height: 34px; width: 179px;" />至
+                <input class="form-control Wdate" onFocus="WdatePicker({ el: 'QEndDate', dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'QBeginDate\')}' })" id="QEndDate" name="EndDate" style="height: 34px; width: 179px;" />
+                <input class="btn btn-success query_btn" type="button" value="查询">&nbsp;
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+<script src="~/Libs/select2-4.0.6/js/select2.min.js"></script>
+<script src="~/Libs/select2-4.0.6/js/i18n/zh-CN.js"></script>
+<script src="~/Views/DiscountCard/Index.js"></script>

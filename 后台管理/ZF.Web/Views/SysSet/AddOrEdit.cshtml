@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "网站配置新增(修改)";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="Name" name="Name" >
+                </div>
+                <div class="form-group">
+                    <label>参数名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="ArguName" name="ArguName">
+                </div>
+                <div class="form-group">
+                    <label>参数值</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="ArguValue" name="ArguValue">
+                </div>
+                <div class="form-group">
+                    <label>项目说明</label>
+                    <textarea type="text" class="form-control" style="height: 60px;" id="Remark" name="Remark"></textarea>
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/SysSet/AddOrEdit.js"></script>

@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+<div id="coursePaper"></div>
+
+<script type="text/html" id="paper_html">
+    {{if Result.length>0}}
+    {{each Result}}
+    <div class="cp-list-box" paperId="{{$value.PaperInfoId}}">
+        <span class="cp_ysj">
+            <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/pj01@2x.png">
+        </span>
+        <div class="cp-news">
+            <div class="cp-l">
+                <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/pj02@2x.png">
+            </div>
+            <div class="cp-r">
+                <h4>{{$value.PaperInfoName}}</h4>
+                @*<span>测评次数：2</span>*@
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    {{/each}}
+    {{/if}}
+</script>
+<script type="text/javascript">
+    $('.jjs-header-nav').attr("style", "display:block;");
+    var courseId = $('#courseId').val();
+    var state = $('#ifPlay').attr("data");
+    if (state == "1") {
+        $("#courseCover").attr("style", "display:none;");
+    } else {
+        $("#courseCover").attr("style", "display:block;");
+    }
+    $(function () {
+        topevery.ajaxwx({
+            url: "api/CourseInfo/GetPaperListWithType?courseId=" + courseId + "&type=" + 0,
+            data: JSON.stringify({})
+        }, function (data) {
+            if (data.Success) {
+                $('#coursePaper').html(template('paper_html', data));
+                //点击进入测评
+                $('.cp-list-box').click(function () {
+                    var paperId = $(this).attr("paperId");
+                    topevery.ajaxwx({
+                        url: "api/Economy/InsertIntoPaperRecords?paperId=" + paperId + "&courseId=" + courseId,
+                        async: false,
+                        data: JSON.stringify({})
+                    }, function (data) {
+                        if (data.Result) {
+                            var row = data.Result;
+                            if (row.PaperId == "-1") {
+                                parent.layer.msg("该试卷暂未上线,敬请期待!", {
+                                    time: 4000
+                                });
+                            } else {
+                                //跳转到试卷页面
+                                window.location.href = "/jjs/MyPaperTest/EnterPaper?PaperId=" + row.PaperId + "&paperRecordsId=" + row.PaperRecordsId;
+                            }
+                        } else {
+                            
+                            if (parseInt($('#isValueAdd').val()) == 1) {
+                                parent.layer.msg("暂无权限练习试卷,请前往个人中心领取增值服务！", {
+                                    time: 4000
+                                });
+                            } else {
+                                parent.layer.msg("暂无权限练习试卷,请前往购买!", {
+                                    time: 4000
+                                });
+                            }
+
+                           
+                        }
+                    });
+                })
+            }
+        });
+    })
+</script>

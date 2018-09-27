@@ -1,0 +1,177 @@
+﻿@using ZF.Web.Models.File
+
+@{
+    ViewBag.Title = "小题新增or(修改)";
+}
+<link href="~/Libs/select2-4.0.6/css/select2.min.css" rel="stylesheet" />
+<div class="box">
+    <form id="sumbitForm1" name="sumbitForm1">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <input type="hidden" Id="BigQuestionId" name="BigQuestionId" value="@ViewBag.BigQuestionId" />
+            <div class="col-xs-10" style="padding: 0px;">
+                <div class="form-group col-xs-12">
+                    <label>试题标题</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="QuestionTitle" name="QuestionTitle" maxlength="50">
+                </div>
+                <div class="form-group  col-xs-12">
+                    <label>试题内容</label><span class="text-danger">*</span>
+                    <script id="QuestionContent" name="content" type="text/plain">
+                    </script>
+                </div>
+                <div class="col-xs-10" style="padding: 0px;">
+                    <div class="form-group col-xs-6  cs12">
+                        <label>A</label>
+                        <script id="Option1" name="content" type="text/plain">
+                        </script>
+                    </div>
+                    <div class="form-group col-xs-6  cs12">
+                        <label>B</label>
+                        <script id="Option2" name="content" type="text/plain">
+                        </script>
+                    </div>
+                </div>
+                <div class="col-xs-10" style="padding: 0px;">
+                    <div class="form-group col-xs-6 cs3 cs34">
+                        <label>C</label>
+                        <script id="Option3" name="content" type="text/plain">
+                        </script>
+                    </div>
+                    <div class="form-group col-xs-6 cs4 cs34">
+                        <label>D</label>
+                        <script id="Option4" name="content" type="text/plain">
+                        </script>
+                    </div>
+                </div>
+                <div class="col-xs-10" style="padding: 0px;">
+                    <div class="form-group col-xs-6 cs5 cs56">
+                        <label>E</label>
+                        <script id="Option5" name="content" type="text/plain">
+                        </script>
+                    </div>
+                    <div class="form-group col-xs-6 cs6 cs56">
+                        <label>F</label>
+                        <script id="Option6" name="content" type="text/plain">
+                        </script>
+                    </div>
+                </div>
+                <div class="col-xs-10" style="padding: 0px;">
+                    <div class="form-group col-xs-6 cs7 cs78">
+                        <label>G</label>
+                        <script id="Option7" name="content" type="text/plain">
+                        </script>
+                    </div>
+                    <div class="form-group col-xs-6 cs8 cs78">
+                        <label>H</label>
+                        <script id="Option8" name="content" type="text/plain">
+                        </script>
+                    </div>
+                </div>
+                <div class="col-xs-10" style="padding: 0px;">
+                    <div class="form-group col-xs-12 cs9">
+                        <label>正确答案</label><span class="text-danger">*</span>
+                        <div class="form-group" id="RightAnswerHtml">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="tabbable" id="tabs-131303">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#panel-QuestionTextAnalysis" data-toggle="tab" id="resList">试题文字解析</a>
+                                        </li>
+                                        <li>
+                                            <a href="#panel-QuestionAudioAnalysis" data-toggle="tab">试题音频解析</a>
+                                        </li>
+                                        <li>
+                                            <a href="#panel-QuestionVedioAnalysis" data-toggle="tab">试题视频解析</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="panel-QuestionTextAnalysis">
+                                        <div class="QueryVideoId" style="padding-left: 0px; padding-top: 5px;">
+                                            <label>关联视频</label>
+                                            <input type="text" readonly="readonly" id="VideoName" name="VideoName" />
+                                            <input type="hidden" id="VideoId" name="VideoId" />
+                                            <button type="button" class="btn" id="chooseVideo">选择视频</button>
+                                        </div>
+                                        <div class="col-xs-12" style="padding-left: 0px; padding-top: 5px;">
+                                            <script id="QuestionTextAnalysis" name="content" type="text/plain">
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="panel-QuestionAudioAnalysis">
+                                        <div class="col-xs-12" style="padding-left: 0px; padding-top: 5px;">
+                                            <p></p>
+                                            @Html.Partial("UploadFilePartialView", new UploadFileDto()
+                                       {
+                                           UploadId = "FileQuestionAudioAnalysis",
+                                           KeyId = ViewBag.Id,
+                                           UploadContentType = "",
+                                           Type = 1
+                                       })
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="panel-QuestionVedioAnalysis">
+                                        <div class="col-xs-12" style="padding-left: 0px; padding-top: 5px;">
+                                            <p></p>
+                                            @Html.Partial("UploadFilePartialView", new UploadFileDto()
+                                       {
+                                           UploadId = "FileQuestionVedioAnalysis",
+                                           KeyId = ViewBag.Id,
+                                           UploadContentType = "",
+                                           Type = 2
+                                       })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2" style="padding: 0px;">
+                <div class="form-group col-xs-12">
+                    <label>试题展现形式</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="SubjectType" name="SubjectType" ></select>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label>试题状态</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="State" name="State"></select>
+                </div>
+                <div class="form-group col-xs-12 cs0">
+                    <label>选项数量</label>
+                    <select type="text" class="form-control" id="Number" name="Number">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected="selected">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label>电子书页码</label>
+                    <input type="text" class="form-control" id="DigitalBookPage" name="DigitalBookPage">
+                </div>
+                <div class="box-footer col-xs-12">
+                    <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<style>
+    #sumbitForm .form-group {
+        margin-bottom: 7px;
+    }
+</style>
+<script src="~/Libs/ueditor/ueditor.config.js"></script>
+<script src="~/Libs/ueditor/ueditor.all.js"></script>
+<script src="~/Libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="~/Libs/select2-4.0.6/js/select2.min.js"></script>
+<script src="~/Libs/select2-4.0.6/js/i18n/zh-CN.js"></script>
+<script src="~/Views/SubjectSmallquestion/AddOrEdit.js"></script>

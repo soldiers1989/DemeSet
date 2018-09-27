@@ -1,0 +1,1604 @@
+﻿body {
+   /* background: url(//s.stu.126.net/res/images/bg/courseLearn_bg.jpg?18e2d51df5ec4c33e6f9d0c3bacca7bc) repeat 0 0;*/
+   background:#fff;
+    text-align: left;
+    overflow: hidden;
+    padding: 0 !important;
+    min-width: 960px;
+    position: relative;
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+    font-family: "Arial","Hiragino Sans GB", 微软雅黑, "Helvetica", "sans-serif";
+    font-size: 14px;
+    color: #444;
+    outline: none;
+    border: 0;
+    margin: 0;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    padding: 0;
+    margin: 0;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.u-plicon, .m-phaseList .phaseicon span, .m-phaseList .statusicon .icon, .m-phaseList .flag, .m-phaseList .introbtn, .m-phaseList .typeicon, .m-chapterList .chaptericon span, .m-chapterList 
+.ksicon, .m-chapterList .section .flag, .m-chapterList .ksinfoicon {
+    background: url(//s.stu.126.net/res/images/listIcons.png?0c5329f4d0cb955bbe7a8b53a3d7f875) 9999px 9999px no-repeat;
+    background-position-x: 9999px;
+    background-position-y: 9999px;
+}
+
+
+.m-courselb .cl-bg {
+    height: 100%;
+    width: 4px;
+    border-right: 1px solid #76767a;
+    background-color: #333746;
+    left: 139px;
+    position: absolute;
+    top: 0;
+    z-index: 98;
+}
+
+.m-courselb .cl-logo {
+    width: 395px;
+    height: 124px;
+    background: url(//s.stu.126.net/res/images/bg/courseLearn_logo.png?c63fe464ced30465f6c12256c1979a2e) no-repeat;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -214px;
+    margin-top: -62px;
+}
+
+.coursesprite, .m-tb-notes .notenav .navItem.currentDisable, .m-ctb .tabicon, .m-courselearn .cs-btn, .m-courselearn .cs-up, .m-courselearn .cs-down, .m-courselb .cl-back, .m-courselb .cl-pre, .m-courselb .cl-next, .m-courselb .cl-title, .cl-info .clis span, .cl-info em.finish, .cl-info em.unfinish, .cli-base span, .course-refer .refer-item .cr-load, .course-refer .refer-item .cr-share, .u-hiderightbtn {
+    background: url(//s.stu.126.net/res/images/courseLearn.png?91dd8ac1f930a4e4930376ffeee48616) no-repeat 4449px 4449px;
+    background-position-x: 4449px;
+    background-position-y: 4449px;
+}
+
+.m-courselb .cl-back {
+    z-index: 101;
+    position: absolute;
+    top: 13px;
+    left: 0;
+    display: block;
+    width: 106px;
+    height: 29px;
+    font-size: 12px;
+    line-height: 24px;
+    color: #484848;
+    text-indent: 22px;
+    background-position: -16px -375px;
+}
+
+.m-courselb .cl-pre {
+    top: -1px;
+    background-position: -7px -730px;
+}
+
+.m-courselb .cl-pre, .m-courselb .cl-next {
+    position: absolute;
+    left: 112px;
+    display: block;
+    width: 60px;
+    height: 32px;
+    z-index: 101;
+}
+
+.m-courselb .cl-next {
+    bottom: -1px;
+    background-position: -70px -723px;
+}
+
+{
+    position: absolute;
+    left: 112px;
+    display: block;
+    width: 60px;
+    height: 32px;
+    z-index: 101;
+}
+
+.m-courselb .course-learn {
+    z-index: 100;
+}
+
+
+
+.m-courselb .course-learn {
+    z-index: 100;
+}
+
+.coursebox, .course-learn, .m-courselearn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+	@-moz-document url-prefix() {.coursebox { min-height: 600px;}}
+	@-moz-document url-prefix() {.course-learn { min-height: 600px;}}
+	@-moz-document url-prefix() {.m-courselearn { min-height: 600px;}}
+
+.m-courselb .cl-title {
+    background-position: 0 -124px;
+    line-height: 28px;
+    font-size: 12px;
+}
+
+.m-courselearn .cl-title {
+    position: absolute;
+    top: 54px;
+    left: 22px;
+}
+
+.m-courselb .cl-title .cl-chapter {
+    display: inline-block;
+    color: #161616;
+    width: 65px;
+    height: 28px;
+    text-align: center;
+    float: left;
+}
+
+.m-courselb .cl-title .cl-lesson {
+    width: 41px;
+    *width: 45px;
+    height: 28px;
+    float: left;
+    display: inline-block;
+    color: #999999;
+}
+
+
+
+.m-courselb .cl-title .cl-lessonname {
+    padding: 0 0 0 8px;
+    display: inline-block;
+    float: left;
+    color: #cccccc;
+}
+
+.u-coursePlanPayMsg .msg {
+    width: 465px;
+    top: 50%;
+    left: 50%;
+    margin-left: -230px;
+}
+
+.u-coursePlanPayMsg .msg-course {
+    margin-top: -50px;
+}
+
+.u-coursePlanPayMsg .wicon {
+    width: 57px;
+    height: 57px;
+    background: url(//s.stu.126.net/res/images/ui/dialogicon.png?2d5114c0c0ab97d522d7a08200bc7ed8) no-repeat;
+}
+
+.u-coursePlanPayMsg .wcon {
+    padding-left: 25px;
+    width: 400px;
+}
+
+.u-coursePlanPayMsg .title {
+    padding: 10px 0;
+    line-height: 30px;
+    color: #333;
+    font-family: "微软雅黑";
+    font-size: 20px;
+}
+
+.u-coursePlanPayMsg .priceList .presentPrice, .u-coursePlanPayMsg .priceList .originPrice {
+    color: #ff8509;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.u-coursePlanPayMsg .priceList .originPrice {
+    color: #999;
+}
+
+.u-coursePlanPayMsg .joinBtn {
+    cursor: pointer;
+    width: 85px;
+    height: 35px;
+    background: red;
+    color: #fff;
+    text-align: center;
+    line-height: 35px;
+    display: inline-block;
+    margin-left: 30px;
+    border-radius: 3px;
+}
+
+    /*.u-coursePlanPayMsg .joinBtn:hover {
+        cursor: pointer;
+        margin-left: 110px;
+        width: 118px;
+        height: 41px;
+        background: url(//s.stu.126.net/res/images/pay/payBtns.png?c9b6b849b38cca45b160a96802575ac8) -1px -70px no-repeat;
+    }*/
+
+.u-coursePlanPayMsg .priceList {
+    float: left;
+    width: 100px;
+    height: 41px;
+}
+
+.m-courselb .learn-total {
+    bottom: 0;
+    top:80px;
+    left: 0;
+    right: 20px;
+    position: absolute;
+    z-index: 90;
+    -webkit-box-shadow: 0 1px 5px #303035;
+    -moz-box-shadow: 0 1px 5px #303035;
+    box-shadow: 0 1px 5px #303035;
+}
+
+.m-courselearn .learn-box {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: 101;
+    text-align: center;
+    overflow: auto;
+    background-color: #525050;
+}
+
+.m-video-box, .m-video-box object, .m-video-box embed, .m-video-box .j-videobox, .m-video-box .j-textbox, .m-text-box, .m-text-box object, .m-text-box embed, .m-text-box .j-videobox, .m-text-box .j-textbox, .m-link-box, .m-link-box object, .m-link-box embed, .m-link-box .j-videobox, .m-link-box .j-textbox {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.m-video-box, .m-text-box, .m-link-box {
+    background-color: black;
+}
+
+.ux-video-player {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.u-edu-h5player {
+    position: relative;
+    font-size: 14px;
+    font-family: "Arial","Hiragino Sans GB", 微软雅黑, "Helvetica", "sans-serif";
+    color: #999;
+    overflow: hidden;
+}
+
+    .u-edu-h5player .bg {
+        background: #000;
+        z-index: 1;
+    }
+
+    .u-edu-h5player, .u-edu-h5player .bg, .u-edu-h5player-mainvideo, .u-edu-h5player-mainvideo video, .u-edu-h5player-pread, .u-edu-h5player-pread video, .u-edu-h5player-error, .u-edu-h5player-cover, .u-edu-h5player-pcdisplay, .u-edu-h5player-pcdisplay .bbg, .u-edu-h5player-mobileerror, .u-edu-h5player-mobilecover, .u-edu-h5player-mobiledisplay.full, .u-edu-h5player-mobiledisplay .bbg, .u-edu-h5player-mobiledisplay .sbg {
+        width: 100%;
+        height: 100%;
+    }
+
+.f-pa {
+    position: absolute;
+}
+
+.u-edu-h5player-pcdisplay {
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+    .u-edu-h5player-pcdisplay .bbg {
+        opacity: 0;
+        background: #000;
+    }
+
+    .u-edu-h5player-pcdisplay .statewrap {
+        width: 90px;
+        height: 90px;
+        display: none;
+        top: 50%;
+        left: 50%;
+        margin: -45px 0 0 -45px;
+    }
+
+        .u-edu-h5player-pcdisplay .statewrap .sbg {
+            opacity: 0.8;
+            background: #000;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        .u-edu-h5player-pcdisplay .statewrap .buffering {
+            top: 27px;
+            left: 27px;
+            display: none;
+            width: 36px;
+            height: 36px;
+            background-image: url(//s.stu.126.net/res/component-video-player/images/h5VideoPlayer/web-s3864e82090.png?fb6bb9f59f90e3e232bbf57a200502f2);
+            background-position: 0 100%;
+        }
+
+        .u-edu-h5player-pcdisplay .statewrap .replay {
+            display: none;
+            width: 36px;
+            top: 15px;
+            left: 27px;
+        }
+
+            .u-edu-h5player-pcdisplay .statewrap .replay .ic {
+                width: 36px;
+                height: 32px;
+                background-image: url(//s.stu.126.net/res/component-video-player/images/h5VideoPlayer/web-s3864e82090.png?fb6bb9f59f90e3e232bbf57a200502f2);
+                background-position: 0 55.10204%;
+            }
+
+            .u-edu-h5player-pcdisplay .statewrap .replay .txt {
+                color: #999;
+                text-align: center;
+                margin-top: 9px;
+            }
+
+.u-edu-h5player-pread {
+    display: none;
+    z-index: 4;
+}
+
+.u-edu-h5player-pread-cover {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.u-edu-h5player-controlwrap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: -0.34px;
+    z-index: 5;
+}
+
+    .u-edu-h5player-controlwrap .u-edu-h5player-srt {
+        transition: bottom .5s;
+        position: absolute;
+        bottom: 4px;
+        margin-left: 10%;
+    }
+
+.u-edu-h5player-srt {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    margin-left: auto;
+    padding: 6px;
+    text-align: center;
+}
+
+.u-edu-h5player-controlwrap .progresswrap {
+    bottom: -36px;
+    transition: .5s bottom;
+    z-index: 1;
+}
+
+.m-progressbar {
+    position: relative;
+    height: 4px;
+    cursor: pointer;
+}
+
+.u-edu-h5player-controlwrap .progresswrap .bufferbar, .u-edu-h5player-controlwrap .progresswrap .progressbar {
+    transition: .1s width,.2s transform;
+}
+
+.u-edu-h5player-controlwrap .progresswrap .backgroundbar, .u-edu-h5player-controlwrap .progresswrap .anchor {
+    transition: .2s transform;
+}
+
+.m-progressbar .backgroundbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #555;
+}
+
+.m-progressbar .bufferbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: #888;
+}
+
+
+.m-progressbar .progressbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: #2aa126;
+}
+
+.u-edu-h5player-controlwrap .progresswrap .drag_item {
+    transition: .2s opacity,.2s transform,0.1s left;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.m-progressbar .drag_item {
+    position: absolute;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border: 1px solid #2aa126;
+    background: #ffffff;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.u-edu-h5player-controlwrap .time {
+    display: none;
+    position: absolute;
+    top: -32px;
+    left: 20px;
+    height: 20px;
+    padding: 3px 5px;
+    line-height: 20px;
+    background-color: #000;
+    color: #fff;
+    opacity: 0.8;
+    border-radius: 4px;
+    z-index: 5;
+}
+
+.u-edu-h5player-controlwrap .progresswrap .placeholder {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: -6px;
+    height: 6px;
+    width: 100%;
+}
+
+.u-edu-h5player-controlwrap .bigplaybtn.z-show {
+    display: block;
+}
+
+.u-edu-h5player-controlwrap .bigplaybtn {
+    display: none;
+    position: absolute;
+    left: 20px;
+    bottom: 19px;
+    width: 60px;
+    height: 32px;
+    padding: 14px 0;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.8);
+    transition: .5s bottom;
+}
+
+.u-edu-h5player a {
+    color: #2aa126;
+}
+
+.u-edu-h5player-icon {
+    display: inline-block;
+}
+
+    .u-edu-h5player-icon.icon-big_play_btn {
+        width: 24px;
+        height: 32px;
+        background-image: url(//s.stu.126.net/res/component-video-player/images/h5VideoPlayer/web-s3864e82090.png?fb6bb9f59f90e3e232bbf57a200502f2);
+        background-position: 0 87.7551%;
+    }
+
+.u-edu-h5player-controlwrap .m-controlbar {
+    bottom: -36px;
+    transition: bottom .5s;
+}
+
+.m-controlbar {
+    box-sizing: border-box;
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    background-color: #333;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+    .m-controlbar .g-left, .m-controlbar .g-right {
+        height: 100%;
+    }
+
+    .m-controlbar .pausebtn, .m-controlbar .notfullscreen {
+        display: none;
+    }
+
+    .m-controlbar .controlbar_btn {
+        position: relative;
+        display: inline-block;
+        padding: 4px 10px;
+        height: 16px;
+        line-height: 16px;
+        border-radius: 2px;
+        text-align: center;
+        color: #999;
+        cursor: pointer;
+    }
+
+    .m-controlbar .g-left > *, .m-controlbar .g-right > * {
+        font-size: 14px;
+        margin-top: 6px;
+        vertical-align: top;
+    }
+
+.u-edu-h5player-icon.icon-pause {
+    width: 12px;
+    height: 16px;
+    background-image: url(//s.stu.126.net/res/component-video-player/images/h5VideoPlayer/web-s3864e82090.png?fb6bb9f59f90e3e232bbf57a200502f2);
+    background-position: 66.66667% 5.16129%;
+}
+
+.u-edu-h5player-icon {
+    display: inline-block;
+}
+
+.m-controlbar .current_time {
+    margin-left: 10px;
+    color: #fff;
+}
+
+.m-controlbar .g-left > *, .m-controlbar .g-right > * {
+    font-size: 14px;
+    margin-top: 6px;
+    vertical-align: top;
+}
+
+.m-controlbar .seperator {
+    margin: 0 4px;
+    color: #999;
+}
+
+.m-controlbar .duration {
+    color: #999;
+}
+
+.m-controlbar .volumebtn {
+    z-index: 1000;
+}
+
+.u-edu-h5player-icon.icon-volume {
+    width: 16px;
+    height: 16px;
+    background-image: url(//s.stu.126.net/res/component-video-player/images/h5VideoPlayer/web-s3864e82090.png?fb6bb9f59f90e3e232bbf57a200502f2);
+    background-origin: content-box;
+    background-clip: content-box;
+    background-repeat: no-repeat;
+    background-size: 24px 217.33333px;
+    background-position: 0 29.80132%;
+}
+
+.m-popover-volume {
+    padding: 8px 16px;
+    width: auto;
+}
+
+.m-popover {
+    z-index: 6;
+}
+
+.m-popover {
+    box-sizing: border-box;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 34px;
+    left: 50%;
+    padding: 8px 0;
+    width: 64px;
+    line-height: 0;
+    transform: translateX(-50%);
+    background: #333;
+    font-size: 0;
+    text-align: left;
+    border-radius: 2px;
+    cursor: auto;
+    transition: .3s opacity;
+}
+
+.m-popover-rate {
+    width: 150px;
+}
+
+    .m-popover-rate li {
+        width: 71px;
+    }
+
+.m-popover li {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    margin: 4px 2px;
+    padding-left: 8px;
+    width: 60px;
+    height: 19px;
+    line-height: 19px;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+}
+
+.m-popover-cdn {
+    width: 128px;
+}
+
+.m-popover-quality {
+    width: 64px;
+}
+
+.m-popover li.z-sel {
+    color: #fff;
+}
+
+.m-popover-quality li {
+    width: 60px;
+}
+
+.u-edu-h5player-icon.icon-fullscreen {
+    width: 16px;
+    height: 16px;
+    background-image: url(//s.stu.126.net/res/component-video-player/images/h5VideoPlayer/web-s3864e82090.png?fb6bb9f59f90e3e232bbf57a200502f2);
+    background-position: 0 5.16129%;
+}
+
+.u-edu-h5player-mainvideo {
+    z-index: 2;
+    left: 0;
+    top: 0;
+}
+
+.m-courselearn .cl-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 102;
+    padding-left: 12px;
+}
+
+.cl-info a {
+    font-size: 13px;
+    color: #fff;
+    display: block;
+}
+
+.cli-base {
+    padding: 0 10px;
+    cursor: pointer;
+    float: left;
+    color: #fff;
+}
+
+.cli-intro span {
+    background-position: 0 0px;
+}
+
+.learn-intro {
+    width: 270px;
+    bottom: 36px;
+    right: 0;
+    left: 0;
+    padding: 18px;
+    position: absolute;
+    background-color: #f1f2f3;
+    line-height: 22px;
+    color: #1d1d1d;
+    border: 1px solid #babecb;
+    word-wrap: break-word;
+    word-break: break-all;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.cli-share {
+    position: relative;
+}
+
+.cli-report span {
+    background-position: 0 -99px;
+}
+
+.f-pr {
+    position: relative;
+}
+
+.cli-app .u-qrcode {
+    width: 76px;
+    height: 36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: none;
+}
+
+.u-qrcode {
+    cursor: pointer;
+    z-index: 999;
+    width: 60px;
+    height: 50px;
+    position: fixed;
+    background: url(//s.stu.126.net/res/images/ui/sideui.png?a942047d7b07bd2c9839780e3e56f6a8) 0 -112px;
+    bottom: 80px;
+    right: 20px;
+}
+
+    .u-qrcode .qrLoad img {
+        display: block;
+    }
+
+fieldset, img, html, body, iframe {
+    border: 0;
+}
+
+.u-qrcode .qrLoad .txt {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #333;
+    text-align: center;
+    line-height: 20px;
+}
+
+.u-qrcode .tip {
+    position: absolute;
+    width: 14px;
+    height: 10px;
+    background: url(/res/images/qrcode/tip.png) no-repeat;
+    right: 22px;
+    bottom: -9px;
+}
+
+.u-qrcode .tipToy {
+    position: absolute;
+    left: -57px;
+    bottom: -2px;
+    width: 73px;
+    height: 93px;
+    background: url(/res/images/bg/tipToy.png) no-repeat;
+}
+
+input {
+    vertical-align: middle;
+    margin: 0px;
+}
+
+body, textarea, select, input {
+    font-family: "Arial","Hiragino Sans GB", 微软雅黑, "Helvetica", "sans-serif";
+    font-size: 14px;
+    color: #444;
+    outline: none;
+    border: 0;
+}
+
+.f-fcf {
+    color: #fff;
+}
+
+.cl-info em.unfinish {
+    background-position: -4px -556px;
+    margin: 5px 5px 0 0;
+    float: right;
+    width: 70px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.cl-info .clis {
+    margin-right: 20px;
+}
+
+.f-fr {
+    float: right;
+}
+
+.cl-info .clis.im span {
+    background-position: -114px -527px;
+}
+
+.cl-info .clis span {
+    padding-left: 24px;
+}
+
+.cl-info .clis.qu span {
+    background-position: -114px -467px;
+}
+
+.u-hiderightbtn {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    width: 23px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 998;
+    background-position: 0 -640px;
+}
+
+.u-hiderightbtn-hide {
+    background-position: 0 -688px;
+}
+
+.g-sd2 {
+   /* -webkit-box-shadow: 0px 1px 8px #333;
+    -moz-box-shadow: 0px 1px 8px #333;
+    box-shadow: 0px 1px 8px #333;*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    overflow: hidden;
+    background: #abadb0;
+}
+
+.g-sd2 {
+    position: relative;
+    float: right;
+    width: 320px;
+    margin-left: -225px;
+}
+
+.m-ctb {
+    width: 320px;
+}
+
+    .m-ctb .courseintro {
+        height:50px;
+        padding: 15px;
+        background: #fff;
+    }
+
+    .m-ctb .courseTitle {
+        height: 67px;
+        overflow: hidden;
+    }
+
+.f-fl {
+    float: left;
+}
+
+.u-coursetitle {
+    width: 165px;
+    text-align: left;
+    line-height: 19px;
+    color: #fff;
+    font-size: 12px;
+    text-align: left;
+}
+
+    .u-coursetitle a {
+        font-size: 15px;
+        display: block;
+        color: #333;
+    }
+
+
+
+    .u-coursetitle .starall {
+        float: left;
+        height: 20px;
+        padding: 7px 0 0;
+    }
+
+.u-coursePlanPayMsg {
+    background: #222529;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: left;
+    z-index:999999;
+}
+
+    .uisprite, .m-addNoteUI .toolbar .anchordel, .m-mynotesToolbar .nav .navItem, .m-mynotesToolbar .nav .navItem1, .u-coursePlanPayMsg .courseLearnCount, .m-feedSuccess .txt .goIcon, .m-recruitSuccess .txt .goIcon, .u-rating .star, .u-msgItem .cancel, .msg-close, .msg-mark {
+        background: url(//s.stu.126.net/res/images/ui/ui_sprite.png?1367c4a3031b72bbecf3674702d4f731) no-repeat 4449px 4449px;
+        background-position-x: 4449px;
+        background-position-y: 4449px;
+    }
+
+
+.u-coursetitle p {
+    color: #666;
+    float: left;
+}
+
+
+.u-rating .star {
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-top: 2px;
+    background-position: -48px -200px;
+}
+
+.u-rating .on {
+    background-position: 0px -200px;
+}
+
+.u-coursetitle .u-rating span {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.u-rating span {
+    color: #10ae58;
+    vertical-align: text-top;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.u-coursetitle .cmt {
+    float: left;
+    margin: 8px 0 0 0;
+    color: #666;
+}
+
+.m-ctb .courseImgCover {
+    position: relative;
+}
+
+.m-ctb .courseImg-link {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: all 0.2s ease-in 0s;
+    -moz-transition: all 0.2s ease-in 0s;
+    -ms-transition: all 0.2s ease-in 0s;
+    -o-transition: all 0.2s ease-in 0s;
+    transition: all 0.2s ease-in 0s;
+    position: absolute;
+    left: 5px;
+    height: 66px;
+    width: 120px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.m-ctb .courseImg {
+    width: 120px;
+    height: 66px;
+    -webkit-box-shadow: 0px 0px 4px #666;
+    -moz-box-shadow: 0px 0px 4px #666;
+    box-shadow: 0px 0px 4px #666;
+}
+
+.m-ctb .tabs {
+    height: 45px;
+    /*background: url(//s.stu.126.net/res/images/bg/toolbar_tab_bg.png?cd66e7ab9b9a236872606b0db063e4aa) repeat-x;*/
+    background-color: rgba(0, 0, 0, 0);
+    background-color: #333;
+    font-family: '微软雅黑';
+}
+
+.m-ctb .tabitem {
+    float: left;
+    height: 44px;
+    width: 106px;
+    text-align: center;
+    line-height: 44px;
+    color: #666;
+}
+
+.m-ctb .tabicon-0 {
+    width: 15px;
+    height: 15px;
+    background-position: -98px -662px;
+}
+
+.m-ctb .tabicon {
+    margin: 15px 5px 0 30px;
+}
+
+.m-ctb .tabitem-pos {
+    color: #fff;
+   /* background: url(//s.stu.126.net/res/images/bg/pos_tab_btn_bg.png?4e898372e2a8ae24c3b37d49a787402d) center center no-repeat;*/
+}
+
+.m-ctb .tabicon-pos1 {
+    width: 16px;
+    height: 15px;
+    background-position: -64px -639px;
+}
+
+.m-ctb .tabicon-2 {
+    width: 15px;
+    height: 16px;
+    background-position: -40px -664px;
+}
+
+.m-ctb .tabarea {
+    position: absolute;
+    top: 110px;
+    left: 0;
+    width: 320px;
+    bottom: 0;
+    overflow: hidden;
+    background: #333;
+}
+
+    .m-ctb .tabarea .tabbox {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+.u-select {
+    height: 32px;
+    padding: 0 10px;
+    padding-left: 10px;
+    width: 257px;
+    background-color: white;
+    border: 1px solid #dfdfdf;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    position: relative;
+}
+
+
+    .u-select .down {
+        position: absolute;
+        top: 32px;
+        left: 0;
+        width: 275px;
+        max-height: 450px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        z-index: 100;
+        border: 1px solid #d1d2d4;
+    }
+
+    .u-select .list {
+        display: block;
+        height: 33px;
+        line-height: 33px;
+        font-size: 14px;
+        color: #333;
+        padding: 0 10px;
+        width: 257px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+
+    .u-select .up {
+        cursor: pointer;
+        font-size: 14px;
+        color: #999;
+        line-height: 30px;
+        background: url(//s.stu.126.net/res/images/ui/createplan.png?a1108961c6eb92713977101420a88248) 241px -192px no-repeat;
+        background-position-x: 241px;
+        background-position-y: -192px;
+    }
+
+.m-toolbarForum .edit {
+    padding: 10px;
+}
+
+    .m-toolbarForum .edit .forumSel {
+        position: relative;
+        z-index: 103;
+    }
+
+        .m-toolbarForum .edit .forumSel .u-select {
+            width: 120px;
+            background: transparent;
+            border-width: 0;
+            padding-left: 0;
+        }
+
+
+
+            .m-toolbarForum .edit .forumSel .u-select .up {
+                background-position: 110px -194px;
+            }
+
+
+            .m-toolbarForum .edit .forumSel .u-select .down {
+                width: 140px;
+                top: 27px;
+            }
+
+
+
+.u-cmtwrp {
+    position: relative;
+    z-index: 102;
+}
+
+    .u-cmtwrp .u-cmtedtip2 {
+        position: absolute;
+        top: -20px;
+        right: 0;
+    }
+
+.s-fc2 {
+    color: #999;
+}
+
+.f-fs0 {
+    font-size: 12px;
+}
+
+.s-fc1 {
+    color: #444;
+}
+
+.u-cmtwrp .u-cmtedit {
+    position: relative;
+    background: none repeat scroll 0 0 #FAFAFA;
+    border: 1px solid #DFDFDF;
+    -webkit-box-shadow: inset 1px 1px 2px #DFDFDF;
+    -moz-box-shadow: inset 1px 1px 2px #dfdfdf;
+    box-shadow: inset 1px 1px 2px #DFDFDF;
+    padding: 5px;
+}
+
+    .u-cmtwrp .u-cmtedit .wrap {
+        width: 100%;
+        height: 47px;
+    }
+
+    .u-cmtwrp .u-cmtedit .mtxt {
+        width: 100%;
+        height: 100%;
+        font-size: 12px;
+        line-height: 23px;
+        background: transparent;
+        border: none;
+        overflow-y: auto;
+        overflow-x: hidden;
+        resize: none;
+    }
+
+
+    .u-cmtwrp .u-cmtedit .hint {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #999;
+    }
+
+.m-toolbarForum .edit .u-cmtwrp .u-cmtedit .hint {
+    bottom: 13px;
+    overflow-y: hidden;
+}
+
+
+
+.buttonsprite, .m-edititem .editopt a.editbtn, .m-edititem .editopt a.editbtn span, .m-tb-notes .mask .joincourse, .m-tb-notes .mask .joincourse span, .u-coursePlanPayMsg .cancelBtn, .u-coursePlanPayMsg .cancelBtn span, .m-videoReportDialog .btns .okbtn, .m-videoReportDialog .btns .okbtn span, .m-videoReportDialog .btns .cancelbtn, .m-videoReportDialog .btns .cancelbtn span, .m-feedbackSys .btn, .m-feedbackSys .btn span, .m-toolbarForum .edit .postBtn, .m-toolbarForum .edit .postBtn span, .m-lastframe .nextOrestimate, .m-lastframe .nextOrestimate span, .m-mostAsk .editctrl .submitBtn, .m-mostAsk .editctrl .submitBtn span, .m-mostAsk .mask .joincourse, .m-mostAsk .mask .joincourse span, .u-clgrowl .loginBtn, .u-clgrowl .loginBtn span, .m-predlog .findBtn, .m-predlog .findBtn span, .m-predlog .loginBtn, .m-predlog .loginBtn span {
+    background: url(//s.stu.126.net/res/images/btn/button.png?8da8e506b44a05ffa0554aceba35eec0) no-repeat 4449px 4449px;
+    background-position-x: 4449px;
+    background-position-y: 4449px;
+}
+
+.m-toolbarForum .edit .postBtn {
+    margin-top: 5px;
+    display: block;
+    width: 78px;
+    width: 78px;
+    text-decoration: none;
+    background-position: 68px 0px;
+}
+
+    .m-toolbarForum .edit .postBtn span {
+        display: block;
+        text-align: center;
+        padding-left: 10px;
+        width: 58px;
+        font-size: 12px;
+        height: 34px;
+        line-height: 33px;
+        color: #fff;
+        background-position: -40px 0px;
+    }
+
+.m-toolbarForum .posts {
+    top: 140px;
+    overflow: auto;
+}
+
+.f-af {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.m-ctb .tabarea .bd {
+    position: absolute;
+    z-index: 1;
+    left: 71px;
+    top: 0;
+    border: none;
+    border-left-width: medium;
+    border-left-style: none;
+    border-left-color: currentcolor;
+    border-left: solid 1px #d3d3d3;
+    width: 0;
+    height: 100%;
+}
+
+.m-ctb .tabarea .m-chapterlistBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 100;
+    overflow-y: auto;
+    zoom: 1;
+}
+
+.m-chapterList {
+    border-top: 0;
+    text-align: left;
+    position: relative;
+    z-index: 999;
+    padding-bottom: 110px;
+    font-size: 12px;
+}
+
+    .m-chapterList .chapter {
+        height: 40px;
+        color: #666;
+        font-size: 14px;
+        font-family: '微软雅黑';
+        font-weight: bolder;
+        padding: 10px 12px 0 12px;
+        line-height: 40px;
+        cursor: default;
+    }
+
+    .m-chapterList .ch {
+        width: 41px;
+        height: 40px;
+        text-align: left;
+    }
+
+    .m-chapterList .chaptericon {
+        height: 25px;
+        width: 25px;
+        margin: 6px;
+        text-align: center;
+        line-height: 27px;
+        display:none;
+        
+    }
+
+        .m-chapterList .chaptericon span {
+            display: block;
+            height: 25px;
+            width: 25px;
+            background-position: -96px -112px;
+        }
+
+    .m-chapterList .chaptername {
+        /*width: 185px;*/
+        width:100%;
+        padding-left: 6px;
+    }
+
+.m-courselb .cl-back:hover {
+    background-position: -16px -415px;
+}
+
+.m-courselb .cl-title .cl-lessonnum {
+    width: 25px;
+    *width: 18px;
+    height: 28px;
+    color: #161616;
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    text-align: center;
+}
+
+
+.u-forumli {
+    cursor: pointer;
+    font-size: 12px;
+}
+
+    .u-forumli .head .img {
+        vertical-align: middle;
+        border-radius: 15px;
+        width: 30px;
+        height: 30px;
+    }
+
+
+.f-thide {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+}
+
+
+.m-toolbarForum .edit .postBtn {
+    margin-top: 5px;
+    display: block;
+    width: 78px;
+    width: 78px;
+    text-decoration: none;
+    background-position: 68px 0px;
+}
+
+    .m-toolbarForum .edit .postBtn:hover {
+        background-position: 68px -50px;
+    }
+
+
+.u-forumli .forumi {
+    padding: 20px 0;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.m-toolbarForum .u-forumli .forumi {
+    padding: 14px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+
+.m-toolbarForum .u-forumname, .m-toolbarForum .u-forumanonymous {
+    margin-left: 5px;
+    max-width: 60px;
+}
+
+.u-forumname, .u-forumanonymous {
+    color: #10ae58;
+}
+
+.m-toolbarForum .u-forumli .head .time {
+    margin-left: 5px;
+}
+
+.s-fc5 {
+    color: #666;
+}
+
+.u-forumli .head .panel {
+    margin-top: 5px;
+}
+
+.u-forumli .cnt {
+    padding: 20px 0 14px 0;
+    line-height: 24px;
+}
+
+.m-toolbarForum .posts .list .u-forumli .cnt {
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+.m-toolbarForum .u-forumli .cnt {
+    padding: 14px 0;
+}
+
+.u-forumli .post {
+    font-size: 14px;
+    word-break: break-all;
+}
+
+
+
+.m-chapterList .chaptericon span {
+    display: block;
+    height: 25px;
+    width: 25px;
+    background-position: -96px -112px;
+}
+
+.m-chapterList .section-cur {
+    background: #3a3e4a;
+}
+
+.m-chapterList .section {
+    height: 36px;
+    line-height: 36px;
+    padding: 0 12px;
+    cursor: pointer;
+    -moz-transition: all 0.15s ease-out;
+    -webkit-transition: all 0.15s ease-out;
+    -o-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    border-bottom:1px solid #1d1d1d;
+}
+
+    .m-chapterList .section .ks {
+        width: 51px;
+        color: #999;
+        text-align: left;
+        font-size: 12px;
+    }
+
+    .m-chapterList .section .ksicon {
+        display: block;
+        height: 14px;
+        width: 16px;
+    }
+
+    .m-chapterList .section .ksicon-0 {
+        /*background-position: -136px -113px;*/
+            border-width: 5px;
+            border-style: dashed dashed dashed solid;
+            border-color:transparent transparent transparent #a8a9ab;
+ 
+            width: 0;
+            height: 0;
+    }
+
+    .m-chapterList .section .ksname {
+        padding-left: 0px;
+        color: #999;
+        max-width: 110px;
+        height: 36px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .m-chapterList .section.cur .ksname{
+        color:#fff;
+    }
+    .m-chapterList .section.cur .ksicon-0{
+        border-color:transparent transparent transparent #ffffff;
+    }
+    .m-chapterList .section.cur{background:#616467}
+
+    .m-chapterList .section .ksw {
+        height: 14px;
+        width: 14px;
+        margin: 11px 0 0 0;
+        -moz-transition: all 0.15s ease-out;
+        -webkit-transition: all 0.15s ease-out;
+        -o-transition: all 0.15s ease-out;
+        transition: all 0.15s ease-out;
+    }
+
+    .m-chapterList .section .ksicon-20-mark {
+        background-position: -168px -153px;
+    }
+
+.m-chapterList .ksinfoicon.ksinfoicon-2 {
+    background-position: -24px -184px;
+}
+
+
+.m-chapterList .section .ksinfo {
+    height: 36px;
+}
+
+.m-chapterList .section .kstime {
+    color: #bababa;
+}
+
+.m-chapterList .section .flag {
+    width: 16px;
+    height: 18px;
+    margin: 12px 3px 0 3px;
+}
+
+.m-chapterList .section:hover {
+    background: #1d1d1d;
+}
+
+#j-back{
+    background: url(../imgs/ui/zuo.png) no-repeat;
+    float: left;
+    width: 20px;
+    height: 23px;
+    margin: 28px 10px;
+}
+#j-title{
+        float: left;
+    line-height: 75px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 36px;
+}
+
+.nextChap{position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000;}
+.nextChap div{position:absolute;top:40%;text-align:center;width:100%;}
+.nextChap p{
+    width: 100%;
+    text-align: center;
+    color: #fff;margin-bottom:40px;
+    font-size: 20px;}
+    .nextChap .next {
+        background: red;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+    }
+.nextChap .again{
+    padding-left:30px;
+    background:url(../imgs/ui/again.png) no-repeat 0 center;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 30px;
+    display: inline-block;
+    color: #4c4c4c;
+}
+.drop{ display: none; top:40px;  position: absolute; width: 134px; z-index: 999; text-align: center;padding:5px;}
+    .drop .dropIn{background: #fff;box-shadow: 0 0 10px #ccc;margin-top:13px;padding:20px 0;}
+    .collection{display: inline-block;height: 50px;line-height: 50px;float: right;background:url(../imgs/ui/collect.png) no-repeat;width:33px;}
+    .collection.cur{background-position-y:-50px;}
+    
+    .personCenter{width: 100px;height: 50px;line-height: 50px;text-align: center;display:inline-block;}
+    .personCenter .drop a{    display: block;color: #333;height:30px;line-height:30px;}
+    .personCenter .drop a:hover{background:#e2231a;color:#ffffff;}
+    .drop .jian{ width: 0; height: 0; border-style: dashed dashed solid dashed; border-color: transparent transparent #fff transparent; overflow: hidden; cursor: pointer; position: absolute; top: 0; margin-top: -3px; border-width: 11px; left: 50%; margin-left: -11px;}
+    .drop::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: dashed dashed solid dashed;
+        border-color: transparent transparent #ccc transparent;
+        overflow: hidden;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        margin-top: -4px;
+        border-width: 11px;
+        left: 50%;
+        margin-left: -11px;
+    }

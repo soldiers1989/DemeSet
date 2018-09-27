@@ -1,0 +1,14 @@
+E:\出版社\后台管理\Dapper\bin\Debug\Dapper.dll
+E:\出版社\后台管理\Dapper\bin\Debug\Dapper.pdb
+E:\出版社\后台管理\Dapper\bin\Debug\log4net.dll
+E:\出版社\后台管理\Dapper\bin\Debug\log4net.xml
+E:\出版社\后台管理\Dapper\obj\Debug\Dapper.dll
+E:\出版社\后台管理\Dapper\obj\Debug\Dapper.pdb
+E:\出版社\后台管理\Dapper\obj\Debug\Dapper.csprojResolveAssemblyReference.cache
+G:\XYZ\后台管理\Dapper\bin\Debug\Dapper.dll
+G:\XYZ\后台管理\Dapper\bin\Debug\Dapper.pdb
+G:\XYZ\后台管理\Dapper\bin\Debug\log4net.dll
+G:\XYZ\后台管理\Dapper\bin\Debug\log4net.xml
+G:\XYZ\后台管理\Dapper\obj\Debug\Dapper.dll
+G:\XYZ\后台管理\Dapper\obj\Debug\Dapper.pdb
+G:\XYZ\后台管理\Dapper\obj\Debug\Dapper.csprojResolveAssemblyReference.cache

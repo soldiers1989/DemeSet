@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "帮助信息新增(修改)";
+}
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id"/>
+            <input type="hidden" Id="Type" name="Type" value="1" />
+            <div class="col-xs-12" style="padding: 0px;">
+                <div class="form-group col-xs-6">
+                    <label>所属类别</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="BigClassId" name="BigClassId"></select>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label>所属小类</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="ClassId" name="ClassId">
+                        <option value="">--请选择--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12" style="padding: 0px;">
+                <div class="form-group col-xs-12">
+                    <label>标题</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="Title" name="Title">
+                </div>
+            </div>
+            <div class="col-xs-12" style="padding: 0px;">
+                <div class="form-group col-xs-6">
+                    <label>是否显示在首页</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="IsIndex" name="IsIndex">
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label>是否置顶</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="IsTop" name="IsTop">
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12" style="padding: 0px;">
+                <div class="form-group col-xs-12">
+                    <label>内容</label><span class="text-danger">*</span>
+                    <script id="Content" name="Content" type="text/plain">
+                    </script>
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+                <a class="btn btn-primary return">返回</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Libs/ueditor/ueditor.configAll.js"></script>
+<script src="~/Libs/ueditor/ueditor.all.js"></script>
+<script src="~/Libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="~/Views/Help/AddOrEdit.js"></script>

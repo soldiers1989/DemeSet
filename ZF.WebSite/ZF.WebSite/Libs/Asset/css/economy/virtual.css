@@ -1,0 +1,12 @@
+.content{width:830px;overflow:hidden;margin:0 auto;}
+.comput{font-size:34px;position:relative;text-align:center;margin-top:30px;font-weight:bold;color:#1b4b85;}
+.explain{font-size:16px;color:red;margin-left:16px;}
+.explain font{font-size:20px;font-weight: bold;}
+.tit{font-size:28px;color:#1c4c85;text-align:center;margin-top:30px;;position:relative;line-height:35px;}
+.tit a{position:absolute; right:83px;font-size:18px; color:#333333; }
+.tit a:hover{color:#1c7bc7;}
+.btn{margin-top:45px;position:relative;}
+.btn a{width:432px;height:64px;display:block;margin:30px auto;background:url(../../image/economy/virtual/btn.png) top left no-repeat;color:#333333;position:relative; font-size:24px;text-align: center;line-height: 70px;}
+.btn a:hover{background:url(../../image/economy/virtual/btn.png) bottom left no-repeat;}
+.biao{position:relative;vertical-align: middle;margin-right:30px;width:80px;display:inline-block;}
+.txt{position:relative;z-index:999;text-align:center;font-size:20px;color:red;padding-top:10px;}

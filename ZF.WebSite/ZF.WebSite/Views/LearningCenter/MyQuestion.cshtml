@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="subTit">
+    <label>机考仿真</label>
+</div>
+
+<style>
+    .bookImg img {
+        width: 100%;
+    }
+</style>
+
+<div class="mycourse layui-row layui-col-space20" id="myCourse1">
+</div>
+<script type="text/html" id="MyCourse1_hmtl">
+    {{if Result.length>0}}
+    {{each Result}}
+    <div class="layui-col-xs4">
+        <div class="box">
+            <a class="bookImg" href="/CourseInfo/CourseInfo?courseId={{$value.CourseId}}" target="_blank"><img src="{{$value.CourseIamge}}"></a>
+            <a href="javascript:;" class="details">
+                <p class="bookName">{{$value.CourseName}}</p>
+                <p>
+                    {{if $value.CourseWareCount>0}}
+                    <label>视频：{{$value.HasLearnCount}}/{{$value.CourseWareCount}}</label>
+                    {{else}}
+                    无视频
+                    {{/if}}
+
+                    {{if $value.TotalPaperNum>0}}
+                    <label>模拟测评：{{$value.PracticePaperNum}}/{{$value.TotalPaperNum}}</label>
+                    {{else}}
+                    无模拟测评
+                    {{/if}}
+                    {{if $value.TotalChapterPractice>0}}
+                    <label>章节练习：{{$value.ChapterPracticeNum}}/{{$value.TotalChapterPractice}}</label>
+                    {{else}}
+                    无章节练习
+                    {{/if}}
+                </p>
+            </a>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="normal kc">您还没有开始相关机考仿真练习，快去学习吧……</div>
+    {{/if}}
+</script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/LearningCenter/MyQuestion.js?v=1.0"></script>

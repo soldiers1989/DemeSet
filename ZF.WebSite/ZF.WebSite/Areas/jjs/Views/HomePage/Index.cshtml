@@ -1,0 +1,206 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" />
+    <title>@HttpContext.Current.Application["TitleName"]</title>
+    <style>
+        .index-zx-rl-l dl dd {
+            width: 100%;
+        }
+
+        .dlImage {
+            width: 3.5em;
+        }
+
+        .index-tjkc_nr dl dd {
+            height: 2.8em;
+        }
+    </style>
+</head>
+<body>
+    <!--轮播代码 开始 -->
+    <div id="fsD1" class="focus">
+
+        <span class="prev"></span>
+        <span class="next"></span>
+    </div>
+    <script type="text/html" id="fsD1_html">
+        <div id="D1pic1" class="fPic">
+            {{each Result }}
+
+            <div class="fcon">
+                <a id="AppLinkAddress" href="{{$value.AppLinkAddress}}"><img src="{{$value.AppUrl}}"></a>
+            </div>
+
+            {{/each}}
+        </div>
+        <div class="fbg">
+            <div class="D1fBt" id="D1fBt">
+                {{each Result }}
+                <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>{{$index}}</i></a>
+                {{/each}}
+            </div>
+        </div>
+    </script>
+    <!-- 轮播代码 结束 -->
+    <!-- 导航开始-->
+    <div class="index-nav">
+        <dl><a  href="~/jjs/PersonalCenter/SecurityTwoCode"><dt><img src="~/Areas/jjs/resources/images/app_tp01.png"></dt><dd>输入防伪码</dd></a></dl>
+        <dl id="zzfw" style="display: none;"><a href="/jjs/MyCourse/Index"><dt><img src="~/Areas/jjs/resources/images/app_tp03.png"></dt><dd>我的课程</dd></a></dl>
+        <dl><a href="/jjs/MyCourse/MyQuestion"><dt><img src="~/Areas/jjs/resources/images/app_tp02.png"></dt><dd>机考仿真</dd></a></dl>
+        <dl><a href="http://zgrskspx.class.com.cn/ValueAdded/kefu.html"><dt><img src="~/Areas/jjs/resources/images/app_tp04.png"></dt><dd>我的客服</dd></a></dl>
+    </div>
+    <!-- 导航结束-->
+    <div class="banner01">
+        <a id="AppLinkAddress1" href="http://zgrskspx.class.com.cn/ValueAdded/appdownload.html">
+            <img src="~/Areas/jjs/resources/images/app_banner_shou1.png">
+        </a>
+    </div>
+
+    <!--推荐课程开始-->
+    <div class="index_zzfw zzfw" style="display: none;">
+        <h3>增值服务</h3>
+        <div class="zzfw_nr" id="PopularCourses1"></div>
+        <div class="clear"></div>
+    </div>
+
+    <script type="text/html" id="PopularCourses1_html">
+        {{each Rows}}
+        <dl class="float">
+            <a href="/jjs/CourseInfo/Index?id={{$value.Id}}&CourseType={{$value.CourseType}}">
+                <dt><img src="{{$value.CourseIamge}}"></dt>
+                <dd>
+                    {{$value.CourseName}}
+                </dd>
+            </a>
+        </dl>
+        {{/each}}
+    </script>
+    <div class="line line1"></div>
+    <!--推荐课程开始-->
+    <div class="index-tjkc tab-wrapper" style="display: none;">
+        <ul class="tab-menu ulli">
+            <li>推荐课程</li>
+            <li CourseType="1" class="active" style="font-size: 1.2em; padding-top: 0.2em;">套餐</li>
+            <li CourseType="0" style="font-size: 1.2em; padding-top: 0.2em;">单科</li>
+            <div class="clear"></div>
+            <span><a href="~/jjs/Subject/Course">更多></a></span>
+        </ul>
+        <div class="index-tjkc_nr tab-content" id="PopularCourses"></div>
+        <div class="clear"></div>
+    </div>
+
+    <script type="text/html" id="PopularCourses_html">
+        {{each Rows}}
+        {{if $index%2==0}}
+        <dl class="tjkc_l float">
+            {{else}}
+            <dl class="tjkc_r float">
+                {{/if}}
+                <a href="/jjs/CourseInfo/Index?id={{$value.Id}}&CourseType={{$value.CourseType}}">
+                    <dt><img src="{{$value.CourseIamge}}"></dt>
+                    <dd>
+                        {{$value.CourseName}}
+                    </dd>
+                    {{if $value.CourseType==0}}
+                    <span><a href="/jjs/CourseInfo/Index?id={{$value.Id}}&CourseType={{$value.CourseType}}"><img class="dlImage" src="/Areas/jjs/resources/images/shiting.png"></a></span>
+                    {{/if}}
+                </a>
+            </dl>
+            {{/each}}
+    </script>
+    <!--推荐课程结束-->
+    <div class="line" style="display: none;"></div>
+
+
+
+    <div class="index-mstd" style="display: none;">
+        <h3>名师团队</h3>
+        <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jq_scroll.js?v=1.0"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#scrollDiv").Scroll({ line: 1, speed: 500, timer: 7000, up: "but_up", down: "but_down" });
+            });
+        </script>
+        <div id="scrollDiv">
+            <ul></ul>
+        </div>
+        <script type="text/html" id="teacherinfo_html">
+            <ul>
+                {{each Rows}}
+                <li>
+                    <div class="mingshi">
+                        <dl>
+                            <dt><img src="{{$value.TeacherPhoto}}"></dt>
+                            <dd>
+                                <h4>{{$value.TeachersName}}</h4>
+                                <p>{{#$value.Synopsis}}</p>
+                            </dd>
+                        </dl>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </script>
+    </div>
+
+
+
+    <!--最新资讯开始-->
+    <div class="index-zixun" id="Affiche">
+    </div>
+    <script type="text/html" id="Affiche_html">
+        <h3>最新资讯<span><a href="/jjs/Information/Index">更多></a></span></h3>
+        {{each Rows}}
+        <div class="index-zx-rl">
+            <a href="/jjs/Information/Detail?Id={{$value.Id}}">
+                <div class="index-zx-rl-l">
+                    <h4>
+                        {{$value.Title}}
+                    </h4>
+                    <dl>
+                        <dd><span>{{$value.DataTypeName}}</span><span>{{$value.Name}}</span></dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                <div class="index-zx-rl-r">
+                    <img src="{{$value.AfficheIamge}}">
+                </div>
+                <div class="clear"></div>
+            </a>
+        </div>
+        {{/each}}
+        <div class="clear"></div>
+    </script>
+    <!--最新资讯结束-->
+    <!--底部导航开始-->
+    <div class="header-nav">
+        <ul>
+            <li class="hover">
+                <a class="img01">首页</a>
+            </li>
+            <li style="display: none;"><a href="~/jjs/Information/Index" class="img02">最新资讯</a></li>
+            <li><a href="~/jjs/PersonalCenter/Index" class="img03">个人中心</a></li>
+        </ul>
+    </div>
+    <!--底部导航结束-->
+</body>
+</html>
+<script type="text/javascript" src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/top/koala.min.1.5.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jweixin-1.0.0.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/HomePage/Index.js?version=2.3.3"></script>

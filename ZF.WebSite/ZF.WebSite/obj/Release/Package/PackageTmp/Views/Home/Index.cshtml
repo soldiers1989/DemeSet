@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "中国人事考试综合学习平台";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/asset/public/layui/layui.js"></script>
+<!-- 公共部分-头部end -->
+<!-- 中间内容部分 -start-->
+<!-- banner-start -->
+<div class="layui-carousel" id="test1">
+    <div id="pic" carousel-item>
+    </div>
+    <script type="text/html" id="pic_html">
+        {{each Result }}
+        <div>
+            <a target="_blank" href="{{$value.LinkAddress}}" style="background:url({{$value.Url}}) center 0 no-repeat;width:100%;height:100%;display:block;"></a>
+        </div>
+        {{/each}}
+    </script>
+</div>
+<!-- banner-end -->
+<!-- 课程start -->
+<div class="courses">
+    <div class="main">
+        <div class="title">
+            <font class="red">+</font> 推/荐/<font class="red">课</font>/<font class="red">程</font> <font class="red">+</font>
+        </div>
+        <script type="text/html" id="PopularCourses_html">
+            {{each Rows}}
+            <li class="layui-col-xs3">
+                <a href="/CourseInfo/CourseInfo?courseId={{$value.Id}}" target="_blank" class="bookImg"><img src="{{$value.CourseIamge}}"></a>
+                <a href="/CourseInfo/CourseInfo?courseId={{$value.Id}}" target="_blank" class="bookName" title="{{$value.CourseName}}">{{$value.CourseName}}</a>
+                <p>
+                    <label>{{$value.SubjectName}}</label><label>{{$value.Count}}购买</label>
+                </p>
+                <p class="cost">¥ {{$value.FavourablePrice}}</p>
+            </li>
+            {{/each}}
+        </script>
+        <ul class="layui-col-space20  layui-row" id="PopularCourses"></ul>
+        <a class="more PopularCoursesMore" href="javascript:;">+更多</a>
+    </div>
+</div>
+<!-- 课程end -->
+<div class="information layui-row">
+    <div class="main">
+        <div class="title">
+            <font class="red">+</font> 考/试/<font class="red">资</font>/<font class="red">讯</font> <font class="red">+</font>
+        </div>
+        <script type="text/html" id="Affiche_html">
+            {{each Result}}
+            <li class="layui-col-xs4">
+                <a class="ifmImg" href="javascript:;"><img src="{{$value.AfficheIamge}}"></a>
+                <div class="ifmContent">
+                    <a href="javascript:;" class="ifmName">{{$value.Title}}</a>
+                    <p class="time">{{$value.AddTime}}</p>
+                </div>
+            </li>
+            {{/each}}
+        </script>
+        <ul class="layui-col-space20  layui-row" id="Affiche"></ul>
+        <a class="more AfficheMore" href="javascript:;">+更多</a>
+    </div>
+</div>
+<!-- 中间内容部分end -->
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Home/Index.js"></script>

@@ -1,0 +1,49 @@
+.header{background: #e2231a;}
+.logo span,.logo label,.navIn a,.nav .person a,.layui-icon-cart{color:#fff;border-color:#fff;}
+.navIn .cur a,.layui-icon-cart em{background: #fff;color:#e2231a;}
+
+.center{margin:40px auto;overflow: hidden;}
+.centerTit{color:#484a4c;font-size:18px;font-weight: bold;padding:22px 0 22px 80px;background:url(../../image/mycenter/person.png) 34px center no-repeat;}
+
+.leftMenu{width:17%;float:left;background: #fff;min-height:400px;}
+.leftMenu a{display: block;height:48px;line-height: 48px;color:#343434;font-size:16px;text-indent:70px;position:relative;}
+.leftMenu .cur{background: #e2231a;color:#fff;}
+.leftMenu a i{display:block; float:left;height:48px;width:45px;display:inline-block; background:url(../../image/public/study.png) no-repeat 0 0;position:absolute; left:21px;}
+.leftMenu .lm2 i{background-position-y:-48px;}
+.leftMenu .lm3 i{background-position-y:-96px;}
+.leftMenu .lm4 i{background-position-y:-144px;}
+.leftMenu .lm5 i{background-position-y:-192px;}
+.leftMenu .lm6 i{background-position-y:-240px;}
+.leftMenu .lm7 i{background-position-y:-288px;}
+.leftMenu .lm8 i{background-position-y:-336px;}
+.leftMenu .lm9 i{background-position-y:-145px;}
+
+.leftMenu .cur i{background-position-x:-48px;}
+
+.leftMenu.person a i{background-image:url(../../image/public/center.png)}
+
+.rightContent{width:81%;float:right;min-height:400px;}
+
+
+
+.box{overflow:hidden;margin-right:5px;background: #fff;border-radius: 5px;border: 1px solid #ececec;}
+.box:hover{box-shadow:0px 2px 13px 0px rgba(0, 0, 0, 0.18);}
+
+.layui-icon-date{font-size:28px;color:#2481f3;}
+.toggle,.edit,.time,.remove{padding-left:28px;background:url(../../image/study/icon.png) 0px -2px no-repeat;}
+.edit{background-position-y:-62px;}
+.remove{background-position-y:-95px;}
+.toggle{background-position-y:-130px;}
+.toggle.cur{background-position-y:-165px;}
+.details{padding:15px;display: block;}
+.details label{color:#525252;font-size:12px;display: inline-block; margin-right:10px;}
+
+.personTit{overflow: hidden; padding-bottom: 10px; background: #f3f3f3;} 
+.personTit label{color:#07111b; font-size:16px;font-weight: bold; float:left;}
+.personContent{background: #ffffff;}
+
+.normal{    color: #909090; font-size: 16px; text-align: center; padding-top: 202px; background: url(../../image/study/nokc.png) center 41px no-repeat; padding-bottom: 30px;}
+.st{background-image:url(../../image/study/nocoll.png);}
+.xxk{background-image:url(../../image/study/nocard.png);}
+.ct{background-image:url(../../image/study/noerror.png);}
+.dd{{background-image:url(../../image/study/dd.png);}

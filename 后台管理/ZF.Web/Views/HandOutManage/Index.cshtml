@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "讲义管理";
+    Layout = null;
+}
+
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .m-myOrder .m-data-lists .u-OrderCard {
+        margin: 0px;
+    }
+
+    .j-left-info {
+        padding: 5px;
+    }
+
+    .m-myOrder .m-data-lists .u-OrderCard .info {
+        background: #ea644a;
+        color: #333;
+        padding: 5px;
+    }
+
+    .m-myOrder .u-mounav .order-status .j-tab {
+        border-bottom: 4px solid #fff;
+    }
+
+    .ui-pager div * {
+        height: 40px;
+        line-height: 20px;
+        vertical-align: middle;
+    }
+
+    .m-style a {
+        float: left;
+        margin: 0 5px;
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+        background: #fff;
+        border: 1px solid #ebebeb;
+        color: #bdbdbd;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .m-style .next, .m-style .prev {
+        font-family: "Simsun";
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .orderTime {
+        font-weight: bold;
+    }
+</style>
+<link href="~/Views/HandOutManage/css/HandOutManage.css" rel="stylesheet" />
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>运营</a>/<a>讲义管理</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<ul id="myTab" class="nav nav-tabs" style="margin-left:10px;">
+    <li class="active">
+        <a href="#home" onclick="getHandoutInfo(0)" data-toggle="tab">
+            人员讲义
+        </a>
+    </li>
+    <li><a href="#ireport" onclick="getExpressCompanyInfo()" data-toggle="tab" id="report">快递公司</a></li>
+</ul>
+<div id="myTabContent" class="tab-content" style="margin-left:10px;">
+    <div class="tab-pane fade in active" id="home">
+        <div class="m-myOrder" id="j-my-orders">
+            <div class="m-myOrders f-cb">
+                <div class="form-group col-xs-12">
+                    <input class="btn btn-success report_btn" type="button" value="导出未处理">
+                    <input class="btn btn-success report_btn1" type="button" value="导出已处理">
+                </div>
+                <div class="form-group col-xs-12">
+                    <div class="u-mounav f-cb f-bg">
+                        <div class="g-flow">
+                            <div class="f-cb order-status j-order-status">
+                                <a class="f-fl tab f-pr j-tab current" id="pendingPayment" style="cursor: pointer;" name="0">未处理</a>
+                                <a class="f-fl tab f-pr j-tab" id="tradingSuccess" name="1" style="cursor: pointer;">已处理</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="g-flow">
+                    <div class="f-cb f-bg header j-header" style="display: block;" id="tdTitle">
+                    </div>
+                    <div class="orderCon">
+                        <div class="j-ordersList f-cb listWrap auto-1523169589007-parent" id="isInfo" style="display: block;">
+                            <div class="m-basepool f-cb auto-1523169589007" id="auto-id-1523169589353">
+                                <div class="m-data-lists f-cb f-pr j-data-list" id="orderList" style="">
+                                    <div id="expressHtml" class="first">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/html" id="express_jshtml">
+                            {{if length>0}}
+                            {{each}}
+                            <div class="u-OrderCard">
+                                <div class="express">
+                                    订单号:{{$value.OrderNo}} 购买时间:{{$value.AddTime}}|姓名:{{$value.Contact}}|电话:{{$value.ContactPhone}}|邮编:{{$value.Zip}}|地址:{{$value.Province}}-{{$value.City}}-{{$value.Town}}-{{$value.DetailedAddress}}
+                                </div>
+                                <div class="info" name="{{$value.OrderNo}}">
+                                    <span class="orderTime">讲义名称：</span>
+                                    <span>{{$value.CourseName}}</span>
+                                </div>
+                                {{if $value.SelectType==0 }}
+                                {{if $value.ExpressList!=null}}
+                                <div class="express">
+                                    请选择快递公司
+                                    <select>
+                                        {{each $value.ExpressList}}
+                                        <option value="{{$value.Id}}">{{$value.Name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    快递单号：
+                                    <input type="text" />
+                                    <input type="button" onclick="sendOutHandouts(this)" class="btn" style="line-height: 22px;" value="寄出讲义" />
+                                </div>
+                                {{else}}
+                                <div class="express">
+                                    请添加快递公司
+                                </div>
+                                {{/if}}
+                                {{/if}}
+                                {{if $value.SelectType==1}}
+                                <div class="express">
+                                    快递公司
+                                    {{$value.Name}}
+                                    快递单号：
+                                    <label>{{$value.ExpressNumber}}</label> <input type="button" onclick="revoke(this)" class="btn" style="line-height: 22px;" value="撤销" />
+                                </div>
+                                {{/if}}
+                                <hr style="height: 1px; border: none; border-top: 1px dashed #555555;" />
+                            </div>
+                            {{/each}}
+                            {{else}}
+                            <div class="u-OrderCard">
+                                暂无数据
+                            </div>
+                            {{/if}}
+                        </script>
+
+                        <div class="j-empty u-emptybig" style="display: none;" id="isNoInfo">
+                            <div class="j-emptytxt emptytext">
+                                <p>暂时还没有该状态的订单</p>
+                                <p class="yq">
+                                    去<a href="#" target="_blank">
+                                        全部课程
+                                    </a>页面学习喜欢的课程吧~
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="ireport">
+        <div class="col-xs-12">
+            <!-- 工具栏 -->
+            <div class="content-header form-inline row">
+                <form id="selectFrom" name="selectFrom">
+                    <div class="form-group">
+                        <input class="btn btn-success add_btn" type="button" value="添加">&nbsp;
+                        <input class="btn btn-info edit_btn" type="button" value="编辑">&nbsp;
+                        <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+                    </div>
+                    <div class="form-group">
+                        <label>昵称：</label>
+                        <input id="AddUser" Name="AddUser" class="form-control" />
+                        <input class="btn btn-success query_btn" type="button" value="查询" id="btnselect" />
+                    </div>
+                </form>
+            </div>
+            <div class="box-body row">
+                <table id="tblData"></table>
+                <div id="pager"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Js/template.js"></script>
+<script src="~/Js/base.js"></script>
+<script src="~/Views/HandOutManage/Index.js"></script>

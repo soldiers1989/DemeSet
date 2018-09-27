@@ -1,0 +1,40 @@
+﻿.ux-user-info {
+    background: url("http://edu-image.nosdn.127.net/84AC1D60F9A916EB4DEA2D146E1B9E6A.png") center center no-repeat;
+    height: 220px;
+}
+
+.ux-user-info-center {
+    width: 1205px;
+    margin: 0 auto;
+    padding-top: 29px;
+}
+
+.ux-user-info-bottom_name {
+    font-size: 20px;
+    margin: 20px 0 10px;
+}
+
+.ux-user-info-top_img {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border: 4px solid rgba(250, 250, 250, 0.6);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.ux-user-info-bottom {
+    font-family: MicrosoftYaHei;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.ux-user-info_show {
+    width: 1205px;
+    margin: 90px auto 0;
+    text-align: center;
+}
+
+    .ux-user-info_show img {
+        width: 100%;
+    }

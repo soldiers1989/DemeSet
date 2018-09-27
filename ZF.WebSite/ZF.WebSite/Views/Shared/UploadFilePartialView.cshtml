@@ -1,0 +1,37 @@
+﻿@model ZF.Web.Models.File.UploadFileDto
+
+<input type="hidden" class="hiddenFile" name="@{@Model.UploadId}hiddenFile" />
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Shared/js/webuploader.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Shared/js/uploader.js?v=1.0"></script>
+<script>
+    $(document).ready(function() {
+        /* 文件上传初始化*/
+        @{ string extName = !string.IsNullOrEmpty(Model.UploadContentType) ? Model.UploadContentType : "jpg,png,xls,doc,docx,xlsx,pdf,jpeg,zip,mp3,mp4";}
+        @{ string serverUrl = !string.IsNullOrEmpty(Model.ServerUrl) ? Model.ServerUrl : "File/UploadFile";}
+        $("#@Model.UploadId").powerWebUpload({
+            accept: {
+                title: "",
+                extensions: "@extName",
+                mimeTypes: ""
+            },
+            auto: true,
+            server:virtualDirName + "@serverUrl",
+            fileNumLimit: 5,
+            callback: function (response) {
+                if (args.callback) {
+                    args.callback(response);
+                }
+            }
+        });
+
+        @{
+            if (!string.IsNullOrWhiteSpace(@Model.KeyId))
+            {
+                @:topevery.setUploadFile("@Model.KeyId", "@Model.UploadId", @Model.Type);
+                                                            }
+        }
+
+    })
+
+</script>

@@ -1,0 +1,27 @@
+﻿<section class="sidebar">
+    <ul class="sidebar-menu">
+        @foreach (var menu in Model)
+            {
+            <li class="treeview"  modelName="@menu.Name">
+                <a href="#">
+                    <i class="fa @menu.Class">
+                    </i>
+                    <span>@menu.Name</span>
+                    <span class="pull-right-container">
+                        <i class="backward drop-down"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @foreach (var childMeun in menu.Child)
+                    {
+                        <li dataUrl="@childMeun.Url"><a href="javascript:void(0)" dataName="@childMeun.Name">
+                            <i class="fa @childMeun.Class"></i>@childMeun.Name
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</section>
+

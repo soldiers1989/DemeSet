@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <title>请输入防伪码</title>
+</head>
+<body>
+    <div class="lqxxk_box">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td><i>请输入防伪码</i></td>
+                </tr>
+                <tr>
+                    <td><input  id="securityCode"  type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="dzxq_anniu"><a href="javascript:;" onclick="setCode()">领取</a></div>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/PersonalCenter/SecurityTwoCode.js?v=1.0"></script>
+</body>
+</html>
+

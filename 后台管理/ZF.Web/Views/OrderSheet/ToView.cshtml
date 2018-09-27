@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<link href="~/Views/OrderSheet/OrderSheetDetail.css" rel="stylesheet" />
+<style>
+   .electronicInvoice{overflow:hidden;}
+   .electronicInvoice label{float:left;font-size:16px;text-align:right;padding-right:10px;width:122px;line-height:30px;}
+   .electronicInvoice .layui-input-inline{display:inline-block; width:350px;}
+   .electronicInvoice .fpclass{border:1px solid #dcdcdc;width:100%;height:30px;line-height:30px;text-indent:10px;}
+   .layui-form-item{overflow:hidden; margin-bottom:10px;}
+   .tips{background:url(@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/imgs/ui/tips.png) no-repeat 0 center;    padding-left: 38px;height: 30px;display: block;line-height: 30px;    margin: 10px 0 20px;display:inline-block;font-size:15px;margin:0;}
+</style>
+<div id="container" >
+    <input type="hidden" id="hiOrderNoMx" value="@ViewBag.OrderNo" />
+    <div class="w">
+        <div class="main">
+            <div class="order-goods m" style="width: 100%;">
+                <div class="mc">
+                    <script type="text/html" id="orderDetail_html">
+                        <div class="breadcrumb">
+                            &nbsp;&nbsp; 订单号：<strong>{{OrderNo}}</strong>
+                        </div>
+                        <div class="m order-info-mod">
+                            <div class="order-info mc">
+                                <div class="ui-switchable-body">
+                                    <div class="ui-switchable-panel-main">
+                                        <div class="ui-switchable-panel">
+                                            <!-- 收货人信息 -->
+                                            {{if HandOutId}}
+                                            <div class="dl">
+                                                <div class="dt">
+                                                    <h4>
+                                                        讲义收件人信息
+                                                    </h4>
+                                                </div>
+                                                <div class="dd">
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            收件人：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            {{Contact}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            地址：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            {{Province}}-{{City}}-{{Town}}-{{DetailedAddress}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            手机号码：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            {{ContactPhone}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- 配送信息 -->
+                                            <div class="dl">
+                                                <div class="dt">
+                                                    <h4>配送信息</h4>
+                                                </div>
+                                                <div class="dd">
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            快递公司：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            {{if !ExpressName}}
+                                                            无
+                                                            {{else}}
+                                                            {{ExpressName}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            快递单号：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            {{if !ExpressNumber}}
+                                                            无
+                                                            {{else}}
+                                                            {{ExpressNumber}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- 付款信息 -->
+                                            {{/if}}
+                                            <!-- 非0费用-->
+                                            <div class="dl" id="pay-info-nozero">
+                                                <div class="dt">
+                                                    <h4>付款信息</h4>
+                                                </div>
+                                                <div class="dd">
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            付款方式：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            {{if !Name}}
+                                                            未支付
+                                                            {{else}}
+                                                            {{Name}}
+                                                            {{/if}}
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            付款时间：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            {{if !PayTime}}
+                                                            无
+                                                            {{else}}
+                                                            {{PayTime}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            商品总额：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            <span class="f-price">
+                                                                {{CommodityPrice}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            支付金额：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            <span class="f-price">
+                                                                {{FactPayAmount}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    @*<div class="item">
+                                                            <span class="label">
+                                                                订单优惠：
+                                                            </span>
+                                                            <div class="info-rcol">
+                                                                <span class="f-price">
+                                                                    {{CardAmount}}
+                                                                </span>
+                                                            </div>
+                                                        </div>*@
+
+                                                </div>
+                                            </div>
+                                            <div id="J-invoice-info" class="dl">
+                                                <a href="#electronicInvoice">
+                                                    <div class="dt">
+                                                        <h4>发票信息</h4>
+                                                    </div>
+                                                </a>
+                                                <div class="dd">
+
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            发票抬头：
+                                                        </span>
+                                                        <div class="info-rcol">
+                                                            {{if !InvoiceHeader}}
+                                                            无
+                                                            {{else}}
+                                                            {{InvoiceHeader}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            发票邮箱：
+                                                        </span>
+                                                        <div class="info-rcol info-rcol-one" title="{{InvoiceMailbox}}">
+                                                            {{if !InvoiceMailbox}}
+                                                            无
+                                                            {{else}}
+                                                            {{InvoiceMailbox}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            纳税人标识号：
+                                                        </span>
+                                                        <div class="info-rcol info-rcol-one">
+                                                            {{if !TaxpayerIdentificationNumber}}
+                                                            无
+                                                            {{else}}
+                                                            {{TaxpayerIdentificationNumber}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span class="label">
+                                                            发票开具状态：
+                                                        </span>
+                                                        <div class="info-rcol info-rcol-one">
+                                                            {{if InvoiceState==1}}
+                                                            已开具
+                                                            {{else}}
+                                                            未开具
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="item invoice-open-tip">电子发票将在订单完成后1-2天内开具</div>
+
+                                                    <div class="item J-e-invoice">
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="info-page">
+                                        <a href="javascript:void(0)" class="info-prev" style="display: none;">&lt;</a>
+                                        <a href="javascript:void(0)" class="info-next" style="display: none;" title="查看更多信息">&gt;</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="goods-list ">
+                            <table class="tb-void tb-order">
+                                <colgroup>
+                                    <col class="grap">
+                                    <col class="col-goods">
+                                    <col class="col-number">
+                                    <col class="col-price">
+                                    <col class="col-amount">
+                                    <col class="col-bean">
+                                    <col class="col-state">
+                                    <col class="col-ops">
+                                    <col class="grap">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="grap"></th>
+                                        <th>商品</th>
+                                        <th></th>
+                                        <th>单价</th>
+                                        <th>商品数量</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th class="grap"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{if sheetmodelpagedetailoutput!=null}}
+                                    {{each sheetmodelpagedetailoutput}}
+                                    <!-- 获取礼品卡sku对应的贺卡寄语 -->
+                                    <tr class="first-tr product-23719054787">
+                                        <td class="grap"></td>
+                                        <td>
+                                            <div class="p-item" clstag="click|keycount|orderinfo|xqliebiaoshangpin">
+                                                <div class="p-img">
+                                                    <a href="#">
+                                                        <img class="" src="{{$value.CourseIamge}}" title="{{$value.CourseName}}" data-lazy-img="done" width="60" height="60">
+                                                    </a>
+                                                </div>
+                                                <div class="p-info">
+                                                    <div class="p-name">
+                                                        <a href="#" class="a-link" title="{{$value.CourseName}}">{{$value.CourseName}}</a>
+                                                    </div>
+                                                    <div class="clr"></div>
+                                                    <div id="coupon_23719054787" class="fl"></div>
+
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <span class="f-price">
+                                                {{$value.FavourablePrice}}
+                                            </span>
+                                        </td>
+                                        <td>{{$value.Num}}</td>
+                                        <td id="jingdou-23719054787"></td>
+
+                                        <td>
+                                            <div class="p-btns">
+                                                <!-- 根据订单类型屏蔽pop延保商品操作,只显示评价 -->
+                                            </div>
+                                        </td>
+                                        <td class="grap"></td>
+                                    </tr>
+                                    {{/each}}
+                                    {{else}}
+                                    暂无数据
+                                    {{/if}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="goods-total">
+                            <ul>
+                                <li>
+                                    <span class="label">商品总额：</span>
+                                    <span class="txt">{{CommodityPrice}}</span>
+                                </li>
+                                <li class="ftx-01">
+                                    <span class="label">应付总额：</span>
+                                    {{if State==0}}
+                                    <span class="txt count">{{FactPayAmount}}</span>
+                                    {{else}}
+                                    <span class="txt count">{{OrderAmount}}</span>
+                                    {{/if}}
+                                </li>
+                            </ul>
+                        </div>
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Libs/plugins/jQuery/jquery-2.2.3.min.js")"></script>
+<script src="@Url.Content("~/Js/easyuiBase.js")"></script>
+<script src="~/Libs/layer/js/layer.js"></script>
+<script src="~/Js/template.js"></script>
+<script src="~/Libs/zui/js/zui.min.js"></script>
+<script src="~/Libs/zui/js/zui.lite.min.js"></script>
+<script src="~/Views/OrderSheet/ToView.js"></script>

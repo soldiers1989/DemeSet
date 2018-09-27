@@ -1,0 +1,27 @@
+﻿@using ZF.Web.Models.File
+@{
+    ViewBag.Title = "UserAddOrEdit";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>角色名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="RoleName" name="RoleName">
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <input type="text" class="form-control" id="Description" name="Description">
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+<script src="~/Views/Role/AddOrEdit.js"></script>

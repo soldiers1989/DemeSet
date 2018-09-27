@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C1602562-939D-47BA-8E71-E9ECD05F796A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZF.Dapper.Db</RootNamespace>
+    <AssemblyName>ZF.Dapper.Db</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="DapperSql\SqlDapperExtension.cs" />
+    <Compile Include="DapperSql\SqlDynamicParameters.cs" />
+    <Compile Include="DapperConstant.cs" />
+    <Compile Include="DapperDb.cs" />
+    <Compile Include="DapperOracle\OracleDapperExtension.cs" />
+    <Compile Include="DapperOracle\OracleDynamicParameters.cs" />
+    <Compile Include="Mapper\BaseClassMapper.cs" />
+    <Compile Include="Mapper\MapRepository\ArticleMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseFaceToFaceMap.cs" />
+    <Compile Include="Mapper\MapRepository\AfficheHelpMap.cs" />
+    <Compile Include="Mapper\MapRepository\BasedataMap.cs" />
+    <Compile Include="Mapper\MapRepository\BaseTagMap.cs" />
+    <Compile Include="Mapper\MapRepository\BaseTagMiddleMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseAppraiseMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseChapterMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseChapterQuestionsDetailMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseChapterQuestionsMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseDiscussionMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseInfoMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseLearnProgressMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseOnTeachersMap.cs" />
+    <Compile Include="Mapper\MapRepository\CoursePackcourseInfoMap.cs" />
+    <Compile Include="Mapper\MapRepository\CoursePaperMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseResourceMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseSecurityCodeMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseSubjectMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseSuitDetailMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseVideoFileMap.cs" />
+    <Compile Include="Mapper\MapRepository\CourseVideoMap.cs" />
+    <Compile Include="Mapper\MapRepository\DanyeMap.cs" />
+    <Compile Include="Mapper\MapRepository\DataTypeMap.cs" />
+    <Compile Include="Mapper\MapRepository\DeliveryAddressMap.cs" />
+    <Compile Include="Mapper\MapRepository\DiscountCardMap.cs" />
+    <Compile Include="Mapper\MapRepository\ExamInfoMap.cs" />
+    <Compile Include="Mapper\MapRepository\ExpressCompanyMap.cs" />
+    <Compile Include="Mapper\MapRepository\FileRelationshipMap.cs" />
+    <Compile Include="Mapper\MapRepository\MenuMap.cs" />
+    <Compile Include="Mapper\MapRepository\ModuleMap.cs" />
+    <Compile Include="Mapper\MapRepository\MyAnswerRecordsMap.cs" />
+    <Compile Include="Mapper\MapRepository\MyCollectionItemMap.cs" />
+    <Compile Include="Mapper\MapRepository\MyCollectionMap.cs" />
+    <Compile Include="Mapper\MapRepository\MyCourseMap.cs" />
+    <Compile Include="Mapper\MapRepository\MyErrorSubjectMap.cs" />
+    <Compile Include="Mapper\MapRepository\MyFeedbackMap.cs" />
+    <Compile Include="Mapper\MapRepository\MyFootprintMap.cs" />
+    <Compile Include="Mapper\MapRepository\MyVideoWatchMap.cs" />
+    <Compile Include="Mapper\MapRepository\My_StudyCardMap.cs" />
+    <Compile Include="Mapper\MapRepository\OperatorLogMap.cs" />
+    <Compile Include="Mapper\MapRepository\OrderCardMap.cs" />
+    <Compile Include="Mapper\MapRepository\OrderCartDetailMap.cs" />
+    <Compile Include="Mapper\MapRepository\OrderCartMap.cs" />
+    <Compile Include="Mapper\MapRepository\OrderDetailMap.cs" />
+    <Compile Include="Mapper\MapRepository\OrderHistoryDetailMap.cs" />
+    <Compile Include="Mapper\MapRepository\OrderHistoryMap.cs" />
+    <Compile Include="Mapper\MapRepository\OrderInstitutionsMap.cs" />
+    <Compile Include="Mapper\MapRepository\OrderSheetMap.cs" />
+    <Compile Include="Mapper\MapRepository\PaperDetatailMap.cs" />
+    <Compile Include="Mapper\MapRepository\PaperGroupMap.cs" />
+    <Compile Include="Mapper\MapRepository\PaperGroupRelationMap.cs" />
+    <Compile Include="Mapper\MapRepository\PaperInfoMap.cs" />
+    <Compile Include="Mapper\MapRepository\PaperPaperParamMap.cs" />
+    <Compile Include="Mapper\MapRepository\PaperParamDetailMap.cs" />
+    <Compile Include="Mapper\MapRepository\PaperParamMap.cs" />
+    <Compile Include="Mapper\MapRepository\PaperStructureDetailMap.cs" />
+    <Compile Include="Mapper\MapRepository\PaperStructureMap.cs" />
+    <Compile Include="Mapper\MapRepository\ProjectClassMap.cs" />
+    <Compile Include="Mapper\MapRepository\ProjectMap.cs" />
+    <Compile Include="Mapper\MapRepository\PromoteCompanyMap.cs" />
+    <Compile Include="Mapper\MapRepository\PromotePromotersMap.cs" />
+    <Compile Include="Mapper\MapRepository\PurchaseDiscountMap.cs" />
+    <Compile Include="Mapper\MapRepository\QuestionCheckerMap.cs" />
+    <Compile Include="Mapper\MapRepository\RegisterUserMap.cs" />
+    <Compile Include="Mapper\MapRepository\RoleMap.cs" />
+    <Compile Include="Mapper\MapRepository\RoleMenuMap.cs" />
+    <Compile Include="Mapper\MapRepository\RoleUserMap.cs" />
+    <Compile Include="Mapper\MapRepository\SlideSettingMap.cs" />
+    <Compile Include="Mapper\MapRepository\SmsendLogMap.cs" />
+    <Compile Include="Mapper\MapRepository\SubjectBigQuestionMap.cs" />
+    <Compile Include="Mapper\MapRepository\SubjectBookMap.cs" />
+    <Compile Include="Mapper\MapRepository\SubjectClassMap.cs" />
+    <Compile Include="Mapper\MapRepository\SubjectKnowledgePointMap.cs" />
+    <Compile Include="Mapper\MapRepository\SubjectMap.cs" />
+    <Compile Include="Mapper\MapRepository\SubjectSmallquestionMap.cs" />
+    <Compile Include="Mapper\MapRepository\SysSetMap.cs" />
+    <Compile Include="Mapper\MapRepository\UseDescriptionMap.cs" />
+    <Compile Include="Mapper\MapRepository\UserDiscountCardMap.cs" />
+    <Compile Include="Mapper\MapRepository\UserLoginLogMap.cs" />
+    <Compile Include="Mapper\MapRepository\UserMap.cs" />
+    <Compile Include="Mapper\MapRepository\MyPaperRecordsMap.cs" />
+    <Compile Include="Mapper\MapRepository\UserMenuMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AfficheHelpRepository.cs" />
+    <Compile Include="Repository\ArticleRepository.cs" />
+    <Compile Include="Repository\BasedataRepository.cs" />
+    <Compile Include="Repository\BaseTagMiddleRepository.cs" />
+    <Compile Include="Repository\BaseTagRepository.cs" />
+    <Compile Include="Repository\CourseAppraiseRepository.cs" />
+    <Compile Include="Repository\CourseChapterQuestionsDetailRepository.cs" />
+    <Compile Include="Repository\CourseChapterQuestionsRepository.cs" />
+    <Compile Include="Repository\CourseChapterRepository.cs" />
+    <Compile Include="Repository\CourseDiscussionRepository.cs" />
+    <Compile Include="Repository\CourseFaceToFaceRepository.cs" />
+    <Compile Include="Repository\CourseInfoRepository.cs" />
+    <Compile Include="Repository\CourseLearnProgressRepository.cs" />
+    <Compile Include="Repository\CourseOnTeachersRepository.cs" />
+    <Compile Include="Repository\CoursePackcourseInfoRepository.cs" />
+    <Compile Include="Repository\CoursePaperRepository.cs" />
+    <Compile Include="Repository\CourseResourceRepository.cs" />
+    <Compile Include="Repository\CourseSecurityCodeRepository.cs" />
+    <Compile Include="Repository\CourseSubjectRepository.cs" />
+    <Compile Include="Repository\CourseSuitDetailRepository.cs" />
+    <Compile Include="Repository\CourseVideoFileRepository.cs" />
+    <Compile Include="Repository\CourseVideoRepository.cs" />
+    <Compile Include="Repository\DanyeRepository.cs" />
+    <Compile Include="Repository\DataTypeRepository.cs" />
+    <Compile Include="Repository\DeliveryAddressRepository.cs" />
+    <Compile Include="Repository\DiscountCardRepository.cs" />
+    <Compile Include="Repository\ExamInfoRepository.cs" />
+    <Compile Include="Repository\ExpressCompanyRepository.cs" />
+    <Compile Include="Repository\FileRelationshipRepository.cs" />
+    <Compile Include="Repository\MenuRepository.cs" />
+    <Compile Include="Repository\ModuleRepository.cs" />
+    <Compile Include="Repository\MyAnswerRecordsRepository.cs" />
+    <Compile Include="Repository\MyCollectionItemRepository.cs" />
+    <Compile Include="Repository\MyCollectionRepository.cs" />
+    <Compile Include="Repository\MyCourseRepository.cs" />
+    <Compile Include="Repository\MyErrorSubjectRepository.cs" />
+    <Compile Include="Repository\MyFeedbackRepository.cs" />
+    <Compile Include="Repository\MyFootprintRepository.cs" />
+    <Compile Include="Repository\MyPaperRecordsRepository.cs" />
+    <Compile Include="Repository\MyVideoWatchRepository.cs" />
+    <Compile Include="Repository\My_StudyCardRepository.cs" />
+    <Compile Include="Repository\OperatorLogRepository.cs" />
+    <Compile Include="Repository\OrderCardRepository.cs" />
+    <Compile Include="Repository\OrderCartDetailRepository.cs" />
+    <Compile Include="Repository\OrderCartRepository.cs" />
+    <Compile Include="Repository\OrderDetailRepository.cs" />
+    <Compile Include="Repository\OrderHistoryDetailRepository.cs" />
+    <Compile Include="Repository\OrderHistoryRepository.cs" />
+    <Compile Include="Repository\OrderInstitutionsRepository.cs" />
+    <Compile Include="Repository\OrderSheetRepository.cs" />
+    <Compile Include="Repository\PaperDetatailRepository.cs" />
+    <Compile Include="Repository\PaperGroupRelationRepository.cs" />
+    <Compile Include="Repository\PaperGroupRepository.cs" />
+    <Compile Include="Repository\PaperInfoRepository.cs" />
+    <Compile Include="Repository\PaperPaperParamRepository.cs" />
+    <Compile Include="Repository\PaperParamDetailRepository.cs" />
+    <Compile Include="Repository\PaperParamRepository.cs" />
+    <Compile Include="Repository\PaperStructureDetailRepository.cs" />
+    <Compile Include="Repository\PaperStructureRepository.cs" />
+    <Compile Include="Repository\ProjectClassRepository.cs" />
+    <Compile Include="Repository\ProjectRepository.cs" />
+    <Compile Include="Repository\PromoteCompanyRepository.cs" />
+    <Compile Include="Repository\PromotePromotersRepository.cs" />
+    <Compile Include="Repository\PurchaseDiscountRepository.cs" />
+    <Compile Include="Repository\QuestionCheckerRepository.cs" />
+    <Compile Include="Repository\RegisterUserRepository.cs" />
+    <Compile Include="Repository\RoleMenuRepository.cs" />
+    <Compile Include="Repository\RoleRepository.cs" />
+    <Compile Include="Repository\RoleUserRepository.cs" />
+    <Compile Include="Repository\SlideSettingRepository.cs" />
+    <Compile Include="Repository\SmsendLogRepository.cs" />
+    <Compile Include="Repository\SubjectBigQuestionRepository.cs" />
+    <Compile Include="Repository\SubjectBookRepository.cs" />
+    <Compile Include="Repository\SubjectClassRepository.cs" />
+    <Compile Include="Repository\SubjectKnowledgePointRepository.cs" />
+    <Compile Include="Repository\SubjectRepository.cs" />
+    <Compile Include="Repository\SubjectSmallquestionRepository.cs" />
+    <Compile Include="Repository\SysSetRepository.cs" />
+    <Compile Include="Repository\UseDescriptionRepository.cs" />
+    <Compile Include="Repository\UserDiscountCardRepository.cs" />
+    <Compile Include="Repository\UserLoginLogRepository.cs" />
+    <Compile Include="Repository\UserMenuRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\公共类库\ZF.AtupMapper\ZF.AutoMapper.csproj">
+      <Project>{BAB275B3-C292-4A63-B7B3-DA79C36D13F0}</Project>
+      <Name>ZF.AutoMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\公共类库\ZF.Infrastructure\ZF.Infrastructure.csproj">
+      <Project>{57495A9C-9F92-4DDA-94E9-D551686F7A3C}</Project>
+      <Name>ZF.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DapperExtensions\DapperExtensions.csproj">
+      <Project>{4c1a2c6c-a469-4c87-98d1-f1d517fa1acf}</Project>
+      <Name>DapperExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dapper\Dapper.csproj">
+      <Project>{9845d7c1-9697-4195-8794-1b9e6388ad04}</Project>
+      <Name>Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZF.Core\ZF.Core.csproj">
+      <Project>{bdfe6680-fb76-4c1d-825c-4619ad795ed8}</Project>
+      <Name>ZF.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

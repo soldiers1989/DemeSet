@@ -1,0 +1,357 @@
+﻿
+@{
+    ViewBag.Title = "课程查询";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@*<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/css/zui.lite.css" rel="stylesheet" />*@
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .m-catebox .level-1 li.selected a {
+        color: #333;
+    }
+
+    .m-cSelUI {
+        border-left: 1px solid #ddd;
+    }
+
+        .m-cSelUI .selected {
+            cursor: default;
+            background: #10ae58;
+            color: #fff;
+            box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .m-cSelUI a {
+            width: 80px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            font-size: 13px;
+            border: 1px solid #ddd;
+            border-left: none;
+        }
+
+    .dropdown-menu {
+        min-width: 30px;
+    }
+
+    .uc-course-list_orders > li:not(.uc-course-list_orders_dash):hover {
+        color: #39a030;
+        cursor: pointer;
+    }
+
+    .uc-empty-result_try {
+        font-size: 18px;
+        color: #999;
+    }
+
+    .uc-empty-result_tip {
+        font-size: 24px;
+        color: #666;
+        margin-top: 24px;
+        margin-bottom: 10px;
+    }
+
+    .uc-empty-result {
+        text-align: center;
+        padding: 60px 0;
+    }
+
+    .uc-course-list_dropdown {
+        width: 260px;
+        line-height: 40px;
+        color: #343d42;
+        margin-left: 12px;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+    }
+
+    .uc-course-list_dropdown_hd {
+        border: none;
+        width: 100%;
+        min-width: 60px;
+        height: 40px;
+        padding: 0 12px;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    .f-thide {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .uc-course-list_dropdown_cnt.active {
+        color: #39a030;
+    }
+
+    .uc-course-list_dropdown_icon_down.active, .uc-course-list_dropdown_icon_up.active {
+        border-top: 5.5px solid #39a030;
+    }
+
+    .uc-course-list_dropdown_bd {
+        width: 100%;
+        min-width: 60px;
+        margin-top: 0;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        background: #fff;
+    }
+
+    .uc-course-list_dropdown_listview {
+        border: 1px solid #e4e8e9;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        list-style-type: none;
+    }
+
+        .uc-course-list_dropdown_listview > li {
+            cursor: pointer;
+            padding: 0 12px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+    .m-cSelUI a {
+        height: 40px;
+        line-height: 40px;
+        margin-top: -1px;
+    }
+
+    .uc-course-list_dropdown .selected {
+        color: #10ae58;
+    }
+
+    .g-doc, .g-wrap, .g-flow, .g-all {
+        /*width: 960px;*/
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    body {
+        font-family: 'Lato', Calibri, Arial, sans-serif;
+        background: #f4f4f4 url(../../Libs/SimpleDropDown/images/grid_DominikKiss_SubtlePatterns.jpg);
+        font-weight: 300;
+        font-size: 15px;
+        color: #333;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .uc-course-list_dropdown .last {
+        background: url(http://img.ablesky.cn/stats/images/searchresult/arrow_767e5f1f.png ) no-repeat 0 -35px;
+        height: 9px;
+        width: 9px;
+        display: inline-block;
+        vertical-align: middle;
+        overflow: hidden;
+        margin: -3px 0 0 5px;
+    }
+
+    .uc-course-list_dropdown .down-ico {
+        background-position: 0px 0px;
+    }
+</style>
+<div class="g-flow f-cb">
+
+    <div id="j-catbox" class="m-catebox f-pr f-cb">
+        <div class="" style="padding: 10px;height:32px; ">
+            <div id="maintain_info_box" class="g-flow">
+            </div>
+        </div>
+        <script type="text/html" id="maintain_info_box_html">
+            <a href="/">首页</a> &nbsp;
+            >
+            <a href="/CourseQueries/Index">全部课程</a> &nbsp;
+            {{ if Id }}
+            >
+            <a href="/CourseQueries/Index?ProjectClassId={{Id}}">{{ProjectClassName}}</a> &nbsp;
+            {{/if}}
+            <a>{{CourseName}}</a>
+        </script>
+        <ul class="level-1" id="ProjectClassAll"></ul>
+        <ul class="level-1" id="ProjectAll"></ul>
+        <!--遍历子栏目-->
+        <ul class="level-2" style="background: #fff;height: 32px;" id="SubjectAll"></ul>
+    </div>
+    <script type="text/html" id="ProjectAll_html">
+        @*<li class="level-1-item f-pr" id="catId-all">
+                <a href="">全部</a>
+                <span class="arrow">
+                    <span class="arrow_wrap arrow-wrap-trsp">
+                        <i class="arrow-border"></i>
+                        <em class="arrow-cnt"></em>
+                    </span>
+                </span>
+            </li>*@
+        {{each Result}}
+        <li class="level-1-item f-pr">
+            <a class="myType {{$value.Id}}" value="{{$value.Id}}">{{$value.ProjectName}}</a>
+            <span class="arrow">
+                <span class="arrow_wrap arrow-wrap-trsp">
+                    <i class="arrow-border"></i>
+                    <em class="arrow-cnt"></em>
+                </span>
+            </span>
+        </li>
+        {{/each}}
+    </script>
+    <script type="text/html" id="ProjectClassAll_html">
+        @*<li class="level-1-item f-pr">
+                <a href="">全部</a>
+                <span class="arrow">
+                    <span class="arrow_wrap arrow-wrap-trsp">
+                        <i class="arrow-border"></i>
+                        <em class="arrow-cnt"></em>
+                    </span>
+                </span>
+            </li>*@
+        {{each Result}}
+        <li class="level-1-item f-pr">
+            <a class="myType" href="/CourseQueries/Index?ProjectClassId={{$value.Id}}">{{$value.ProjectClassName}}</a>
+            <span class="arrow">
+                <span class="arrow_wrap arrow-wrap-trsp">
+                    <i class="arrow-border"></i>
+                    <em class="arrow-cnt"></em>
+                </span>
+            </span>
+        </li>
+        {{/each}}
+    </script>
+    <div class="b-20"></div>
+    <div id="GG">
+        <div class="g-mn2" style="float: left">
+            <div class="g-mn2c">
+                <div id="j-breadTit" class="u-topTit" style="padding-top: 0px;"></div>
+                <div id="logo" class="m-slide f-pr" style="margin-left: 7px;">
+                </div>
+                <script type="text/html" id="pic_html">
+                    <div>
+                        {{each Result }}
+                        {{if $index==0}}
+                        <a href="{{$value.LinkAddress}}" target="_blank"><img src="{{$value.Url}}" /></a>
+                        {{else}}
+                        <a href="{{$value.LinkAddress}}" target="_blank"><img src="{{$value.Url}}" style="display: none" /></a>
+                        {{/if}}
+                        {{/each}}
+                        <div id="a">
+                            {{each Result }}
+                            <div></div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </script>
+                <div class="m-coursebox" style="background: #fff; margin-bottom: 20px; height: 40px; line-height: 40px;margin-left: 7px;margin-right: 13px;">
+                    <div id="j-topBar" class="top f-cb">
+                        <div class="m-cSelUI f-cb f-fl">
+                            <a class="f-fl f-fc3 j-type selected" data="">全部</a>
+                            <a class="f-fl f-fc3 j-type" data="0">点播课</a>
+                            <a class="f-fl f-fc3 j-type" style="display: none;" data="1">网络课</a>
+                            <a class="f-fl f-fc3 j-type" style="display: none;" data="2">面授课</a>
+                        </div>
+                        <div class="uc-course-list_dropdown f-fr">
+                            <a class="f-fl f-fc3 j-type" data="1" sord="Desc">综合排序<i class="last up-ico "></i></a>
+                            <a class="f-fl f-fc3 j-type" data="2" sord="Desc" style="margin-left: 10px;">好评率<i class="last up-ico"></i></a>
+                            <a class="f-fl f-fc3 j-type" data="3" sord="Desc" style="margin-left: 5px;">人气<i class="last up-ico"></i></a>
+                            <a class="f-fl f-fc3 j-type" data="4" sord="Asc" style="margin-left: 5px;">价格<i class="last"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="j-courseNode" class="lists ">
+                    <div class="m-basepool f-cb ">
+                        @*课程内容*@
+                        <div id="PopularCourses" class="m-data-lists f-cb f-pr j-data-list" style="width: 100%">
+
+                        </div>
+                        <div class="m-style M-box1" style="float: right;padding-right: 6px;"></div>
+                    </div>
+                </div>
+                <div id="page">
+                </div>
+            </div>
+        </div>
+        <script type="text/html" id="PopularCourses_html">
+            {{if Records>0}}
+            {{each Rows}}
+            <div class="u-cover u-find-cover first" style="margin-left: 8px">
+                <div class="wrapf-cb">
+                    <a href="/CourseInfo/CourseInfo?courseId={{$value.Id}}&courseType={{$value.CourseType}}" target="_blank" class="j-href wrap" data-href="" data-index="1" data-name="">
+                        <div class="img">
+                            <div class="pic f-pr">
+                                <img class="imgPic" src="{{$value.CourseIamge}}" alt="">
+                            </div>
+                            <div class="tit">
+                                <h3 class="f-thide">{{$value.CourseName}}</h3>
+                                <div class="continued sign foxconn2 f-dn foxconn"></div>
+                            </div>
+                            <div class="orgName f-fs0 f-thide">{{$value.TeachersName}}</div>
+                            <div class="thumb">
+                                <div class="desc f-cb">
+                                    {{ if $value.Count }}
+                                    <span class="hot f-fs0">{{$value.Count}}</span>
+                                    {{else}}
+                                    <span class="hot f-fs0">0</span>
+                                    {{/if}}
+                                </div>
+                                <div style="height: 20px; background: white; margin-top: 10px;">
+                                    {{ if $value.FavourablePrice=="0.00" }}
+                                    <span class="normal f-fs0" style="color: #10ae58; font-size: 16px">免费</span>
+                                    {{else}}
+                                    <span class="normal f-fs0" style="color: red; font-size: 20px">{{$value.FavourablePrice}}</span>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="{{$value.Code}}">
+                            </div>
+                        </div>
+                    </a>
+                    <div class="j-mask mask" style="display: none">
+                        <div class="j-del delbtn">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="uc-empty-result">
+                <img src="//s2.stu.126.net/res/images/web/page/course/blank2.png?26438d1aa9b6d26cd8f83e55b1e1e177" alt="空结果">
+                <div class="uc-empty-result_tip">暂无相关结果</div>
+                <div class="uc-empty-result_try">换个搜索关键词试试吧：)</div>
+            </div>
+            {{/if}}
+        </script>
+        <div id="j-empty" class="u-emptybig" style="display: none;">
+            <p class="emptytext">暂无课程</p>
+        </div>
+        <div class="g-sd2" style="margin-top: 0px">
+            <div class="b-20"></div>
+            <div id="j-rankbox">
+                <div class="u-topTit" style="margin-top: -20px;text-align: center;">
+                    <a class="f-fc3 j-rankType selected " data="pay" hidedata="free">付费排行</a>
+                    <span style="margin: 0 5px; color: #ddd;">|</span>
+                    <a class="f-fc3 j-rankType" data="free" hidedata="pay">免费排行</a>
+                </div>
+                <div class="u-sideGray j-ranklist" id="pay">
+                </div>
+                <div class="u-sideGray j-ranklist" id="free" style="display: none;">
+                </div>
+            </div>
+            <div class="b-20"></div>
+        </div>
+    </div>
+    <input type="hidden" Id="SubjectId" value="@ViewBag.SubjectId" />
+    <input type="hidden" Id="CourseType" />
+    <input type="hidden" Id="ProjectId" value="@ViewBag.ProjectId" />
+    <input type="hidden" Id="ProjectClassId" value="@ViewBag.ProjectClassId" />
+    <input type="hidden" Id="Rows" value="20" />
+    <input type="hidden" Id="PageIndex" value="1" />
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/jquery.pagination.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/CourseQueries/Index.js"></script>

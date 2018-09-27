@@ -1,0 +1,28 @@
+ 本文档是集成科大讯飞MSC（Mobile Speech Client，移动语音终端）Android版SDK的用户指南，介绍了语音听写、语音识别、语音合成、语义理解、语音评测等类和函数的基本使用,关于各类的函数和参数更详细的说明，请参考 MSC Android API 文档  http://mscdoc.xfyun.cn/android/api/ 
+sdk下载：http://www.xfyun.cn/sdk/dispatcher
+错误码链接：https://shimo.im/sheet/w3yUy39uNKs0J7DT
+
+本文档是开发科大讯飞Java语音程序的用户指南，定义了语音听写、语音识别、语音合成以及语义理解相关接口的使用说明,所有类和函数的详细使用说明，请参考 MSC Java API 文档http://mscdoc.xfyun.cn/java/api/
+sdk下载：http://www.xfyun.cn/sdk/dispatcher
+错误码链接：https://shimo.im/sheet/w3yUy39uNKs0J7DT
+
+
+本文档是开发者集成科大讯飞MSC（Mobile Speech Client，移动语音终端）iOS版SDK的使用指南，定义了语音听写、语音识别、语音合成、语义理解，语音评测、语音唤醒，人脸识别等服务接口的使用。关于各服务接口更详细的说明，请参考 MSC iOS API 文档http://mscdoc.xfyun.cn/ios/api/
+sdk下载：http://www.xfyun.cn/sdk/dispatcher
+错误码链接：https://shimo.im/sheet/w3yUy39uNKs0J7DT
+
+本文档是开发者集成科大讯飞MSC（Mobile Speech Client，移动语音终端）Windows版SDK的使用指南，定义了语音听写，语法识别，语音合成，语音评测，语音唤醒等服务接口的使用。关于各服务接口更详细的说明，请参考 MSC Windows API 文档http://mscdoc.xfyun.cn/windows/api/
+sdk下载：http://www.xfyun.cn/sdk/dispatcher
+错误码链接：https://shimo.im/sheet/w3yUy39uNKs0J7DT
+
+本文档是开发者集成科大讯飞MSC（Mobile Speech Client，移动语音终端），定义了语音听写，语法识别，语音合成，语音评测，语音唤醒等服务接口的使用。关于各服务接口更详细的说明，请参考 MSC LInux API 文档http://mscdoc.xfyun.cn/windows/api/ 
+sdk下载：http://www.xfyun.cn/sdk/dispatcher
+错误码链接：https://shimo.im/sheet/w3yUy39uNKs0J7DT
+
+
+语音评测FAQ：https://www.kancloud.cn/iflytek_sdk/faq_ise/326200
+科大讯飞语音评测试题格式及结果说明：https://www.kancloud.cn/iflytek_sdk/ise_protocol/325501
+转写配置文档：http://www.xfyun.cn/doccenter/lfasr#go_newer_start
+
+
+

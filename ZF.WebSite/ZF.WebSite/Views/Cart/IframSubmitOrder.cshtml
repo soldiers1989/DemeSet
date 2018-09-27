@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "提交订单";
+}
+
+<form id="myForm" method="post" target="myFrame">
+    <input type="hidden" name="parment" value="@ViewBag.parment" id="data_param" />
+</form>
+<iframe name="myFrame" width="100%" height="1350" maxheight="9999"   frameborder="0" scrolling="no"></iframe>
+<script type="text/javascript">
+    $(function () {
+        $("#myForm").attr("action", "SubmitOrder");
+        $("#myForm").submit();
+    })
+</script>

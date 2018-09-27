@@ -1,0 +1,50 @@
+﻿
+@{
+
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/collection.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/practice.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<div class="subTit">
+    <label>收藏视频</label>
+    <div class="search right">
+        <input class="layui-input">
+        <a class="layui-icon  layui-icon-search" id="search_collection">
+        </a>
+    </div>
+</div>
+<input type="hidden" Id="Rows" value="6" />
+<input type="hidden" Id="PageIndex" value="1" />
+<div class="mycourse layui-row layui-col-space20" id="collectedCourse">
+    <script type="text/html" id="collectedCourse_html">
+        {{if Rows.length>0}}
+        {{each Rows}}
+        <div class="layui-col-xs4">
+            <div class="box">
+                <a href="javascript:;" class="top" VideoId="{{$value.VideoId}}" onclick="jumpToVideo(this);">
+                    <div class="reportName kc">
+                        {{$value.VideoName}}
+                    </div>
+                </a>
+                <a class="details" VideoId="{{$value.VideoId}}" onclick="jumpToVideo(this);">
+                    <p class="bookName">{{$value.CourseName}}</p>
+                </a>
+                    <p>
+                        <label>{{$value.AddTime | formatterDate }}</label>
+                        <span class="delete001" VideoId="{{$value.VideoId}}" COurseId="{{$value.CourseId}}" onclick="removeCollectedVideo(this);">
+                            <img src="/asset/images/delete.png" />
+                        </span>
+                    </p>                    
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="normal kc">您还没有收藏相关课程，快去学习吧……</div>
+        {{/if}}
+    </script>
+</div>
+<div class="m-style M-box1" style="float: right; padding-right: 6px;"></div>
+<div class="clear"></div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/LearningCenter/CollectionCourse.js?v=1.0"></script>
+

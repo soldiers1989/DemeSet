@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "提交成功页面";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="电子化考试专区" />
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/css/public/public.css" />
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/css/virtual/success.css" />
+    <script type="text/javascript" src="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/js/public/jquery-1.11.0.min.js?v=1.0"></script>
+    <script type="text/javascript" src="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/js/public/hmMenu.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+    <title>交卷成功</title>
+    <style>
+        #ud-keep-paper {
+            display: inline-block;
+            padding: 10px 50px;
+            font-size: 18px;
+            font-weight: normal;
+            color: #fff;
+            border-radius: 2px;
+            background: #62b26b;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="perMes">
+            <p class="one"><!-- <a href="http://www.zhuofan.net" target="_blank">技术支持：深圳市卓帆科技有限公司</a> --></p>
+        </div>
+        <div style="text-align: center;">
+            <a id="ud-keep-paper" style="padding:10px 20px;background:#e76114;" href="javascript:savePaper();">查看练习结果</a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var PaperId = topevery.getQueryString("PaperId");
+    var PaperRecordsId = topevery.getQueryString("PaperRecordsId");
+    var isEnd = getCookie("end");
+    if (isEnd == "1") {
+        $(".perMes").addClass("end");
+    }
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i].trim();
+            if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+        }
+        return "";
+    }
+    function savePaper() {
+        location.href = "/Answer/IndexView?PaperId=" + PaperId + "&PaperRecordsId=" + PaperRecordsId;
+    }
+    setTimeout(function () { savePaper() }, 400);
+</script>
+</html>

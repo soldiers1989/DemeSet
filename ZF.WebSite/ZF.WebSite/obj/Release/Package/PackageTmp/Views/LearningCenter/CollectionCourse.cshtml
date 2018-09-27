@@ -1,0 +1,34 @@
+﻿
+@{
+
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/collection.css" rel="stylesheet" />
+<div class="subTit"><label>收藏课程</label><div class="search right"><input class="layui-input"><a class="layui-icon  layui-icon-search"></a></div></div>
+<div class="mycourse layui-row layui-col-space20" id="collectedCourse">
+    <script type="text/html" id="collectedCourse_html">
+        {{if Rows.length>0}}
+        {{each Rows}}
+        <div class="layui-col-xs4">
+            <div class="box">
+                <a href="javascript:;" class="top">
+                    <div class="reportName kc">
+                        {{$value.VideoName}}
+                    </div>
+                </a>
+                <a href="javascript:;" class="details">
+                    <p class="bookName">{{$value.CourseName}}</p>
+                    <p>
+                        <label>{{$value.AddTime | formatterDate }}</label>
+                    </p>
+                </a>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="normal kc">您还没有收藏相关课程，快去学习吧……</div>
+        {{/if}}
+    </script>
+</div>
+<script src="~/Views/LearningCenter/CollectionCourse.js"></script>
+

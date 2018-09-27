@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "课程管理";
+    Layout = null;
+}
+
+<style>
+    #selectFrom .form-control {
+        min-width: 179px;
+    }
+</style>
+<link href="~/Libs/select2-4.0.6/css/select2.min.css" rel="stylesheet" />
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>课程管理</a>/<a>课程基础课程</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-2 KnowledgePointTree"  style="overflow: auto;">
+    <ul id="treeDemo1" class="ztree"></ul>
+</div>
+<div class="col-xs-10">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <input class="btn btn-success add_btn" type="button" value="添加">&nbsp;
+                <input class="btn btn-info edit_btn"  type="button" value="编辑">&nbsp;
+                <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+                <input class="btn btn-success upper_btn" type="button" value="上架">&nbsp;
+                <input class="btn btn-danger lower_btn" type="button" value="下架">&nbsp;
+                @*<input id="CourseDetail" data-toggle="modal" class="btn btn-danger detail" type="button" value="课程详情">&nbsp;*@
+            </div>
+            <div class="form-group">
+                <label>课程名称：</label>
+                <input id="QueryCourseName" Name="CourseName" class="form-control" />
+                <label>状态：</label>
+                <select id="QueryState" Name="State" class="form-control" >
+                    <option>---全部---</option>
+                    <option value="1">已上架</option>
+                    <option value="0">未上架</option>
+                </select>
+                <label>类型：</label>
+                <select id="QueryType" Name="Type" class="form-control">
+                    <option value="-1">---全部---</option>
+                    <option value="0">课程</option>
+                    <option value="1">题库</option>
+                </select>
+                <label>主讲教师</label>
+                <select class="form-control" id="QueryTeacherId" name="TeacherId"></select>
+                <input type="hidden" id="QueryProjectClassId" name="ProjectClassId" class="form-control"/>
+                <input type="hidden" id="QueryProjectId" Name="ProjectId" class="form-control" />
+                <input type="hidden" id="QuerySubjectId" Name="SubjectId" class="form-control" />
+                <input class="btn btn-success query_btn" type="button" value="查询">
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+
+
+<script src="~/Libs/select2-4.0.6/js/select2.min.js"></script>
+<script src="~/Libs/select2-4.0.6/js/i18n/zh-CN.js"></script>
+<script src="~/Views/CourseInfo/Index.js"></script>

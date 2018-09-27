@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>用户管理</a>/<a>注册用户信息</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+        <a href="#home" data-toggle="tab">
+            注册用户信息
+        </a>
+    </li>
+    <li><a href="#ireport" data-toggle="tab" id="report">新增学员量</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+
+    <div class="tab-pane fade in active" id="home">
+       
+        <div class="col-xs-12">
+            <!-- 工具栏 -->
+            <div class="content-header form-inline row">
+                <form id="selectFrom" name="selectFrom">
+                    <div class="form-group">
+                        <label>昵称/手机号码：</label>
+                        <input id="NickNamw" Name="NickNamw" class="form-control" />
+                        <input class="btn btn-success query_btn" type="button" value="查询" id="btnselect" />
+                            <input type="button" class="btn btn-danger" value="禁用" id="userDisabled" />
+                            <input type="button" class="btn btn-success" value="启用" id="userEnable" />
+                    </div>
+                </form>
+            </div>
+            <div class="box-body row">
+                <table id="tblData"></table>
+                <div id="pager"></div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="tab-pane fade" id="ireport">
+            <div class="content-header form-inline row" style="margin-left:10px;">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>注册年份：</label>
+                        <input type="text" class="Wdate" id="addtime" onclick="WdatePicker({dateFmt:'yyyy',minDate:'1900',maxDate:'2099'})"  style="margin-left: 0px; margin-right: 0px; padding-top: 0px; padding-bottom: 0px; height: 30px; line-height: 30px;width:140px;"  readonly="readonly" /> 
+                    </div>
+                    <input class="btn btn-success query_btn" type="button" value="查询" id="reportselect">
+                </div>
+                </div>
+         
+            <div id="main" style="width: 1000px;height:400px;"></div>
+        </div>
+</div>
+<script src="~/Js/base.js"></script>
+<script src="~/Views/RegisterUser/Index.js"></script>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PressDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t_Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ArticleTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ArticleContent" Type="nvarchar" MaxLength="2000" Nullable="false" />
+    <Property Name="AddTime" Type="datetime" />
+    <Property Name="Type" Type="int" />
+    <Property Name="IsDelete" Type="int" />
+    <Property Name="ArticleImage" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="t_Base_Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ModuleId" Type="nvarchar" MaxLength="36" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Url" Type="nvarchar" MaxLength="100" />
+    <Property Name="Sort" Type="int" />
+    <Property Name="Class" Type="nvarchar" MaxLength="20" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="t_Base_Module">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ModuleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sort" Type="int" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“PressData.dbo.t_Base_OperatorLog”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="t_Base_OperatorLog">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ModuleId" />
+      <PropertyRef Name="KeyId" />
+      <PropertyRef Name="OperatorName" />
+      <PropertyRef Name="OperatorDate" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ModuleId" Type="int" Nullable="false" />
+    <Property Name="KeyId" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="OperatorName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="OperatorDate" Type="datetime" Nullable="false" />
+    <Property Name="OperatorType" Type="int" />
+    <Property Name="OperatorId" Type="nvarchar" MaxLength="36" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+    <Property Name="OperatorIp" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="t_Base_RegisterUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="30" />
+    <Property Name="LoginPwd" Type="nvarchar" MaxLength="50" />
+    <Property Name="TelphoneNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddTime" Type="datetime" Nullable="false" />
+    <Property Name="RegisterIp" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="RegiesterType" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="NickNamw" Type="nvarchar" MaxLength="30" />
+    <Property Name="WechatId" Type="nvarchar" MaxLength="200" />
+    <Property Name="LastLoginTime" Type="datetime" />
+    <Property Name="AreaCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="HeadImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="Code" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="t_Base_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="LoginName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PassWord" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsAdmin" Type="int" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="AddTime" Type="datetime" Nullable="false" />
+    <Property Name="AddUserId" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="nvarchar" MaxLength="36" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Base_UserLoginLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="36" />
+    <Property Name="LoginTime" Type="datetime" />
+    <Property Name="LoginIp" Type="nvarchar" MaxLength="20" />
+    <Property Name="LoginType" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityContainer Name="PressDataModelStoreContainer">
+    <EntitySet Name="t_Article" EntityType="Self.t_Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Base_Menu" EntityType="Self.t_Base_Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Base_Module" EntityType="Self.t_Base_Module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Base_RegisterUser" EntityType="Self.t_Base_RegisterUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Base_User" EntityType="Self.t_Base_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Base_UserLoginLog" EntityType="Self.t_Base_UserLoginLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Base_OperatorLog" EntityType="Self.t_Base_OperatorLog" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_Base_OperatorLog].[Id] AS [Id], 
+    [t_Base_OperatorLog].[ModuleId] AS [ModuleId], 
+    [t_Base_OperatorLog].[KeyId] AS [KeyId], 
+    [t_Base_OperatorLog].[OperatorName] AS [OperatorName], 
+    [t_Base_OperatorLog].[OperatorDate] AS [OperatorDate], 
+    [t_Base_OperatorLog].[OperatorType] AS [OperatorType], 
+    [t_Base_OperatorLog].[OperatorId] AS [OperatorId], 
+    [t_Base_OperatorLog].[Remark] AS [Remark], 
+    [t_Base_OperatorLog].[OperatorIp] AS [OperatorIp]
+    FROM [dbo].[t_Base_OperatorLog] AS [t_Base_OperatorLog]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

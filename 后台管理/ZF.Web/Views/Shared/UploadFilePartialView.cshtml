@@ -1,0 +1,52 @@
+﻿@model ZF.Web.Models.File.UploadFileDto
+
+<div class="uploaddiv" id="@Model.UploadId"></div>
+<ul class="uploadImg"></ul>
+<div class="hiddenDiv" style="display: none">
+    <ul>
+        <li>
+            <div class="imgWrap">
+                <img src='{imgUrl}' width="80"  alt="{imgName}" />
+                <video src="{href}" style="display: none;" controls preload="auto" class="player"></video>
+            </div>
+            <span class="delete"><a id="{fileId}"><img src="~/Img/cancel.png" /></a></span>
+            <p>
+                <a style="cursor: pointer;" target="_blank" href="{href}">{imgName}</a>
+            </p>
+        </li>
+    </ul>
+    <input type="hidden" class="hiddenFile" name="@{@Model.UploadId}hiddenFile" />
+</div>
+<script src="~/Libs/webuploader-0.1.5/webuploader.js"></script>
+<script src="~/Js/uploader.js"></script>
+<script>
+    $(document).ready(function() {
+        /* 文件上传初始化*/
+        @{ string extName = !string.IsNullOrEmpty(Model.UploadContentType) ? Model.UploadContentType : "jpg,png,xls,doc,docx,xlsx,pdf,jpeg,zip,mp3,mp4,rar";}
+        @{ string serverUrl = !string.IsNullOrEmpty(Model.ServerUrl) ? Model.ServerUrl : "File/UploadFile";}
+        $("#@Model.UploadId").powerWebUpload({
+            accept: {
+                title: "",
+                extensions: "@extName",
+                mimeTypes: ""
+            },
+            auto: true,
+            server:virtualDirName + "@serverUrl",
+            fileNumLimit: 5,
+            callback: function (response) {
+                if (args.callback) {
+                    args.callback(response);
+                }
+            }
+        });
+
+        @{
+            if (!string.IsNullOrWhiteSpace(@Model.KeyId))
+            {
+                @:topevery.setUploadFile("@Model.KeyId", "@Model.UploadId", @Model.Type);
+                                                            }
+        }
+
+    })
+
+</script>

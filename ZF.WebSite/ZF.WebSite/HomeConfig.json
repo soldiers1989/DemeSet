@@ -1,0 +1,287 @@
+﻿{
+  "ExamGuide": {
+    "ExamName": "2018职称经济师考试",
+    "ExamData": "2018-11-03",
+    "IntroductionUrl": "http://zgrskspx.class.com.cn/Information/View?Id=af8d32a0-270e-4f06-82a5-86935be70699",
+    "ApplyUrl": "http://zgrskspx.class.com.cn/Information/View?Id=36c21726-9e5a-4963-be32-a45ef590bbbc",
+    "TimeUrl": "http://zgrskspx.class.com.cn/Information/View?Id=1245f25c-e84a-4033-8aad-6d6272670f0f",
+    "BoParsingUrl": "http://zgrskspx.class.com.cn/Information/View?Id=cc00dc3d-9cb9-4776-b103-e82e41088e40",
+    "PerformanceManagementUrl": "http://zgrskspx.class.com.cn/Information/View?Id=b74ea877-1320-4273-bfb9-8c1515d5f956",
+    "CertificateReceiveUrl": "http://zgrskspx.class.com.cn/Information/View?Id=854cb574-361f-4ac8-9463-a23188d79b85"
+  },
+  "CourseSetCJ": {
+    "ProjectName": "初级",
+    "CourseModel": [
+      {
+        "SubjectName": "经济基础",
+        "TeachersName": "冯亚杰",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=d72cd6f7-ad04-4f06-8965-c8fb074476a7&courseId=d6e0c8e2-0dc9-4dda-b726-68aa7891d073&videoId=5dd5b3d2-3937-40ae-85c3-af0fdab6819d",
+        "GoodsClass": "¥680",
+        "GoodsPrice": "¥300",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=d6e0c8e2-0dc9-4dda-b726-68aa7891d073&CourseType=0",
+        "SprintClass": "142",
+        "SprintPrice": "¥480",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=b323c766-e775-42a8-8ccf-43d0e6a7e1ac&CourseType=0"
+      }
+    ]
+  },
+  "CourseSetZJ": {
+    "ProjectName": "中级",
+    "CourseModel": [
+      {
+        "SubjectName": "经济基础",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=a166824b-a4d9-43b4-9bd2-16213ce935af&courseId=245cc680-833c-4d20-82c7-5628519498c3&videoId=4250d9fa-2ae2-4f1a-89f9-ffa14a3cd082",
+        "GoodsClass": "¥680",
+        "GoodsPrice": "¥300",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=245cc680-833c-4d20-82c7-5628519498c3&CourseType=0",
+        "SprintC  lass": "142",
+        "SprintPrice": "¥480",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=eaa02d27-5b86-423a-99c1-4e19ea1cc09a&CourseType=0"
+      },
+      {
+        "SubjectName": "工商管理",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=014e14bc-602f-4929-9610-a50faaa0458a&courseId=b1d115a9-c97e-48e4-9ea5-6b2b4a49be4b&videoId=a65ef2c3-de80-4a57-bbb3-08d758569eb1",
+        "GoodsClass": "¥680",
+        "GoodsPrice": "¥300",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=b1d115a9-c97e-48e4-9ea5-6b2b4a49be4b&CourseType=0",
+        "SprintClass": "142",
+        "SprintPrice": "¥480",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=c7f0c6e6-9264-4b0e-bea2-a15214b77dee&CourseType=0"
+      },
+      {
+        "SubjectName": "人力资源",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=27b4f01b-54db-41f9-8922-4da29f426ee8&courseId=af35ab58-64cc-49ae-9551-4e546099256d&videoId=f0844adb-876f-4cdd-be74-2b924702fd2f",
+        "GoodsClass": "¥680",
+        "GoodsPrice": "¥300",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=af35ab58-64cc-49ae-9551-4e546099256d&CourseType=0",
+        "SprintClass": "142",
+        "SprintPrice": "¥480",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=038d732c-87e3-4c0c-a1da-8305a62e9c02&CourseType=0"
+      },
+      {
+        "SubjectName": "金融专业",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=ee0a1201-d5f7-47b8-a0be-117a17d1b36a&courseId=35647759-c008-46cd-9205-2f88441604d2&videoId=0ec11e2b-65cc-4263-9d7e-51cdd2003879",
+        "GoodsClass": "¥680",
+        "GoodsPrice": "¥300",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=35647759-c008-46cd-9205-2f88441604d2&CourseType=0",
+        "SprintClass": "142",
+        "SprintPrice": "¥480",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=0d165c68-3a05-4440-8206-09f176c7a8ec&CourseType=0"
+      },
+      {
+        "SubjectName": "经济基础+工商管理",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=014e14bc-602f-4929-9610-a50faaa0458a&courseId=b1d115a9-c97e-48e4-9ea5-6b2b4a49be4b&videoId=a65ef2c3-de80-4a57-bbb3-08d758569eb1",
+        "GoodsClass": "¥1360",
+        "GoodsPrice": "¥600",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=c310d7dd-52dc-452e-aa2a-111900645573",
+        "SprintClass": "142",
+        "SprintPrice": "¥880",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=e8a26e65-365c-434d-9740-bfd4718d7a5f"
+      },
+      {
+        "SubjectName": "经济基础+人力资源",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=27b4f01b-54db-41f9-8922-4da29f426ee8&courseId=af35ab58-64cc-49ae-9551-4e546099256d&videoId=f0844adb-876f-4cdd-be74-2b924702fd2f",
+        "GoodsClass": "¥1360",
+        "GoodsPrice": "¥600",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=2069738a-b035-41ef-bdc4-3806e4334656",
+        "SprintClass": "142",
+        "SprintPrice": "¥880",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=df45d9d9-53b0-4d4c-9033-fe106ddcbdee"
+      },
+      {
+        "SubjectName": "经济基础+金融专业",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=ee0a1201-d5f7-47b8-a0be-117a17d1b36a&courseId=35647759-c008-46cd-9205-2f88441604d2&videoId=0ec11e2b-65cc-4263-9d7e-51cdd2003879",
+        "GoodsClass": "¥1360",
+        "GoodsPrice": "¥600",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=d3c566d3-75bd-40c9-92d6-6b3c3a45aa74",
+        "SprintClass": "142",
+        "SprintPrice": "¥880",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=e751b947-3d3e-480b-9085-637b34e577c2"
+      },
+      {
+        "SubjectName": "建筑专业",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=b0bf7cf8-776a-48ab-acf7-70490142a287&courseId=30b185d9-9661-4c29-9906-86f571e59a18&videoId=e628e38b-9d0f-438f-b009-f304b33a0fd3",
+        "GoodsClass": "¥680",
+        "GoodsPrice": "¥300",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=30b185d9-9661-4c29-9906-86f571e59a18&CourseType=0",
+        "SprintClass": "142",
+        "SprintPrice": "¥480",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=a00c4fd6-414e-46da-833b-7b3fdc66c6ca&CourseType=0"
+      },
+      {
+        "SubjectName": "房地产专业",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=f72fa8f2-85b0-4ab2-aba6-4061df8dc29d&courseId=e32d3176-3416-4c76-b61f-b14562a7a0d2&videoId=21780891-ba50-4823-af80-aa9e03e1685a",
+        "GoodsClass": "¥680",
+        "GoodsPrice": "¥300",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=e32d3176-3416-4c76-b61f-b14562a7a0d2&CourseType=0",
+        "SprintClass": "142",
+        "SprintPrice": "¥480",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=73b90666-442f-40e6-9968-61f0a80dbb6c&CourseType=0"
+      },
+      {
+        "SubjectName": "财税专业",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=3dc3a8a4-f582-40a0-8ed9-35719686af82&courseId=225d65d7-d134-482f-9d34-c87b52474853&videoId=78dfacfd-107b-43a4-9355-6170483baca0",
+        "GoodsClass": "¥680",
+        "GoodsPrice": "¥300",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=225d65d7-d134-482f-9d34-c87b52474853&CourseType=0",
+        "SprintClass": "142",
+        "SprintPrice": "¥480",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CourseInfo?courseId=787b61a6-62dc-46de-8bc0-5b848f3ff7b1&CourseType=0"
+      },
+      {
+        "SubjectName": "经济基础+建筑专业",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=b0bf7cf8-776a-48ab-acf7-70490142a287&courseId=30b185d9-9661-4c29-9906-86f571e59a18&videoId=e628e38b-9d0f-438f-b009-f304b33a0fd3",
+        "GoodsClass": "¥1360",
+        "GoodsPrice": "¥600",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=7afaf852-fe42-470a-9a6e-85c4f484e670",
+        "SprintClass": "142",
+        "SprintPrice": "¥880",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=55114654-8310-4a6c-905a-c8e1f79134a1"
+      },
+      {
+        "SubjectName": "经济基础+房地产专业",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=f72fa8f2-85b0-4ab2-aba6-4061df8dc29d&courseId=e32d3176-3416-4c76-b61f-b14562a7a0d2&videoId=21780891-ba50-4823-af80-aa9e03e1685a",
+        "GoodsClass": "¥1360",
+        "GoodsPrice": "¥600",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=ee426368-9d71-477e-8856-09823047a028",
+        "SprintClass": "142",
+        "SprintPrice": "¥880",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=706f039b-18a2-4c85-9a94-556feb2a60fc"
+      },
+      {
+        "SubjectName": "经济基础+财税专业",
+        "TeachersName": "于彩凤 王玉霞",
+        "ListenUrl": "http://zgrskspx.class.com.cn/CourseInfo/ChapterVideoPlay?chapterId=3dc3a8a4-f582-40a0-8ed9-35719686af82&courseId=225d65d7-d134-482f-9d34-c87b52474853&videoId=78dfacfd-107b-43a4-9355-6170483baca0",
+        "GoodsClass": "¥1360",
+        "GoodsPrice": "¥600",
+        "GoodsUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=74c9d9ba-c28e-447f-b8ab-41adda38079d",
+        "SprintClass": "142",
+        "SprintPrice": "¥880",
+        "SprintUrl": "http://zgrskspx.class.com.cn/CourseInfo/CoursePackInfo?courseId=e75449eb-732c-4ec0-a714-b5a606dae63a"
+      }
+    ]
+  },
+  "StudentResult": [
+    {
+      "StudentName": "AS_7k68s5",
+      "Tips": "去年报名太晚没有充足的时间复习，今年参加了免费续读，把课程从头到尾认真学习了。终于通过考试！感谢培训网的各位老师，课程内容质量高，服务到位！"
+    },
+    {
+      "StudentName": "AS_kedkgj",
+      "Tips": "经济基础113，人力专业119分！一分耕耘一分收获，所有课程全部跟下来了，所有题目也全都认真做了，感觉最后的习题精讲对我备考帮助特别大！祝人事社经济师课堂越来越好！"
+    },
+    {
+      "StudentName": "sxk6mm28",
+      "Tips": "王全一老师在业内名气很大，今年报名了精品通关班。授课质量真是名不虚传，谢谢老师们的授课指导，助力我们一次性通过考试！"
+    },
+    {
+      "StudentName": "gakki622",
+      "Tips": "在报名培训之前犹豫了很久，也反复衡量该选择哪一家网校。最终还是被人事社经济师课堂强大的师资团队和公信力所吸引，很幸运自己的选择是正确的。学习选对方法，往往会事半功倍，如果以后报名其他考试，我还是会选择人事社经济师课堂！"
+    },
+    {
+      "StudentName": "tracy079524",
+      "Tips": "于彩凤老师授课思路清晰，详细清楚。强烈推荐！！！"
+    },
+    {
+      "StudentName": "maizi_375",
+      "Tips": "年纪大了以后，独立复习对我来说是相对困难的。由衷感谢冯亚杰老师深入浅出的讲解，感谢培训网各位员工的辛勤付出，让我通过了考试。找对方法，坚持不懈，就是通过考试的不二法门！"
+    },
+    {
+      "StudentName": "peace007",
+      "Tips": "跟着培训网的进度走，复习了半年，顺利通过考试！感谢！"
+    },
+    {
+      "StudentName": "Chensyjiayou",
+      "Tips": "天道酬勤，感谢老师的谆谆教诲和我自己的不懈努力！"
+    },
+    {
+      "StudentName": "nbai0503",
+      "Tips": "每天晚上下班回家就是看视频，看书，和做题，个中辛苦只有自己知道。好在一切付出都是值得的！"
+    },
+    {
+      "StudentName": "zhao644345630",
+      "Tips": "人事社经济师课堂太给力啦！我和同事两个人一起报名，全都通过了！"
+    },
+    {
+      "StudentName": "nanana1989004",
+      "Tips": "都说经济基础特别难通过，幸运的是我居然考了一百多分。教材精讲部分对我很有帮助。"
+    },
+    {
+      "StudentName": "donghang7925",
+      "Tips": "今年年初给自己设立的目标就是拿下中级经济师！目标实现，自己离晋升职位的长期目标又近了一步，太开心！谢谢所有老师！"
+    },
+    {
+      "StudentName": "sunny999",
+      "Tips": "自己看书看得是云里雾里，完全抓不住重点。听了闫明霞老师讲课，感觉再消化课本里的内容也就没那么困难了。感谢培训网，服务很好，值得信赖！"
+    },
+    {
+      "StudentName": "shen1981yao",
+      "Tips": "去年就报名了全程护航班，但是因为怀孕没有参加考试。今年免费续读了一年，顺利通过考试，感谢培训网的贴心服务和耐心解答。"
+    },
+    {
+      "StudentName": "Dreamer",
+      "Tips": "都说经济基础特别难通过，幸运的是我居然考了一百多分。教材精讲部分对我很有帮助。"
+    }
+    ,
+    {
+      "StudentName": "32561M",
+      "Tips": "感激人事社经济师课堂，老师很耐心，授课质量有保障！"
+    },
+    {
+      "StudentName": "smy15984628773",
+      "Tips": "自从毕业参加工作以后就再也没碰过书本了，当我终于下定决心报考经济师的时候，当我坚持跟下进度学习的时候，当我得知自己顺利通过考试的时候，我终于找回了曾经那个一直努力的自己。下次还会再选择人事社经济师课堂！"
+    },
+    {
+      "StudentName": "AS_gdufgbu",
+      "Tips": "最后的冲刺串讲至关重要，一定要坚持听完所有视频！！"
+    },
+    {
+      "StudentName": "AS_fdeff",
+      "Tips": "视频质量好，机考仿真练习题量充足，各位老师辛苦了！"
+    },
+    {
+      "StudentName": "AS_13dedb",
+      "Tips": "从章节练习到线上模考，感谢一路走来的自己，更感谢为我们提供宝贵学习平台的培训网。"
+    }
+  ],
+  "BlogrollModel": [
+    {
+      "BlogrollName": "中国人事考试网",
+      "BlogrollUrl": "http://www.cpta.com.cn/ "
+    },
+    {
+      "BlogrollName": "中国人力资源和社会保障出版集团",
+      "BlogrollUrl": "http://www.class.com.cn/"
+    },
+    {
+      "BlogrollName": "人事考试图书网",
+      "BlogrollUrl": "http://rsks.class.com.cn"
+    }
+  ],
+  "DiscountCardSetting": [
+    {
+      "Min": 0,
+      "Max": 600,
+      "DiscountAmount": 80,
+      "CardUse": 4
+    },
+    {
+      "Min": 600,
+      "Max": 1200,
+      "DiscountAmount": 200,
+      "CardUse": 8
+    }
+  ]
+}

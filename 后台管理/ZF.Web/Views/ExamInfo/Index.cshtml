@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+<style>
+    .ui-jqgrid tr.jqgrow td {
+        text-overflow: ellipsis;
+    }
+</style>
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>系统管理</a>/<a>字典分类</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-12">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <input class="btn btn-success add_btn" type="button" value="添加">&nbsp;
+                <input class="btn btn-info edit_btn" type="button" value="编辑">&nbsp;
+                <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+                <input class="btn btn-danger use_btn" type="button" value="启用">&nbsp;
+            </div>
+            <div class="form-group">
+                <label>是否启用：</label>
+                <select id="QueryIfUse" Name="IfUse" class="form-control">
+                    <option value="-1">---全部---</option>
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+                <input class="btn btn-success query_btn" type="button" value="查询" id="btnselect" />
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+<script src="~/Views/ExamInfo/Index.js"></script>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PressDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="t_Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ArticleTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ArticleContent" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Precision="3" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="IsDelete" Type="Int32" />
+    <Property Name="ArticleImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Base_Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModuleId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" />
+    <Property Name="Class" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Base_Module">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" />
+  </EntityType>
+  <EntityType Name="t_Base_RegisterUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LoginPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TelphoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RegisterIp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegiesterType" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="NickNamw" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="WechatId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+    <Property Name="AreaCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="HeadImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Base_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdmin" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddUserId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Base_UserLoginLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="LoginTime" Type="DateTime" Precision="3" />
+    <Property Name="LoginIp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LoginType" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Base_OperatorLog">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ModuleId" />
+      <PropertyRef Name="KeyId" />
+      <PropertyRef Name="OperatorName" />
+      <PropertyRef Name="OperatorDate" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModuleId" Type="Int32" Nullable="false" />
+    <Property Name="KeyId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OperatorName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OperatorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OperatorType" Type="Int32" />
+    <Property Name="OperatorId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="OperatorIp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="PressDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="t_Article" EntityType="Self.t_Article" />
+    <EntitySet Name="t_Base_Menu" EntityType="Self.t_Base_Menu" />
+    <EntitySet Name="t_Base_Module" EntityType="Self.t_Base_Module" />
+    <EntitySet Name="t_Base_RegisterUser" EntityType="Self.t_Base_RegisterUser" />
+    <EntitySet Name="t_Base_User" EntityType="Self.t_Base_User" />
+    <EntitySet Name="t_Base_UserLoginLog" EntityType="Self.t_Base_UserLoginLog" />
+    <EntitySet Name="t_Base_OperatorLog" EntityType="Self.t_Base_OperatorLog" />
+  </EntityContainer>
+</Schema>

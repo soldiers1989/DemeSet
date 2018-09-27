@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "添加课程章节视频";
+}
+<div class="box">
+    <form id="VideoSumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="ChapterId" name="ChapterId" value="@ViewBag.ChapterId" />
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>视频名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="VideoName" name="VideoName">
+                </div>
+                <div class="form-group">
+                    <label>可试听时长</label>
+                    <input type="number" step="1" min="1" class="form-control" placeholder="时间单位为分钟" id="TasteLongTime" name="TasteLongTime">
+                    @*<span class="input-group-addon">分钟</span>*@
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>视频时长</label><span class="text-danger">*</span>
+                    <input type="number" step="1" min="1" placeholder="时间单位为分钟" class="form-control" id="VideoLongTime" name="VideoLongTime">
+                    @*<span class="input-group-addon">分钟</span>*@
+                </div>
+                <div class="form-group">
+                    <label>是否可试听</label>
+                    <select id="IsTaste" name="IsTaste" class="form-control" >
+                        <option value="1" selected="selected">是</option>
+                        <option value="0">否</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>视频地址</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control"  id="VideoUrl" name="VideoUrl">
+                </div>
+            </div>
+           
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>课程目标</label>
+                    <textarea class="form-control" id="VideoContent" name="VideoContent"/>
+                </div>
+            </div>
+
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" style="float:right;" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/Views/CourseVideo/AddCourseVideo.js"></script>

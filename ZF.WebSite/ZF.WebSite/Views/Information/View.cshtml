@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/informationDetails.css" rel="stylesheet" />
+<style>
+    .module1 {
+        background: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    .list img {
+        float: left;
+        width: 94px;
+        height: 48px;
+    }
+</style>
+<div class="main">
+    <input type="hidden" Id="Id" value="@ViewBag.Id" />
+    <div class="crumb">
+        <div class="left">
+            <a href="~/Home/Index">首页</a> &gt;
+            <a href="~/Information/Index">考试资讯</a>&gt;
+            <a href="javascript:;">资讯详情</a>
+        </div>
+    </div>
+    <div class="layui-row" style="margin-bottom:40px;">
+        <div class="leftContent">
+            <div class="newsDetails" id="newsDetails">
+            </div>
+        </div>
+        <script type="text/html" id="newsDetails_html">
+            <h3>{{#Title}}</h3>
+            <div class="details"><span></span><span>{{AddTime}}</span></div>
+            <div class="contentDetails">
+                {{#Content}}
+            </div>
+        </script>
+        <div class="rightContent">
+            <div class="module1">
+                <div class="topTit">相关资讯</div>
+                <div class="down">
+                    <ul id="down"></ul>
+                </div>
+            </div>
+            <script type="text/html" id="down_html">
+                {{each Rows}}
+                <li><a href="javascript:;" onclick="getInformation(this)" id="{{$value.Id}}">{{$value.Title}}</a></li>
+                {{/each}}
+            </script>
+            <div class="module1">
+                <div class="topTit">推荐课程</div>
+                <div class="down" id="PopularCourses">
+                </div>
+            </div>
+            <script type="text/html" id="PopularCourses_html">
+                {{each Rows}}
+                <div class="list">
+                    <a href="/CourseInfo/CourseInfo?courseId={{$value.Id}}&CourseType={{$value.CourseType}}" target="_blank">
+                        <img src="{{$value.CourseIamge}}" alt="">
+                        <div class="list_right">
+                            <p class="name">{{$value.CourseName}}</p>
+                            <p><span class="cost">¥ {{$value.FavourablePrice}}</span><span class="num right">{{$value.Count}}购买</span></p>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </script>
+        </div>
+    </div>
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Information/View.js?v=1.0"></script>

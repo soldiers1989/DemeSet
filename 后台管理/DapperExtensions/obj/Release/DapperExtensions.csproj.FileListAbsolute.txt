@@ -1,0 +1,7 @@
+E:\出版社\后台管理\DapperExtensions\bin\Release\DapperExtensions.dll
+E:\出版社\后台管理\DapperExtensions\bin\Release\DapperExtensions.pdb
+E:\出版社\后台管理\DapperExtensions\bin\Release\Dapper.dll
+E:\出版社\后台管理\DapperExtensions\bin\Release\Dapper.pdb
+E:\出版社\后台管理\DapperExtensions\obj\Release\DapperExtensions.csprojResolveAssemblyReference.cache
+E:\出版社\后台管理\DapperExtensions\obj\Release\DapperExtensions.dll
+E:\出版社\后台管理\DapperExtensions\obj\Release\DapperExtensions.pdb

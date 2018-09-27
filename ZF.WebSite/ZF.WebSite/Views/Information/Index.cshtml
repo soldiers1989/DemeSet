@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "考试资讯";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/information.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<div class="main">
+    <div class="crumb">
+        <div class="left">
+            <a href="~/Home/Index">首页</a> &gt; <a href="javascript:;">考试资讯</a>
+        </div>
+    </div>
+    <div class="type">
+        <label>资讯类别：</label>
+        <div class="typeList">
+            <ul id="GetDataType"></ul>
+        </div>
+        <script type="text/html" id="GetDataType_html">
+            {{each Result}}
+            <li><a href="javascript:;" class="{{$value.Id}}" onclick="data.GetList('{{$value.Id}}')">{{$value.DataTypeName}}</a></li>
+            {{/each}}
+        </script>
+    </div>
+    <div class="news" id="Affiche">
+    </div>
+    <div class="news" style="line-height: 30px;">
+        <div class="m-style M-box1" style="float: right; padding-right: 6px; margin-top: 15px;"></div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/html" id="Affiche_html">
+        {{each Rows}}
+        <div class="newsList">
+            <a href="javascript:;" class="newsImg">
+                <img src="{{$value.AfficheIamge}}" alt="">
+            </a>
+            <a href="View?Id={{$value.Id}}" class="newsMess">
+                <div class="ifmContent">
+                    <p class="newsTit">{{#$value.Title}}</p>
+                    <p class="newsDetails">{{#$value.Content}}
+                    <p class="newsTime">{{$value.AddTime}}</p>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+    </script>
+    <input type="hidden" Id="Rows" value="5" />
+    <input type="hidden" Id="PageIndex" value="1" />
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/jquery.pagination.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Information/Index.js?v=1.0"></script>

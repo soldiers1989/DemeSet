@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{741C4036-00FF-465C-8C84-12583A0C1314}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chatbot</RootNamespace>
+    <AssemblyName>Chatbot</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AIMLbot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ChatBotLib\AIMLbot.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Chatbot.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="ChatbotLib\aiml\AI.aiml" />
+    <None Include="ChatbotLib\aiml\Atomic.aiml" />
+    <None Include="ChatbotLib\aiml\Biography.aiml" />
+    <None Include="ChatbotLib\aiml\Bot.aiml" />
+    <None Include="ChatbotLib\aiml\Botmaster.aiml" />
+    <None Include="ChatbotLib\aiml\Client.aiml" />
+    <None Include="ChatbotLib\aiml\Computers.aiml" />
+    <None Include="ChatbotLib\aiml\CustomTagTest.aiml" />
+    <None Include="ChatbotLib\aiml\Default.aiml" />
+    <None Include="ChatbotLib\aiml\Emotion.aiml" />
+    <None Include="ChatbotLib\aiml\Food.aiml" />
+    <None Include="ChatbotLib\aiml\Geography.aiml" />
+    <None Include="ChatbotLib\aiml\History.aiml" />
+    <None Include="ChatbotLib\aiml\Inquiry.aiml" />
+    <None Include="ChatbotLib\aiml\Interjection.aiml" />
+    <None Include="ChatbotLib\aiml\IU.aiml" />
+    <None Include="ChatbotLib\aiml\Knowledge.aiml" />
+    <None Include="ChatbotLib\aiml\Literature.aiml" />
+    <None Include="ChatbotLib\aiml\Money.aiml" />
+    <None Include="ChatbotLib\aiml\Movies.aiml" />
+    <None Include="ChatbotLib\aiml\Music.aiml" />
+    <None Include="ChatbotLib\aiml\Personality.aiml" />
+    <None Include="ChatbotLib\aiml\Philosophy.aiml" />
+    <None Include="ChatbotLib\aiml\Pickup.aiml" />
+    <None Include="ChatbotLib\aiml\Predicates.aiml" />
+    <None Include="ChatbotLib\aiml\Reduce.aiml" />
+    <None Include="ChatbotLib\aiml\Reductions.aiml" />
+    <None Include="ChatbotLib\aiml\Salutations.aiml" />
+    <None Include="ChatbotLib\aiml\Science.aiml" />
+    <None Include="ChatbotLib\aiml\Stack.aiml" />
+    <None Include="ChatbotLib\aiml\Stories.aiml" />
+    <None Include="ChatbotLib\aiml\That.aiml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ChatbotLib\AIMLbot.dll" />
+    <Content Include="ChatbotLib\config\DefaultPredicates.xml" />
+    <Content Include="ChatbotLib\config\GenderSubstitutions.xml" />
+    <Content Include="ChatbotLib\config\Person2Substitutions.xml" />
+    <Content Include="ChatbotLib\config\PersonSubstitutions.xml" />
+    <Content Include="ChatbotLib\config\Settings.xml" />
+    <Content Include="ChatbotLib\config\Splitters.xml" />
+    <Content Include="ChatbotLib\config\Substitutions.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+   <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="@ViewBag.KeyWord">
+    <meta name="description" content="@ViewBag.Description">
+    <meta name="viewport" content="width=device-width"/> 
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_talk.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/core.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_list.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_note.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_noteIndex.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_reply.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Shared/_Layout2Style.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-2.2.3.min.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/ajax.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/vue.min.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/reuglar.0.3.1.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+    <title></title>
+    <style>
+        .u-navusermenu {
+            top: 32px !important;
+        }
+
+        .m-yktNav .u-navsearchUI input {
+            background-color: #fff;
+            height: 34px;
+            line-height: 34px;
+            color: #666;
+            font-size: 14px;
+            overflow: hidden;
+            width: 100%;
+            text-indent: 5px;
+            border: none;
+            text-align: left;
+        }
+
+        body {
+            font-family: 'Lato', Calibri, Arial, sans-serif;
+            background: #f4f4f4 url(../../Libs/SimpleDropDown/images/grid_DominikKiss_SubtlePatterns.jpg);
+            font-weight: 300;
+            font-size: 15px;
+            color: #333;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="login1">
+        <div>
+            <a href=""></a>
+        </div>
+        <div>
+            <a href="">个人主页</a>
+        </div>
+        <div>
+            <a href="">反馈意见</a>
+        </div>
+        <div>
+            <a href="">设置</a>
+        </div>
+        <div>
+            <a href="">退出</a>
+        </div>
+    </div>
+
+    @* 标题、搜索框 *@
+    <div id="find" class="auto-1449466894298-parent">
+        <div class="f-pf g-headwrap" id="j-fixed-head">
+            <div id="j-appbanner" class="u-appbannerwrap"> </div>
+            <div class="g-hd f-bg1 m-yktNav " id="j-topnav" style="background:#2F3440">
+                <div class="g-flow">
+                    <div class="f-pr f-cb">
+                        <div class="m-logo f-cb"> <a class="f-fl" hidefocus="true" href="/" target="_self" data-index="网易云课堂logo"> <img class="f-fl img" src="~/Libs/CourseInfo/imgs/login/logo4.png" title="云课堂" width="153" height="28"> </a> </div>
+                        @*<div class="u-navcatebtn"> <a href="#" target="_blank" class="cbtn" id="j-nav-catebtn"></a> </div>*@
+
+
+                        <div class="m-navrgt f-fr f-cb f-pr j-navright">
+                            <div class="userinfo f-fr f-cb f-pr">
+                                <div class="login f-cb" id="userinfo">
+                                    <script id="question_common1" type="text/html">
+                                        {{ if !userToken }}
+                                        <div class="unlogin f-fr f-cb">
+                                            <a href="javascript:userLogin()" class="f-fr j-nav-loginBtn" id="j-login" data-index="登陆注册">登录/注册</a>
+                                            @*<a href="/Login/Index" class="f-fr j-nav-loginBtn" id="j-login" data-index="登陆注册">登录/注册</a>*@
+                                            <p class="f-fc3 f-f0 f-fr" style="color: #fff;"></p>
+                                            @*<a href="/Cart/MyOrder" class="f-fr j-nav-loginBtn" id="j-login" data-index="登陆注册">我的订单</a>*@
+                                        </div>
+                                        {{else}}
+                                        <div class="name j-userinfo" id="auto-id-1522821887028">
+                                            <div class="f-pr">
+                                                <div class="face">
+                                                    <img class="j-nav-myimg" src="{{HeadImage}}" width="30px" height="30px" alt="头像">
+                                                </div>
+                                                <div class="u-navusermenu j-nav-set x-hide">
+                                                    <div class="arrr f-pa"></div>
+                                                    <ul class="menu">
+                                                        <li>
+                                                            <a href="/Cart/MyOrder" class="self j-user-item" data-index="用户icon_我的订单" id="auto-id-1522391639684">我的订单</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/MyCard/Index" class="self j-user-item" data-index="用户icon_我的学习卡" id="auto-id-1522391639684">我的学习卡</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/Advice?aboutType=8" class="reply j-user-ask" data-index="帮助与反馈" id="auto-id-1522391639594">帮助与反馈</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/User/Setup" class="setting j-user-item" data-index="用户icon_设置" id="auto-id-1522391639685">设置</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/Cart/HandOutPath" class="setting j-user-item" data-index="用户icon_讲义收货地址" id="auto-id-1522391639685">讲义收货地址</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:outUser()" class="exit j-user-item" data-index="用户icon_退出" id="auto-id-1522391639686">退出</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="username self f-thide" target="_self" data-index="点击用户名" href="/">
+                                            <span class="f-fs1 f-f0" title="{{NickNamw}}">
+                                                {{if NickNamw}}
+                                                {{if NickNamw.length>10}}
+                                                {{NickNamw.substring(0,10)+'...'}}
+                                                {{else}}
+                                                {{NickNamw}}
+                                                {{/if}}
+                                                {{/if}}
+                                            </span>
+                                        </a>
+                                        <i class="line"></i>
+                                        <a class="cart f-pr f-cb" data-index="购物车" href="/Cart/Index" title="查看我的购物车" target="_self">
+                                            <span>购物车</span>
+                                            {{if CartCount===0}}
+                                            <em class="num CartCount j-nav-cartnum">0</em>
+                                            {{else}}
+                                            <em class="num j-nav-cartnum CartCount ">{{CartCount}}</em>
+                                            {{/if}}
+                                        </a>
+                                        @*<a data-index="消息" class="mes f-pr f-cb j-nav-mescenter" href="/CourseInfo/MyStudy" title="查看更多消息" target="_blank">
+                                            <span>我的学习</span>
+                                            {{if LearnCount===0}}
+                                            <em class="num j-nav-cartnum">0</em>
+                                            {{else}}
+                                            <em class="num j-nav-cartnum ">{{LearnCount}}</em>
+                                            {{/if}}
+                                        </a>*@
+                                        {{/if}}
+                                    </script>
+                                </div>
+                            </div>
+
+                            <div class="nav-search u-navsearchUI j-searchP f-cb off" id="auto-id-1522821887035">
+                                <input type="text" class="j-input" maxlength="30" data-index="搜索" data-search="true" id="searchcourseinfo">
+                                <div class="submitOne j-submit f-hide f-pa" data-search="true" id="btn_search"></div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="m-nav f-cb j-navFind">
+                            <a data-index="首页" class="nitem" href="/" hidefocus="true">首页</a>
+                            <div class="nitem f-f0 x-hoverItem" hidefocus="true">
+                                <span class="j-dropmenubtn">下载APP</span>
+                                <div class="u-navapptip f-pa x-child">
+                                    <div class="arrr f-pa"></div>
+                                    <img src="~/Images/Home/imgs/nav_qrcode.png" class="ewm f-fl" alt="下载APP" title="下载APP">
+                                    <div class="rcon f-fr">
+                                        <h4 class="txt">扫码下载官方App</h4>
+                                        <a data-index="appstore下载" href="" target="_blank" class="store apple">
+                                            <img src="~/Images/Home/imgs/upload(1).png" width="150">
+                                        </a>
+                                        <a data-index="android下载" href="" target="_blank" class="store android">
+                                            <img src="~/Images/Home/imgs/upload(2).png">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a data-index="学习中心" class="nitem" id="xxzx"  hidefocus="true">学习中心</a>
+                            <div class="xxzxtip f-pa f-dn" id="j-xxzxtip-black-nav">
+                                <div class="arrr f-pa"></div>
+                                <div class="text f-fl">
+                                    <p>“我的云课堂”改名为“学习中心”啦！</p>
+                                    <p>你可以在学习中心查看所有学习记录和进度。</p>
+                                </div>
+                                <div class="xxzxtip-close f-pa" id="j-xxzxtip-close-black-nav">X</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="m-maintainInfo" style="display:none;">
+                <div id="maintain_info_box" class="g-flow"></div>
+            </div>
+            <div id="advertisement_box" class="advertisement_box f-pf">    </div>*@
+    </div>
+    @RenderBody()
+
+    @* 悬浮框--联系我们，反馈意见，返回顶部 *@
+    <div class="m-side-operation auto-1449466944905" id="j-side-operation" style="display: block;opacity: 1;width: 60px;">
+        <div class="side-service-item">
+            <a class="item-link-block" data-name="留言" href="/Advice/Index?aboutType=8" target="_blank">
+                <i class="side-service-icon feedback-icon" style="width: 41px;padding-left:0px;"></i>
+                <span class="item-hover-text feedback-text" style="height:55px;">反馈意见</span>
+            </a>
+        </div>
+        <div class="line-wrap">
+            <div class="line"></div>
+        </div>
+        <div class="side-service-item ">
+            <a class="item-link-block app-download" data-name="手机课堂" href="javascript:void(0)">
+                <i class="side-service-icon phone-icon" style="width: 41px;height: 38px;"></i> <span class="item-hover-text" style="height:55px;">手机课堂</span>
+                <div class="qrcode-bubble">
+                    <div class="qrcode">
+                        <div class="download">
+                            <img src="~/Images/Home/imgs/nav_qrcode.png">
+                            <p>下载App</p>
+                        </div>
+                    </div>
+                    <div class="arrow">
+                        <div class="arrow-border"></div>
+                        <div class="arrow-cnt"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="line-wrap">
+            <div class="line"></div>
+        </div>
+        <div class="side-service-item "> <a class="item-link-block side-service-top" data-name="回到顶部" href="javascript:window.scrollTo( 0, 0 );" id="auto-id-1449466944916"> <i class="side-service-icon top-icon"></i> <span class="item-hover-text scrtop-text" style="height:55px;">返回顶部</span> </a> </div>
+    </div>
+
+    @* 底部信息 *@
+
+    <footer>
+        <div class="g-ft">
+            <div class="m-yktFoot" id="j-yktfoot">
+                <div class="g-flow ftwrapper f-cb">
+                    <div class="f-fl ftlf">
+                        <div class="logo"></div>
+                        <p class="txt f-fs0"></p>
+                        <div class="share f-cb">
+                            <p class="txt f-fs0" id="webdescript"></p>
+                            <a href="#" class="weibo" target="_blank" data-index="关注我们_微博">
+                                <img src="~/Images/Home/imgs/1.png">
+                            </a>
+                            <a href="#" class="renren" target="_blank" data-index="关注我们_人人">
+                                <img src="~/Images/Home/imgs/2.png">
+                            </a> <a href="javascript:void(0)" class="yixin f-pr" data-index="关注我们_易信">
+                                <img src="~/Images/Home/imgs/3.png">
+                                @*<div class="tipQrcode f-pa">
+                                    <div class="qrImag">
+                                        <img src="~/Images/Home/imgs/yixin.png" width="120" height="120" alt="加云课堂易信好友">
+                                    </div>
+                                    <p class="qrTitle">易信号：study163</p>
+                                    <div class="tip f-pa"></div>
+                                </div>*@
+                            </a>
+                            <a href="javascript:void(0)" class="weixin f-pr" data-index="关注我们_微信">
+                                <img src="~/Images/Home/imgs/4.png">
+                                @*<div class="tipQrcode f-pa">
+                                    <div class="qrImag">
+                                        <img src="~/Images/Home/imgs/weixin.png" width="120" height="120" alt="加云课堂微信好友">
+                                    </div>
+                                    <p class="qrTitle">微信号：study163</p>
+                                    <div class="tip f-pa"></div>
+                                </div>*@
+                            </a>
+                        </div>
+                        <div class="copy">©<span>1997-2015</span> 123</div>
+                    </div>
+                    <div class="ftrt f-fr">
+                        <a href="/Advice?aboutType=1" target="_blank" data-index="关于我们">关于我们</a>
+                        <a href="/Advice?aboutType=2" target="_blank" data-index="联系我们">联系我们</a>
+                        <a href="/Advice?aboutType=3" target="_blank" data-index="法律条款">法律条款</a>
+                        <a href="/Advice?aboutType=8" target="_blank" data-index="意见反馈">意见反馈</a>
+                        <div class="f-cb mobile f-fr">
+                            <div class="tit f-fl">移动App:</div>
+                            <a target="_blank" class="mlogo1" href=""></a>
+                            <a target="_blank" class="mlogo2" href=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script type="text/javascript">
+    $(function () {
+        var object = new Object();
+        object.userToken = topevery.GetCookie("userToken");
+        if (object.userToken) {
+            topevery.ajax({
+                type: "GET",
+                url: "api/Home/GetUserInfoByTicket"
+            }, function (data) {
+                if (data.Success) {
+                    object.NickNamw = data.Result.NickNamw;
+                    object.CartCount = data.Result.CartCount;
+                    object.LearnCount = data.Result.LearnCount;
+                    object.HeadImage = data.Result.HeadImage;
+                    $("#userinfo").html(template("question_common1", object));
+                    $(".j-nav-myimg").hover(function () {
+                        $(".u-navusermenu").addClass("x-show");
+                        $(".u-navusermenu").removeClass("x-hide");
+                    }, function () {
+                        $(".u-navusermenu").hover(function () {
+                            $(".u-navusermenu").addClass("x-show").removeClass("x-hide");
+                        }, function () {
+                            $(".u-navusermenu").addClass("x-hide").removeClass("x-show");
+                        });
+                        $(".u-navusermenu").addClass("x-hide").removeClass("x-show");
+                    });
+                }
+            });
+        } else {
+            $("#userinfo").html(template("question_common1", object));
+        }
+
+
+        $(".headImg").hover(function () {
+            $("#login1").css("display", "block");
+        },
+        function () {
+            $("#login1").hover(function () {
+
+            }, function () {
+                $("#login1").css("display", "none");
+            });
+        });
+    });
+    //退出
+    function outUser() {
+        topevery.DelCookie("userToken"); // 删除 cookie
+        ////刷新当前页面.
+        //window.location.reload();
+        parent.location.href = "/Home/Index";
+    }
+    topevery.ajax({
+        url: "api/BaseDanye/GetArguValue?arguName=webdescript",
+    }, function (data) {
+        if (data.Success) {
+            if (data.Result.Success) {
+                $("#webdescript").html(data.Result.Message);
+            }
+        }
+    });
+    //搜索
+    $('#btn_search').click(function () {
+        var input = encodeURI($('#searchcourseinfo').val());
+        location.href = "/CourseQueries/IndexQuery?query=" + input;
+    });
+
+    //跳转登录页
+    function userLogin() {
+        layer.open({
+            type: 2,
+            title: '用户登录',
+            shadeClose: true,
+            maxmin: false, //开启最大化最小化按钮
+            area: ['650px', '430px'],
+            shade: [0.7, '#BEBEBE'], //0.7透明度的白色
+            content: '/Login/UserLogin?RefUrl=' + location.href,
+            end: function () {
+                //location.reload();
+            }
+        });
+    }
+
+    $("#xxzx").click(function() {
+        if (topevery.GetCookie("userToken")) {
+            location.href = "/CourseInfo/MyStudy";
+        } else {
+            userLogin();
+        }
+    });
+</script>

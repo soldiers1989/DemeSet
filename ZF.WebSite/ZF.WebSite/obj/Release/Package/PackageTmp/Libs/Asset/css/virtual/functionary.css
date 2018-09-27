@@ -1,0 +1,78 @@
+body, html { background: #edfade;}
+.header{background:#0241af;}
+.header img{height:72px;}
+.title p{color:#1d7ecc;background-image: url(../../image/virtual/index/functionary/jian.png);}
+.tipTit{font-size: 40px; color:#f97217;font-weight: bold;text-align: center;margin:100px auto 0;}
+table{width:500px;margin:50px auto;}
+table th{padding-right:3px;}
+th span{font-size: 16px;color:#fff;text-align: center;display:block;background:#3f9fec;padding:4px 0;}
+td a,td{color:#000000;background:#fdf8f8;cursor:default;line-height: 30px;font-size: 16px;font-weight: bold;;}
+td a{display:block;cursor:pointer;}
+.title.noshow p{color: #193b6f;
+    background-image: url(../../image/virtual/index/functionary/jia.png);}
+.title.disabled p{color:#b5b5b5;background-image: url(../../image/virtual/index/functionary/djian.png);}
+.title.noshow.disabled p{color:#b5b5b5;background-image: url(../../image/virtual/index/functionary/djia.png);}
+.change_part{cursor: pointer;}
+#myform{display:none;}
+.timer{    width: 200px;
+    margin-right: 0;
+    display: inline-block;}
+.btn .next{width:137px;}
+.btn .drop{width:47px;}
+.btn .set{width:47px; height:47px;background: url(../../image/virtual/index/btn.png) 0 -689px;}
+.dropContents span{margin-right: 0;}
+.dropContents{display:none; width:198px;height:235px; position:absolute; background:#f0f0f0 url(../../image/virtual/index/functionary/sline.png) 35px bottom repeat-y;    bottom: 0; right: 0; left: initial; top: initial; z-index: 999999999999; border: none;}
+.dropContents a{display:block; font-size: 14px; color: #1d7ecc; padding: 5px 0; width:158px; text-align: center;color:#000000;text-align:left;padding-left: 40px;}
+.dropContents a.current{background:none; color:#000000;}
+.dropContents a.ch_auto.current{background:none; color:#000000;background: url(../../image/virtual/index/functionary/choose.png) no-repeat 10px center;}
+.dropContents a.changeBig.current{background: url(../../image/virtual/index/functionary/qiu.png) no-repeat 10px center;}
+.photo{position:absolute;cursor:pointer;z-index: 999; left:0;top:0;width:420px; height:200px;border:1px solid #1d7ecc;background:#ffffff;display:none;}
+.photo img{margin:30px 15px 30px 30px;}
+.mess{float:left;margin-top: 30px;}
+.mess p{line-height: 28px;position: relative;overflow:hidden;_zoom:1;}
+.mess p label{color:#006ec8;  float:left;display:inline-block; width:81px;
+    left: 0;font-weight: bold;}
+.mess p span{color:#ff7700;font-weight: bold;float:left;}
+.photoHov{display: inline-block;width:65px;
+    float: left;}
+.subject,.two .tiComtent{overflow:hidden;}
+.main.two #myquestion{height:100%;}
+.main.two .timu{width:51%;overflow:auto;max-height:initial;float:left;border-right:1px solid #cccccc;height:100%!important;}
+.main.two .subItem.anli{width:auto;border-right:none;border-bottom:none;}
+.editor img{max-width: initial;}
+.main.two .anli.chooseItem{padding:0;width:48.8%!important;box-sizing:border-box;height:100%!important;;}
+.dropContents span{display:block; background:url(../../image/virtual/index/functionary/line.png) 35px bottom no-repeat;margin-right: 0px;}
+.dropContents .last{background:none;}
+.btn .disabled{background-position:0 -781px;color:#f0f0f0;}
+.change_part td{text-align: center;}
+.change_part .partC{text-align: left;}
+.compute{    font-size: 20px; color: #fff; float: left; margin-left: 22px;
+ line-height: 26px;margin-top: 10px;    width: 200px;
+    display: inline-block;
+    float: right;}
+.skill{position:static;border-bottom: 1px solid #cccccc;overflow:hidden;padding:0 10px;}
+.timu{clear:both;max-height:240px;overflow-y:auto;border-bottom: 1px solid #cccccc;}
+.skill a{float:right;margin-left:15px;}
+.anli.chooseItem{border-top: none;}
+.subItem.anli{padding:5px 10px;}
+/*.two .chooseItem.anli div{margin:0px;}*/
+.btn{height:55px;padding-top:7px;}
+.window .txt{min-height:100px;}
+.infoTest{margin:0 auto;padding-bottom:0;min-height:100px;}
+.btnA{margin-top: 20px;}
+.chooseItem ul{overflow:hidden;}
+.first li{float:left;}
+.chooseItem input{top:0;}
+
+.isSubject{margin-left:20px;}
+.isSubject span{float:left;}
+.chooseItem label{padding-left:16px;}
+
+.chooseItem .even{background:#e2f2cf;}
+.chooseItemIn{margin-bottom: 200px;}
+.captcha{padding-left:84px;line-height: 30px;overflow:hidden;}
+.captcha label{float:left; font-size:14px;}
+.captcha input{margin-right:10px;border: 1px solid #dcdcdc;height:28px;float:left;width: 37px;}
+.captcha img{width:37px;height:30px;}
+.windowContent{height:330px; margin-top: -165px;}
+.red{color:red;}

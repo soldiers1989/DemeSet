@@ -1,0 +1,469 @@
+﻿
+@{
+    ViewBag.Title = "套餐课程";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    #maintain_info_box a {
+        font-weight: bold;
+    }
+
+    .jump-ipt {
+        height: 38px !important;
+        line-height: 38px !important;
+    }
+
+    .m-chapterList .chaptername {
+        width: 750px;
+    }
+
+    .m20 {
+        margin: 15px 0;
+        line-height: 1;
+        padding-left: 16px;
+    }
+
+    .ml30 {
+        margin-right: 30px;
+    }
+
+    .count-show {
+        display: inline-block;
+        padding: 9px 20px;
+        background: #f5f5f5;
+        word-break: break-all;
+        white-space: normal;
+    }
+
+        .count-show .ico {
+            position: relative;
+        }
+
+    .ml30 {
+        margin-right: 30px;
+    }
+
+    .left {
+        float: left;
+    }
+
+    .count-show .ico i {
+        display: inline-block;
+        vertical-align: text-bottom;
+        margin-right: 3px;
+        width: 16px;
+        height: 18px;
+        background: url('../../Libs/CourseInfo/imgs/course-detail-icons_98898dc8.png') no-repeat;
+        background-position-x: 0%;
+        background-position-y: 0%;
+    }
+
+    .count-show .ico.evaluate i {
+        background-position: -20px -273px;
+    }
+    .count-show .ico.store i {
+        background-position: -20px -326px;
+    }
+
+    .count-show .ico.study i {
+        width: 18px;
+        background-position: -20px -540px;
+    }
+
+    .fcz {
+        color: #666;
+    }
+
+    .count-show .ico.store {
+        cursor: pointer;
+    }
+
+    .count-show .ico {
+        position: relative;
+    }
+
+        .count-show .ico.store:hover {
+            color: #ff9934;
+        }
+</style>
+
+<input hidden="hidden" id="courseid" value="@ViewBag.CourseId" />
+<input hidden="hidden" id="appraiseLevel" />
+<div class="g-flow f-cb">
+    <div class="b-20"></div>
+    <div class="m-maintainInfo">
+        <div id="maintain_info_box" class="g-flow">
+            <a href="/">首页</a>> &nbsp;
+            <a href="/CourseQueries/Index">网络课</a> &nbsp;
+        </div>
+    </div>
+    <div id="advertisement_box" class="advertisement_box f-pf" style="display:none;"></div>
+    <div class="g-flow f-cb">
+        <div class="b-20"></div>
+        <div class="f-bg courseheadbox" id="j-coursehead">
+            <div class="u-courseHead">
+
+                <div class="ov f-pr j-ch">
+                    <div class="courseMark djMark f-pa j-djMark" style="display:none;"> </div>
+                    <div class="courseMark sfMark f-pa j-sfMark"> </div>
+                    <div class="g-sd1 left j-chimg" id="videoarea">
+                        <img class="course_cover" id="courseimg" width="450" height="250" src="">
+                        <a class="cliBtn course_cover" id="btn_course_vedio"  style="display: none;" data-src=""></a>
+
+                        @* 课程介绍 *@
+                        <div id="video-parent" style="height:100%;width:100%;background:#000;display:none;">
+                            <div class="u-edu-h5player-mainvideo f-pa j-mainVideo">
+                                <video controls="controls" preload="none" width="320" height="240" playsinline="" webkit-playsinline="" crossorigin="anonymous" id="coursevideo"></video>
+                                <span class="notips" style="display:none;">该课程暂无视频</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="g-mn1">
+                        <div class="g-mn1c  j-right f-pr">
+                            <div class="ctarea f-fl j-cht">
+                                <div class="u-coursetitle f-fl">
+                                    <h2 class="f-thide">
+                                        <span id="coursename"></span>
+                                    </h2>
+                                    <div class="f-cb margin-top-15" value="126" id="vid" style="display:none;">
+                                        <span class="hot f-fs0" id="num"></span>
+                                        <span class="j-starNode starall">
+                                            <div class="u-rating" name="" id="courseappraiselevel">
+                                               
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <p class="m20">
+                                        <span class="">课程总时长：</span>
+                                        <span class="ml30" id="CourseLongTime">
+                                        </span>
+                                        <span class="">课程数：</span>
+                                        <span class="" id="CourseWareCount"></span>
+                                    </p>
+                                    <div class="count-show clearfix" style="width: 300px; height: 15px;">
+                                        <a class="left evaluate ico ml30" href="javascript:;">
+                                            <i style="margin-left:  121px;"></i>
+                                            <span class="fcz" id="AppraiseNum">
+                                            </span>次评价
+                                        </a>
+                                        <div class="left study ico ml30">
+                                            <i style="margin-left:221px;"></i>
+                                            <span class="fcz" id="PurchaseNum">
+                                            </span>次学习
+                                        </div>
+                                        <div class="left store J_collect ico add-collect">
+                                            <i class="collectBtn "></i>
+                                            <span class="fcz" id="CollectionNum">
+                                            </span>次收藏
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @* 分享与收藏 *@
+                            @*<div class="j-course-share-ui f-fr" style="overflow: hidden;width: 46px;margin-top: -21px;height: 26px;">
+                                <div class="u-shareUI f-fr f-cb" id="auto-id-1523267642899">
+                                    <a class="j-info info right-icon" title="查看详情" style="display: none;" id="auto-id-1523267642909"></a>
+                                    <a class="j-toStore toStore right-icon" title="加入收藏" style="" id="btn_collect"></a>
+                                    <a class="j-share share right-icon" style="" id="auto-id-1523267642905">
+                <div class="j-shareUI f-win box x-hide">
+                    <div class="ux-share-size24">
+                        <div class="ux-share">
+                            <ul class="ux-share-ways">
+                                <li class="ux-share-wechat">
+                                    <span class="ux-icon-wechat"></span>
+                                    <div class="ux-share-wechat-ercodebox" style="display: none;">
+                                        <div class="ux-share-wechat-ercode">
+                                            <img src="//edu-image.nosdn.127.net/_PhotoUploadUtils_44fd7d56-98d0-4f24-a045-1c2d40025134.png" alt="微信分享">
+                                            <div class="arrow-down arrow-down-out">
+                                                <i class="arrow-down arrow-down-in"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ux-share-QQ">
+                                    <span class="ux-icon-QQ"></span>
+                                </li>
+                                <li class="ux-share-weibo">
+                                    <span class="ux-icon-weibo"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>*@
+
+
+                            @* 立即参加   --加入购物车 *@
+                            <div>
+                                <div class="discountArea f-pa j-discountArea f-cb f-f0">
+                                    <div class="f-cb margin-b-15" style="padding-top: 55px;">
+                                        <span class="price" id="favorableprice"></span>
+                                        <span class="old-price" id="price"></span>
+                                        <span id="" style="margin-left: 30px;"><a id="validityTips">有效期：自购买后</a><label id="ValidityPeriod"></label></span>
+                                    </div>
+                                </div>
+                                <div class="btnarea f-pa j-chbtnarea">
+                                    @*<div class="f-cb limit"></div>*@
+                                    <a class="learnbtn f-db f-cb j-joinBtn" id="btnLearnNow">
+                                        <span>立即参加</span>
+                                    </a>
+                                    <a class="add-pack j-add-pack" style="display: none;" id="AddToCart">加入购物车</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="http://study.163.com/order/confirm.htm" method="post" class="j-payForm" target="_blank">
+                        <input type="hidden" name="productId" class="j-courseId">
+                        <input type="hidden" name="productType" value="0">
+                    </form>
+                </div>
+            </div>
+
+
+
+            <div class="b-15"> </div>
+            <div class="b-15"> </div>
+
+            <div id="processwrap">
+                <div class="learnPro f-bg f-cb" id="course-process">
+                    <div class="m-learnProgress f-pr" id="auto-id-1526634212076">
+                        <div class="barBox f-cb">
+                            <div class="f-cb">
+                                <div class="g-mn2">
+                                    <div class="g-mn2c" style="padding-left: 20px;">
+
+                                        <div class="probg">
+                                            <div class="probar" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="g-sd2">
+                                    <a class="btn f-fr j-btn" href="">
+                                        <span id="btn_start"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="proDetail f-cb" style="padding-left: 20px;">
+                                <span class="pFinished j-pFinished f-fl">目前已完成<em id="learnCount"> 0 </em>个课时, 加油啊！</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-cimn2 f-cb" style="margin-top:15px;">
+                <div class="g-cimn2c f-cb">
+                    <div id="j-livecourse-remind"> </div>
+                    <div class="f-bg" id="j-course-briefintro">
+                        <div class="u-gtit f-pa u-gtit1"></div>
+                        <div class="m-cbi">
+                            <h2 class="u-ctit ctit1">课程概述</h2>
+                            <div class="cintrocon j-courseintro" id="coursecontent">
+                                @* 课程内容概述 *@
+                            </div>
+                        </div>
+                    </div>
+
+                    @* 套餐课程 *@
+                    <div id="j-recommend">
+                        <div class="b-15"></div>
+                        <div class="f-cb f-bg f-pr recommedCourse auto-1522053726687-parent" id="j-recommendCourse">
+                            <h2 class="u-ctit f-thide recommend">套餐课程详情：</h2>
+                            <div class="m-basepool f-cb auto-1522053726687" id="auto-id-1522053727422">
+                                <div class="m-data-lists f-cb f-pr j-data-list" style="" id="coursepacklist">
+                                    @* 套餐课程列表 *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="g-cisd2 f-fr" style="margin-top:15px;">
+                <div class="f-bg" id="j-course-lectors" style="display:none;">
+                    <div class="m-ti">
+                        <div class="lectors j-lectors">
+                            <div class="jts j-jts" style="display: none;">
+                                <div class="f-fr tiicon jtsbtn jtsright j-nextlector"></div>
+                                <div class="f-fr tiicon jtsbtn-mr jtsbtn jtsleft j-prelector"></div>
+                            </div>
+
+                            <div style="cursor:pointer;" class="j-lLink limg f-cb f-pr" data-cid="cid0">
+                                <a id="teacherinfo" data-id="">
+                                    <img height="75" width="75" class="j-limg" src="" id="teacherphoto">
+                                </a>
+                                <span class="j-vipIcon u-orgVipIcon2 f-pa" title="认证机构" style="top: 64px; left: 64px;">
+                                </span>
+                            </div>
+                            <img height="75" class="j-lLink" src="" style="display: none;">
+                            <p class="lname f-thide j-lname" id="teachername"></p>
+                        </div>
+                        <div class="ltxt j-ltxt f-richEditorText edueditor_styleclass_0 edueditor_styleclass_1" id="synopsis"></div>
+                    </div>
+                </div>
+                <div id="j-repo-box" class="f-dn f-bg repoBox f-cb">
+                    <h2 class="u-ctit">相关机考仿真练习</h2>
+                    <div id="j-repoList" class="repoList f-bdr"> </div>
+                </div>
+                <div id="j-contactWrap" class="f-dn">
+                    <div class="b-15"></div>
+                    <div class="f-cb f-bg">
+                        <h2 class="u-ctit">服务咨询</h2>
+                        <div id="j-contact-box" class="f-bdr"></div>
+                    </div>
+                </div>
+                <div id="j-coureseclassWrap" class="f-dn">
+                    <div class="b-15"></div>
+                    <div class="f-cb f-bg">
+                        <h2 class="u-ctit">所属系列课程</h2>
+                        <div id="j-courseclass-box" class="f-bdr"></div>
+                    </div>
+                </div>
+                <div class="f-cb f-bg">
+                    <h2 class="u-ctit">评价</h2>
+                    <div id="j-cmt-box" class="f-bdr">
+                        <div class="">
+                            <div class="m-cmtop f-cb">
+                                <p class="txt f-fs0 s-fc5">给该课程打分：</p>
+                                <div class="rate j-solo">
+                                    <div class="u-rating" >
+                                        <div class="star" ></div>
+                                        <div class="star" ></div>
+                                        <div class="star" ></div>
+                                        <div class="star" ></div>
+                                        <div class="star" ></div>
+                                        <span id="tip" class="j-tip" id="auto-id-1523345154265"></span>
+                                    </div>
+                                </div><a class="edit f-dn j-solo" id="auto-id-1523345154225">编辑</a>
+                            </div>
+                            <div class="m-cmtinp f-db">
+                                <div class="j-input f-pr">
+                                    <div id="auto-id-1523345154234">
+                                        <div class="u-cmtedtip">
+                                            <div class="f-fs0 s-fc6 j-ic f-fl" style="display: none;">
+                                                <div>还可以输入<b class="s-fc1">100</b>字</div>
+                                            </div>
+                                        </div><div class="b-10"></div>
+                                        <div class="u-cmtedit f-cb" style="z-index:102;">
+                                            <div class="wrap f-cb">
+                                                <textarea name="notetxt" class="j-ic mtxt" id="appraisetxt"></textarea><label class="j-ic hint" for="appraisetxt" id="auto-id-1523345154240" style="">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="b-10">
+                                </div>
+                                <div class="u-cmtsb f-cb j-btn" style="">
+                                    <div class="tips j-tips auto-1523345153427-parent">
+                                        <div class="m-feedbackinfo auto-1523345153427" id="auto-id-1523345154269" style="display: none;">
+                                            <div class="warningbox j-warningbox f-cb">
+                                                <span class="right j-warningicon"></span>
+                                                <span class="warning j-warning"></span>
+                                            </div>
+                                            <div class="loadingbox j-loadingbox f-cb">
+                                                <span class="icon"></span><span class="loading j-loading"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="submit j-op" id="appraisesubmit"><span>发表</span></a>
+                                    <a class="j-op f-fs0 cancel" id="cancelsubmit">取消</a>
+                                </div>
+                            </div>
+                            <div class="m-cmttxt"></div>
+                            <div class="u-asknull j-al-null" style="display:none">暂无评价</div>
+                            <div id="appraiselist" class="m-cmtcnt j-5cnt">
+                                @* 客户评价列表 *@
+                            </div>
+                            <a class="m-ckgd j-op f-db" id="auto-id-1449466945302">查看更多</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="b-15"></div>
+                <div id="j-courseusers">
+                    <div>
+                        <div class="u-Pusers j-Pusers f-bg f-cb f-pr">
+                            <h3 class="f-cb"><em class="num j-num f-fl">80706</em><span class="nTask nCourse j-taskOrCourse f-fl" style="margin-top:-25px;font-size:14px;"></span>人在学习该课程</h3>
+                            <div class="j-pics pics">
+                                
+                            </div>
+                        </div>
+                        <div class="j-default userDefault f-bg" style="display: none;">
+                            <h4>没有人学习该课程</h4>
+                        </div>
+                    </div>
+                </div>
+                @*<div id="j-handpickasks">
+                    <div>
+                        <div class="b-15"></div>
+                        <div class="m-handPickAsks f-cb f-bg">
+                            <h2 class="u-ctit">精选问答</h2>
+                            <div class="j-itemarea f-cb con">
+                                <div class="item f-cb ">
+                                    <p><a class="link j-notelink" href="http://study.163.com/ask/askDetail/737073.htm" target="_blank">请问该课程使用的C语言编辑器是什么？Turbo? blond? or visual? C#</a></p>
+                                    <p class="more f-cb"> <span class="f-fl f-thide dc"><span>答案(139)</span>|<span>投票(10)</span></span> <span class="f-fr f-thide from">来自:<a href="http://study.163.com/u/6541147438" class="j-user" id="auto-id-1449466945290" data-cid="cid13">gaopengedu1989</a></span> </p>
+                                </div>
+                                <div class="item f-cb ">
+                                    <p><a class="link j-notelink" href="http://study.163.com/ask/askDetail/1084019.htm" target="_blank">练习去哪里下载？</a></p>
+                                    <p class="more f-cb"> <span class="f-fl f-thide dc"><span>答案(2)</span>|<span>投票(8)</span></span> <span class="f-fr f-thide from">来自:<a href="http://study.163.com/u/4414725516" class="j-user" id="auto-id-1449466945291" data-cid="cid14">王小菲</a></span> </p>
+                                </div>
+                                <div class="item f-cb last">
+                                    <p><a class="link j-notelink" href="http://study.163.com/ask/askDetail/869052.htm" target="_blank">晕，打那么快鬼看得清楚啊，点暂停都来不及！</a></p>
+                                    <p class="more f-cb"> <span class="f-fl f-thide dc"><span>答案(2)</span>|<span>投票(7)</span></span> <span class="f-fr f-thide from">来自:<a href="http://study.163.com/u/2088105155" class="j-user" id="auto-id-1449466945292" data-cid="cid15">ufo88889</a></span> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+            </div>
+        </div>
+
+
+        <script>
+        </script>
+
+
+        <div>
+            <div id="loadingMask" class="loading-mask" style="z-index: 10001; display: none;"></div>
+            <div id="loadingPb" class="ui-loading f-cb" style="z-index: 10002; display: none;"></div>
+        </div>
+        <div class="u-userCard" id="auto-id-1449466944964">
+            <div class="j-cardMain main">
+                <div class="base f-cb">
+                    <div class="face f-fl">
+                        <a class="j-imglink"><img class="j-img" width="80" height="80" src=""></a>
+                    </div>
+                    <div class="info f-fl">
+                        <p class="nameloginfo">
+                            <a target="_blank" class="f-thide f-ib j-name name" title="进入个人主页"></a>
+                        </p>
+                        <p class="j-gztxt gztxt"></p>
+                    </div>
+                </div>
+                <p class="j-des des"></p>
+                <div class="j-gzbtn gz"></div>
+            </div>
+            <div class="j-loading loading"></div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="learnUserList_html">
+    {{each Rows}}
+    <a class="uItem j-uItem f-fl f-pr" href="/User/UserInfo?userid={{$value.Id}}" target="_blank" id="auto-id-1449466945266">
+        <div class="j-icon" id="auto-id-1449466945267" data-cid="cid1">
+            <img class="j-img" src="{{$value.HeadImage}}"><em class="f-thide">{{$value.NickNamw}}</em>
+        </div>
+    </a>
+    {{/each}}
+</script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/CourseInfo/CoursePackInfo.js?v=1.0"></script>

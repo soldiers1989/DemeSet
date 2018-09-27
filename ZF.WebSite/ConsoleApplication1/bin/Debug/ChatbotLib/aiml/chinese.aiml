@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<aiml version="1.0">
+  <category>
+    <pattern>WHO IS LAUREN</pattern>
+    <template>
+      <set name="she">Lauren</set> is a bot on Pandorabots.
+    </template>
+  </category
+</aiml>

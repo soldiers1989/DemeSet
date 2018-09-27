@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_StudyCenterLayout.cshtml";
+}
+
+<div class="leftMenu">
+    <a href="javascript:;" url="MyCourse" class="cur">我的课程</a>
+    <a href="javascript:;" url="CollectionCourse">收藏课程</a>
+    <a href="javascript:;" url="CollectionItem">收藏试题</a>
+    <a href="javascript:;" url="MyErrors">我的错题</a>
+    <a href="javascript:;" url="PracticeRecords">练习记录</a>
+    <a href="javascript:;" url="AssessmentRecords">测评记录</a>
+    <a href="javascript:;" url="MyFootprint">我的足迹</a>
+    <a href="javascript:;" url="RecentStudy">最近学习</a>
+</div>
+<div class="rightContent">
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.leftMenu>a').click(function () {
+            $('.leftMenu>a').each(function () {
+                $(this).removeClass('cur');
+            });
+            $(this).addClass("cur");
+            var args = $.extend({}, { type: "get", dataType: "html", contentType: "application/json", url: $(this).attr("url") });
+            $.ajax(args).done(function (data) {
+                $(".rightContent").html(data);
+            });
+        });
+        $(".leftMenu>a").first().click();
+    });
+</script>

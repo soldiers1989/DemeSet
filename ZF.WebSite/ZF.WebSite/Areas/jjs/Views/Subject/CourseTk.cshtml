@@ -1,0 +1,94 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/ctj.js?v=1.0"></script>
+    <title>机考仿真练习列表</title>
+    <style>
+        .jjsc-tclb a {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .qtkc {
+            left: 20em;
+        }
+
+        .jjsc-tit h3 {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="jjsc-box">
+        <div class="jjsc-tit" id="subject">
+        </div>
+        <script id="subject_html" type="text/html">
+            <h3 id="SubjectName">{{SubjectName}}</h3>
+            <div class="qtkc">
+                <span><a>其他专业</a></span>
+            </div>
+            <div class="jjsc-tclb">
+                {{each SubjectModel}}
+                <a href="#" SubjectName="{{$value.SubjectName}}" subjectId="{{$value.Id}}">{{$value.SubjectName}}</a>
+                {{/each}}
+            </div>
+        </script>
+        <div id="PopularCourses">
+        </div>
+        <script type="text/html" id="PopularCourses_html">
+            {{each Rows}}
+            <div class="jjsc-list">
+                <div class="jjsc-list-l">
+                    <img src="{{$value.CourseIamge}}">
+                </div>
+                <div class="jjsc-list-r">
+                    <a href="/jjs/CourseInfo/Index?id={{$value.Id}}&CourseType={{$value.CourseType}}">
+                        <h3>
+                            {{$value.CourseName}}
+                        </h3>
+                        <dl>
+                            <dt>¥{{$value.FavourablePrice}}</dt>
+                            {{if $value.Count}}
+                            <dd>{{$value.Count}}人在学</dd>
+                            {{else}}
+                            <dd>0人在学</dd>
+                            {{/if}}
+                            <div class="clear"></div>
+                        </dl>
+                    </a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            {{/each}}
+        </script>
+    </div>
+    <!--底部导航开始-->
+    <div class="header-nav">
+        <ul>
+            <li><a href="~/jjs/HomePage/Index" class="img01">首页</a></li>
+            <li style="display: none;"><a href="~/jjs/Information/Index" class="img02">最新资讯</a></li>
+            <li><a href="~/jjs/PersonalCenter/Index" class="img03">个人中心</a></li>
+        </ul>
+    </div>
+    <input type="hidden" Id="Rows" value="5" />
+    <input type="hidden" Id="PageIndex" value="1" />
+    <!--底部导航结束-->
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/Subject/CourseTk.js?v=1.0"></script>

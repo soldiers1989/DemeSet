@@ -1,0 +1,246 @@
+﻿.m-myOrder .u-mounav h3 {
+    padding: 30px 0 20px;
+}
+
+.m-myOrder .u-mounav .order-status .tab.current {
+    color: #e2231a;
+    border-bottom: 4px solid #e2231a;
+}
+
+.m-myOrder .u-mounav .order-status .tab {
+    padding-bottom: 15px;
+    margin-right: 60px;
+}
+.u-mounav{margin-bottom:15px;}
+.m-myOrder .header {
+    margin-top: 40px;
+    color: #666;
+    border-bottom: 1px solid #eee;
+    padding: 10px 20px;
+    box-shadow: none;
+    font-size: 0;
+}
+
+
+
+.g-doc, .g-wrap, .g-flow, .g-superflow, .g-all {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.bg, .f-bg {
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 0 #fff;
+    -moz-box-shadow:  0 0 0 #fff;
+    box-shadow: 0 0 0 #fff;
+    margin-bottom；15px;
+}
+
+.f-cb, .f-cbli li {
+    zoom: 1;
+}
+.m-myOrder .m-data-lists .u-OrderCard {
+    margin: 0 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+    
+}
+
+
+
+/*.u-emptybig {
+    background: url(//s.stu.126.net/res/images/ui/ui_empty.png?5a58583…) center 40px no-repeat;
+    padding: 260px 0 40px 0;
+}*/
+
+.f-thide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+}
+
+
+.m-myOrder .m-data-lists .u-OrderCard {
+    margin: 0 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+}
+
+
+.m-myOrder .m-data-lists .u-OrderCard .info {
+    color: #999;
+    font-size: 12px;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con .red {
+    font-size: 14px;
+    color: #ff5500;
+    margin-top: 9px;
+    text-align:left;
+}
+
+.m-myOrder .header .header-item.first {
+    margin-right: 300px;
+}
+
+.m-myOrder .header .header-item {
+    margin-right: 100px;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .cont {
+    box-shadow: none;
+    border:1px solid #dcdcdc;marign-top:5px;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .right-info {
+    color: #666;
+    width: 36%;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .right-info .status {
+    margin-right: 100px;
+    width: 56px;
+    text-align: center;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .right-info .oper .re-buy, .m-myOrder .m-data-lists .u-OrderCard .right-info .oper .go-pay {
+    background: #49af4f;
+    border-radius: 2px;
+    color: #fff;
+    padding: 5px 17px;
+    display: block;
+    margin-top: 17px;
+   
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .right-info .oper a {
+    color: #666;
+}
+
+.f-fl {
+    float: left;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order {
+    font-size: 12px;
+    margin-top: 20px;
+    color: #999;
+}
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con {
+    margin-top: 15px;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con .col1 {
+    width:62%;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con .title {
+    color: #333;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-align: left;
+    padding:0;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con .price-alone {
+    width: 52px;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con .price-alone, .m-myOrder .m-data-lists .u-OrderCard .sub-order-con .price, .m-myOrder .m-data-lists .u-OrderCard .sub-order-con .old-price, .m-myOrder .m-data-lists .u-OrderCard .sub-order-con .pay-price, .m-myOrder .m-data-lists .u-OrderCard .sub-order-con .oper {
+    display: inline-block;
+    text-align: center;
+}
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con .pay-price {
+   
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con .oper {
+    width: 56px;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .right-info .status {
+    margin-right: 100px;
+    width: 56px;
+    text-align: center;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con .old-price {
+    display: block;
+    text-decoration: line-through;
+    color: #999;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .right-info .oper .go-pay:hover {
+    background-color: #ff5500;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .right-info .oper .re-buy:hover, .m-myOrder .m-data-lists .u-OrderCard .right-info .oper .go-pay:hover {
+    background-color: #54C15A;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .right-info .oper .go-pay {
+    padding: 5px 20px;
+    left: -13px;
+    background-color: #ff8000;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .order-left-info {
+    border-right: 1px solid #eee;
+    width: 64%;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .right-info .status {
+    margin-right: 0;
+    width: 30%;
+    text-align: center;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .order-left-info .order-sub-order-con {
+     margin-top: 10px; 
+     border-bottom: 1px solid #ccc;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order-con {
+    margin-top: 15px;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order {
+    font-size: 12px;
+    margin-top: 20px;
+    color: #999;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard .sub-order {
+    font-size: 12px;
+    margin-top: 20px;
+    color: #999;
+}
+
+.m-myOrder .m-data-lists .u-OrderCard {
+    margin: 0 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+}
+
+.ui-table{width:100%;margin:0 auto;}
+
+.ui-table table{height:100%;}
+.ui-table .layui-btn{
+    display: block;
+    width: 80px;
+    padding: 0;
+    text-align: center;
+    margin: 5px auto!important;
+    margin-bottom: 10px;
+    text-indent:0;margin-left:0;
+}
+.ui-table table tr:last-child{border:none!important;}
+.orderDetails{color:#e2231a;font-size:14px;line-height:30px;}
+.orderDetails:hover{text-decoration:underline;color:#ff6000;}

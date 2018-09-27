@@ -1,0 +1,132 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.zengz_box{ 
+	width: 100%; 
+	margin: 0 auto;
+	background: #fafafa;
+}
+.zengz_box h2{ 
+	font: 1.2em; 
+	font-weight: 400;
+	line-height: 2.5em; 
+	text-align: center; 
+	background: #e5e5e5; 
+
+	 background: -webkit-linear-gradient(left, #bcecfc , #eaf8fd); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right,  #bcecfc, #eaf8fd); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #bcecfc, #eaf8fd); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #bcecfc , #eaf8fd); /* 标准的语法（必须放在最后） */
+}
+.zengz_box ul{
+	list-style-type: none;
+}
+.zengz_box ul li{
+	height: 5em;
+	border-bottom: 0.071em dashed #c4c4c4;
+	margin: 0 auto;
+	line-height: 1.5em;
+	font-size: 1.2em;
+	padding: 0.6em 0 0 6em;
+	color: #f95352;
+}
+.zengz_box ul li p{
+	padding-top: 0.8em;
+	font-size: 0.9em;
+}
+.zengz_box ul li a{  color: #5202D3;}
+.zengz_box ul li a:hover{ color: #00d15d;}
+.zengz_box ul li.zzbg_01{
+	background: url(../images/zengzhi001.png) no-repeat 1.8em 1em;
+	background-size: 3em;
+}
+
+.zengz_box ul li.zzbg_02{
+	background: url(../images/zengzhi002.png) no-repeat 1.5em 0.8em;
+	background-size: 3.5em;
+}
+
+.zengz_box ul li.zzbg_03{
+	background: url(../images/zengzhi003.png) no-repeat 1.5em 0.8em;
+	background-size: 3.5em;
+}
+
+.zzqueding{ width: 100%; height: 3em; font-size: 1.3em;}
+.zzqueding dt{ width: 50%; float: left; text-align: center; line-height: 3em;
+ background: -webkit-linear-gradient(top, #bcecfc , #eaf8fd); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom,  #bcecfc, #eaf8fd); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom, #bcecfc, #eaf8fd); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom, #bcecfc , #eaf8fd); /* 标准的语法（必须放在最后） */
+}
+.zzqueding dd{ width: 50%; float: left; text-align: center; line-height: 3em;
+ background: -webkit-linear-gradient(top, #bcecfc , #eaf8fd); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom,  #bcecfc, #eaf8fd); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom, #bcecfc, #eaf8fd); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom, #bcecfc , #eaf8fd); /* 标准的语法（必须放在最后） */
+}
+.zzqueding a{ display: block;}
+.zzqueding a:hover{ color: red;
+background: -webkit-linear-gradient(top, #bcecfc , #eaf8fd); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(top,  #bcecfc, #eaf8fd); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(top, #bcecfc, #eaf8fd); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to top, #bcecfc , #eaf8fd); /* 标准的语法（必须放在最后） */
+}
+
+.tousu{ 
+     width:95%; 
+	 margin: 0 auto;
+	padding: 1.5em 0;
+	
+}
+
+.zengz_list{ width: 100%; padding-bottom: 1em;}
+.zengz_list h3{ line-height: 2em;}
+
+.zengz_list textarea{
+	width: 90%; height: 5em;
+	border: 0.071em solid #dbdbdb;
+	line-height: 1.8em;
+	font-size: 1.2em;
+	color: #666;
+	padding: 0.2em;
+}
+
+.zengz_fm{ width: 90%; height: 12em; border: 0.071em solid #dbdbdb; background: #fff; }
+.zengz_fm a.zp_anniu{
+	display: block; 
+	background: #0e3b95;
+	width: 8em; 
+	height: 2.5em;
+	color: #fff; 
+	text-align: center; 
+	line-height: 2.5em;
+	margin: 0.5em 0 0 0.5em;
+	border-radius: 0.5em;
+	font-size: 1em;
+	float: left;
+}
+.zengz_fm a:hover.zp_anniu{ background: #f69c24;}
+.zengz_fm a.zhaopian{
+	display: block;
+	width: 10em;
+	height: 10em;
+	background: url(../images/sctp.png) no-repeat;
+	background-size: 100%;
+	float: left;
+	margin: 0.5em 0 0 2em;
+}
+
+.zengz_fm a:hover.zhaopian{opacity: 1;}
+
+
+
+
+
+
+
+
+
+
+
+
+

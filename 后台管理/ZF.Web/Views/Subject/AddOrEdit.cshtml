@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "科目新增(修改)";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>科目名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="SubjectName" name="SubjectName">
+                </div>
+                <div class="form-group">
+                    <label>所属项目</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="ProjectId" name="ProjectId"></select>
+                </div>
+                <div class="form-group">
+                    <label>是否经济基础</label><span class="text-danger">*</span>
+                    <select class="form-control" id="IsEconomicBase" name="IsEconomicBase" >
+                        <option value="1">是</option>
+                        <option value="0" selected="selected">否</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>排序号</label>
+                    <input type="number" min="1" step="1" class="form-control" id="OrderNo" name="OrderNo" />
+                </div>
+                <div class="form-group">
+                    <label>科目说明</label>
+                    <textarea type="text" class="form-control" style="height: 70px;" id="Remark" name="Remark"></textarea>
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/Subject/AddOrEdit.js"></script>

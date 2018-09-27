@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>试题模块</a>/<a>科目知识点管理</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-2 KnowledgePointTree" style="overflow: auto;">
+    <label>请选择科目或知识点</label>
+    <ul id="treeDemo1" class="ztree"></ul>
+</div>
+<div class="col-xs-10" style="border-left-style: solid; border-width: 1px;">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <input class="btn btn-success add_btn" type="button" value="添加">&nbsp;
+                <input class="btn btn-info edit_btn" type="button" value="编辑">&nbsp;
+                <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+            </div>
+            <div class="form-group">
+                <label>知识点名称：</label>
+                <input id="QueryKnowledgePointName" Name="KnowledgePointName" class="form-control" />
+                <label>知识点代码：</label>
+                <input id="QueryKnowledgePointCode" Name="KnowledgePointCode" class="form-control" />
+                <input type="hidden" id="QueryParentId" Name="ParentId" class="form-control" />
+                <input type="hidden" id="QueryParentName" Name="ParentName" class="form-control"/>
+
+                <input type="hidden" id="QueryProjectClassId" Name="ProjectClassId" class="form-control"/>
+                <input type="hidden" id="QueryProjectId" Name="ProjectId" class="form-control" />
+                
+                <input class="btn btn-success query_btn" type="button" value="查询">
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+<style>
+    #selectFrom .form-control {
+        min-width: 179px;
+    }
+</style>
+<script src="~/Views/SubjectKnowledgePoint/Index.js"></script>

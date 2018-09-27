@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "章节练习习题";
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <title>经济师初级_金融_章节练习</title>
+</head>
+<body>
+    <input type="hidden" Id="ChapterId" value="@ViewBag.ChapterId" />
+    <input type="hidden" Id="ChapterQuestionsId" value="@ViewBag.ChapterQuestionsId" />
+
+    <div class="alfx-list01">
+        <div class="alfx-tit">
+            <b id="subjectType"></b><span class="red"></span>/<span id="total"></span>
+            <span class="fx-time">56:31</span>
+        </div>
+    </div>
+    <div class="line_3px"></div>
+
+    <div class="alfx-box">
+        
+    </div>
+
+    <div class="alfx-head">
+        <ul>
+            <li class="al-hd01">上一题</li>
+            <li class="al-hd02">试题列表</li>
+            <li class="al-hd03">下一题</li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</body>
+</html>
+
+
+
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/ctj.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/ChatperExerciseView/Index.js?v=1.0"></script>

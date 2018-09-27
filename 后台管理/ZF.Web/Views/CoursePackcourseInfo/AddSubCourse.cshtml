@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "添加套餐子课程";
+    Layout = null;
+}
+<link href="~/Libs/select2-4.0.6/css/select2.min.css" rel="stylesheet" />
+<style type="text/css">
+    .short-select {
+        width:100px;
+    }
+</style>
+
+<div class="col-xs-12 subcourse">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="subCourseSelectFrom" name="selectFrom">
+            <div class="form-group">
+                <input hidden="hidden" id="packCourseId" name="PackCourseId" value="@ViewBag.PackCourseId" />
+                <label>所属项目类别：</label>
+                <select id="QProjectClassId" Name="ProjectClassId" class="form-control short-select" ></select>
+                <label>项目：</label>
+                <select id="QProjectId" Name="ProjectId" class="form-control short-select" ></select>
+                <label>科目：</label>
+                <select id="QSubjectId" Name="SubjectId" class="form-control short-select" ></select>
+                <label>课程名称：</label>
+                <input id="QCourseName" Name="CourseName" class="form-control" style="width: 120px;" />
+                <label>主讲教师</label>
+                <select class="form-control" id="QTeacherId" name="TeacherId"></select>
+                <input class="btn btn-success query_btn1" type="button" value="查询">
+                <input class="btn btn-success add_btnSubCourse" type="button" value="添加">
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="subCourseData"></table>
+        <div id="subCoursePager"></div>
+    </div>
+</div>
+<script src="~/Libs/select2-4.0.6/js/select2.min.js"></script>
+<script src="~/Libs/select2-4.0.6/js/i18n/zh-CN.js"></script>
+<script src="~/Views/CoursePackcourseInfo/AddSubCourse.js"></script>

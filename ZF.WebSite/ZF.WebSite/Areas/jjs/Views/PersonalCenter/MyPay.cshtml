@@ -1,0 +1,218 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <title>金融支付</title>
+    <script>
+
+    </script>
+</head>
+<body>
+    <input type="hidden" value="@ViewBag.parment" id="hiparament" />
+    @*<input type="hidden" value="@ViewBag.cartcount" id="hicartcount" />*@
+    <input type="hidden" id="hiOrderNO" />
+    @*<input type="hidden" id="openid" value="@ViewBag.openid" />*@
+
+    <!--订单参数-->
+    <input type="hidden" value="@ViewBag.wxJsApiParam" id="wxJsApiParam" />
+    <!--订单参数-->
+    <div class="jrzf-box">
+
+        <!--订单详情 start-->
+        <div id="datas">
+
+        </div>
+
+        <script id="datainfo" type="text/html">
+            {{each Result}}
+            <div class="jrzf-list01" name="{{$value.Id}}">
+                <div class="jrzf-list01-l"> <img src="{{$value.CourseIamge}}" alt=""> </div>
+                <div class="jrzf-list01-r">
+                    <h4>{{$value.CourseName}}</h4>
+                    <p>¥ {{$value.Amount}}</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            {{/each}}
+        </script>
+
+        <!--订单详情 end-->
+
+        <div class="hei1em"></div>
+        <div class="line_3px"></div>
+        <div class="jrzf-list02">
+            <span>支付方式</span>
+            <input type="radio" checked="checked" name="sex" value="0">
+            <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/zhifu@2x.png">
+        </div>
+        <div class="line_3px"></div>
+
+        <div class="jrzf-list05" id="pathshow" style="display:none;">
+        </div>
+        <div class="line_3px"></div>
+
+        <!--讲义收货地址 start-->
+        <div id="consignee-list">
+        </div>
+        <script type="text/html" id="path_html">
+            {{if length>0}}
+            {{each}}
+            {{if $value.DefaultAddress===1}}
+            <div class="jrzf-list07" name="{{$value.Id}}" onclick="enditiClass(this)">
+                <p class="jrzf-list06-l" title="{{$value.Contact}}">{{$value.Contact}}</p>
+                <p class="jrzf-list06-r">
+                    {{$value.Province}} {{$value.City}} {{$value.Town}} {{$value.DetailedAddress}}<br>
+                    手机号：{{$value.ContactPhone}}  邮编：{{$value.Zip}}
+                </p>
+                <div class="clear"></div>
+            </div>
+            {{else}}
+            <div class="jrzf-list06" name="{{$value.Id}}" onclick="enditiClass(this)">
+                <p class="jrzf-list06-l" title="{{$value.Contact}}">{{$value.Contact}}</p>
+                <p class="jrzf-list06-r">
+                    {{$value.Province}} {{$value.City}} {{$value.Town}} {{$value.DetailedAddress}}<br>
+                    手机号：{{$value.ContactPhone}}  邮编：{{$value.Zip}}
+                </p>
+                <div class="clear"></div>
+            </div>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <div class="jrzf-list06"> 暂无收货地址</div>
+            {{/if}}
+        </script>
+        <!--讲义收货地址 end-->
+
+
+        <div class="line_3px"></div>
+        <div class="jrzf-list08">
+            <h5>
+                <input type="checkbox" name="sex" id="openfp" class="jdradio001" value="0">
+                <label for="openfp">开具电子发票</label>
+            </h5>
+            <div class="container" style="display:none;">
+                @*<ul class="tabs">
+                    <li class="active"><a id="tab1" href="javascript:;">个人</a></li>
+                    <li><a id="tab4" href="javascript:;">企业</a></li>
+                    <div class="clear"></div>
+                </ul>*@
+                <div class="tab_container">
+                    <div id="tab4" class="tab_content">
+                        <dl>
+                            <dt><b>*</b>发票抬头</dt>
+                            <dd>
+                                <input name="" id="txtInvoiceHeader" type="text">
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <dl id="divpersonal">
+                            <dt><b>*</b>纳税人识别号</dt>
+                            <dd>
+                                <input name="" id="txtTaxpayerIdentificationNumber" type="text">
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <dl>
+                            <dt><b>*</b>手机号</dt>
+                            <dd>
+                                <input name="" id="txtInvoicePhone" type="text">
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <dl>
+                            <dt><b>*</b>邮箱地址</dt>
+                            <dd>
+                                <input name="" id="txtInvoiceMailbox" type="text">
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <dl style="text-align:center;">
+                            仅提供电子发票，每个订单发票只能开具一次<br />
+                            发票无法退换，敬请谅解。
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--支付底部导航开始-->
+        <div class="jrzf-header">
+            <dl>
+                <dt id="amount"></dt>
+                <dd><a href="javascript:;" onclick="OrderClick()">立即支付</a></dd>
+                <div class="clear"></div>
+            </dl>
+        </div>
+        <!--支付底部导航结束-->
+
+    </div>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jweixin-1.0.0.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/PersonalCenter/MyPay.js?v=1.0"></script>
+<script>
+    topevery.ajaxToThis({
+        type: "Post",
+        url: "/jjs/PersonalCenter/GetJsapiTicketPublic",
+        data: JSON.stringify({ "findUrl": "http://zgrskspx.class.com.cn/jjs/PersonalCenter/MyPay" }),
+        dataType: "html"
+    }, function (data) {
+        var row = JSON.parse(data);
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: row.appId, // 必填，公众号的唯一标识
+            timestamp: parseInt(row.timestamp), // 必填，生成签名的时间戳
+            nonceStr: row.nonceStr, // 必填，生成签名的随机串
+            signature: row.signature, // 必填，签名，见附录1
+            jsApiList: ['checkJsApi',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ',
+                        'onMenuShareWeibo',
+                        'onMenuShareQZone',
+                        'hideMenuItems',
+                        'showMenuItems',
+                        'hideAllNonBaseMenuItem',
+                        'showAllNonBaseMenuItem',
+                        'translateVoice',
+                        'startRecord',
+                        'stopRecord',
+                        'onVoiceRecordEnd',
+                        'playVoice',
+                        'onVoicePlayEnd',
+                        'pauseVoice',
+                        'stopVoice',
+                        'uploadVoice',
+                        'downloadVoice',
+                        'chooseImage',
+                        'previewImage',
+                        'uploadImage',
+                        'downloadImage',
+                        'getNetworkType',
+                        'openLocation',
+                        'getLocation',
+                        'hideOptionMenu',
+                        'showOptionMenu',
+                        'closeWindow',
+                        'scanQRCode',
+                        'chooseWXPay',
+                        'openProductSpecificView',
+                        'addCard',
+                        'chooseCard',
+                        'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+    });
+</script>

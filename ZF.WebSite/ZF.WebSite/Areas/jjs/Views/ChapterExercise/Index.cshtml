@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "我的练习";
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" />
+    <title>练习记录</title>
+</head>
+<input type="hidden" Id="Rows" value="9" />
+<input type="hidden" Id="PageIndex" value="1" />
+<body class="body">
+    <div id="PracticeRecords"></div>
+<script type="text/html" id="PracticeRecords_html">
+    {{if Rows.length>0}}
+    {{each Rows}}
+    <div class="cpjl-list">
+        <div class="cpjl-nr1">
+            <dl>
+                <dt><img src="/Areas/jjs/resources/images/lianxi@3x.png"></dt>
+                <dd>
+                    <h5>{{$value.VideoName}}</h5>
+                    <p>
+                        <span>完成率:<i>{{$value.Completion}}%</i></span>
+                        <span>正确率:<i>{{$value.Correct}}%</i></span>
+                    </p>
+                </dd>
+                <div class="clear"></div>
+            </dl>
+            <span class="time">{{$value.AddTime}}</span>
+        </div>
+        <div class="cpjl-nr2">
+            <p class="width01">{{$value.CourseName}}</p>
+            <span class="width02">
+             <a href="/jjs/Practice/ItemList?ChapterQuestionsId={{$value.Id}}" class="yse03">查看练习</a></span>
+                <div class="clear"></div>
+            </div>
+        </div>
+        {{/each}}
+        <div class="hei2em"></div>
+        {{else}}
+        <div class="zanwu" >
+            <img src="/Areas/jjs/resources/images/zanwu.png">
+            <p><a href="#">暂无记录</a></p>
+        </div>
+        {{/if}}
+    </script>
+    <div class="header-nav">
+        <ul>
+            <li><a href="~/jjs/HomePage/Index" class="img01">首页</a></li>
+            <li style="display: none;"><a href="~/jjs/Information/Index" class="img02">最新资讯</a></li>
+            <li><a href="~/jjs/PersonalCenter/Index" class="img03">个人中心</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/ctj.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/ChapterExercise/Index.js?v=1.0"></script>

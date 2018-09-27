@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "课程详情";
+}
+
+<iframe id="mainIframe" width="100%;"   style="min-height: 1400px;" name="mainIframe" src="CourseInfoIfarm?courseId=@ViewBag.courseId&courseType=@ViewBag.courseType" frameborder="0" scrolling="no" onload="setIframeHeight(this)"></iframe>
+<script>
+    function setIframeHeight(iframe) {
+        if (!iframe) {
+            iframe = document.getElementById("mainIframe");
+        }
+        if (iframe) {
+            var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+            if (iframeWin.document.body) {
+                setTimeout(function () { iframe.height = $(window.frames["mainIframe"].document.getElementsByClassName("g-flow")[0]).height() }, 200);
+                console.log(iframe.height);
+            }
+        }
+    };
+</script>

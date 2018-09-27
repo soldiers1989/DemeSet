@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/HandOutPathAddOrEnditi.css" rel="stylesheet" />
+<div class="m" id="edit-cont">
+    <div class="mc">
+        <div class="form">
+            <input type="hidden" value="@ViewBag.handid" id="handid" />
+            <input id="is-recommend-area" value="true" style="display: none">
+            <div class="item">
+                <span class="label"><em>*</em>收货人：</span>
+                <div class="fl">
+                    <input id="consigneeName" type="text" class="text" >
+                </div>
+                <div class="clr"></div>
+            </div>
+
+            <!-- 有推荐功能的地址菜单 -->
+            <div class="item" id="recommend-area">
+                <span class="label"><em>*</em>所在地区：</span>
+                <div id="jd_area" class="ui-area-wrap fl">
+                    <select class="select" name="province" id="province">
+                        <option value="">请选择</option>
+                    </select>
+                    <select class="select" name="city" id="city">
+                    </select>
+                    <select class="select" name="town" id="town">
+                    </select>
+                </div>
+            </div>
+
+            <div class="item">
+                <span class="label"><em>*</em>详细地址：</span>
+                <div class="fl">
+                    <span style="float: left;margin-right: 5px;line-height:32px;" id="areaName"></span>
+                    <input id="consigneeAddress" type="text" class="text text1" onblur="checkConsigneeAddress()">
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="item">
+                <div class="fl">
+                    <span class="label"><em>*</em>手机号码：</span>
+                    <input id="consigneeMobile" type="text" maxlength="11" class="text" onblur="phoneIsvalidata(this)">
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="item">
+                <span class="label">邮编：</span>
+                <div class="fl">
+                    <input id="consigneeEmail" type="text" class="text text1" maxlength="50" onblur="checkEmail()">
+                </div>
+                <div class="clr"></div>
+            </div>
+            <span class="error-msg" id="consigneeAddressNote" >sdf</span>
+            <div class="btns">
+                <a href="javascript:;" onclick="addAddress();" class="e-btn btn-9 save-btn">保存收货地址</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/js/jquery-1.11.3.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/js/area.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/js/select.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/md5.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/HandOutPathAddOrEnditi.js?v=1.0"></script>

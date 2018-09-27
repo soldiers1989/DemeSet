@@ -1,0 +1,224 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html id="J_prismPlayer"  style="width:98%;height:98%;position:fixed;">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    @*<link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">*@
+    <title>视频播放</title>
+</head>
+<body >
+    <input id="CourseId" type="hidden" value="@ViewBag.CourseId" />
+    <input id="VideoId" type="hidden" value="@ViewBag.VideoId" />
+    <input id="ChapterId" type="hidden" value="@ViewBag.ChapterId" />
+
+    <div >
+    </div>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/jquery.js" type="text/javascript"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/ctj.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css" />
+<script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js?v=1.0"></script>
+<script>
+    $(function () {
+        playVideo();
+        GetAllVideo();
+    })
+
+    var videoId = $("#VideoId").val();
+    var courseid = $("#CourseId").val();
+    function playVideo() {
+        //判断是否已购买
+        topevery.ajaxwx({
+            url: 'api/Sheet/IfAreadyPay',
+            data: JSON.stringify({ CourseId: courseid })
+        }, function (data) {
+            if (data.Result) {
+                if (videoId) {
+                    //判断是否已购买，已购买则播放视频
+                    topevery.ajax({
+                        url: 'api/CourseVideo/GetOne',
+                        data: JSON.stringify({ Id: videoId })
+                    }, function (data) {
+                        if (data.Success) {
+                            var model = data.Result;
+                            //手动设置视频播放器的视频源
+                            //videoPlayer.src(model.VideoUrl);
+                            videoPlayer(model.VideoUrl, 0);
+                        }
+                    });
+                }
+            } else {
+                if (videoId) {
+                    topevery.ajaxwx({
+                        url: 'api/CourseVideo/GetOne',
+                        data: JSON.stringify({ Id: videoId })
+                    }, function (data) {
+                        var model = data.Result;
+                        //判断是否为试听章节
+                        if (data.Success && model.IsTaste == 1) {
+                            //手动设置视频播放器的视频源
+                            videoPlayer(model.VideoUrl, model.TasteLongTime * 60);
+                            //播放一栏显示试听时间
+                            $('.msg-note').removeClass('hidetips');
+                            $('.tastetime').text(model.TasteLongTime);
+                        } else {
+                            //提示购买观看,显示课程价格信息
+                            topevery.ajaxwx({
+                                url: 'api/CourseInfo/GetOne',
+                                data: JSON.stringify({ Id: courseid })
+                            }, function (data) {
+                                if (data.Result) {
+                                    var obj = data.Result;
+                                    layer.msg("请先购买该课程");
+                                }
+                            });
+                        }
+                    })
+                }
+            }
+        });
+    }
+
+    var player = new Object();
+    function videoPlayer(VideoUrl, TasteLongTime) {
+        topevery.ajaxwx({
+            url: 'api/CourseVideo/GetVideo',
+            data: JSON.stringify({ Id: VideoUrl })
+        }, function (data) {
+            if (data.Result) {
+                var row = data.Result;
+                if (player._created) {
+                    player.dispose();
+                }
+                player = new Aliplayer({
+                    id: 'J_prismPlayer',
+                    width: '98%',
+                    height: '98%',
+                    cover: row.CoverURL,
+                    autoplay: true,
+                    format: "m3u8",
+                    vid: VideoUrl,
+                    playauth: row.PlayAuth,
+                    //x5_orientation: 'landscape'
+                }, function (player) {
+                    player.play();
+                    //var interval = 0;
+                    //player.setImage('vertical');
+                    //setInterval(function () {
+                    //    interval += 2;
+                    //    player.setRotate(interval);
+                    //}, 500);
+                    
+                    player.fullscreenService.requestFullScreen;
+                    //player.fullscreenService.requestFullScreen();
+                });
+                
+                player.on('timeupdate', function (e) {
+                    if (TasteLongTime > 0) {
+                        if (player.getCurrentTime() > TasteLongTime) {
+                            player.pause();
+                            topevery.ajaxwx({
+                                url: 'api/CourseInfo/GetOne',
+                                data: JSON.stringify({ Id: courseid })
+                            }, function (data) {
+                                if (data.Result) {
+                                    var obj = data.Result;
+                                    layer.msg("试听已经结束,请购买观看完整视频");
+                                }
+                            });
+                        }
+                    }
+                });
+                player.on('ended', function (e) {
+                    topevery.ajaxwx({
+                        url: 'api/CourseLearnProgress/IfExist',
+                        data: JSON.stringify({ CourseId: courseid, ChapterId: $('#ChapterId').val(), VideoId: $('#VideoId').val() })
+                    }, function (data) {
+                        if (!data.Result) {
+                            addLearnRecord();
+                        } else {
+                            updateLearnState();
+                        }
+                    });
+                });
+                player.on('play', function (e) {
+                    //是否已看过该视频
+                    topevery.ajaxwx({
+                        url: 'api/CourseLearnProgress/IfExist',
+                        data: JSON.stringify({ CourseId: courseid, ChapterId: $('#ChapterId').val(), VideoId: $('#VideoId').val() })
+                    }, function (data) {
+                        if (!data.Result) {
+                            addLearnRecord();
+                        }
+                    })
+                });
+            }
+        });
+    }
+
+    ///添加观看视频记录
+    function addLearnRecord() {
+        topevery.ajaxwx({
+            url: 'api/CourseLearnProgress/Add',
+            data: JSON.stringify({ CourseId: courseid, ChapterId: $('#ChapterId').val(), VideoId: $('#VideoId').val() })
+        })
+    }
+
+    //更新视频观看状态-1：已看完
+    function updateLearnState() {
+        topevery.ajaxwx({
+            url: 'api/CourseLearnProgress/UdpateState',
+            data: JSON.stringify({ CourseId: courseid, ChapterId: $('#ChapterId').val(), VideoId: $('#VideoId').val(), State: 1 })
+        })
+    }
+
+    var allVideo=[];
+    function GetAllVideo(){
+        topevery.ajaxwx({
+            url: "api/CourseAppraise/GetCourseChapterList",
+            data: JSON.stringify({ CourseId: courseid }),
+            async:false
+        }, function (data) {
+            if (data.Success) {
+                var list=data.Result;
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i].SubChapterList && list[i].SubChapterList.length > 0) {
+                        Traversal(list[i]);
+                    }
+                }
+            }
+        });
+    }
+
+    function Traversal(obj) {
+        if (obj.SubChapterList && obj.SubChapterList.length>0) {
+            var list = obj.SubChapterList;
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].SubChapterList == null || list[i].SubChapterList.length == 0) {
+                    allVideo.push(list[i].VideoId);
+                    continue;
+                } else {
+                    Traversal(list[i]);
+                }
+            }
+        }
+    }
+    
+
+</script>

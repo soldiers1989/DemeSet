@@ -1,0 +1,385 @@
+﻿body {
+    font-family: "Microsoft YaHei";
+}
+
+#questionModule.cross-range {
+    margin-bottom: 10px;
+}
+
+#questionModule {
+    width: 100%;
+    background: none;
+    overflow: hidden;
+}
+
+.cross-range {
+    width: 865px;
+    overflow: hidden;
+}
+
+.sub-conanswer .sub-dotitle {
+    background: #fff;
+    padding-bottom: 0;
+}
+
+.sub-dotitle {
+    padding: 10px 30px;
+    padding-bottom: 10px;
+    line-height: 24px;
+    background: #f9f9fa;
+    color: #151515;
+    position: relative;
+}
+
+.main_right .subject-con {
+    font-size: 16px;
+}
+
+.subject-con {
+    margin-bottom: 15px;
+    background: #fff;
+    font-size: 14px;
+    position: relative;
+    border-radius:3px;
+    overflow:hidden;
+}
+
+.bor {
+    background: #fff;
+    border: 1px solid #e0e3e9;
+}
+
+clearfix {
+    zoom: 1;
+}
+
+.sub-content {
+    position: relative;
+    display: block;
+    display: inline-block;
+}
+
+.sub-conanswer .subjec-wrong {
+    background-position: -4px -325px;
+}
+
+.sub-conanswer .subjec-daan {
+    width: 30px;
+    height: 35px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 1;
+}
+
+.sub-dotitle em {
+        color: #e45c40;
+    margin-right: 10px;
+    float: left;
+    border: 1px solid #f32426;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 12px;
+    height: 15px;
+    line-height: 15px;
+}
+
+.sub-dotitle i {
+    color: #e45c40;
+    font-style:initial;
+}
+
+ul {
+    list-style: none;
+}
+
+.sub-answer {
+    padding: 15px 50px 25px 65px;
+    clear: both;
+    background: url(../imgs/logo_bg.png) no-repeat center;
+}
+
+.sub-answer-no dd {
+    margin-bottom: 3px;
+}
+
+.sub-answer dd {
+    display: block;
+    padding: 6px 0 6px 45px;
+    margin-left: -20px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #151515;
+    position: relative;
+    cursor: pointer;
+}
+
+    .sub-answer dd > p {
+        float: right;
+    }
+
+.sub-dotitle > p {
+    float: right;
+    margin-right: 30px;
+}
+
+.refer-answer {
+    background: #f9f9f9;
+    border-top: 1px solid #d8d8d8;
+    padding: 12px 20px 12px 30px;
+    *display: inline-block;
+    overflow:hidden;
+}
+
+.sub-conanswer .sub-answer dd.cho-this i {
+    background-position: -42px -62px;
+}
+
+.refer-answer .reck {
+    float: left;
+    color: #999;
+}
+
+    .refer-answer .reck em {
+        margin: 0 20px 0 8px;
+        font-size: 16px;
+    }
+
+.right {
+    color: #47ad76;
+}
+
+.wrong {
+    color: #ee491f;
+}
+
+.refer-answer li.nobro {
+    border: none;
+}
+
+.refer-answer li {
+    float: left;
+    margin-left: 15px;
+    border-left: 1px solid #e2e2e2;
+    padding-left: 15px;
+}
+
+    .refer-answer li .this {
+        color: #ed491f;
+    }
+
+    .refer-answer li a {
+        position: relative;
+        display: block;
+        padding-left: 20px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+        .refer-answer li a i {
+            width: 16px;
+            height: 16px;
+            display: block;
+            position: absolute;
+            left: -2px;
+            top: 1px;
+            transition: all .2s;
+            -webkit-transition: all .2s;
+            -moz-transition: all .2s;
+        }
+
+    .refer-answer li .scbt i {
+        background-position: -19px -28px;
+    }
+
+    .refer-answer li .this i {
+        background-position: 0 -28px;
+    }
+
+    .refer-answer li a i {
+        width: 16px;
+        height: 16px;
+        display: block;
+        position: absolute;
+        left: -2px;
+        top: 1px;
+        transition: all .2s;
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+    }
+
+    .refer-answer li .jc i {
+        background-position: -16px -85px;
+    }
+
+    .refer-answer li .zkjx i {
+        background-position: -33px -82px;
+    }
+
+    .refer-answer li .sqjx i {
+        background-position: -49px -87px;
+        top: 5px;
+    }
+
+    .refer-answer li .scbt i {
+        background-position: -19px -28px;
+    }
+
+.sub-answer dd span {
+    color: #999;
+    margin-right: 5px;
+    top: 7px;
+    left: 40px;
+}
+
+.detail-intro {
+    border: 1px solid #e0e3e9;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-width: 1px 0;
+    *display: inline-block;
+}
+
+.solution .da-list {
+    padding-top: 10px;
+    clear: both;
+    overflow: hidden;
+}
+
+.solution li span.s-stnd, .solution li span.s-tj, .solution li span.s-jx, .solution li span.s-jyi, .solution li span.s-note {
+    float: left;
+    color: #999;
+    line-height: 18px;
+    font-size: 14px;
+    padding: 4px 15px 4px 35px;
+    border-radius: 20px;
+    position: relative;
+}
+
+    .solution li span.s-stnd i, .solution li span.s-tj i, .solution li span.s-jx i, .solution li span.s-jyi i, .solution li span.s-note i {
+        width: 15px;
+        height: 15px;
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 12px;
+    }
+
+
+.tool-farme li i, .vd-menu .time i, .back-home i, .sub-answer dd i, .refer-answer li a i, .solution li span i, .tk-video .hidde a, .solution .video-btn i, .teach-intro dt i, .notes-titlt span a i, .heel-stick-mid .heel-top .report-icon i, .heel-stick-mid .heel-top .report-icon:hover i, .heel-stick-mid .ico-area em i, .heel-stick-mid .ico-area em:hover i, .notes-difficu .dif-list em, .sub-conanswer .subjec-daan, .subbottom li i, .vexam-head .vip-icon, .mater-respond .mare-info span i, .lis-left i, .sub-dotitle .cha-cail i, .card-layer .closed, .pra-left .calcu-lator a i, .lx-card-layer .card-layer .s-jiao, .heel-stick-mid .ico-area em .tips b, .li-icon, .vip-subject-pack a i {
+    background: url(../imgs/pra_icon.png) no-repeat;
+    background-position-x: 0%;
+    background-position-y: 0%;
+}
+
+.solution li .so-star {
+    height: 15px;
+    overflow: hidden;
+    background: url(../imgs/star_icon.png) no-repeat 0 -31px;
+    position: relative;
+    z-index: 1;
+    margin-top: 4px;
+}
+
+.solution li div.so-star, .solution li div.so-tj, .solution li div.so-timu, .solution li div.so-timu, .solution li div.video-btn, .solution li div.tk-video, .solution li div.shipin, .solution li div.hidde, .solution li div.so-jyi, .solution li div.so-note {
+    padding-left: 120px;
+}
+
+.solution li .so-star b {
+    width: 100px;
+    height: 15px;
+    display: block;
+    background: #fff url(../images/star_icon.png) no-repeat 0 -49px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 11;
+}
+
+.refer-answer li .sqjx:hover i {
+    background-position: -49px -103px;
+}
+
+.refer-answer li .sqjx i {
+    background-position: -49px -87px;
+    top: 5px;
+}
+
+.refer-answer li .scbt:hover, .refer-answer li .this {
+    color: #ed491f;
+}
+
+.refer-answer li a:hover {
+    color: #e45c40;
+}
+
+.subject-title {
+    font-size: 20px;
+    color: #47ad76;
+    height: 54px;
+    align-content: center;
+    text-align: center;
+    padding-top: 25px;
+}
+
+.ui-page {
+    height: 25px;
+    line-height: 25px;
+    padding: 20px 0px 25px;
+    text-align: center !important;
+    clear: both;
+}
+
+    .ui-page a.ui-page-turn {
+        display: inline-block;
+        padding: 0px 12px;
+        font: normal 12px/25px "\u5b8b\u4f53";
+        content: '\3C';
+    }
+
+    .ui-page a, .ui-page b {
+        height: 25px;
+        display: inline-block;
+        padding: 0px 9px;
+        background: #fff;
+        border-radius: 30px;
+        border: 1px #ccc solid;
+        margin: 0px 3px;
+        font: bold 12px/25px Arial;
+        color: #555;
+    }
+
+a:link, a:visited, a:hover, a:focus, input:link, input:visited, input:hover, input:focus, button:link, button:visited, button:hover, button:focus {
+    border: none;
+    text-decoration: none;
+    outline: none;
+}
+
+.ui-page * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ui-page a.z-on, .ui-page a.z-on:hover {
+    background: #f06000;
+    color: #FFF;
+    border: 1px #f06000 solid;
+}
+
+.refer-answer li .zkjx:hover i {
+    background-position: -33px -98px;
+}
+
+.refer-answer li .scbt:hover i, .refer-answer li .this i {
+    background-position: 0 -28px;
+}
+
+.that {
+}
+
+.solution li .s-jx i {
+    background-position: -48px -171px;
+}

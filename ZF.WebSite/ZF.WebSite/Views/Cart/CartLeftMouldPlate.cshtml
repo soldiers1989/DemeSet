@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_StudyCenterLayout.cshtml";
+}
+
+<div class="leftMenu person">
+    <div class="centerTit">个人中心</div>
+    <a name="1" url="IframMyOrder" href="javascript:;" title="我的订单" class="cur lm1"><i></i>我的订单</a>
+    <a name="2" url="HandOutPath" href="javascript:;" title="收货地址" class="lm2"><i></i>收货地址</a>
+    <a name="3" url="~/MyCard/Index" href="javascript:;" title="我的卡券" class="lm3"><i></i>我的卡券</a>
+    <a name="4" url="~/User/UserSetUp" href="javascript:;" title="基本信息" class="lm4"><i></i>基本信息</a>
+</div>
+<div class="rightContent personContent">
+</div>
+<script type="text/javascript">
+    $(function () {
+        var mycard = topevery.getUrlParam("index");
+        $('.leftMenu>a').click(function () {
+            $('.leftMenu>a').each(function () {
+                $(this).removeClass('cur');
+            });
+            $(this).addClass("cur");
+            document.getElementsByTagName('title')[0].innerText = "个人中心-" + $(this).attr('title');
+            var args = $.extend({}, { type: "get", dataType: "html", contentType: "application/json", url: $(this).attr("url") });
+            $.ajax(args).done(function (data) {
+                $(".rightContent").html(data);
+            });
+        });
+        if (mycard) {
+            //$("a[name='4']").first().click();
+            //layer.msg("请绑定手机号", { time: 2000, icon: 1 });
+            if (mycard == "1") {
+                $("a[name='1']").first().click();
+            } else if (mycard == "2") {
+                $("a[name='2']").first().click();
+            } else if (mycard == "3") {
+                $("a[name='3']").first().click();
+            } else if (mycard == "4") {
+                $("a[name='4']").first().click();
+            }
+        } else {
+            $(".leftMenu>a").first().click();
+        }
+    });
+    //$(".contentIn .layui-row").attr("style", "width:1500px")
+    $(".navIn .cur").removeClass("cur");
+</script>

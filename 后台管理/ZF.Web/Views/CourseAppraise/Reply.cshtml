@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>回复内容</label><span class="text-danger">*</span>
+                    <textarea style="height:200px;" type="text" class="form-control" id="ReplyContent" name="ReplyContent"/>
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" style="float:right;" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/CourseAppraise/Reply.js"></script>

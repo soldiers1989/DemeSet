@@ -1,0 +1,11 @@
+.leftMenu{width:17%;float:left;background: #fff;padding-bottom: 10000px;margin-bottom: -9990px;}
+.rightContent{width:81%;float:right;padding-bottom: 10000px;margin-bottom: -9990px;background: #fff;}
+.aboutContent{margin:40px auto;overflow: hidden;}
+
+.leftMenu li{padding:0 20px;border-left:2px solid #fff;}
+.leftMenu .cur{border-color:#f32426;}
+.leftMenu a{display:block;height:60px;line-height: 60px;font-size:16px; color:#434343;border-bottom:1px solid #d9d9d9;text-indent:20px;}
+.leftMenu .cur a{color:#f32426;}
+.leftMenu li:hover{background: #f9f9f9}
+.aboutTit label{font-size:16px; color:#f32426;}
+.aboutTit{border-bottom:1px solid #d9d9d9;padding:20px 15px;margin:0 20px;}

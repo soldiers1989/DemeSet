@@ -1,0 +1,267 @@
+﻿
+
+@{
+    ViewBag.Title = "模拟作答系统";
+    Layout = null;
+}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="电子化考试专区">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/css/public/public.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/css/virtual/index.css?3">
+    <script src="//hm.baidu.com/hm.js?567ac26ed09f3821d327b6776f5c6bcb"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/js/public/hmMenu.js"></script>
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/css/virtual/EFunctionary.css?2">
+    <script type="text/javascript" src="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/js/economy/exam.js"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js"></script>
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/subject_collected.css" rel="stylesheet" />
+    <title>电子化考试模拟作答系统</title>
+    <style type="text/css">
+        .main.two #myquestion {
+            height: 100%;
+        }
+
+        .main.two .subItem {
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .subItem.anli {
+            padding-top: 0;
+        }
+
+        .chooseItem input {
+            position: absolute;
+            left: 0;
+        }
+
+        .chooseItem ul li {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body style="">
+    <div class="main header">
+        <div class="person">
+            <img id="ImgUrl" src="@HttpContext.Current.Application["DefuleDomain"]/Libs/Asset/image/virtual/index/tou.png" width="65">
+            <span class="perMes">
+                <a id="UserName" href="javascript:;"></a>
+                <label></label>
+            </span>
+            <span class="tit">
+                电子化考试模拟作答系统<br><label id="PaperName"></label>
+            </span>
+            <div style="width: 380px; float: right; height: 80px;">
+                <input type="button" value="重新考试" class="sub" id="handin_btn">
+                @*<span class="computer">机位：001</span>
+                    <span class="timer"></span>*@
+            </div>
+        </div>
+    </div>
+    <div class="main">
+
+        <div class="mainLeft" style="height: 850px;">
+            <div id="myquestion1">
+
+            </div>
+            <script id="question_common1" type="text/html">
+                {{each Result}}
+                <div class="title show">
+                    <p class="titPart">{{#$value.ClassName}}</p>
+                    <div data="{{$index+1}}" questionsNumber="{{$value.QuestionCount}}" questionsScore="{{$value.QuestionScore}}" QuestionType="{{$value.QuestionType}}">
+                        {{each $value.Question}}
+                        {{ if $value.IsCollection==1 }}
+                        <a href="javascript:;" style="background: #00bfff" class="myitem" qid="{{$value.Id}}" SubjectType="{{$value.SubjectType}}" id="li_qid_{{$value.Id}}">{{$value.RowsIndex}}</a>
+                        {{else}}
+                        <a href="javascript:;" style="background:crimson" class="myitem" qid="{{$value.Id}}" SubjectType="{{$value.SubjectType}}" id="li_qid_{{$value.Id}}">{{$value.RowsIndex}}</a>
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                </div>
+                {{/each}}
+            </script>
+        </div>
+
+        <div class="mainRight">
+            <form name="myform" id="myform">
+                <div class="ti anli">
+                    <div class="part" id="mytitle">单项选择题（共60题，每题1分。每题的备选项中，只有1个最符合题意）</div>
+                    <div class="subject" style="height: 725px;">
+                        <div id="myquestion">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="btn clearfix">
+                    <label class="lian">连接正常</label>
+                    <div class="drop">
+                        <input type="button" class="set">
+                        <div class="dropContents" style="">
+                            <span>
+                                <a href="javascript:;" class="ch_auto" type="1">自动切换到下一题</a>
+                                <a href="javascript:;" class="ch_auto current" type="2">手动切换到下一题</a>
+                            </span>
+                            <span>
+                                <a href="javascript:;" type="100" class="changeBig current">原始大小</a>
+                                <a href="javascript:;" type="70" class="changeBig">缩小30%</a>
+                                <a href="javascript:;" type="130" class="changeBig">放大30%</a>
+                                <a href="javascript:;" type="160" class="changeBig">放大60%</a>
+                                <a href="javascript:;" type="200" class="changeBig">放大100%</a>
+                            </span>
+                            <span class="last">
+                                <a href="javascript:;" class="changeFull">切换显示</a>
+                            </span>
+                        </div>
+                    </div>
+                    <span><input type="button" value="下一题（F5）" class="next current"></span>
+                    <span><input type="button" value="上一题（F4）" class="up"></span>
+                    @*<span><input type="button" value="计算器" class="Calculator"></span>
+                    <span><input type="button" value="标记" class="key"></span>*@
+                </div>
+                <input type="hidden" name="question_id" id="question_id" value="55">
+                <input type="hidden" name="type" id="type" value="1">
+                <input type="hidden" id="fontsize" name="">
+            </form>
+        </div>
+    </div>
+    <div class="window" id="handin_msg">
+        <div class="hs"></div>
+        <div class="windowContent">
+            <p class="tishi">信息提示</p>
+            <div class="delete">
+                <ul>
+                    <li class="infoTest">
+                        还有<span id="notdo"></span>道题未作答，请确定全部答完后交卷！
+                    </li>
+                    <li class="btnA">
+                        <a href="javascript:" class="emailBtn one" id="sueccess_btn">确定交卷</a>
+                        <a href="javascript:" class="emailBtn" id="cancel_btn">返回作答</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="window" id="Calculator">
+        <div class="hs"></div>
+        <div class="windowContent">
+            <p class="tishi">信息提示</p>
+            <div class="delete two">
+                <ul>
+                    <li class="txt">
+                        您好！ <br>
+                        经济专业技术资格（初级）电子化考试，考生使用考试系统提供的计算器程序，该计算机程序和Windows操作系统自带的计算器中的科学型、统计型类似。为了方便广大考生熟悉计算器程序的操作，请：<br>
+                        1、下载计算器程序压缩包：PTCalc.zip <br>
+                        2、下载成功后，解压PTCalc.zip <br>
+                        3、运行PTCalc.EXE<br>
+                        注：实际考试中，计算器程序内置在考试系统里面，不需要下载。
+                    </li>
+                    <li class="btnA">
+                        <a href="http://51cpta-10004457.cos.myqcloud.com/PTCalc.zip" target="_blank" class="emailBtn one">下载</a>
+                        <a href="javascript:" class="emailBtn" id="cancel">取消</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" name="auto" id="myauto" value="">
+<script id="question_common" type="text/html">
+    <div class="subItem anli">
+        <div class="skill">
+            <a href="javascript:;" onclick="setColor(1)" class="stress">强调显示</a>
+            <a href="javascript:;" onclick="setColor(2)" class="NoStress">取消强调</a>
+            <a href="javascript:;" class="big">放大</a>
+            <a href="javascript:;" class="smill">缩小</a>
+            <a href="javascript:;" class="row"></a>
+            <a href="javascript:;" class="full"></a>
+        </div>
+        <p>
+            <p class="editor">{{#Description}}</p>
+        </p>
+    </div>
+    <div class="chooseItem anli">
+        <div>
+            <p><label>{{#itemcode}}</label>{{#QuestionContent}}
+            <p>
+            <ul>
+                {{each option}}
+                {{if SubjectType==1 }}
+                <li>
+                    {{if $value.ischeck==1 }}
+                    @*<input name="answer_{{Id}}" class="answer_input" type="{{input_type}}" value="{{$value.id}}" id="{{$value.id}}" checked />*@
+                    <label for="{{$value.id}}">{{#$value.content}}</label>
+                    {{else}}
+                    @*<input name="answer_{{Id}}" class="answer_input" type="{{input_type}}" value="{{$value.id}}" id="{{$value.id}}" />*@
+                    <label for="{{$value.id}}">{{#$value.content}}</label>
+                    {{/if}}
+                </li>
+                {{else}}
+                <li>
+                    {{if $value.ischeck==1 }}
+                    @*<input name="answer_{{Id}}" class="answer_input" type="{{input_type}}" value="{{$value.id}}" id="{{$value.id}}" checked />*@
+                    <label for="{{$value.id}}">{{#$value.content}}</label>
+                    {{else}}
+                    @*<input name="answer_{{Id}}" class="answer_input" type="{{input_type}}" value="{{$value.id}}" id="{{$value.id}}" />*@
+                    <label for="{{$value.id}}">{{#$value.content}}</label>
+                    {{/if}}
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="m__answerLine refer-answer clearfix" data-examid="4127629" style="display: block">
+            <div class="reck">
+                参考答案：<em class="right">{{RightAnswer}}</em>
+                您的答案：<em class="wrong">{{StuAnswer}}</em>
+            </div>
+            <ul>
+                <li class="nobro">
+                    {{if IsCollection===0 }}
+                    <a href="javascript:void(0)" data-id="{{Id}}" class="btn__scbt scbt that  shoucan" data="0">
+                        <i></i>收藏
+                    </a>
+                    {{else}}
+                    <a href="javascript:void(0)" data-id="{{CollectionId}}" class="btn__scbt scbt this shoucan" data="1">
+                        <i></i>取消收藏
+                    </a>
+                    {{/if}}
+                </li>
+                @*<li><a href="javascript:;" class="btn__jc jc"><i></i>纠错</a></li>*@
+                <li>
+                    <a href="javascript:;" class="btn__zkjx zkjx"><i></i>展开解析</a>
+                    <a href="javascript:;" class="btn__sqjx sqjx" style="display: none;"><i></i>收起解析</a>
+                </li>
+            </ul>
+        </div>
+        <div class="m__analyse detail-intro" style="display: none;">
+            <div class="solution">
+                <ul>
+                    <li class="da-list">
+                        <span class="s-jx"><i></i>参考解析：</span>
+                        <div class="so-timu">
+                            <div class="wenzi">
+                                {{if QuestionTextAnalysis}}
+                                {{#QuestionTextAnalysis}}
+                                {{else}}
+                                暂无
+                                {{/if}}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </script>
+    <input type="hidden" Id="PaperId" value="@ViewBag.PaperId" />
+    <input type="hidden" Id="PaperRecordsId" value="@ViewBag.PaperRecordsId" />
+    <input type="hidden" Id="SubjectType" />
+</body>
+</html>
+<script src="~/Js/template.js"></script>
+<script src="~/Views/Answer/IndexView.js"></script>

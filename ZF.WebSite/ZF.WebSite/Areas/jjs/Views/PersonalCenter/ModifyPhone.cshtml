@@ -1,0 +1,158 @@
+﻿@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="pragram" content="no-cache">
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+<title>绑定手机号</title>
+<style>
+    .grxx input {
+        width: 65%;
+        text-align: left;
+    }
+</style>
+<body class="body">
+    <input type="hidden" Id="Id" Name="Id" />
+    <div class="grxx">
+        <dl>
+            <input name="PhoneNumbers" id="PhoneNumbers" type="text" placeholder="请输入更换手机号码">
+        </dl>
+    </div>
+    <div class="grxx">
+        <ul>
+            <li class="zc01_tx">
+                <input name="Code" id="Code" type="text" placeholder="短信验证码">
+                <span style="border-left: 1px solid #dddddd; padding-left: 0.5em;">
+                    <a href="#" onclick="getPhoneCode(this);">获取验证码</a>
+                </span>
+            </li>
+            <li class="zc01_tx" id="pwdli" style="display:none">
+                <input name="password" id="password" type="password" placeholder="请输入密码">
+            </li>
+        </ul>
+    </div>
+    <div class="grxx_anniu">
+        <a href="#" onclick="infoSave();">保存</a>
+    </div>
+</body>
+<script type="text/javascript">
+    GetUserInfo();
+    function GetUserInfo() {
+        //获取用户信息
+        topevery.ajaxwx({
+            url: "api/Register/GetOne"
+        }, function (data) {
+            if (data.Success) {
+                $("#Id").val(data.Result.Id);
+                if (!data.Result.TelphoneNum) {
+                    $("#pwdli").show();
+                }
+            }
+        });
+    }
+    //获取验证码
+    function getPhoneCode(event) {
+        var args = new Object();
+        args.PhoneNumbers = $("#PhoneNumbers").val();
+        if (!args.PhoneNumbers) {
+            layer.msg("手机号不能为空", { time: 1000, icon: 2 });
+            return;
+        }
+        if (!(/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/.test(args.PhoneNumbers))) {
+            layer.msg("不是有效的手机号码", { time: 1000, icon: 2 });
+            return;
+        }
+        topevery.ajaxwx({
+            url: "api/Account/SendSmsInfo",
+            data: JSON.stringify(args)
+        }, function (data) {
+            var into = data.Result;
+            if (!into.Success) {
+                layer.msg("验证码发送失败");
+            } else {
+                layer.msg(into.Message);
+            }
+        });
+        timeCode(event);
+    }
+
+    function timeCode(event) {
+        if (topevery.wait == 0) {
+            $(event).html("重新获取校验码");
+            topevery.wait = 30;
+        } else {
+            topevery.wait--;
+            $(event).html(topevery.wait + "秒后重新获取");
+            setTimeout(function () { timeCode(event) }, 1000);
+        }
+    };
+
+
+    //保存
+    function infoSave() {
+        bindTel();
+    }
+
+
+    //绑定
+    function bindTel() {
+        var passrowd = $("#password").val();
+        var obj = new Object();
+        obj.Id = $("#Id").val();
+        obj.Code = $("#Code").val();
+        obj.TelphoneNum = $("#PhoneNumbers").val();
+        obj.RegiesterType = "3";
+        if (!obj.Code || !obj.TelphoneNum) {
+            layer.msg("手机号,验证码不能为空");
+            return;
+        }
+        else {
+            if (passrowd) {
+                if (!topevery.verifyPwdLength(passrowd)) {
+                    layer.msg("密码长度必须在8到16之间且包含数字和字母");
+                    return
+                }
+            }
+            obj.LoginPwd = md5(passrowd);
+            var istrue = false;
+            //验证手机号是否存在
+            topevery.ajaxwx({
+                url: "api/Account/ModifyUserPhoneCheck",
+                data: JSON.stringify(obj),
+                async: false
+            }, function (data) {
+                var info = data.Result;
+                istrue = info;
+                if (info) {
+                    layer.msg("手机号已经被绑定");
+                } else {
+                    topevery.ajaxwx({
+                        url: "api/Account/ModifyUserPhone",
+                        data: JSON.stringify(obj)
+                    }, function (data) {
+                        var info = data.Result;
+                        if (!info.Success) {
+                            layer.msg(info.Message);
+                        } else {
+                            layer.msg(info.Message);
+                            setTimeout(function () {
+                                topevery.SetCookie("userToken", info.ModelId);
+                                window.location.href = "/jjs/PersonalCenter/PersonalInformation";
+                            }, 1000);
+                        }
+                    });
+                }
+            });
+            if (istrue) {
+                return;
+            }
+        }
+
+    }
+</script>

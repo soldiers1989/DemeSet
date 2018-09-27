@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>订单管理</a>/<a>销售统计</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-12">
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="" data="0" data-toggle="tab">单科课程</a></li>
+        <li><a data="1" href="" data-toggle="tab" id="">套餐课程</a></li>
+    </ul>
+</div>
+<div class="col-xs-12 ">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <input type="hidden" id="CourseType" name="CourseType" value="0"/>
+                <label>统计时间范围：</label>
+                <input class="form-control Wdate" onFocus="WdatePicker({ el: 'BeginDate', dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'EndDate\')}' })" id="BeginDate" name="BeginDate" style="height: 34px;" />
+                <label>-</label>
+                <input class="form-control Wdate" onFocus="WdatePicker({ el: 'EndDate', dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'BeginDate\')}' })" id="EndDate" name="EndDate" style="height: 34px;" />
+                <input class="btn btn-success query_table_btn" type="button" value="查看列表">
+                <input class="btn btn-success query_report_btn" type="button" value="查看曲线图">
+                <input class="btn btn-success import_btn" type="button" value="导出查询数据">
+            </div>
+        </form>
+    </div>
+    <div class="box-body row" id="table_1">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+    <div class="box-body row" id="table_2" style="display: none;">
+        <div id="main" style="width: 100%; height: 600px;"></div>
+    </div>
+</div>
+<script src="~/Libs/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Views/OrderSheet/CourseSaleReport.js"></script>

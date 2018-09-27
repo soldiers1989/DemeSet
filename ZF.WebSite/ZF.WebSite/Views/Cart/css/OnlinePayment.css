@@ -1,0 +1,67 @@
+﻿.modal-body {
+    padding: 1em 1.5em;
+    max-height: 365px;
+    overflow: auto;
+}
+
+p {
+    margin: .75em 0;
+}
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+*, .dotting, input, textarea {
+     box-sizing: border-box; 
+}
+
+.modal .pay-key, .modal .pay-value {
+    display: inline-block;
+    margin: 0;
+    width: 50%;
+}
+
+.pay-key {
+    width: 110px;
+    text-align: right;
+}
+
+.pay-key, .pay-value {
+    line-height: 2.2;
+}
+
+.pay-key {
+    width: 110px;
+    text-align: right;
+}
+
+.pay-key, .pay-value {
+    line-height: 2.2;
+}
+
+.pay-key {
+    width: 110px;
+    text-align: right;
+}
+#main #pay-amout-title, #main .ad20141212, #main .sub-title, .modal .remittance-close, .modal#other-way .btn-group, .modal#pay-method .btn-group, .modal#pay-result .btn-group, .modal#pay-settlement .btn-group, .table .table-cell {
+    text-align: center;
+}
+.btn {
+    min-width: 4em;
+    padding: 0 1em;
+    margin-right: .5em;
+    margin-bottom: 1em;
+    line-height: 2.2;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
+    background-color: #fff;
+}
+
+
+.modal#other-way .btn-group a, .modal#pay-method .btn-group a, .modal#pay-result .btn-group a, .modal#pay-settlement .btn-group a {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

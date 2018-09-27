@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "购物车";
+}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <title>购物车</title>
+</head>
+<body>
+    <input type="hidden" value="@ViewBag.userIp" id="userIp" />
+    <input type="hidden" id="openid" value="@ViewBag.openid" />
+    <div style="margin: 0.5em 0 0 0.8em;">
+        <input type="checkbox" id="checkall" checked="checked" style="display: inline-block;vertical-align: middle;margin-bottom: 2px;">
+        <label style="margin-right: 1em;" for="checkall">全选</label>
+    </div>
+    <div class="gwc_box">
+        <!-- 没有内容显示这个 -->
+    
+        <!-- 有内容显示这个 -->
+        <div id="datas">
+        </div>
+     
+        <div class="gwc_djzf">
+           
+        </div>
+    </div>
+    <!--支付底部导航开始-->
+    <div class="gwc-header-nav">
+        <div class="gwc_hover">
+         
+            <a href="~/jjs/HomePage/Index">首页</a>
+        </div>
+        <dl>
+            <dt style="font-size: 12px;" id="totalPrice"></dt>
+            <dd class="gwc-header-navd" id="checkoutToPayParent"><a href="javascript:;"  onclick="toPay()" id="checkoutToPay"  >提交订单</a></dd>
+            <div class="clear"></div>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <!--支付底部导航结束-->
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/PersonalCenter/MyShoppingCart.js?v=1.0"></script>

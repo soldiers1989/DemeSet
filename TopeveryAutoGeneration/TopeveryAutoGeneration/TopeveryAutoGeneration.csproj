@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B800F2E8-8DE5-4AD6-8F86-7FBB6F8C565F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TopeveryAutoGeneration</RootNamespace>
+    <AssemblyName>TopeveryAutoGeneration</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Abp">
+      <HintPath>Dll\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.AutoMapper">
+      <HintPath>Dll\Abp.AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.EntityFramework">
+      <HintPath>Dll\Abp.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>Dll\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>Dll\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>Dll\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="DbHelper1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbHelper.ttinclude</DependentUpon>
+    </Compile>
+    <Compile Include="MultipleOutputHelper1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MultipleOutputHelper.ttinclude</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="仓储\IRepository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="仓储\IRoleMenuRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="仓储\IRoleRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="仓储\IRoleUserRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="仓储\Repository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="仓储\RoleMenuRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="仓储\RoleRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="仓储\RoleUserRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="基类\ITopeveryRepositoryBase.cs" />
+    <Compile Include="基类\TopeveryAppServiceBase.cs" />
+    <Compile Include="基类\TopeveryRepositoryBase.cs" />
+    <Compile Include="实体\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="实体\Role.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="实体\RoleMenu.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="实体\RoleUser.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="实体映射\Mapping.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mapping.tt</DependentUpon>
+    </Compile>
+    <Compile Include="实体映射\RoleMap.cs">
+      <DependentUpon>Mapping.tt</DependentUpon>
+    </Compile>
+    <Compile Include="实体映射\RoleMenuMap.cs">
+      <DependentUpon>Mapping.tt</DependentUpon>
+    </Compile>
+    <Compile Include="实体映射\RoleUserMap.cs">
+      <DependentUpon>Mapping.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MultipleOutputHelper.ttinclude">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultipleOutputHelper1.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DbHelper.ttinclude">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbHelper1.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApiControllers\ApiControllers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiControllers.cs</LastGenOutput>
+    </Content>
+    <Content Include="BusinessLogic.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessLogic.ttinclude</DependentUpon>
+    </Content>
+    <Content Include="仓储\Repository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Repository.cs</LastGenOutput>
+    </Content>
+    <Content Include="仓储\IRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IRepository.cs</LastGenOutput>
+    </Content>
+    <Content Include="实体映射\Mapping.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Mapping.cs</LastGenOutput>
+    </Content>
+    <Content Include="应用服务\Dto\ModelListInput.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelListInput.cs</LastGenOutput>
+    </Content>
+    <Content Include="应用服务\Dto\ModelOutputDto.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelOutputDto.cs</LastGenOutput>
+    </Content>
+    <Content Include="应用服务\AppService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AppService.cs</LastGenOutput>
+    </Content>
+    <None Include="BusinessLogic.ttinclude">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BusinessLogic.txt</LastGenOutput>
+    </None>
+    <Content Include="实体\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,33 @@
+﻿@{
+
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>模块编码</label><span class="text-danger">*</span>
+                    <input id="ModelCode" name="ModelCode" class="form-control" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>标签名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="TagName" name="TagName">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>备注</label>
+                    <input id="Remark" name="Remark" class="form-control">
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit" style="float:right;">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/BaseTag/AddOrEdit.js"></script>

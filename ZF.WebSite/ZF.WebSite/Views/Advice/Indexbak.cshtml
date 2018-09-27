@@ -1,0 +1,304 @@
+﻿
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<!--联系我们 css-->
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/css/advice/advice.css" type="text/css" rel="stylesheet">
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/css/advice/core.css" type="text/css" rel="stylesheet">
+<style>
+    body {
+        overflow:hidden;
+    }
+    .j-aboutCon {
+        padding: 10px;
+    }
+</style>
+<input hidden="hidden" id="aboutType" value="@ViewBag.aboutType" />
+<div class="g-flow abt f-cb">
+    <div class="b-20"></div>
+    <div class="g-sd1 abt">
+        <div class="f-bg u-aboutTabs" id="j-tabs">
+            <a id="auto-id-1450193523765" class="j-tabItem top" data-type="1">关于我们</a>
+            <a id="auto-id-1450193523766" class="j-tabItem" data-type="2">联系我们</a>
+            <a id="auto-id-1450193523767" class="j-tabItem" data-type="3">法律条款</a>
+            <a id="auto-id-1450193523770" class="j-tabItem" data-type="3">意见反馈</a>
+        </div>
+    </div>
+    <div class="g-mn1 abt">
+        <div class="g-mn1c abt">
+            <div id="about-box" class="f-bg">
+                <div class="m-about f-cb">
+                    <!-- 关于我们 -->
+                    <div id="auto-id-1450193523776" class="about_con j-aboutCon f-bg f-pr" style="" data-type="1">
+                        <h2 class="tabtit">关于我们</h2>
+                        <div class="about_content j-aboutContent">
+
+                        </div>
+                    </div>
+
+                    <!-- 联系我们 -->
+                    <div id="auto-id-1450193523777" style="display: none;" class="about_con j-aboutCon f-bg f-pr" data-type="2">
+                        <h2 class="tabtit">联系我们</h2>
+                        <div class="about_content">
+
+                        </div>
+                    </div>
+
+                    <!-- 法律条款 -->
+                    <div id="auto-id-1450193523778" style="display: none;" class="about_con j-aboutCon f-bg f-pr" data-type="3">
+                        <h2 class="tabtit">法律条款</h2>
+                        <div class="about_content">
+
+                        </div>
+                    </div>
+
+                    <!-- 讨论中心 -->
+                    @*<div id="auto-id-1450193523779" style="display: none;" class="about_con j-aboutCon f-bg f-pr" data-type="4">
+                            <div class="m-help about_content">
+
+                            </div>
+                        </div>*@
+
+                    <!-- 学习计划 -->
+                    @*<div id="auto-id-1450193523780" style="display: none;" class="about_con j-aboutCon f-bg f-pr" data-type="6">
+                            <h2 class="tabtit">如何创建一份好的学习计划</h2>
+                            <div class="about_content">
+
+                            </div>
+                        </div>*@
+
+                    <!-- 意见反馈 -->
+                    <div id="auto-id-1450193523781"  class="about_con j-aboutCon f-bg f-pr f-cb" data-type="8">sdfsdfasdfdsfdfdff
+
+                       
+                        <h2 class="tabtit">意见反馈</h2>
+                        <div class="about_content j-aboutContent  yjfk">
+                            <div class="m-feedbackSys">
+                                <div class="title f-cb">
+                                    <p class="feed-tit">
+                                        <em class="f-sign">*</em>标题
+                                    </p>
+                                    <div class="f-cb">
+                                        <div class="j-feed-content auto-1450193523645-parent">
+                                            <div class="m-nesIpt f-cb auto-1450193523645">
+                                                <div class="area j-inputArea f-fl auto-1450193523612-parent">
+                                                    <div style="width: 500px; height: 35px;" class="m-baseinputui auto-1450193523612">
+                                                        <textarea style="width: 500px; height: 25px;" id="Title" name="title" class="j-textarea inputtxt" placeholder="6-20字"></textarea>
+                                                        <h4 style="float: right; margin-right: -150px; margin-top: -30px;" name="h4"></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="infobox j-infobox auto-1450193523620-parent">
+                                                    <div style="display: none;" class="m-feedbackinfoTitle auto-1450193523620">
+                                                        <span style="color: red;"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cnt">
+                                    <p class="feed-tit">
+                                        <em class="f-sign">*</em>内容
+                                    </p>
+                                    <div class="f-cb">
+                                        <div class="j-feed-content auto-1450193523645-parent">
+                                            <div class="m-nesIpt f-cb auto-1450193523645">
+                                                <div class="area j-inputArea f-fl auto-1450193523612-parent">
+                                                    <div style="width: 500px; height: 130px;" class="m-baseinputui auto-1450193523612">
+                                                        <textarea style="width: 500px; height: 130px;" id="Advice" name="advice" class="j-textarea inputtxt" placeholder="请填写具体内容帮助我们了解您的意见与建议"></textarea>
+                                                        <h4 style="float: right; margin-top: -30px; margin-right: -150px;" name="advice1"></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="infobox j-infobox auto-1450193523620-parent">
+                                                    <div style="display: none;" class="m-feedbackinfoAdvice auto-1450193523620">
+                                                        <span style="color: red;"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="contect">
+                                    <p class="feed-tit">
+                                        <em class="f-sign">*</em>联系方式
+                                    </p>
+                                    <div class="f-cb">
+                                        <div class="j-feed-content auto-1450193523645-parent">
+                                            <div class="m-nesIpt f-cb auto-1450193523645">
+                                                <div class="area j-inputArea f-fl auto-1450193523612-parent">
+                                                    <div style="width: 500px; height: 32px;" class="m-baseinputui auto-1450193523612">
+                                                        <textarea style="width: 500px; height: 25px;" id="Relation1" name="relation" class="j-textarea inputtxt" placeholder="QQ/Email"></textarea>
+                                                        <span style="float: right; margin-right: -150px; margin-top: -25px;" name="relation1"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="infobox j-infobox auto-1450193523620-parent">
+                                                    <div style="display: none;" class="m-feedbackinfoRelation1 auto-1450193523620">
+                                                        <span style="color: red;"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="uid" value="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="sub" name="sub" value="sub" style="background: #18A539; width: 100px; height: 50px; font-size: 20px; color: #fff;">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var aboutType = $('#aboutType').val();
+        if (aboutType == "8") {
+            $("#auto-id-1450193523770").click();
+        } else if (aboutType == "1") {
+            $("#auto-id-1450193523765").click();
+        } else if (aboutType == "2") {
+            $("#auto-id-1450193523766").click();
+        } else if (aboutType == "3") {
+            $("#auto-id-1450193523767").click();
+        } else {
+            $("#auto-id-1450193523765").click();
+        }
+    })
+
+    var url = 'api/PublicInfo/GetContentInfo';
+    function GetContent(target, url, code) {
+        $('#' + target).html('');
+        topevery.ajax({
+            url: url,
+            data: JSON.stringify({ Code: code })
+        }, function (data) {
+            if (data.Success) {
+                $("#" + target).html(data.Result.Content);
+            }
+        });
+    }
+    $("#auto-id-1450193523765").click(function () {
+        //加载关于我们
+        var target = "auto-id-1450193523776";
+        GetContent(target, url, 'gywm');
+        $("#auto-id-1450193523776").fadeIn("slow");
+        $("#auto-id-1450193523777").css("display", "none");
+        $("#auto-id-1450193523778").css("display", "none");
+        $("#auto-id-1450193523779").css("display", "none");
+        $("#auto-id-1450193523780").css("display", "none");
+        $("#auto-id-1450193523781").css("display", "none");
+    });
+    $("#auto-id-1450193523766").click(function () {
+        //加载联系我们相关信息
+        var target = "auto-id-1450193523777";
+        GetContent(target, url, 'lxwm');
+        $("#auto-id-1450193523777").fadeIn("slow");
+        $("#auto-id-1450193523776").css("display", "none");
+        $("#auto-id-1450193523778").css("display", "none");
+        $("#auto-id-1450193523779").css("display", "none");
+        $("#auto-id-1450193523780").css("display", "none");
+        $("#auto-id-1450193523781").css("display", "none");
+    });
+    $("#auto-id-1450193523767").click(function () {
+        //法律条款
+        var target = "auto-id-1450193523778";
+        GetContent(target, url, 'fltk')
+        $("#auto-id-1450193523778").fadeIn("slow");
+        $("#auto-id-1450193523777").css("display", "none");
+        $("#auto-id-1450193523776").css("display", "none");
+        $("#auto-id-1450193523779").css("display", "none");
+        $("#auto-id-1450193523780").css("display", "none");
+        $("#auto-id-1450193523781").css("display", "none");
+    });
+    //意见反馈
+    $("#auto-id-1450193523770").click(function () {
+        $("#auto-id-1450193523781").fadeIn("slow");
+        $("#auto-id-1450193523777").css("display", "none");
+        $("#auto-id-1450193523778").css("display", "none");
+        $("#auto-id-1450193523779").css("display", "none");
+        $("#auto-id-1450193523780").css("display", "none");
+        $("#auto-id-1450193523776").css("display", "none");
+    });
+
+
+    $("#Title").change(function () {
+        if ($("#Title").val()) {
+            $(".m-feedbackinfoTitle").hide();
+            if ($("#Title").val().length < 6 || $("#Title").val().length > 20) {
+                $(".m-feedbackinfoTitle").show();
+                $(".m-feedbackinfoTitle").find("span").html("标题字数6-20个");
+            }
+        } else {
+            $(".m-feedbackinfoTitle").show();
+            $(".m-feedbackinfoTitle").next().find("span").html("标题不能为空!");
+        }
+    });
+
+    $("#Advice").change(function () {
+        if ($("#Advice").val()) {
+            $(".m-feedbackinfoAdvice").hide();
+        } else {
+            $(".m-feedbackinfoAdvice").show();
+            $(".m-feedbackinfoAdvice").find("span").html("内容不能为空!");
+        }
+    });
+
+    $("#Relation1").change(function () {
+        if ($("#Relation1").val()) {
+            $(".m-feedbackinfoRelation1").hide();
+        } else {
+            $(".m-feedbackinfoRelation1").show();
+            $(".m-feedbackinfoRelation1").find("span").html("联系方式不能为空!");
+        }
+    });
+
+
+    
+    $(document).on("click","#sub",function(){
+        var title = topevery.Trim($("#Title").val());
+        var advice = topevery.Trim($("#Advice").val());
+        var relation1 = topevery.Trim($("#Relation1").val());
+
+        if (title) {
+            $(".m-feedbackinfoTitle").hide();
+            if (title.length < 6 || title.length > 20) {
+                $(".m-feedbackinfoTitle").show();
+                $(".m-feedbackinfoTitle").find("span").html("标题字数6-20个");
+                return;
+            }
+        } else {
+            $(".m-feedbackinfoTitle").show();
+            $(".m-feedbackinfoTitle").next().find("span").html("标题不能为空!");
+            return;
+        }
+
+        if (advice) {
+            $(".m-feedbackinfoAdvice").hide();
+        } else {
+            $(".m-feedbackinfoAdvice").show();
+            $(".m-feedbackinfoAdvice").find("span").html("内容不能为空!");
+            return;
+        }
+
+        if (relation1) {
+            $(".m-feedbackinfoRelation1").hide();
+        } else {
+            $(".m-feedbackinfoRelation1").show();
+            $(".m-feedbackinfoRelation1").find("span").html("联系方式不能为空!");
+            return;
+        }
+        topevery.ajax({
+            url: 'api/BaseDanye/InsertFeedback',
+            data: JSON.stringify({ title: title, advice: advice, relation1: relation1 })
+        }, function (data) {
+            if (data.Success) {
+                var html = '<div class="about_content j-aboutContent"><div class="m-feedSuccess f-cb"><div class="success-icon f-fl"></div><div class="txt f-fl"><p>提交成功，感谢您的宝贵意见！</p></div></div></div>';
+                $(".yjfk").html(html);
+            }
+        });
+    })
+</script>

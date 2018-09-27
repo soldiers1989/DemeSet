@@ -1,0 +1,574 @@
+﻿
+@{
+    Layout = null;
+}
+
+<style>
+    html {
+        overflow: hidden;
+    }
+
+    body {
+        padding: 0px !important;
+        background: #f3f3f3 !important;
+    }
+
+    #maintain_info_box a {
+        font-weight: bold;
+    }
+
+    .jump-ipt {
+        height: 38px !important;
+        line-height: 38px !important;
+    }
+
+    .m-chapterList .chaptername {
+        width: 750px;
+    }
+
+    .m20 {
+        margin: 15px 0;
+        line-height: 1;
+        padding-left: 16px;
+    }
+
+    .ml30 {
+        margin-right: 30px;
+    }
+
+    .count-show {
+        display: inline-block;
+        padding: 9px 20px;
+        background: #f5f5f5;
+        word-break: break-all;
+        white-space: normal;
+        overflow:hidden;
+    }
+
+        .count-show .ico {
+            position: relative;
+        }
+
+    .ml30 {
+        margin-right: 30px;
+    }
+
+    .left {
+        float: left;
+    }
+
+    .count-show .ico i {
+        display: inline-block;
+        vertical-align: text-bottom;
+        margin-right: 3px;
+        width: 16px;
+        height: 18px;
+        background: url('../../Libs/CourseInfo/imgs/course-detail-icons_98898dc8.png') no-repeat;
+        background-position-x: 0%;
+        background-position-y: 0%;
+    }
+
+    .count-show .ico.evaluate i {
+        background-position: -20px -273px;
+    }
+
+    .count-show .ico.store i {
+        background-position: -20px -326px;
+    }
+
+    .count-show .ico.study i {
+        width: 18px;
+        background-position: -20px -540px;
+    }
+
+    .fcz {
+        color: #666;
+    }
+
+    .count-show .ico.store {
+        cursor: pointer;
+    }
+
+    .count-show .ico {
+        position: relative;
+    }
+
+        .count-show .ico.store:hover {
+            color: #ff9934;
+        }
+</style>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_talk.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/core.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_list.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_note.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_noteIndex.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_reply.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Shared/_Layout2Style.css" rel="stylesheet" />
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery-2.2.3.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/ajax.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/vue.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/reuglar.0.3.1.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js"></script>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css" />
+<script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js"></script>
+<input hidden="hidden" id="courseid" value="@ViewBag.CourseId" />
+<div class="g-flow f-cb">
+    <div id="advertisement_box" class="advertisement_box f-pf" style="display: none;"></div>
+    <div class="g-flow f-cb">
+        <div class="b-20"></div>
+        <div class="f-bg courseheadbox" id="j-coursehead">
+            <div class="u-courseHead">
+
+                <div class="ov f-pr j-ch">
+                    @*<div class="courseMark  f-pa j-djMark" style="display: block;"> </div>*@
+                    @*<div class="courseMark sfMark f-pa j-sfMark"> </div>*@
+                    <div class="g-sd1 left j-chimg" id="videoarea">
+                        <img class="course_cover" id="courseimg" width="450" height="250" src="">
+                        <a class="cliBtn course_cover" id="btn_course_vedio" style="display: none;" data-src=""></a>
+
+                        @* 课程介绍 *@
+                        <div id="video-parent" style="height: 100%; width: 100%; background: #000; display: none;">
+                            <div class="u-edu-h5player-mainvideo f-pa j-mainVideo">
+                                @*<video controls="controls" preload="none" width="320" height="240" playsinline="" webkit-playsinline="" crossorigin="anonymous" id="coursevideo"></video>*@
+
+                                <div class="prism-player" id="J_prismPlayer" style="position: absolute"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="g-mn1">
+                        <div class="g-mn1c right j-right f-pr">
+
+                            <div class="ctarea f-fl j-cht">
+                                <div class="u-coursetitle f-fl">
+                                    <h2 class="f-thide">
+                                        <span id="coursename"></span>
+                                    </h2>
+                                    <div class="f-cb margin-top-15" value="126" id="vid" style="display: none;">
+                                        <span class="hot f-fs0" id="num"></span>
+                                        <span class="j-starNode starall">
+                                            <div class="u-rating" name="" id="courseappraiselevel">
+
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <p class="m20" style="padding-left:0;">
+                                        <span class="">课程时长：</span>
+                                        <span class="ml30" id="CourseLongTime">
+                                        </span>
+                                        <span class="">课件数：</span>
+                                        <span class="" id="CourseWareCount"></span>
+                                    </p>
+                                    <div class="count-show clearfix" style="width: 220px; height: 15px;">
+                                        <a class="left evaluate ico ml30" href="javascript:;">
+                                            <i style="margin-left:  121px;"></i>
+                                            <span class="fcz" id="AppraiseNum">
+                                            </span>次评价
+                                        </a>
+                                        <div class="left study ico ml30">
+                                            <i></i>
+                                            <span class="fcz" id="PurchaseNum">
+                                            </span>次学习
+                                        </div>
+                                        @*<div class="left store J_collect ico add-collect">
+        <i class="collectBtn "></i>
+        <span class="fcz" id="CollectionNum">
+        </span>次收藏
+    </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                            @* 分享与收藏 *@
+                            <div class="j-course-share-ui f-fr" style="overflow: hidden;width: 46px;margin-top: -21px;height: 26px;">
+                                <div class="u-shareUI f-fr f-cb" id="auto-id-1523267642899">
+                                    <a class="j-info info right-icon" title="查看详情" style="display: none;" id="auto-id-1523267642909"></a>
+                                   @* <a id="btn_collect" class="j-toStore toStore right-icon" title="加入收藏" style=""></a>*@
+                                </div>
+                            </div>
+                            <div>
+                                <div class="discountArea f-pa j-discountArea f-cb f-f0">
+                                    <div class="f-cb margin-b-15">
+                                        <div class="old-price" id="price"></div>
+                                        <span class="price" id="favorableprice"></span>
+                                        
+                                        <span id="" style="margin-left: 30px;"><label id="validityTips">有效期：自购买后</label><label id="ValidityPeriod"></label></span>
+                                    </div>
+                                </div>
+                                <div class="btnarea f-pa j-chbtnarea">
+                                    <div class="f-cb limit">
+                                    </div>
+                                    <a class="learnbtn f-db f-cb j-joinBtn" id="btnLearnNow">
+                                        <span>立即参加</span>
+                                    </a>
+                                    <a class="add-pack j-add-pack" style="display: none;" id="AddToCart">加入购物车</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    @* 课程章节、资源、评价切换 *@
+                    
+                </div>
+            </div>
+
+            <div class="b-15"></div>
+            <div class="b-15"> </div>
+
+            <div id="processwrap">
+                <div class="learnPro f-bg f-cb" id="course-process">
+                    <div class="m-learnProgress f-pr" id="auto-id-1526634212076">
+                        <div class="barBox f-cb">
+                            <div class="f-cb">
+                                <div class="g-mn2">
+                                    <div class="g-mn2c" style="padding: 20px 20px;">
+
+                                        <div class="probg">
+                                            <div class="probar" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="g-sd2">
+                                    <a class="btn f-fr j-btn" href="" style="padding: 14px 0px;">
+                                        <span id="btn_start" class="layui-btn "></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="proDetail f-cb" style="padding-left: 20px;">
+                                <span class="pFinished j-pFinished f-fl">目前已完成<em id="learnCount"> 0 </em>个课时, 加油啊！</span>
+                                <span class="pTaskLeft j-pTaskLeft f-thide f-fr"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-cimn2 f-cb" style="margin-top: 15px;">
+                <div class="g-cimn2c f-cb">
+                    <ul class="f-cb tabarea">
+                        <li class="f-fl"><a class="j-chtab selected" id="coursecontenttab" hidefocus="true" href="javascript:CourseContent()" style="color: #ffffff; background: #ff9900; border-radius: 4px; padding-left: 10px; padding-right: 10px;">主页</a></li>
+                        <li class="f-fl" style="display: none;"><a class="j-chtab" hidefocus="true" id="CourseChapterId" href="javascript:CourseChapter()">目录</a></li>
+                        <li style="display:none;" class="f-fl"><a class="j-chtab" hidefocus="true" Id="CourseResourceId" href="javascript:CourseResource()">资源</a></li>
+                        <li style="display:none;" class="f-fl"><a class="j-chtab" hidefocus="true" id="courseappraise" data-id="@ViewBag.CourseId">评价</a></li>
+                        <li style="display:none;" class="f-fl"><a class="j-chtab" hidefocus="true" id="CoursePaperId" href="javascript:CoursePaper()">测评</a></li>
+                    </ul>
+                    <div id="j-livecourse-remind"> </div>
+                    <div class="f-bg" id="j-course-briefintro">
+                        <div class="u-gtit f-pa u-gtit1"></div>
+                        <div class="m-cbi" id="coursearea">
+                            <h2 class="u-ctit ctit1">课程概述</h2>
+                            <div class="cintrocon j-courseintro" id="coursecontent">
+                                @* 课程内容概述 *@
+                            </div>
+                        </div>
+                    </div>
+                    @* 评价 *@
+                    <div class="m-forumIndex f-cb" id="appraisecontent" style="display: none;">
+                        <div class="g-cimn2">
+                            <div class="g-cimn2c f-bg f-cb" id="forum-box" style="width: 100%">
+                                <div class="postwrap f-cb">
+                                    <ul class="m-posts" id="j-forumposts"></ul>
+                                    <div class="u-asknull j-al-null" style="display: none">暂无评价</div>
+                                    <div class="ui-pager auto-1523673907122-parent" id="j-pager">
+                                        <div class="m-style M-box1" style="float: right;"></div>
+                                    </div>
+                                </div>
+                                @* 我的评价 *@
+                                <div id="j-cmt-box" class="f-bdr">
+                                    <div class="">
+                                        <div class="m-cmtop f-cb">
+                                            <p class="txt f-fs0 s-fc5">给该课程打分：</p>
+                                            <div class="rate j-solo">
+                                                <div class="u-rating" id="auto-id-1523345154243">
+                                                    <div class="star" id="auto-id-1523345154245"></div>
+                                                    <div class="star" id="auto-id-1523345154249"></div>
+                                                    <div class="star" id="auto-id-1523345154253"></div>
+                                                    <div class="star" id="auto-id-1523345154257"></div>
+                                                    <div class="star" id="auto-id-1523345154261"></div>
+                                                    <span id="tip" class="j-tip" id="auto-id-1523345154265"></span>
+                                                </div>
+                                            </div><a class="edit f-dn j-solo" id="auto-id-1523345154225">编辑</a>
+                                        </div>
+                                        <div class="m-cmtinp f-db">
+                                            <div class="j-input f-pr" id="wordTip">
+                                                <div id="auto-id-1523345154234">
+                                                    <div class="u-cmtedtip">
+                                                        <div class="f-fs0 s-fc6 j-ic f-fl" style="display: none;">
+                                                            <div>
+                                                                还可以输入<b class="s-fc1">100</b>字
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="b-10"></div>
+                                                    <div class="u-cmtedit f-cb" style="z-index: 102;">
+                                                        <div class="wrap f-cb" style="height: 200px !important;">
+                                                            <textarea name="notetxt" style="width: 100%;height: 200px !important;" id="appraisetxt"></textarea>
+                                                            <label class="j-ic hint" for="notetxt" id="auto-id-1523345154240" style="">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="b-10">
+                                            </div>
+                                            <div class="u-cmtsb f-cb j-btn" style="">
+                                                <div class="tips j-tips auto-1523345153427-parent">
+                                                    <div class="m-feedbackinfo auto-1523345153427" id="auto-id-1523345154269" style="display: none;">
+                                                        <div class="warningbox j-warningbox f-cb">
+                                                            <span class="right j-warningicon"></span>
+                                                            <span class="warning j-warning"></span>
+                                                        </div>
+                                                        <div class="loadingbox j-loadingbox f-cb">
+                                                            <span class="icon"></span><span class="loading j-loading"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a class="submit j-op" id="appraisesubmit"><span>发表</span></a>
+                                                @*<a class="j-op f-fs0 cancel" id="btn_apppend">追加评价</a>*@
+                                            </div>
+                                        </div>
+                                        <div class="m-cmttxt"></div>
+
+                                        <div id="appraiselist" class="m-cmtcnt j-5cnt">
+                                            @* 客户评价列表 *@
+                                        </div>
+                                        @*<a class="m-ckgd j-op f-db" id="auto-id-1449466945302">查看更多</a>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*测评*@
+                    <div class="m-forumIndex f-cb" id="CoursePaper" style="display: none;">
+                        <div class="f-cb f-bg f-pr recommedCourse auto-1522053726687-parent" id="">
+                            <h2 class="u-ctit f-thide recommend">试卷列表</h2>
+                            <div class="m-basepool f-cb auto-1522053726687" id="">
+                                <div class="m-data-lists f-cb f-pr j-data-list" style="" id="CoursePaper_text">
+                                    @* 测评试卷列表 *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-forumIndex f-cb" id="CourseChapter" style="display: none;">
+                        @* tab 课程章节信息 *@
+                        <div class="f-cb f-bg f-pr" id="j-chapter-list" style="z-index: 10;">
+                            @*<div class="f-cb">
+                                    <h2 class="u-ctit f-thide f-fl" id="j-chapter-title">目录</h2>
+                                    <div class="u-cotinued f-fr" id="j-continued">连载</div>
+                                </div>*@
+                            <div class="m-chapterList f-pr" id="chapterlist">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="m-forumIndex f-cb" id="CourseResource" style="display: none;">
+                        @* tab 课程资源信息 *@
+                        <div class="f-bg" id="">
+                            <div class="u-gtit f-pa u-gtit1"></div>
+                            <div class="m-cbi">
+                                <h2 class="u-ctit ctit1">资源列表</h2>
+                                <div class="cintrocon j-courseintro" id="courseresource">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script type="text/html" id="CoursePaper_html">
+                        {{each Result}}
+                        <a class="u-recommendCourse f-cb f-db f-pr first">
+                            <div class="cInfo f-cb f-fl">
+                                <div class="tit f-cb b-30">
+                                    <h4 class="j-info courseTit f-thide f-fl" title="">{{$value.PaperInfoName}}</h4>
+                                </div>
+                            </div>
+                            @*{{if $value.Count>0}}
+                            <span class="j-price price f-ib f-pa" style="bottom: 90px;">
+                                <span class="pay ChapterPracticeView" data="{{$value.PaperInfoId}}" style="background-color: #75c1b0">查看练习记录</span>
+                            </span>
+                            {{/if}}*@
+                            <span class="j-price price f-ib f-pa">
+                                <span class="pay ChapterPracticeId" data="{{$value.PaperInfoId}}">进入测评</span>
+                            </span>
+                        </a>
+                        {{/each}}
+                    </script>
+
+                    <script type="text/html" id="recommendcourselist_html">
+                        {{each Result}}
+                        <a class="u-recommendCourse f-cb f-db f-pr first" target="_blank" href="/CourseInfo/CourseInfo?courseid={{$value.Id}}">
+                            <div class="cImg f-fl f-pr">
+                                <img src="{{$value.CourseIamge}}" class="j-info img">
+                                <span class="{{$value.Code}}"></span>
+                            </div>
+                            <div class="cInfo f-cb f-fl">
+                                <div class="tit f-cb b-30">
+                                    <h4 class="j-info courseTit f-thide f-fl" title="">{{$value.CourseName}}</h4>
+                                </div>
+                                <div class="j-from from b-20">{{$value.TeachersName}}</div>
+                                <ul class="j-info enroll f-cb">
+                                    @*<li class="j-enroll li-1 f-ib f-fl hot" title="选课人数">{{$value.Count}}</li>*@
+                                </ul>
+                            </div><span class="j-price price f-ib f-pa">
+                                <span class="d">¥ {{$value.Price}}</span>
+                                <span class="pay">¥ {{$value.FavourablePrice}}</span>
+                            </span>
+                        </a>
+                        {{/each}}
+                    </script>
+
+                    <script type="text/html" id="recommendcourselist1_html">
+                        {{each Result}}
+                        <a class="u-recommendCourse f-cb f-db f-pr first" target="_blank" href="/CourseInfo/CoursePackInfo?courseid={{$value.Id}}">
+                            <div class="cImg f-fl f-pr">
+                                <img src="{{$value.CourseIamge}}" class="j-info img">
+                            </div>
+                            <div class="cInfo f-cb f-fl">
+                                <div class="tit f-cb b-30">
+                                    <h4 class="j-info courseTit f-thide f-fl" title="">{{$value.CourseName}}</h4>
+                                </div>
+                                <div class="j-from from b-20">{{$value.CourseWareCount}}门课</div>
+                                <ul class="j-info enroll f-cb"></ul>
+                            </div><span class="j-price price f-ib f-pa">
+                                <span class="d">¥ {{$value.Price}}</span>
+                                <span class="pay">¥ {{$value.FavourablePrice}}</span>
+                            </span>
+                        </a>
+                        {{/each}}
+                    </script>
+
+                    <script type="text/html" id="learnUserList_html">
+                        {{each Rows}}
+                        <a class="uItem j-uItem f-fl f-pr" href="#" id="auto-id-1449466945266">
+                            <div class="j-icon" id="auto-id-1449466945267" data-cid="cid1">
+                                <img class="j-img" src="{{$value.HeadImage}}"><em class="f-thide">{{$value.NickNamw}}</em>
+                            </div>
+                        </a>
+                        {{/each}}
+                    </script>
+                    @* 打包购买更优惠 *@
+                    @* <div id="PackcourseInfo">
+    <div class="b-15"></div>
+    <div class="f-cb f-bg f-pr recommedCourse auto-1522053726687-parent" id="">
+        <h2 class="u-ctit f-thide recommend">打包购买更优惠(该课程已被打包在下列课程套餐中)</h2>
+        <div class="m-basepool f-cb auto-1522053726687" id="">
+            <div class="m-data-lists f-cb f-pr j-data-list" style="" id="recommendcourselist1">
+               相关打包课程列表
+                                </div>
+                            </div>
+                        </div>
+                    </div> *@
+
+                    @* 推荐课程 *@
+                    @* <div id="j-recommend">
+    <div class="b-15"></div>
+    <div class="f-cb f-bg f-pr recommedCourse auto-1522053726687-parent" id="j-recommendCourse">
+        <h2 class="u-ctit f-thide recommend">学习过该课程的人还学习过：</h2>
+        <div class="m-basepool f-cb auto-1522053726687" id="auto-id-1522053727422">
+            <div class="m-data-lists f-cb f-pr j-data-list" style="" id="recommendcourselist">
+                推荐课程列表
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+                </div>
+            </div>
+            <div class="g-cisd2 f-fr" style="margin-top: 15px;">
+                <div class="f-bg" id="j-course-lectors" style="display:none;">
+                    <div class="m-ti">
+                        <div class="lectors j-lectors" >
+                            <div id="turn_area" class="jts j-jts" style="display: none;">
+                                <div id="turn_right" class="f-fr tiicon jtsbtn j-nextlector jtsright"></div>
+                                <div id="turn_left" class="f-fr tiicon jtsbtn-mr jtsbtn j-prelector jtsleft-no"></div>
+                            </div>
+
+                            <div style="cursor: pointer;" class="j-lLink limg f-cb f-pr" data-cid="cid0">
+                                <a id="teacherinfo" data-id="">
+                                    <img height="75" width="75" class="j-limg" src="" id="teacherphoto">
+                                </a>
+                                <span class="j-vipIcon u-orgVipIcon2 f-pa" title="认证机构" style="top: 64px; left: 64px;">
+                                </span>
+                            </div>
+
+                            <img height="75" class="j-lLink" src="" style="display: none;">
+                            <p class="lname f-thide j-lname" id="teachername"></p>
+                        </div>
+                        <div class="ltxt j-ltxt f-richEditorText edueditor_styleclass_0 edueditor_styleclass_1" id="synopsis"></div>
+                    </div>
+
+                </div>
+                <div id="j-repo-box" class="f-dn f-bg repoBox f-cb">
+                    <h2 class="u-ctit">相关题库</h2>
+                    <div id="j-repoList" class="repoList f-bdr"> </div>
+                </div>
+                <div id="j-contactWrap" class="f-dn">
+                    <div class="b-15"></div>
+                    <div class="f-cb f-bg">
+                        <h2 class="u-ctit">服务咨询</h2>
+                        <div id="j-contact-box" class="f-bdr"></div>
+                    </div>
+                </div>
+                <div id="j-coureseclassWrap" class="f-dn">
+                    <div class="b-15"></div>
+                    <div class="f-cb f-bg">
+                        <h2 class="u-ctit">所属系列课程</h2>
+                        <div id="j-courseclass-box" class="f-bdr"></div>
+                    </div>
+                </div>
+                <div class="b-15"></div>
+                @*推荐课程*@
+
+
+
+                <div id="j-courseusers">
+                    <div>
+                        <div class="u-Pusers j-Pusers f-bg f-cb f-pr">
+                            <h3 class="f-cb">
+                                <em class="num j-num f-fl"></em><span class="nTask nCourse j-taskOrCourse f-fl" style="margin-top: -25px; font-size: 14px;"></span>人在学习该课程
+                            </h3>
+                            @* 学习此课程用户 *@
+                            <div class="j-pics pics">
+
+                            </div>
+                        </div>
+                        <div class="j-default userDefault f-bg" style="display: none;">
+                            <h4>暂无其他人学习此课程</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="loadingMask" class="loading-mask" style="z-index: 10001; display: none;"></div>
+            <div id="loadingPb" class="ui-loading f-cb" style="z-index: 10002; display: none;"></div>
+        </div>
+        <div class="u-userCard" id="auto-id-1449466944964">
+            <div class="j-cardMain main">
+                <div class="base f-cb">
+                    <div class="face f-fl">
+                        <a class="j-imglink"><img class="j-img" width="80" height="80" src=""></a>
+                    </div>
+                    <div class="info f-fl">
+                        <p class="nameloginfo">
+                            <a target="_blank" class="f-thide f-ib j-name name" title="进入个人主页"></a>
+                        </p>
+                        <p class="j-gztxt gztxt"></p>
+                    </div>
+                </div>
+                <p class="j-des des"></p>
+                <div class="j-gzbtn gz"></div>
+            </div>
+            <div class="j-loading loading"></div>
+        </div>
+    </div>
+</div>
+<input type="hidden" Id="Rows" value="5" />
+<input type="hidden" Id="PageIndex" value="1" />
+<script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/jquery.pagination.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/CourseInfo/CourseInfo.js"></script>

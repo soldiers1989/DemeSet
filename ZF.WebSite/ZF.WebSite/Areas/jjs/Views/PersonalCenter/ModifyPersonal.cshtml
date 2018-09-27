@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="pragram" content="no-cache">
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+<title>修改个人信息</title>
+<body class="body">
+</body>
+<script type="text/html" id="userInfo_html">
+    <div class="grxx">
+        <dl>
+            <label>昵&nbsp;&nbsp;称：</label>
+            <input value="{{NickNamw}}" name="NickNamw" Id="NickNamw" type="text" placeholder="请输入昵称">
+        </dl>
+    </div>
+    <div class="grxx">
+        <dl>
+            <label>Q&nbsp;&nbsp;&nbsp;Q：</label>
+            <input value="{{QQ}}" name="QQ" Id="QQ" type="text" placeholder="请输入QQ">
+        </dl>
+    </div>
+    <div class="grxx">
+        <dl>
+            <label>Email：</label>
+            <input value="{{Email}}" name="Email" Id="Email" type="text" placeholder="请输入Email">
+        </dl>
+    </div>
+    <div class="grxx_anniu">
+        <a class="submit" href="#">保存</a>
+    </div>
+</script>
+<script type="text/javascript">
+    GetUserInfo();
+    function GetUserInfo() {
+        //获取用户信息
+        topevery.ajaxwx({
+            url: "api/Register/GetOne"
+        }, function (data) {
+            if (data.Success) {
+                $(".body").html(template("userInfo_html", data.Result));
+                $(".submit").click(function() {
+                    save();
+                });
+            }
+        });
+    }
+
+    function save() {
+        var obj = new Object();
+        if ($("#NickNamw").val()) {
+            obj.NickNamw = $("#NickNamw").val();
+        } else {
+            layer.msg("昵称不能为空!");
+            return;
+        }
+        if ($("#QQ").val()) {
+            obj.QQ = $("#QQ").val();
+        }
+        if ($("#Email").val()) {
+            obj.Email = $("#Email").val();
+        }
+        topevery.ajaxwx({
+            url: "api/Register/UpdateOne",
+            data: JSON.stringify(obj)
+        }, function (data) {
+            var info = data.Result;
+            if (data.Success) {
+                layer.msg(info.Message, { time: 1000, icon: 1 });
+                setTimeout(function () {
+                    window.location.href = "/jjs/PersonalCenter/PersonalInformation";
+                }, 1000);
+            } else {
+                layer.msg(info.Message, { time: 1000, icon: 2 });
+            }
+        });
+
+    }
+</script>

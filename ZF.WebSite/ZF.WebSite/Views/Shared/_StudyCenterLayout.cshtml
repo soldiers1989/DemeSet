@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>学习中心</title>
+    <meta name="keywords" content="@ViewBag.KeyWord">
+    <meta name="description" content="@ViewBag.Description">
+    <link rel="shortcut icon" href="@HttpContext.Current.Application["DefuleDomain"]/asset/image/public/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/public/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/global.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/index.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/course.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/practice.css">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/ycfd.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/mycourse.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/center.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-2.2.3.min.js?v=1.0"></script>
+    <script type="text/javascript">
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape("%3Cscript src='http://zgrskspx.class.com.cn/Js/jquery-2.2.3.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/jquery.pagination.js?v=1.0"></script>
+    <style>
+        .izl-rmenu {
+            top: none;
+        }
+
+        .header {
+            height: 110px;
+        }
+
+        .contentIn {
+            padding: 77px 0 10px;
+        }
+
+        .logo span {
+            border-right: 0px solid #efeeee;
+        }
+    </style>
+</head>
+<div class="izl-rmenu">
+    <a class="consult04" href="/Cart/Index" title="加入购物车" target="_blank" id="shoppingCart"><span class="gwc_sp"></span></a>
+    <a href="http://chat56.live800.com/live800/chatClient/chatbox.jsp?companyID=1003731&configID=171768&jid=4534406729" title="联系客服" class="consult" target="_blank">
+        @*<div class="phone" style="display:none;">联系客服</div>*@
+    </a>
+    <a class="consult01" target="_blank"><div class="phone" style="display:none;"></div></a>
+    <a class="consult02" target="_blank"><div class="phone" style="display:none;"></div></a>
+    <a class="consult03" target="_blank"><div class="phone" style="display:none;"></div></a>
+    <a href="javascript:void(0)" class="btn_top" style="display: block;"></a>
+</div>
+<a class="consult03" target="_blank"></a>
+<body class="m-index" oncontextmenu='return false' ondragstart='return false' onselectstart='return false' onselect='return false' oncopy='return false' onbeforecopy='return false' onmouseup='return false'>
+    <!-- 公共部分-头部start -->
+    <div class="header layui-row" style="position: fixed;width: 100%;z-index: 9999;">
+        <div class="main">
+            <h1 class="logo">
+                <a href="~/Home/Index">
+                    <img src="../../asset/image/public/blogo.png">
+                    <span>中国人事考试在线|人事社经济师课堂</span>
+                </a>
+            </h1>
+            <div class="nav">
+                <!-- cur--当前页选中 -->
+                <ul class="navIn">
+                    <li><a href="~/Home/Index">首页</a></li>
+                    <li><a id="course" href="/CourseQueries/IndexQuery">课程</a></li>
+                    <li><a id="question" href="/CourseQueries/Index">机考仿真练习</a></li>
+                    <li><a id="lqzzfw" href="javascript:;">领取增值服务</a></li>
+                    <li class="cur"><a href="javascript:;" id="xxzx">学习中心</a></li>
+                </ul>
+                <ul class="person" id="LoginIndex"></ul>
+                <script id="question_common1" type="text/html">
+                    {{ if !userToken }}
+                    @*<li>
+                            <a href="javascript:;" onclick="shoppingCartShow()" class="cart">
+                                <i class="layui-icon layui-icon-cart">
+                                    <em>0</em>
+                                </i>
+                            </a>
+                        </li>*@
+                    <li>
+                        <a href="javascript:topevery.wxPcLogin();">登录</a>
+                    </li>
+                    {{else}}
+                    @*<li>
+                            <a href="/Cart/Index" class="cart">
+                                <i class="layui-icon layui-icon-cart">
+                                    <em>{{CartCount}}</em>
+                                </i>
+                            </a>
+                        </li>*@
+                    <li class="personCenter">
+                        <a href="../Cart/CartLeftMouldPlate" target="_blank" title="个人中心">
+                            {{if NickNamw}}
+                            {{if NickNamw.length>5}}
+                            {{NickNamw.substring(0,5)+'...'}}
+                            {{else}}
+                            {{NickNamw}}
+                            {{/if}}
+                            {{/if}}
+                            <img src="{{HeadImage}}">
+                        </a>
+                        <div class="drop">
+                            <label class="jian"></label>
+                            <div class="dropIn">
+                                <a href="/Cart/CartLeftMouldPlate?index=1" target="_blank">我的订单</a>
+                                <a href="/Cart/CartLeftMouldPlate?index=2" target="_blank">收货地址</a>
+                                <a href="/Cart/CartLeftMouldPlate?index=3" target="_blank">我的卡券</a>
+                                <a href="/Cart/CartLeftMouldPlate?index=4" target="_blank">基本信息</a>
+                                <a href="javascript:outUser();">退出登录</a>
+                            </div>
+                        </div>
+                    </li>
+                    {{/if}}
+                </script>
+                <br />
+            </div>
+        </div>
+    </div>
+    <!-- 中间内容部分 -start-->
+    <div class="content">
+        <div class="contentIn">
+            <div class="center main layui-row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!-- 公共部分底部start -->
+    <div class="z_bottom">
+        <div class="bottom_zs">请使用IE11+、Chrome、Firefox等支持HTML5的浏览器访问，以获得最佳用户体验</div>
+        <div class="bottom_box">
+            <div class="bottom_box_nr">
+                <div class="bottom_lxwm">
+                    <p>
+                        <span><a href="/Advice/Index?aboutType=1">关于我们</a> <a href="/Advice/Index?aboutType=2">联系我们</a> <a href="/Advice/Index?aboutType=3">法律条款</a> <a href="/Advice/Index?aboutType=8">意见反馈</a></span> 人事社经济师课堂（http://zgrskspx.class.com.cn/）隶属于中国人事出版社<br>
+                        致力于服务广大职称经济师考生，为考生提供职称经济师领域视频教学资源和机考仿真练习<br>
+                        京ICP备09045789号-1
+                    </p>
+                </div>
+                <div class="bottom_ewm">
+                    <div class="bottom_gzh">
+                        <img src="~/asset/image/public/gzhimg.jpg" alt="">
+                        <p>
+                            微信扫码关注公众号<br>
+                            "人事社经济师课堂"
+                        </p>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    @*<div class="footer">
+            <div class="main">
+                <div style="width:100%;text-align:center;padding-bottom:25px;font-size:16px;">请使用IE10+、Chrome、Firefox等支持HTML5的浏览器访问，以获得最佳用户体验</div>
+                <div class="layui-col-xs3">
+                    <div class="flogo">
+                        <a href="javascript:;">
+                            <img src="~/asset/image/public/logo.png">
+                            <span id="webdescript1">人事考试在线|人事社经济师课堂</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="layui-col-xs4">
+                    <div class="sao layui-col-xs6">
+                        <p>扫码关注</p>
+                        <img src="~/asset/image/public/gz.jpg " width="67" height="67" />
+                        <p>微信二维码</p>
+                    </div>
+                    <div class="sao layui-col-xs6">
+                        <p>APP下载</p>
+                        <img src="~/asset/image/public/app.png " />
+                        <p>APP二维码</p>
+                    </div>
+                </div>
+                <div class="layui-col-xs6 third">
+                    <ul class="fnav layui-row">
+                        <li><a href="/Advice/Index?aboutType=1" target="_blank">关于我们</a></li>
+                        <li><a href="/Advice/Index?aboutType=2" target="_blank">联系我们</a></li>
+                        <li><a href="/Advice/Index?aboutType=3" target="_blank">法律条款</a></li>
+                        <li><a href="/Advice/Index?aboutType=8" target="_blank">意见反馈</a></li>
+                    </ul>
+                    <p class="copyright">
+                        ©1997-2018<label id="webdescript">人事考试在线</label>
+                    </p>
+                </div>
+            </div>
+        </div>*@
+    <script type="text/html" id="free">
+        <img src='@HttpContext.Current.Application["DefuleDomain"]/asset/image/public/gz.jpg' />
+        <p style="line-height:30px;text-align:center;">扫描二维码关注，就可以领取免费课程啦~</p>
+    </script>
+    <script type="text/javascript">
+        //if (!topevery.GetCookie("userToken")) {
+        //    topevery.wxPcLogin();
+        //}
+        //绑定©1997-2018中国人事考试在线
+        topevery.ajax({
+            url: "api/BaseDanye/GetArguValue?arguName=webdescript",
+        }, function (data) {
+            if (data.Success) {
+                if (data.Result.Success) {
+                    $("#webdescript").html(data.Result.Message);
+                }
+            }
+        });
+
+        $("#xxzx").click(function () {
+            if (topevery.GetCookie("userToken")) {
+                location.href = "/LearningCenter/Index";
+            } else {
+                topevery.wxPcLogin();
+            }
+        });
+
+        //购物车
+        function shoppingCartShow() {
+            location.href = "/Cart/Index";
+        }
+
+        $(document).on("click", ".wechat", function () {
+            layer.open({
+                type: 1,
+                title: '免费领取课程',
+                content: $("#free").html(),
+                area: ['380px', '480px']
+            });
+        });
+        var object = new Object();
+        object.userToken = topevery.GetCookie("userToken");
+        object.CartCount = 0;
+        if (object.userToken && object.userToken !== "") {
+            topevery.ajax({
+                type: "GET",
+                url: "api/Home/GetUserInfoByTicket"
+            }, function (data) {
+                if (data.Success) {
+                    object.NickNamw = data.Result.NickNamw;
+                    object.CartCount = data.Result.CartCount;
+                    object.LearnCount = data.Result.LearnCount;
+                    object.HeadImage = data.Result.HeadImage;
+                    //if (data.Result.SubjectId) {
+                    //    topevery.SetCookie("subjectId", data.Result.SubjectId);
+                    //    topevery.SetCookie("subjectName", data.Result.SubjectName);
+                    //}
+                    $(".gwc_sp").html(object.CartCount);
+                    $("#LoginIndex").html(template("question_common1", object));
+                }
+            });
+        } else {
+            var cookieCart = topevery.GetCookie("cartInfoList");
+            if (cookieCart) {
+                var cartsplit = cookieCart.split(",");
+                $(".gwc_sp").html(cartsplit.length);
+            } else {
+                $(".gwc_sp").html(0);
+            }
+            $("#LoginIndex").html(template("question_common1", object));
+        }
+        //退出
+        function outUser() {
+            topevery.DelCookie("userToken"); // 删除 cookie
+            ////刷新当前页面.
+            //window.location.reload();
+            parent.location.href = "/Home/Index";
+        }
+        //领取增值服务
+        $("#lqzzfw").click(function () {
+            if (topevery.GetCookie("userToken")) {
+                location.href = "/LearningCenter/Index?index=4";
+            } else {
+                userLogin();
+            }
+        })
+
+
+        $(".btn_top").hide();
+        $(".btn_top").on("click", function () {
+            $('html, body').animate({ scrollTop: 0 }, 300);
+            return false;
+        })
+        $(window).bind('scroll resize', function () {
+            if ($(window).scrollTop() <= 300) {
+                $(".btn_top").hide();
+            } else {
+                $(".btn_top").show();
+            }
+        })
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<div style='display:none'>
+    <script src="https://s22.cnzz.com/z_stat.php?id=1274184572&web_id=1274184572" language="JavaScript"></script>
+</div> 

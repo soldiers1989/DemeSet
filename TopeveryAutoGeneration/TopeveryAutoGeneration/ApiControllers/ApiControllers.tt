@@ -1,0 +1,145 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="$(ProjectDir)\Dll\EntityFramework.dll"#>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Collections.Generic"#>
+<#@ import namespace="System.Data.Entity.ModelConfiguration" #>
+<#@ output extension=".cs" #>
+<#@ include file="..\BusinessLogic.ttinclude" #>
+<#@ include file="..\DbHelper.ttinclude" #>
+<#@ include file="..\MultipleOutputHelper.ttinclude" #>
+
+<# 
+	//生成文件
+	var GenerationFileManager = new Manager(Host, GenerationEnvironment, true) { OutputPath = Path.GetDirectoryName(Host.TemplateFile)}; #>
+<# 
+ModelManager manager = new ModelManager();
+
+List<ModelManager.Class> tableNameList=manager.GetTableList(sqlWhere);
+#>
+
+<# 
+    foreach (var tableName in tableNameList)
+    {
+		string className;
+		string value;
+        DataTable table= manager.GetTableSchema(tableName.name);
+	    className = GetClassName(tableName.name);
+		value=tableName.value;
+		
+ #>
+
+<# 
+    GenerationFileManager.StartBlock(className +"Controllers.cs");
+#>
+
+using System.Web.Http;
+using ZF.Application.AppService;
+using ZF.Application.BaseDto;
+using ZF.Application.Dto;
+using ZF.Core.Entity;
+using ZF.Infrastructure;
+
+namespace ZF.Web.ApiControllers
+{
+    /// <summary>
+    /// 数据表实体Api接口：<#= value #> 
+    /// </summary>
+    public class <#= className #>Controller : BaseController
+    {
+	   private readonly <#= className #>AppService _<#= className.Substring(0,1).ToLower()+className.Substring(1) #>AppService;
+
+	    /// <summary>
+        /// 操作日志服务
+        /// </summary>
+        private readonly OperatorLogAppService _operatorLogAppService;
+
+	   public <#= className #>Controller(<#= className #>AppService  <#= className.Substring(0,1).ToLower()+className.Substring(1) #>AppService ,OperatorLogAppService operatorLogAppService)
+	   {
+			_<#= className.Substring(0,1).ToLower()+className.Substring(1) #>AppService =<#= className.Substring(0,1).ToLower()+className.Substring(1) #>AppService;
+			_operatorLogAppService = operatorLogAppService;
+	   }
+
+	   /// <summary>
+       /// 查询列表实体：<#= value #> 
+       /// </summary>
+	   [HttpPost]
+        public JqGridOutPut<<#= className #>Output> GetList(<#= className #>ListInput input)
+        {
+            var count = 0;
+            var list = _<#= className.Substring(0,1).ToLower()+className.Substring(1) #>AppService.GetList(input, out count);
+            return new JqGridOutPut<<#= className #>Output>()
+            {
+                Page = input.Page,
+                Total = count % input.Rows == 0 ? count / input.Rows : count / input.Rows + 1,
+                Records = count,
+                Rows = list
+            };
+        }
+
+	
+	   /// <summary>
+        /// 根据id 删除实体记录
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public MessagesOutPut Delete(IdInputIds input)
+        {
+            var array = input.Ids.TrimEnd(',').Split(',');
+            foreach (var item in array)
+            {
+                var model = _<#= className.Substring(0,1).ToLower()+className.Substring(1) #>AppService.Get(item);
+                if (model != null)
+				{
+                    _operatorLogAppService.Add(new OperatorLogInput
+                    {
+                        KeyId = model.Id,
+                        ModuleId =  (int)Model.<#= className #>,
+                        OperatorType = (int) OperatorType.Delete,
+                        Remark = "删除<#= value #>:"
+                    });
+				}
+                _<#= className.Substring(0,1).ToLower()+className.Substring(1) #>AppService.Delete(model);
+            }
+            return new MessagesOutPut { Id = 1, Message = "删除成功!", Success = true };
+        }
+         /// <summary>
+        /// 新增或修改实体：<#= value #>
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public MessagesOutPut AddOrEdit(<#= className #>Input input)
+        {
+            var data = _<#= className.Substring(0,1).ToLower()+className.Substring(1) #>AppService.AddOrEdit(input);
+            return new MessagesOutPut { Id = data.Id, Message = data.Message, Success = data.Success };
+        }
+
+		 /// <summary>
+        /// 返回一条实体记录
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+		[System.Web.Http.HttpPost]
+        public <#= className #> GetOne(IdInput input)
+        {
+            var model = _<#= className.Substring(0,1).ToLower()+className.Substring(1) #>AppService.Get(input.Id);
+            return model;
+        }
+    }
+}
+
+<# GenerationFileManager.EndBlock(); #>
+
+<#
+    }  
+ #>     
+   
+<# GenerationFileManager.Process(true); #>
+

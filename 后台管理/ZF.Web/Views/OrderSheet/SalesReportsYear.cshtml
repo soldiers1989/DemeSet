@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>订单管理</a>/<a>销售统计</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-12">
+    <ul id="myTab" class="nav nav-tabs">
+        <li><a href="" url="OrderSheet/SalesReports"  data-toggle="tab">年统计</a></li>
+        <li><a href=""  url="OrderSheet/SalesReportsMonth" data-toggle="tab" id="">月统计</a></li>
+        <li  class="active"><a  url="OrderSheet/SalesReportsYear" href="" data-toggle="tab" id="">年统计</a></li>
+    </ul>
+</div>
+<div class="col-xs-12 ">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <label>按年统计：</label>
+                <input class="form-control Wdate" onFocus="WdatePicker({ el: 'StartTime', dateFmt: 'yyyy', maxDate: '#F{$dp.$D(\'EndTime\')}' })" id="StartTime" name="StartTime" style="height: 34px;" />
+                <label>-</label>
+                <input class="form-control Wdate" onFocus="WdatePicker({ el: 'EndTime', dateFmt: 'yyyy', minDate: '#F{$dp.$D(\'StartTime\')}' })" id="EndTime" name="EndTime" style="height: 34px;" />
+                <input class="btn btn-success query_table_btn" type="button" value="查看列表">
+                <input class="btn btn-success query_report_btn" type="button" value="查看曲线图">
+                <input class="btn btn-success import_btn" type="button" value="导出查询数据">
+            </div>
+        </form>
+    </div>
+    <div class="box-body row" id="table_1">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+    <div class="box-body row" id="table_2" style="display: none;">
+        <div id="main" style="width: 100%; height: 400px;"></div>
+    </div>
+</div>
+<script src="~/Libs/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Views/OrderSheet/SalesReportsYear.js"></script>

@@ -1,0 +1,89 @@
+﻿@using ZF.Web.Models.File
+@{
+    ViewBag.Title = "添加课程章节视频";
+}
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <input hidden="hidden" Id="ChapterId" name="ChapterId" value="@ViewBag.ChapterId" />
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>视频名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="VideoName" name="VideoName">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>二维码标题</label>
+                    <input type="text" class="form-control" maxlength="6" id="QcodeTitle" name="QcodeTitle">
+                </div>
+            </div>
+            <div style="width: 100%;">
+                <div class="col-xs-6">
+                    <label>是否可试听</label>
+                    <select id="IsTaste" name="IsTaste" class="form-control">
+                        <option value="1" selected="selected">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                    <div id="tasteTimeArea" class="form-group">
+                        <label>可试听时长(0表示能试听全部视频)</label>
+                        <input type="number" step="1" min="0" value="1" class="form-control" placeholder="时间单位为秒" id="TasteLongTime" name="TasteLongTime">
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%;">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label>未登录可试听时长</label>
+                        <input type="number" step="1" min="0" value="1" class="form-control" placeholder="时间单位为秒" id="TasteLongTime2" name="TasteLongTime2">
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label>排序号</label><span class="text-danger">*</span>
+                        <input type="number" class="form-control" min="0" max="99" id="OrderNo" name="OrderNo">
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label>视频编号</label><span class="text-danger">*</span>
+                        <input type="text" class="form-control" maxlength="16" id="Code" name="Code">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>视频地址</label>
+                    <input type="text" readonly="readonly" id="VideoName1" name="VideoName1"  style="width: 400px; height: 30px;" />
+                    <input type="hidden" id="VideoUrl" name="VideoUrl"  />
+                    <button type="button" class="btn" id="chooseVideo">选择视频</button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>课程目标</label><span class="text-danger">*</span>
+                    <textarea class="form-control" id="VideoContent" name="VideoContent" />
+                </div>
+            </div>
+            @*<div class="col-xs-12">
+                 <div class="form-group">
+                     <span>(若课程可试听，则必须上传视频!)</span>
+                     @Html.Partial("UploadFilePartialView", new UploadFileDto()
+                {
+                    UploadId = "IdFile",
+                    KeyId = ViewBag.Id,
+                    UploadContentType = "mp4",
+                })
+                 </div>
+                 </div>*@
+
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" style="float:right;" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/CourseVideo/AddOrEdit.js"></script>

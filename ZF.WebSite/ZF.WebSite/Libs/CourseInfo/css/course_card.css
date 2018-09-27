@@ -1,0 +1,286 @@
+﻿body {
+    text-align: left;
+    font-family: "Arial","Hiragino Sans GB", 微软雅黑, "Helvetica", "sans-serif";
+    font-size: 14px;
+    color: #444;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    padding: 0;
+    margin: 0;
+}
+
+body, textarea, select, input {
+    font-family: "Arial","Hiragino Sans GB", 微软雅黑, "Helvetica", "sans-serif";
+    font-size: 14px;
+    color: #444;
+    outline: none;
+    border: 0;
+}
+
+.f-fl {
+    float: left;
+}
+
+.f-pr {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+.m-myCoupon .m-head {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: none;
+    font-size: 0;
+}
+
+.g-doc, .g-wrap, .g-flow, .g-superflow, .g-all {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.g-flow {
+    width: 1205px;
+}
+
+.m-myCoupon .m-head h3 {
+    padding: 30px 0 20px;
+    font-size: 18px;
+    color: #666;
+}
+
+.m-myCoupon .m-head .u-mounav {
+    color: #666;
+    background-color: #fff;
+    display: inline-block;
+    box-shadow: none;
+    font-size: 16px;
+}
+
+.m-myCoupon .m-head .m-exchange {
+    position: relative;
+    top: -13px;
+}
+
+.f-fr {
+    float: right;
+}
+
+.g-doc, .g-wrap, .g-flow, .g-superflow, .g-all {
+    text-align: left;
+}
+
+.g-doc, .g-wrap, .g-flow, .g-superflow, .g-all {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.m-myCoupon .coupon-box {
+    margin-top: 40px;
+}
+
+    .m-myCoupon .coupon-box .m-data-lists {
+        margin-right: -20px;
+    }
+
+.auto-1527215853849 .m-data-lists {
+    position: relative;
+    z-index: 100;
+}
+
+.auto-1527215853849 .ui-pager {
+    position: relative;
+    z-index: 99;
+}
+
+.ui-pager {
+    padding: 30px 10px;
+    float: right;
+}
+
+.u-emptybig {
+    background: url(//s.stu.126.net/res/images/ui/ui_empty.png?5a585836b5cc345dac24259d9e14eeaf) center 40px no-repeat;
+    background-image: url("//s.stu.126.net/res/images/ui/ui_empty.png?5a585836b5cc345dac24259d9e14eeaf");
+    padding: 260px 0 40px 0;
+    padding-top: 260px;
+}
+
+.m-myCoupon .u-emptybig {
+    background-image: url(//nos.netease.com/edu-image/02D494A5F7FB3DD7DF34AFB817E817B0.png?imageView&thumbnail=210z232);
+    padding-top: 270px;
+}
+
+    .m-myCoupon .u-emptybig .emptytext {
+        margin-top: 24px;
+    }
+
+.u-emptybig .emptytext {
+    width: 80%;
+    text-align: center;
+    line-height: 2;
+    font-size: 16px;
+    font-family: '微软雅黑';
+    color: #666;
+    margin: 10px auto;
+    margin-top: 10px;
+}
+
+.m-myCoupon .use-intro {
+    border-top: 1px solid #ddd;
+    margin-top:40px;
+}
+
+    .m-myCoupon .use-intro .intro-tit {
+        padding: 30px 0 16px 0;
+        font-size: 16px;
+        color: #444;
+    }
+
+    .m-myCoupon .use-intro .intro {
+        color: #666;
+        line-height: 26px;
+    }
+
+li {
+    list-style: none;
+}
+
+.m-myCoupon .use-intro .intro .intro-itm {
+    list-style: disc;
+    list-style-position: outside;
+    list-style-position: inside;
+}
+
+.m-myCoupon .use-intro .intro .intro-itm {
+    list-style: disc;
+    list-style-position: outside;
+    list-style-position: inside;
+}
+
+.m-myCoupon .m-head .u-mounav .tab {
+    padding-bottom: 15px;
+    margin-right: 60px;
+    color: #2a2a2a;
+}
+
+
+
+
+input {
+    vertical-align: middle;
+    margin: 0px;
+}
+
+.m-myCoupon .m-head .m-exchange .ipt {
+    width: 280px;
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    text-indent: 15px;
+    vertical-align: baseline;
+}
+
+.m-myCoupon .m-head .m-exchange .btn {
+    background: #49af4f;
+    border-radius: 2px;
+    width: 90px;
+    height: 34px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 34px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.m-myCoupon .m-head .u-mounav .tab.current {
+    color: #49af4f;
+    border-bottom: 4px solid #49af4f;
+}
+
+.getCoupon span {
+    display: block;
+    height: 75px;
+    float: left;
+    text-align: center;
+    background-color: #fefdf3;
+    color: #fe5f17;
+    font-size: 20px;
+}
+
+    .getCoupon span.cbg {
+        background: url(//s.stu.126.net/res/images/activities/feeCourse/fee_sprite.png?e62b9240ef978fc0ba53fbdd134be120) no-repeat -9999px -9999px;
+        background-position-x: -9999px;
+        background-position-y: -9999px;
+    }
+
+    .getCoupon span.big {
+        font-size: 46px;
+        width: 70px;
+        line-height: 80px;
+        font-family: arial;
+        letter-spacing: -4px;
+    }
+
+.getCoupon .info {
+    width: 100px;
+    height: 60px;
+    background-color: #fefdf3;
+    padding: 15px 0 0 15px;
+}
+
+    .getCoupon .info h4 {
+        line-height: 1.6;
+        font-size: 18px;
+        color: #333;
+        height: 30px;
+    }
+
+    .getCoupon .info p {
+        font-size: 12px;
+        color: #666;
+    }
+
+.getCoupon span.cbg {
+    background-position: -87px 0;
+    width: 13px;
+}
+
+.getCoupon span.yen {
+    font-family: "微软雅黑";
+    width: 25px;
+    line-height: 104px;
+    padding: 0;
+    font-weight: bold;
+}
+
+
+.getCoupon {
+    width: 210px;
+    height: 75px;
+    margin: 20px 15px 0 0;
+    -webkit-box-shadow: 1px 1px 2px #bbb;
+    -moz-box-shadow: 1px 1px 2px #bbb;
+    box-shadow: 1px 1px 2px #bbb;
+}
+
+.cardno {
+    background-color: #fefdf3;
+    font-size: 14px;
+    color: #666;
+    width: 210px;
+    height: 20px;
+    float: inline-end;
+    text-align: center;
+}

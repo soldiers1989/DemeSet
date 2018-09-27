@@ -1,0 +1,140 @@
+﻿AppID     		  wx409554aacc49917c
+AppSecret  		  2857394d3cdad9bf44db0e1b9d93413a
+Token	  		  www0430com
+EncodingAESKey	  CgUPL7K8wDEYUKEewHjhuX94JDOnlajGnmbfoIItJ4M
+
+{
+    "button": [
+        {
+            "name": "学习中心", 
+            "sub_button": [
+                {
+                    "type": "view", 
+                    "name": "学习中心", 
+                    "url": "http://zgrskspx.class.com.cn/jjs/Home/Index"
+                }
+            ]
+        }
+    ]
+}
+
+10_z5TBbk3501OHdGYduwnYhpNJotuAus3gn011Zim1KwlEsoJc_ddnFFLUX67Tny4DwYoBr_h0czjScplwKUAVBV4seGBw278A4c1viBZ7qjvNifpsYcKnVL2g5TonmmraN3AncSWA8EVoAMdxFXDiAIAQIO
+
+10_ZG44COuRZFQAR9lYsZ4Nqysg0kHZcXJJdN929PW7VaLVQa83c6smfDhS17Iqf09q3aXc18NydtiIQ_wpk43UtV3NGhjbyZLwpWTfweEgtg05GX11moMaJVhxmAnPX0cjez0i2_SzDhncKF4QWQXcAFASMT
+
+
+MjcxYmJiZjktNWQwNy00YTI2LThiMjgtODZkZjcwMjU2MGU2JjIwMmNiOTYyYWM1OTA3NWI5NjRiMDcxNTJkMjM0Yjcw0
+MjcxYmJiZjktNWQwNy00YTI2LThiMjgtODZkZjcwMjU2MGU2JjIwMmNiOTYyYWM1OTA3NWI5NjRiMDcxNTJkMjM0Yjcw0
+
+
+人事社公众号账号： 
+
+rskszx2018@163.com
+密码：zgrskspx2018 
+
+阿里云：http://signin.aliyun.com/zgrsks/login.htm
+
+用户名：sunj  密码：Hnzhuofan123
+
+
+人事社经济师课堂增值服务：
+rssjjs@163.com
+密码：rssjjsks123
+wx37d2ac10a0eb03c6
+ba6a172fdb04e51e9da4605ed3e2a720
+
+
+微信开放平台账号：
+3133198779@qq.com 
+密码：hnzhuofan25884776
+
+
+人事社经济师
+rssjjskt@163.com
+rssjjskt123
+wx3f85880a5fa53c7d
+0d4fad54c12fbe695974563b52c7b890
+预留信息:Zhuofan
+Chinax123.
+iSDW44eJT5ujN0AeXDTqT2C6f0vX1h7N
+
+
+
+
+腾讯云地址：115.159.112.133       
+
+用户名：administrator   密码：zhuofan@123.com
+
+
+
+
+阿里云：http://signin.aliyun.com/zgrsks/login.htm
+
+用户名：sunj  密码：Hnzhuofan123
+
+用户名：wyf  密码：aini0829
+
+
+阿里云 用户名：hnzhuofan1028 密码：Sunjian1028 
+
+
+
+
+
+
+
+
+
+
+
+{
+    "button": [
+        {
+            "type": "view", 
+            "name": "增值服务", 
+            "url": "http://zgrskspx.class.com.cn/jjs/HomePage/Index", 
+            "sub_button": [ ]
+        }, 
+        {
+            "type": "view", 
+            "name": "最新资讯", 
+            "url": "http://zgrskspx.class.com.cn/jjs/Information/Index", 
+            "sub_button": [ ]
+        }, 
+        {
+            "name": "考试指南", 
+            "sub_button": [
+                {
+                    "type": "view", 
+                    "name": "考试介绍", 
+                    "url": "http://zgrskspx.class.com.cn/jjs/Information/Detail?Id=af8d32a0-270e-4f06-82a5-86935be70699", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "考试时间", 
+                    "url": "http://zgrskspx.class.com.cn/jjs/Information/Detail?Id=1245f25c-e84a-4033-8aad-6d6272670f0f", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "考试报名", 
+                    "url": "http://zgrskspx.class.com.cn/jjs/Information/Detail?Id=36c21726-9e5a-4963-be32-a45ef590bbbc", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "考试内容", 
+                    "url": "http://zgrskspx.class.com.cn/jjs/Information/Detail?Id=cc00dc3d-9cb9-4776-b103-e82e41088e40", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "成绩查询", 
+                    "url": "http://zgrskspx.class.com.cn/jjs/Information/Detail?Id=b74ea877-1320-4273-bfb9-8c1515d5f956", 
+                    "sub_button": [ ]
+                }
+            ]
+        }
+    ]
+}

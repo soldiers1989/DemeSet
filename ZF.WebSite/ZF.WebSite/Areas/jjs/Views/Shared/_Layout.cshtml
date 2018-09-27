@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    @*<link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" />*@
+    @*<link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/layer_mobile/need/layer.css" rel="stylesheet" />*@
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" />
+</head>
+<script src="http://code.jquery.com/jquery-2.2.3.min.js?v=1.0"></script>
+<script type="text/javascript">
+    if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='http://zgrskspx.class.com.cn/Js/jquery-2.2.3.min.js' type='text/javascript'%3E%3C/script%3E"));
+    }
+</script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/md5.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<body>
+    @RenderBody()
+</body>
+<div style='display:none'>
+    <script src="https://s22.cnzz.com/z_stat.php?id=1274184572&web_id=1274184572" language="JavaScript"></script>
+</div>
+<script type="text/javascript">
+    if (topevery.IsValueAddedWebApp) {
+        $(".header-nav ul li").css("width", "50%");
+    } else {
+        $($(".header-nav ul li")[1]).show();
+    }
+</script>

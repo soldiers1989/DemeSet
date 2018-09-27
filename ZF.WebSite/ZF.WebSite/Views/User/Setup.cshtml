@@ -1,0 +1,131 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<style>
+    body {
+        overflow:hidden;
+    }
+    .uploadbox a {
+        display: inline-block;
+        width: 70px;
+        height: 35px;
+        background: green;
+        position: relative;
+        overflow: hidden;
+        line-height: 35px;
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+    }
+
+
+    .uploadbox input {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 70px;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        cursor:pointer;
+    }
+</style>
+<!DOCTYPE html>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/User/css/Setup.css" rel="stylesheet" />
+<div class="settings f-cb g-flow st">
+    <div class="">
+        <div class="b-20"></div>
+        <div id="settings-box" class="f-bg">
+            <div class="m-setBox">
+                <div id="j-setBox" class="setBox">
+                    <div class="m-infoEdit">
+                        <div class="f-cb header">
+                            <div class="f-fl fk">完善个人资料是让别人认识你的第一步</div>
+                        </div><div class="editBox">
+                                  <form id="formid" action="/User/Setup" method="post" enctype="multipart/form-data">
+                                      <table>
+                                          <tbody>
+                                              <tr><td><h2>基本信息</h2></td></tr>
+                                              <tr class="b-10"></tr>
+                                              <tr>
+                                                  <td class="title">
+                                                      <em class="f-sign">*</em>昵称
+                                                  </td>
+                                                  <td>
+                                                      <div class="j-nickName eBcon auto-1523870147652-parent">
+                                                          <div class="m-nicknameui u-insug f-cb auto-1523870147652">
+                                                              <div class="area j-inputArea f-fl" style="width: 175px; height: 25px;">
+                                                                  <input type="text" class="j-input" id="uname" name="uname" style="width: 175px; height: 25px;">
+                                                                  <label class="j-label" id="auto-id-1523870147669" style="display: none;">请输入昵称</label>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="title">头像</td>
+                                                  <td>
+                                                      <div class="j-pic eBcon auto-1523867003664-parent">
+                                                          <div class="f-cb auto-1523867003664">
+                                                              <div class="imgbox">
+                                                                  <img class="img j-img" name="uimage" id="uimage" src="">
+                                                              </div>
+                                                              <div class="infobox">
+                                                                  <div class="info">支持jpg、gif、png或bmp格式的图片，建议文件小于20M</div>
+                                                                  <div class="opt f-cb">
+                                                                      <div class="uploadbox j-uploadbox">
+
+
+                                                                          <a href="#">
+                                                                              修改头像
+                                                                              <input type="file" name="myfile" value="浏览" />
+                                                                          </a>
+                                                                          <input id="rightText" name="myfiles" class="right-textimp" style="margin: 17px 0px !important">
+                                                                          <input id="hiuid" name="hiuid" type="hidden" />
+                                                                          <input id="hiimage" name="hiimage" type="hidden" value="@ViewBag.uPhoto" />
+                                                                          <input id="hiUname" name="hiUname" type="hidden" value="@ViewBag.uName" />
+
+                                                                      </div>
+                                                                      <div class="feedbox j-feedbox auto-1523867003596-parent">
+                                                                          <div class="m-feedbackinfo auto-1523867003596" style="display: none;">
+                                                                              <div class="warningbox j-warningbox f-cb"><span class="right j-warningicon"></span><span class="warning j-warning"></span></div>
+                                                                              <div class="loadingbox j-loadingbox f-cb"><span class="icon"></span><span class="loading j-loading"></span></div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="title">手机号码</td>
+                                                  <td>
+                                                      <div class="f-fl phoneIpt f-cb">
+                                                          <div class="j-phoneIpt">
+                                                              <div class="accMail" style="margin-bottom: 0;">
+                                                                  <div class="mailOpr">
+                                                                      <div class="verify f-cb j-modify-wrap">
+                                                                          <div class="f-fl mailN j-tel-num" id="uphone">17673059440</div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                          </div><div class="tip f-fs0 s-fc6">用于优质课程的学习提醒等服务，手机号不会对外公开，请放心</div>
+                                                      </div><div class="f-fl feed j-rnFb"></div>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </form>
+                        </div>
+                        <div class="footer">
+                              <input type="button" style="height: 40px;width: 80px;background-color: green;color: #f5f5f7;cursor:pointer;" class="button" id="userSave" value="保存" />
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/User/Serup.js?v=1.0"></script>

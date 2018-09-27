@@ -1,0 +1,152 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="$(ProjectDir)\Dll\EntityFramework.dll"#>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Collections.Generic"#>
+<#@ import namespace="System.Data.Entity.ModelConfiguration" #>
+<#@ output extension=".cs" #>
+<#@ include file="..\BusinessLogic.ttinclude" #>
+<#@ include file="..\DbHelper.ttinclude" #>
+<#@ include file="..\MultipleOutputHelper.ttinclude" #>
+
+<# 
+	//生成文件
+	var GenerationFileManager = new Manager(Host, GenerationEnvironment, true) { OutputPath = Path.GetDirectoryName(Host.TemplateFile)}; #>
+<# 
+ModelManager manager = new ModelManager();
+
+List<ModelManager.Class> tableNameList=manager.GetTableList(sqlWhere);
+#>
+
+<# 
+    foreach (var tableName in tableNameList)
+    {
+		string className;
+		string value;
+        DataTable table= manager.GetTableSchema(tableName.name);
+	    className = GetClassName(tableName.name);
+		value=tableName.value;
+		
+ #>
+
+<# 
+    GenerationFileManager.StartBlock(className +"AppService.cs");
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+using Dapper;
+using ZF.Application.BaseDto;
+using ZF.Application.Dto;
+using ZF.AutoMapper.AutoMapper;
+using ZF.Core.Entity;
+using ZF.Core.IRepository;
+using ZF.Infrastructure;
+
+namespace ZF.Application.AppService
+{
+    /// <summary>
+    /// 数据表实体应用服务现实：<#= value #> 
+    /// </summary>
+    public class <#= className #>AppService : BaseAppService<<#= className #>>
+    {
+	   private readonly I<#= className #>Repository _i<#= className #>Repository;
+
+	    /// <summary>
+        /// 操作日志服务
+        /// </summary>
+        private readonly OperatorLogAppService _operatorLogAppService;
+
+
+	   /// <summary>
+	   /// 构造函数
+	   /// </summary>
+	   /// <param name="i<#= className #>Repository"></param>
+	   /// <param name="operatorLogAppService"></param>
+	   public <#= className #>AppService(I<#= className #>Repository i<#= className #>Repository,OperatorLogAppService operatorLogAppService): base(i<#= className #>Repository)
+	   {
+			_i<#= className #>Repository = i<#= className #>Repository;
+			_operatorLogAppService = operatorLogAppService;
+	   }
+	
+	   /// <summary>
+       /// 查询列表实体：<#= value #> 
+       /// </summary>
+	   public  List<<#= className #>Output> GetList(<#= className #>ListInput input, out int count)
+	   {
+		  const string sql = "select  a.* ";
+          var strSql = new StringBuilder(" from <#= tableName.name #>  a  where a.IsDelete=0  ");
+		  const string sqlCount = "select count(*) ";
+          var dynamicParameters = new DynamicParameters();
+          if (!string.IsNullOrWhiteSpace(input.Name))
+          {
+              strSql.Append(" and a.Name = @Name ");
+              dynamicParameters.Add(":Name", input.Name, DbType.String);
+          }
+		  count = Db.ExecuteScalar<int>(sqlCount + strSql, dynamicParameters);
+          var list = Db.QueryList<<#= className #>Output>(GetPageSql(sql + strSql,
+                dynamicParameters,
+                input.Page,
+                input.Rows, input.Sidx, input.Sord), dynamicParameters);
+          return list;
+	   }
+
+	   /// <summary>
+        /// 新增实体  <#= value #>
+        /// </summary>
+        public MessagesOutPut AddOrEdit(<#= className #>Input input)
+        {
+            <#= className #> model;
+            if (!string.IsNullOrEmpty(input.Id))
+            {
+                model = _i<#= className #>Repository.Get(input.Id);
+				#region 修改逻辑
+				model.Id = input.Id;
+
+
+                model.UpdateUserId = UserObject.Id;
+                model.UpdateTime = DateTime.Now;
+                #endregion
+                _i<#= className #>Repository.Update(model);
+                _operatorLogAppService.Add(new OperatorLogInput
+                {
+                    KeyId = model.Id,
+                    ModuleId = (int)Model.<#= className #>,
+                    OperatorType = (int)OperatorType.Edit,
+                    Remark = "修改<#= value #>:"
+                });
+                return new MessagesOutPut { Success = true, Message = "修改成功!" };
+            }
+            model = input.MapTo<<#= className #>>();
+			model.Id = Guid.NewGuid().ToString();
+            model.AddUserId = UserObject.Id;
+            model.AddTime = DateTime.Now;
+            var keyId = _i<#= className #>Repository.InsertGetId(model);
+            _operatorLogAppService.Add(new OperatorLogInput
+            {
+                KeyId = keyId,
+                ModuleId = (int)Model.<#= className #>,
+                OperatorType =(int) OperatorType.Add,
+                Remark = "新增<#= value #>:" 
+            });
+            return new MessagesOutPut { Success = true, Message = "新增成功!" };
+        }
+	   
+    }
+}
+
+<# GenerationFileManager.EndBlock(); #>
+
+<#
+    }  
+ #>     
+   
+<# GenerationFileManager.Process(true); #>
+

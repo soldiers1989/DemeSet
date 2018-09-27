@@ -1,0 +1,214 @@
+﻿#edit-cont {
+    padding: 20px;
+}
+.m, .mb, .mc, .mt, .sm, .smb, .smc, .smt {
+    overflow: hidden;
+    zoom: 1;
+}
+
+#edit-cont .item {
+    margin: 0 0 5px;
+    line-height: 22px;
+}
+
+.form .item {
+    display: inline-block;
+    display: block;
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+
+#edit-cont .item .label {
+    float: none;
+    display: block;
+    vertical-align: middle;
+    color: #999;
+    text-align: left;
+}
+
+.form em {
+    color: #e4393c;
+}
+
+.fl {
+    float: left;
+}
+
+#edit-cont .item .text {
+    height: 30px;
+    line-height: 18px;
+    padding: 6px;
+    width: 220px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+input {
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+}
+
+input, textarea, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb !important;
+}
+
+.form .itxt, .form .text {
+    height: 18px;
+    width: 127px;
+    padding: 5px 23px 5px 5px;
+}
+
+.form .text {
+    line-height: 18px;
+    border: 1px solid #ccc;
+}
+
+
+.clear, .clr {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+}
+
+#edit-cont .item {
+    margin: 0 0 5px;
+    line-height: 22px;
+}
+
+.form .item {
+    display: inline-block;
+    display: block;
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+
+.form .item:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.consignee-auto-tip {
+    float: left;
+    border: 1px solid #ddd;
+    padding: 5px 10px 5px 15px;
+    position: relative;
+    margin-top: 5px;
+}
+
+#edit-cont .item .label {
+    float: none;
+    display: block;
+    vertical-align: middle;
+    color: #999;
+    text-align: left;
+}
+
+#edit-cont .item .text1 {
+    width: 484px;
+}
+
+#edit-cont .item .error-msg {
+    color: #c00;
+    line-height: 32px;
+}
+
+#edit-cont .btns {
+    margin: 10px 0 0;
+}
+
+a.e-btn:active, a.e-btn:hover, a.e-btn:link, a.e-btn:visited {
+    color: #333;
+    text-decoration: none;
+}
+
+body {
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #666;
+    background: #fff;
+}
+
+a.save-btn {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 14px;
+    font-size: 14px;
+}
+
+.btn-10:link, .btn-10:visited, .btn-11:link, .btn-11:visited, .btn-12:link, .btn-12:visited, .btn-9:link, .btn-9:visited {
+    color: #323333;
+    text-decoration: none;
+}
+#edit-cont .item .extra-span {
+    margin: 26px 5px 0;
+    display: block;
+}
+
+.ftx-03, .ftx03 {
+    color: #999;
+}
+
+em, i, u {
+    font-style: normal;
+}
+
+a, address, b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, label, legend, li, ol, p, pre, small, span, strong, u, ul, var {
+    margin: 0;
+    padding: 0;
+}
+
+.btn-10, .btn-11, .btn-12, .btn-9 {
+    background-color: #F7F7F7;
+    background-image: -moz-linear-gradient(top,#F7F7F7,#F3F2F2);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#F7F7F7),color-stop(1,#F3F2F2));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#F3F2F2', GradientType='0');
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#F3F2F2');
+    background-image: linear-gradient(to bottom,#F7F7F7 0,#F3F2F2 100%);
+    border-radius: 2px;
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    border: 1px solid #ddd;
+    padding: 2px 14px 3px;
+    color: #323333;
+}
+
+.select{
+    border: 1px solid #ccc;
+    font-size: 14px;
+    height: 30px;
+    width: 150px;
+}
+
+.error-msg {
+    color: #c00;
+    line-height: 32px;
+    display:none;
+}

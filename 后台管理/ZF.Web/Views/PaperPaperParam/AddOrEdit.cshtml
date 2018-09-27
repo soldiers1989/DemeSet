@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "项目分类新增(修改)";
+}
+
+<div class="box">
+    <form id="sumbitFormTwo" name="sumbitFormTwo">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <input type="hidden" id="sId" value="@ViewBag.subjectId" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>参数名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="ProjectClassName" name="ProjectClassName">
+                </div>
+                <div class="form-group">
+                    <label>试卷结构</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" style="width: 179px;" id="QueryNewStuctureId" name="AddUserId"></select>
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="save">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/PaperPaperParam/AddOrEdit.js"></script>

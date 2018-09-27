@@ -1,0 +1,40 @@
+﻿@using ZF.Web.Models.File
+
+@{
+    ViewBag.Title = "资讯信息新增(修改)";
+}
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <input type="hidden" id="ArticleImage" name="ArticleImage"/>
+            <div class="col-xs-12" style="padding: 0px;">
+                <div class="form-group col-xs-6">
+                    <label>标题</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="ArticleTitle" name="ArticleTitle"></select>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label>封面</label><span class="text-danger">*</span>
+                    <input type="file" style="display:none;" id="uploadFile"/>
+                    <input type="hidden" name="ArticleImage" />
+                    <img style="width:60px;height:60px;" src="~/Images/xlsx.jpg" id="headImg"/>
+                </div>
+            </div>
+            <div class="col-xs-12" style="padding: 0px;">
+                <div class="form-group col-xs-12">
+                    <label>内容</label><span class="text-danger">*</span>
+                    <script id="ArticleContent" name="ArticleContent" type="text/plain">
+                    </script>
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+                <a class="btn btn-primary return">返回</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Libs/ueditor/ueditor.configAll.js"></script>
+<script src="~/Libs/ueditor/ueditor.all.js"></script>
+<script src="~/Libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="~/Views/Article/AddOrEdit.js"></script>

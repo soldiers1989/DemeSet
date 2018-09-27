@@ -1,0 +1,338 @@
+﻿
+@{
+    ViewBag.Title = "我的学习";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .mc-my-myclass_navwrap_tabs .ux-tabs_hd > li {
+        margin-right: 55px !important;
+    }
+
+    .ux-tabs_hd {
+        height: 58px !important;
+    }
+
+    .u-cover {
+        height: 237px;
+    }
+
+    body {
+        font-family: 'Lato', Calibri, Arial, sans-serif;
+        background: #f4f4f4 url(../../Libs/SimpleDropDown/images/grid_DominikKiss_SubtlePatterns.jpg) !important;
+        font-weight: 300;    
+        font-size: 15px;
+        color: #333;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+</style>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/mystudy.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/TeacherInfo.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/subject_collected.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/MyOrder.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/js/bootstrap.min.js"></script>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/css/bootstrap-table.min.css" rel="stylesheet" />
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/js/bootstrap-table.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/js/bootstrap-table-locale-all.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js"></script>
+<div class="m2-my-myclass" id="j-myclass-box">
+    <div class="mc-my-myclass">
+        <!-- 我的学习头图 -->
+        <div class="mc-my-myclass_head">
+            <div class="j-myclass-head">
+                <div class="uc-myclass-head">
+                    <div class="uc-myclass-head_wrap g-flow f-cb">
+                        <a class="uc-myclass-head_logo f-fl"><img id="userimage" src="" alt="头像"></a>
+                        <div class="uc-myclass-head_txt f-fl">
+                            <h2 class="uc-myclass-head_name"><span id="registeruser"></span></h2>
+                            <p class="uc-myclass-head_info">天赋如同自然花木，要用学习来修剪。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /我的学习头图 -->
+        <!-- 我的学习导航 -->
+        <div class="mc-my-myclass_navwrap">
+            <div class="mc-my-myclass_nav g-flow f-cb">
+                <div class="j-myclass-tab f-fl">
+                    <div class="ux-tabs mc-my-myclass_navwrap_tabs">
+                        <ul class="ux-tabs_hd">
+                            <!--Regular list-->
+                            <li style="width: 12%;" data="0" dataid="j-cp-box-buy" class="z-crt"><!--Regular if2-->我的课程</li>
+
+                            <li style="width: 12%;" data="1" dataid="j-cp-box-collection" class=""><!--Regular if3-->收藏课程</li>
+
+                            <li style="width: 12%;" data="2" dataid="j-cp-box-item" class=""><!--Regular if4-->收藏试题</li>
+
+                            <li style="width: 12%;" data="3" dataid="j-cp-box-err" class=""><!--Regular if4-->我的错题</li>
+
+                            <li style="width: 12%;" data="4" dataid="j-cp-box-exercise" class=""><!--Regular if4-->我的练习记录</li>
+
+                            <li style="width: 12%;" data="5" dataid="j-cp-box-paper" class=""><!--Regular if4-->我的测评记录</li>
+
+                            <li style="width: 12%;" data="6" dataid="j-cp-box-zj" class=""><!--Regular if4-->我的足迹</li>
+
+                            <li style="width: 12%;" data="7" dataid="j-cp-box-sp" class=""><!--Regular if4-->我的播放记录</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="j-myclass-search f-fr" style="display: none;">
+                    <div class="uc-myclass-search f-pr">
+                        <label class="ux-input2 uc-myclass-search_input">
+                            <!--Regular if5-->
+                            <!--inlcude-->
+                            <input class="ux-input ux-input_normal ux-input_base ux-input_" placeholder="搜索我加入的课程" type="text">
+                            <!--Regular if6-->
+                            <!--Regular if7-->
+                            <!--Regular if8-->
+                            <!--Regular if9-->
+                            <!--Regular if10-->
+                        </label>
+                        <!--Regular if11-->
+                        <span class="uc-myclass-search_btn f-pa"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /我的学习导航 -->
+        <!-- 导航内容部分 -->
+        <div id="j-my-parent">
+            <div class="mc-my-smarts">
+                <div class="j-myclass-box-smarts" id="j-myclass-box-smarts">
+                    @* 内容 *@
+                    @* 已购买课程 *@
+                    <div class="m-cp-course lihide" style="height: 1200px;" id="j-cp-box-buy">
+                        <div class="cp">
+                            <div class="g-wrap" id="myparchase">
+                                <div class="m-cpcourse-yktcourse">
+                                    <div id="" class="j-cpcourse-yktcourse">
+                                        <div class="uc-course-list g-flow">
+                                            <div class="uc-course-list_content">
+                                                <ul id="mypurchaselist" class="uc-course-list_ul" style="padding-top: 10px;"></ul>
+                                            </div>
+                                            <div class="m-cpindex-empty" id="j-cpcourse-empty_purchase" style="display: none">
+                                                <img src="//s2.stu.126.net/res/images/web/page/course/blank.png?a7f3b52d9acaf67b56fac9472aa2c1e4" alt="空结果">
+                                                <div class="m-empty_tip">暂无课程</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-cpcourse-yooccourse">
+                                    <div id="j-cpcourse-yooccourse" class="j-cpcourse-yooccourse"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    @* 已收藏课程 *@
+                    <div class="m-cp-course lihide" id="j-cp-box-collection" style="display:none;">
+                        <div class="cp">
+                            <div class="g-wrap" id="mycollection">
+                                <div class="m-cpcourse-yktcourse">
+                                    <div id="j-cpcourse-yktcourse" class="j-cpcourse-yktcourse">
+                                        <div class="uc-course-list g-flow">
+                                            <div class="uc-course-list_content">
+                                                <ul id="mycollectionlist" class="uc-course-list_ul" style="padding-top: 10px;"></ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-cpcourse-yooccourse">
+                                    <div id="" class="j-cpcourse-yooccourse"><!--Regular if8--></div>
+                                </div>
+                            </div>
+                            <div class="m-cpindex-empty" id="j-cpcourse-empty_collect" style="display: none">
+                                <img src="//s2.stu.126.net/res/images/web/page/course/blank.png?a7f3b52d9acaf67b56fac9472aa2c1e4" alt="空结果">
+                                <div class="m-empty_tip">暂无课程</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* 已收藏试题 *@
+                <div id="j-cp-box-item" class="m-cp-course lihide" style="display:none;">
+                    @*<div class="subject-title">我的收藏试题</div>*@
+                    <div id="questionModule">
+                        <div class="load" style="display: none;">
+                            <img src="http://img2.233.com/wx/uc/v2016/tiku/skin/images/loading.gif">  努力加载中……
+                        </div>
+                        <div id="page-con">
+                            <ul class="page-body" id="subjectlist" style="padding-left: 25%;padding-top:20px;"></ul>
+                            <div class="m-style M-box1" id="pageBox" style="float:right;padding-right:25%;"></div>
+                        </div>
+                    </div>
+                    <div class="m-cpindex-empty" id="j-cpcourse-empty_collectitem" style="display: none">
+                        <img src="//s2.stu.126.net/res/images/web/page/course/blank.png?a7f3b52d9acaf67b56fac9472aa2c1e4" alt="空结果">
+                        <div class="m-empty_tip">暂无试题</div>
+                    </div>
+                </div>
+            </div>
+            @*我的错题*@
+            <div id="j-cp-box-err" class="m-cp-course lihide" style="display:none;">
+                <div id="errQuestionModule">
+                    <div class="load" style="display: none;">
+                        <img src="http://img2.233.com/wx/uc/v2016/tiku/skin/images/loading.gif">  努力加载中……
+                    </div>
+                    <div id="page-con">
+                        <ul class="page-body" id="errlist" style="padding-left: 25%;padding-top:20px;"></ul>
+                    </div>
+                    <div class="m-style M-box1" id="pageBox_err" style="float:right;padding-right:25%;"></div>
+                </div>
+                <div class="m-cpindex-empty" id="j-cpcourse-empty_error" style="display: none">
+                    <img src="//s2.stu.126.net/res/images/web/page/course/blank.png?a7f3b52d9acaf67b56fac9472aa2c1e4" alt="空结果">
+                    <div class="m-empty_tip">暂无试题</div>
+                </div>
+            </div>
+            @*我的章节练习记录*@
+            <div id="j-cp-box-exercise" class="table-responsive lihide" style="display: none;">
+                <div class="cp">
+                    <div class="j-cpcourse-yktcourse g-wrap">
+                        <table id="exercisetable" class="table table-striped" style="margin-top: 40px;">
+                            <thead style="background-color: silver;">
+                                <tr>
+                                    <th>课程</th>
+                                    <th>章节</th>
+                                    <th>时间</th>
+                                    <th>练习编号</th>
+                                    <th class="text-left">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ex_body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @*我的测评*@
+            <div id="j-cp-box-paper" style="display: none;" class="table-responsive lihide">
+                <div class="cp">
+                    <div class="j-cpcourse-yktcourse g-wrap">
+                        <table id="papertable" class="table table-striped" style="margin-top: 40px;">
+                            <thead style="background-color: silver;">
+                                <tr>
+                                    <th>课程</th>
+                                    <th>试卷名称</th>
+                                    <th>时间</th>
+                                    <th>练习编号</th>
+                                    <th>得分/总分</th>
+                                    <th class="text-left">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paper_body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @*我的足迹*@
+            <div id="j-cp-box-zj" style="display: none;" class="table-responsive lihide">
+                <div class="cp">
+                    <div class="j-cpcourse-yktcourse">
+                        <div class="uc-course-list g-flow" id="Footprint">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/html" id="Footprint_html">
+                {{if Result.length>0}}
+                <div class="uc-course-list_content">
+                    <ul id="" class="uc-course-list_ul" style="padding-top: 10px;">
+                        {{each Result}}
+                        <li class="uc-course-list_itm f-ib" style="height: auto;">
+                            <div class="uc-coursecard uc-ykt-coursecard f-fl">
+                                <a class="j-href" href="CourseInfo/CourseInfo?courseId={{$value.CourseId}}&courseType={{$value.CourseType}}" target="_blank">
+                                    <div class="uc-ykt-coursecard-wrap f-cb f-pr">
+                                        <div class="uc-ykt-coursecard-wrap_box">
+                                            <div class="uc-ykt-coursecard-wrap_picbox f-pr">
+                                                <img class="imgPic j-img" src="{{$value.CourseIamge}}" alt="null">
+                                            </div>
+                                            <div class="uc-ykt-course-card_title">{{$value.CourseName}}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{else}}
+                <div id="">
+                    <div class="load" style="display: none;">
+                        <img src="http://img2.233.com/wx/uc/v2016/tiku/skin/images/loading.gif">  努力加载中……
+                    </div>
+                    <div id="">
+                        <ul class="page-body" id="" style="padding-left: 25%;padding-top:20px;"></ul>
+                    </div>
+                    <div class="m-style M-box1" id="" style="float: right; padding-right: 25%; display: none;"></div>
+                </div>
+                <div class="m-cpindex-empty" id="">
+                    <img src="//s2.stu.126.net/res/images/web/page/course/blank.png?a7f3b52d9acaf67b56fac9472aa2c1e4" alt="空结果">
+                    <div class="m-empty_tip">暂无足迹</div>
+                </div>
+                {{/if}}
+            </script>
+            @*我的视频观看记录*@
+            <div id="j-cp-box-sp" style="display: none;" class="table-responsive lihide">
+                <div class="cp">
+                    <div class="j-cpcourse-yktcourse">
+                        <div class="uc-course-list g-flow" id="VideoWatch">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/html" id="VideoWatch_html">
+                {{if Result.length>0}}
+                <div class="uc-course-list_content">
+                    <ul id="" class="uc-course-list_ul" style="padding-top: 10px;">
+                        {{each Result}}
+                        <li class="uc-course-list_itm f-ib" style="height: auto;">
+                            <div class="uc-coursecard uc-ykt-coursecard f-fl">
+                                <a class="j-href" href="/CourseInfo/ChapterVideoPlay?ChapterId={{$value.chapterId}}&courseId={{$value.courseId}}&chapterName={{$value.chapterName}}&videoId={{$value.VideoId}}" target="_blank">
+                                    <div class="uc-ykt-coursecard-wrap f-cb f-pr">
+                                        <div class="uc-ykt-coursecard-wrap_box">
+                                            <div class="uc-ykt-coursecard-wrap_picbox f-pr">
+                                                <img class="imgPic j-img" src="{{$value.CourseIamge}}" alt="null">
+                                            </div>
+                                            <div class="uc-ykt-course-card_title">{{$value.VideoName}}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{else}}
+                <div id="">
+                    <div class="load" style="display: none;">
+                        <img src="http://img2.233.com/wx/uc/v2016/tiku/skin/images/loading.gif">  努力加载中……
+                    </div>
+                    <div id="">
+                        <ul class="page-body" id="" style="padding-left: 25%;padding-top:20px;"></ul>
+                    </div>
+                    <div class="m-style M-box1" id="" style="float: right; padding-right: 25%; display: none;"></div>
+                </div>
+                <div class="m-cpindex-empty" id="">
+                    <img src="//s2.stu.126.net/res/images/web/page/course/blank.png?a7f3b52d9acaf67b56fac9472aa2c1e4" alt="空结果">
+                    <div class="m-empty_tip">暂无视频观看记录</div>
+                </div>
+                {{/if}}
+            </script>
+        </div>
+    </div>
+</div>
+<!-- /导航内容部分 -->
+    </div>
+</div>
+<input type="hidden" Id="Rows" value="3" />
+<input type="hidden" Id="PageIndex" value="1" />
+<input type="hidden" Id="PageIndex_err" value="1" />
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/jquery.pagination.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/CourseInfo/MyStudy.js"></script>
+

@@ -1,0 +1,51 @@
+﻿@using ZF.Web.Models.File
+@{
+    ViewBag.Title = "UserAddOrEdit";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>登录名</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="LoginName" name="LoginName">
+                </div>
+                <div class="form-group">
+                    <label>用户名</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="UserName" name="UserName">
+                </div>
+                <div class="form-group">
+                    <label>是否管理员</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="IsAdmin" name="IsAdmin">
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>电话号码</label>
+                    <input type="text" class="form-control" id="Phone" name="Phone">
+                </div>
+
+                @*@Html.Partial("UploadFilePartialView", new UploadFileDto()
+           {
+               UploadId = "IdFile",
+               KeyId = ViewBag.Id,
+               UploadContentType = "",
+           })*@
+
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+<script src="~/Libs/md5.js"></script>
+<script src="~/Libs/ueditor/ueditor.config.js"></script>
+<script src="~/Libs/ueditor/ueditor.all.js"></script>
+<script src="~/Libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+<script src="~/Views/Test/UserAddOrEdit.js"></script>

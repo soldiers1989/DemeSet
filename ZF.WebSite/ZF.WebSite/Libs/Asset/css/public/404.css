@@ -1,0 +1,8 @@
+body{text-align:center;background-color:#FBFBFB;padding:0;margin:0;}
+.content{min-height:100%;position:relative;}
+.mainCnt{width:100%;padding-top:100px;}
+.errDes{width:470px;height:220px;margin:0 auto;background:url(../../image/404/404_bg.png) no-repeat;}
+.describeBox{display:block;overflow:hidden;width:500px;margin:0 auto;font-size:17px;}
+.describe1{color:#0068B7;font-size:24px;font-weight:bold;margin-bottom:50px;}
+.describe2{margin-bottom:20px;}
+.describeBox a{color:#0068B7;text-decoration:underline;}

@@ -1,0 +1,18 @@
+﻿
+@{
+    Layout = null;
+}
+<iframe id="mainIframe" width="100%" height="1150" name="mainIframe" src="MyOrder" frameborder="0" scrolling="no"></iframe>
+<script type="text/javascript">
+    function setIframeHeight(iframe) {
+        if (!iframe) {
+            iframe = document.getElementById("mainIframe");
+        }
+        if (iframe) {
+            var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+            if (iframeWin.document.body) {
+                setTimeout(function () { iframe.height = $(window.frames["mainIframe"].document.getElementsByClassName("m-myOrder")[0]).height()+100 }, 200);
+            }
+        }
+    };
+</script>

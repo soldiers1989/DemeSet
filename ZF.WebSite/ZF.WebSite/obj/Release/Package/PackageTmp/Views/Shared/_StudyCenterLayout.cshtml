@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>中国人事考试在线</title>
+    <meta name="keywords" content="@ViewBag.KeyWord">
+    <meta name="description" content="@ViewBag.Description">
+    <link rel="shortcut icon" href="@HttpContext.Current.Application["DefuleDomain"]/asset/image/public/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/public/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/global.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/index.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/course.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/practice.css">
+ 
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/mycourse.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/center.css" rel="stylesheet" />
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/jquery.js" type="text/javascript"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js"></script>
+</head>
+<body class="m-index">
+    <!-- 公共部分-头部start -->
+    <div class="header layui-row">
+        <div class="main">
+            <h1 class="logo">
+                <a href="~/Home/Index">
+                    <img src="../../asset/image/public/blogo.png">
+                    <span>中国人事考试在线</span>
+                    <label>经济师</label>
+                </a>
+            </h1>
+            <div class="nav">
+                <!-- cur--当前页选中 -->
+                <ul class="navIn">
+                    <li><a href="~/Home/Index">首页</a></li>
+                    <li><a href="javascript:;" class="wechat">微信公众号</a></li>
+                    <li class="cur"><a href="javascript:;" id="xxzx">学习中心</a></li>
+                </ul>
+                <ul class="person" id="LoginIndex"></ul>
+                <script id="question_common1" type="text/html">
+                    {{ if !userToken }}
+                    <li>
+                        <a href="/Cart/Index" class="cart">
+                            <i class="layui-icon layui-icon-cart">
+                                <em>0</em>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:userLogin();">登录</a>
+                    </li>
+                    {{else}}
+                    <li>
+                        <a href="/Cart/Index" class="cart">
+                            <i class="layui-icon layui-icon-cart">
+                                <em>{{CartCount}}</em>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Cart/CartLeftMouldPlate" target="_blank" title="个人中心">
+                            {{if NickNamw}}
+                            {{if NickNamw.length>10}}
+                            {{NickNamw.substring(0,10)+'...'}}
+                            {{else}}
+                            {{NickNamw}}
+                            {{/if}}
+                            {{/if}}
+                            <img src="{{HeadImage}}">
+                        </a>
+                    </li>
+                    {{/if}}
+                </script>
+                <br />
+            </div>
+        </div>
+    </div>
+    <!-- 中间内容部分 -start-->
+    <div class="content">
+        <div class="contentIn">
+            <div class="center main layui-row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!-- 公共部分底部start -->
+    <div class="footer">
+        <div class="main">
+            <div class="layui-col-xs3">
+                <div class="flogo">
+                    <a href="javascript:;">
+                        <img src="~/asset/image/public/logo.png">
+                        <span id="webdescript1">中国人事考试在线</span>
+                    </a>
+                </div>
+            </div>
+            <div class="layui-col-xs3">
+                <div class="sao layui-col-xs6">
+                    <p>扫码关注</p>
+                    <img src="~/asset/image/public/gz.png " />
+                    <p>微信二维码</p>
+                </div>
+                <div class="sao layui-col-xs6">
+                    <p>APP下载</p>
+                    <img src="~/asset/image/public/app.png " />
+                    <p>APP二维码</p>
+                </div>
+            </div>
+            <div class="layui-col-xs6 third">
+                <ul class="fnav layui-row">
+                    <li><a href="/Advice/Index?aboutType=1" target="_blank">关于我们</a></li>
+                    <li><a href="/Advice/Index?aboutType=2" target="_blank">联系我们</a></li>
+                    <li><a href="/Advice/Index?aboutType=3" target="_blank">法律条款</a></li>
+                    <li><a href="/Advice/Index?aboutType=8" target="_blank">意见反馈</a></li>
+                </ul>
+                <p class="copyright">
+                    ©1997-2018<label id="webdescript">中国人事考试在线</label>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        if (!topevery.GetCookie("userToken")) {
+            userLogin();
+        }
+        //绑定©1997-2018中国人事考试在线
+        topevery.ajax({
+            url: "api/BaseDanye/GetArguValue?arguName=webdescript",
+        }, function (data) {
+            if (data.Success) {
+                if (data.Result.Success) {
+                    $("#webdescript").html(data.Result.Message);
+                    $("#webdescript1").html(data.Result.Message);
+                }
+            }
+        });
+
+        $("#xxzx").click(function () {
+            if (topevery.GetCookie("userToken")) {
+                location.href = "/LearningCenter/Index";
+            } else {
+                userLogin();
+            }
+        });
+        $(document).on("click", ".wechat", function () {
+            layer.open({
+                type: 1,
+                title: '扫码关注',
+                content: "<img src='@HttpContext.Current.Application["DefuleDomain"]/asset/image/public/gz.png' width='100%' height='100%'/>",
+                area: ['400px', '400px']
+            });
+        });
+        var object = new Object();
+        object.userToken = topevery.GetCookie("userToken");
+        object.CartCount = 0;
+        if (object.userToken && object.userToken !== "") {
+            topevery.ajax({
+                type: "GET",
+                url: "api/Home/GetUserInfoByTicket"
+            }, function (data) {
+                if (data.Success) {
+                    object.NickNamw = data.Result.NickNamw;
+                    object.CartCount = data.Result.CartCount;
+                    object.LearnCount = data.Result.LearnCount;
+                    object.HeadImage = data.Result.HeadImage;
+                    //if (data.Result.SubjectId) {
+                    //    topevery.SetCookie("subjectId", data.Result.SubjectId);
+                    //    topevery.SetCookie("subjectName", data.Result.SubjectName);
+                    //}
+                    $("#LoginIndex").html(template("question_common1", object));
+                }
+            });
+        } else {
+            $("#LoginIndex").html(template("question_common1", object));
+        }
+        //跳转登录页
+        function userLogin() {
+            layer.open({
+                type: 2,
+                title: '用户登录',
+                shadeClose: true,
+                maxmin: false, //开启最大化最小化按钮
+                area: ['650px', '430px'],
+                shade: [0.7, '#BEBEBE'], //0.7透明度的白色
+                content: '/Login/UserLogin?RefUrl=' + location.href,
+                end: function () {
+                }
+            });
+        }
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

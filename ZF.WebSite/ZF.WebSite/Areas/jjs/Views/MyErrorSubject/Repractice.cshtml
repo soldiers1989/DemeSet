@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <title>试题列表</title>
+    <style>
+        .stlb_sz_zq {
+            background: #40e00c;
+        }
+
+        .alfx-head ul li {
+            width: 25%;
+        }
+
+        .alfx-head1 ul li {
+            width: 33%;
+            float: left;
+            text-align: center;
+            height: 3em;
+            line-height: 3em;
+        }
+
+        .alfx-head1 {
+            width: 100%;
+            height: 3em;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0em;
+            z-index: 999;
+            background: #fff;
+        }
+
+        .alfx-head ul .al-hd04 {
+            background: #56ff00;
+            color: #fff;
+        }
+
+        .close {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="alfx-box">
+        <div class="alfx-list01">
+            <div class="alfx-tit">
+                <b></b><span class="red"></span>/<span id="total"></span>
+            </div>
+        </div>
+        <div id="Item">
+        </div>
+        
+        <div class="alfx-head">
+            <ul>
+                <li class="al-hd01">上一题</li>
+                <li class="al-hd02">试题列表</li>
+                <li class="al-hd03">下一题</li>
+                <li class="al-hd04" onclick="savePractice();">交卷</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="stlb-box" style="display: none;">
+        <div class='stlb-list'>
+            <div class="stlb-tit">
+                <b>试题列表</b>
+            </div>
+            <div class="stlb-bj">
+                <span><b class="bj01"></b>未答<div class="clear"></div></span>
+                <span><b class="bj02"></b>已答<div class="clear"></div></span>
+                <span><b class="bj03"></b>标记<div class="clear"></div></span>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="line_3px"></div>
+        <div class="stlb_sz">
+            <div class="stlb_sz_news" id="Option">
+            </div>
+            <script type="text/html" id="Option_html">
+                {{each PracticeSubjectList}}
+                <span class="{{$value.Id}}" index="{{$index+1}}">{{$index+1}}</span>
+                @*<span class="stlb_sz_zq" index="{{$index+1}}">{{$index+1}}</span>*@
+                {{/each}}
+            </script>
+        </div>
+        <div class="alfx-head1">
+            <ul>
+                <li></li>
+                <li class="close">X</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <input type="hidden" id="currentQuestionId" value="" />
+    <input type="hidden" id="subjectType"  value=""/>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/ctj.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/MyErrorSubject/Repractice.js?v=1.0"></script>

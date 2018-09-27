@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "下单机构表新增(修改)";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>机构名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="Name" name="Name">
+                </div>
+                <div class="form-group">
+                    <label>机构联系人</label>
+                    <input type="text" class="form-control" id="Contact" name="Contact">
+                </div>
+                <div class="form-group">
+                    <label>机构联系方式</label>
+                    <input type="text" class="form-control" id="ContactPhone" name="ContactPhone">
+                </div>
+                <div class="form-group">
+                    <label>机构联系地址</label>
+                    <input type="text" class="form-control" id="ContactAddress" name="ContactAddress">
+                </div>
+                <div class="form-group">
+                    <label>机构备注</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="Remark" name="Remark">
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/OrderInstitutions/AddOrEdit.js"></script>

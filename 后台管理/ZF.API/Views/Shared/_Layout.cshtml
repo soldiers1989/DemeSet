@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+<input type="button" id="btn_login" value="测试"/>
+<label id="div_test"></label>
+    <a href="~/swagger/ui/index">SwaggerUI</a>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn_login").click(function () {
+                $.ajax({
+                    type: "Post",
+                    url: "http://localhost/ZF.API/api/Account/Login",
+                    data: { TelphoneNum: "admin", LoginPwd: "123" },
+                    success: function (data, status) {
+                        if (status == "success") {
+                            if (!data.Result.Success) {
+                                alert("登录失败");
+                                return;
+                            }
+                            alert("登录成功");
+                            //登录成功之后将用户名和用户票据带到主界面
+                            window.location = "/Home/Index?Ticket=" + data.Result.Ticket;
+                        }
+                    },
+                    error: function (e) {
+                    },
+                    complete: function () {
+
+                    }
+                });
+            });
+        });
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg); //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        $(function () {
+            $.ajax({
+                type: "Post",
+                url: "http://localhost:12956/api/Values/GetList",
+                data: { ModuleName: "" },
+                beforeSend: function (XHR) {
+                    //发送ajax请求之前向http的head里面加入验证信息
+                    XHR.setRequestHeader('Authorization', 'BasicAuth ' + getUrlParam("Ticket"));
+                },
+                success: function (data, status) {
+                    if (status == "success") {
+                        $("#div_test").html(JSON.stringify(data));
+                    }
+                },
+                error: function (e) {
+                    $("#div_test").html("Error");
+                },
+                complete: function () {
+
+                }
+
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "我的收藏";
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" />
+    @*<link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">*@
+    <title>我的收藏</title>
+    <style>
+        .loadmore {
+            display: none;
+            width: 100%;
+            text-align: center;
+            bottom: 4em;
+            background-color: #f5f5e7;
+            position:fixed;
+        }
+    </style>
+</head>
+<body class="body">
+    <div id="collectedCourse">
+
+    </div>
+    <script type="text/html" id="collectedCourse_html">
+        {{if Rows.length>0}}
+        {{each Rows}}
+        <div class="zjxx-list_02">
+            <a href="/jjs/CourseInfo/Index?code={{$value.VideoId}}&id={{$value.CourseId}}">
+                <div class="zjxx-nr1_02" VideoId="{{$value.VideoId}}">
+                    <dl>
+                        <dt><img src="/Areas/jjs/resources/images/zjxx@2x.png"></dt>
+                        <dd>
+                            <h4>{{$value.CourseName}}</h4>
+                            <p>{{$value.VideoName}}</p>
+                            <span>{{$value.AddTime | formatterDate}}</span>
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+            </a>
+            <div class="zjxx-nr2_02">
+                <span><a VideoId="{{$value.VideoId}}" CourseId="{{$value.CourseId}}" style="cursor:pointer;" onclick="remove(this)">取消收藏</a></span>
+                <div class="clear"></div>
+            </div>
+        </div>
+        {{/each}}
+        <div class="hei2em"></div>
+        <div class="loadmore" onclick="showmore();" style="display:block;"> 加载更多</div>
+        {{else}}
+        <div class="zanwu">
+            <img src="/Areas/jjs/resources/images/zanwu.png">
+            <p><a href="#">暂无记录</a></p>
+        </div>
+        {{/if}}
+    </script>
+    
+    <div class="header-nav">
+        <ul>
+            <li><a href="~/jjs/HomePage/Index" class="img01">首页</a></li>
+            <li style="display: none;"><a href="~/jjs/Information/Index" class="img02">最新资讯</a></li>
+            <li><a href="~/jjs/PersonalCenter/Index" class="img03">个人中心</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/MyCollection/Index.js?v=1.0"></script>
+

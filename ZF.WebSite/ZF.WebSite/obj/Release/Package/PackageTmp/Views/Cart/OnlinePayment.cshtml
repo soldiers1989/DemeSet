@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "OnlinePayment";
+    Layout = null;
+}
+
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Login/RegistStyle.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/css/bootstrapValidator.min.css" rel="stylesheet" />
+
+<div class="container" style="width:100%;">
+    <div class="col-md-10 col-md-offset-1" >
+        @*<input type="hidden" Id="userIp" name="userIp" value="@ViewBag.userIp" />*@
+
+        <div class="form-group has-feedback">
+            <label style="font-weight:normal;">订单号：</label><span id="SheetNO"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <label style="font-weight:normal;">应付金额：</label><span id="price"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <label style="font-weight:normal;">支付方式：</label><span id="payType"></span>
+        </div>
+    </div>
+</div>
+<div id="PayHtml" style="text-align: center;line-height: 25px;">
+
+</div>
+
+<script id="orderList_html" type="text/html">
+    {{if PayType==0}}
+    <div class="form-group AliButton">
+        <a target="_blank" href="javascript:aliPayment()" id="aliPay"><span class="f-cb go-pay" id="auto-id-1523411859886" style="color:black">去付款</span></a>
+        <a href="../LearningCenter/Index" id="IsPay" style="display:none;" target="_blank"><span class="f-cb go-pay" id="auto-id-1523411859886" style="color:black">支付完成</span></a>
+
+    </div>
+    {{else}}
+    <div class="codeArea">
+        <img src="../Images/CartImg/wx.png" alt="微信支付二维码" class="codeimg">
+        <div class="tips f-cb" style="margin-top:10px;">
+            <img src="../Images/CartImg/wxsmall.png" alt="" class="f-fl tipsimg">
+            <div class="ctips f-fl">请使用微信扫描<br>二维码以完成支付</div>
+        </div>
+    </div>
+    {{/if}}
+</script>
+<input type="hidden" Id="OrderNo" name="OrderNo" value="@ViewBag.OrderNo" />
+<input type="hidden" Id="OrderAmount" name="OrderAmount" value="@ViewBag.OrderAmount" />
+<input type="hidden" Id="OrderType" name="OrderType" value="@ViewBag.OrderType" />
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/plugins/jQuery/jquery-3.0.0.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/md5.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/OnlinePayment.js"></script>
+<style type="text/css">
+    a:link {
+        font-size: 12px;
+        color: #000000;
+        text-decoration: none;
+    }
+
+    a:visited {
+        font-size: 12px;
+        color: #000000;
+        text-decoration: none;
+    }
+
+    a:hover {
+        font-size: 12px;
+        color: #999999;
+        text-decoration: underline;
+    }
+
+    .AliButton {
+        border: 1px solid #999;
+        width: 30%;
+        height: 30px;
+        text-align: center;
+        border-radius: 3px;
+        line-height: 25px;
+        align-content: center;
+        margin: 0 auto;
+    }
+
+     .codeArea {
+        width: 210px;
+        height: 260px;
+        margin: 0 auto;
+    }
+
+    .codeimg {
+        width: 210px;
+        height: 210px;
+    }
+
+    .tipsimg {
+        margin-left: 36px;
+        margin-right: 10px;
+        margin-top: 4px;
+    }
+
+    .ctips {
+        font-size: 12px;
+        line-height: 18px;
+        color: #666666;
+        text-align: left;
+    }
+</style>

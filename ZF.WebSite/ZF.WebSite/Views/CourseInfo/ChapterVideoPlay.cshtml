@@ -1,0 +1,272 @@
+﻿
+@{
+    ViewBag.Title = "章节视频";
+    Layout = null;
+}
+
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/video_play.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/Video/css/video-js.css" rel="stylesheet" />
+<style>
+    .vjs-paused .vjs-big-play-button,
+    .vjs-paused.vjs-has-started .vjs-big-play-button {
+        display: block;
+    }
+
+    .video-js .vjs-big-play-button {
+        font-size: 2.5em;
+        line-height: 2.3em;
+        height: 2.5em;
+        width: 2.5em;
+        -webkit-border-radius: 2.5em;
+        -moz-border-radius: 2.5em;
+        border-radius: 2.5em;
+        background-color: #73859f;
+        background-color: rgba(115, 133, 159, .5);
+        border-width: 0.15em;
+        margin-top: 11.75em;
+        margin-left: 32.25em;
+    }
+    /* 中间的播放箭头 */
+    .vjs-big-play-button .vjs-icon-placeholder {
+        font-size: 1.63em;
+    }
+
+    .prism-big-play-btn {
+        left: 48% !important;
+        bottom: 48% !important;
+    }
+    /* 加载圆圈 */
+    .vjs-loading-spinner {
+        font-size: 2.5em;
+        width: 2em;
+        height: 2em;
+        border-radius: 1em;
+        margin-top: -1em;
+        margin-left: -1.5em;
+    }
+
+    #j-coursebox {
+        margin-right: 300px;
+    }
+
+    #auto-id-1526901104201 {
+        height: 100%;
+    }
+
+    .personCenter:hover .drop {
+        display: block;
+    }
+
+    .current {
+        background: #1d1d1d;
+    }
+
+    .hidetips {
+        display: none;
+    }
+    /*.coursebox, .course-learn, .m-courselearn {
+        min-height: 400px !important;
+    }*/
+</style>
+<link rel="shortcut icon" href="@HttpContext.Current.Application["DefuleDomain"]/asset/image/public/logo.png" type="image/x-icon">
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/jquery.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application[" DefuleDomain"]/Libs/Video/js/video.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application[" DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/CourseInfo/ChapterVideoPlay.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css" />
+<script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js?v=1.0"></script>
+<input hidden="hidden" id="CourseId" value="@ViewBag.CourseId" />
+<input hidden="hidden" id="chapterid" value="@ViewBag.ChapterId" />
+<input hidden="hidden" id="VideoId" value="@ViewBag.videoId" />
+<input hidden="hidden" id="CodeId" value="@ViewBag.Code" />
+<input hidden="hidden" id="FavourablePrice" value="0" />
+<title></title>
+<body leftmargin=0 topmargin=0>
+    <div class="coursebox f-cb" id="j-coursebox">
+        <div class="m-courselb">
+            @*div class="cl-bg"></div>*@
+            <a hidefocus="true" id="j-back" class="cl-backs" href="/CourseInfo/CourseInfo?courseId=@ViewBag.CourseId"></a>
+            <p id="j-title"><span class="cl-lessonname j-lessonname" id="VideoName"></span></p>
+            <a hidefocus="true" id="j-prev" class="cl-pres" style="display: none"></a>
+            @*<a hidefocus="true" id="j-next" class="cl-next" style=""></a>*@
+        </div>
+        <div id="course-learn-box" style="top:80px;" class="course-learn">
+            <div class="m-courselearn">
+                <div class="learn-total">
+                    <div id="lesson-learn-box" class="learn-box">
+                        <div class="m-video-box">
+                            <div class="j-videobox">
+                                <div id="auto-id-1523434837783"></div>
+                                <div class="ux-video-player">
+                                    <div class="u-edu-h5player" id="auto-id-1523434837787">
+                                        @*<div class="u-edu-h5player-mainvideo f-pa j-mainVideo">
+                                                <video id="example_video_1" class="video-js vjs-default-skin" style="width: 100%; height: 100%;" controls preload="none" poster="" data-setup="{}"></video>
+                                            </div>*@
+                                        <div class="prism-player" id="J_prismPlayer" style="position: absolute;bottom:30px;"></div>
+                                        <div class="msg-note  hidetips" style="position: absolute;bottom:5px;color: #fff;text-align: center;width: 100%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nextChap" style="display:none;"><div><p>下一节：播放完显示这个 </p><a href="javascript:;" class="next">播放下一节</a><a href="javascript:;" class="again">重播</a></div></div>
+                            <div class="u-coursePlanPayMsg f-pa" style="display:none;">
+                                <div class="msg f-pa f-cb msg-course j-msg msg-p2">
+                                    <div class="wcon f-fl j-con">
+                                        <span id="message" style="color:#ffffff;">当前课程尚未购买!</span>
+                                        @*<div class="joinBtn j-joinBtn" id="joincourseBtn">去购买</div>*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fsmask j-fsmask" title="登录后才能全屏" id="auto-id-1523434837777" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div id="j-hideRightBtn" class="u-hiderightbtn" data="1" title="隐藏课程目录"></div>*@
+    </div>
+    <div id="course-toolbar-box" class="g-sd2" style="width: 300px;">
+        <div class="m-ctb" id="auto-id-1526901104201">
+            <div class="courseintro">
+                <div class="f-fl courseTitle j-courseintro" style="display:none;">
+                    <div class="u-coursetitle f-fl">
+                        <a href="/CourseInfo/CourseInfo?courseId=@ViewBag.CourseId" target="_blank" id="CourseName" class="j-info f-thide"></a>
+                        <div class="f-cb">
+                            <span class="j-info starall">
+                                <div class="u-rating" id="courseappraiselevel">
+                                    <div class="star on"></div>
+                                    <div class="star on"></div>
+                                    <div class="star on"></div>
+                                    <div class="star on"></div>
+                                    <div class="star on"></div>
+                                    <span class="j-tip"></span><div class="star on"></div>
+                                    <div class="star on"></div>
+                                    <div class="star on"></div>
+                                    <div class="star on"></div>
+                                    <div class="star on"></div>
+                                    <span class="j-tip"></span>
+                                </div>
+                            </span><span class="cmt j-cmt" id="AppraiseNum"></span>
+                        </div>
+                        <p class="j-info f-thide"></p><p class="j-info f-thide"></p>
+                    </div>
+                </div>
+                <a class="j-courseimg-link courseImgCover" href="#" style="display:none;">
+                    <div class="courseImg-link"></div>
+                    <img id="courseimg" src="" class="f-fr courseImg j-courseimg">
+                </a>
+                @* collection 添加 cur 为收藏状态*@
+                <a onclick="collectVideo(this);" title="收藏该视频" data="0" style="width:101px;" class="collection"><span style="padding-left: 31px;">收藏</span></a>
+                <div class="personCenter"></div>
+                <script type="text/html" id="question_userinfo">
+                    {{if !userToken}}
+                    <li> <a href="javascript:;" onclick="userLogin();">登录</a></li>
+                    {{else}}
+                    <a href="../Cart/CartLeftMouldPlate" target="_blank" title="个人中心">
+                        {{NickNamw}}
+                        <img src="{{HeadImage}}">
+                    </a>
+                    <div class="drop">
+                        <label class="jian"></label>
+                        <div class="dropIn">
+                            <a href="/Cart/CartLeftMouldPlate" target="_blank">个人中心</a>
+                            <a href="javascript:outUser();">退出登录</a>
+                        </div>
+                    </div>
+                    {{/if}}
+                </script>
+            </div>
+            <div class="tabs j-tab-tabwrap" id="auto-id-1526901104200">
+                <a class="tabitem j-tab-tabitem tabitem-pos" id="auto-id-1526901104103">
+                    <span class="f-fl tabicon tabicon-pos1"></span>
+                    <span class="f-fl">目录</span>
+                </a>
+            </div>
+            <div id="toolbar-box" class="tabarea j-tabarea">
+                <div class="tabbox j-tabbox" id="forum-tabbox" style="display: none;">
+                </div>
+                <div class="tabbox j-tabbox" id="chapterList-tabbox" style="display: block;">
+                    @*<div class="bd j-bd"></div>*@
+                    <div id="tb-chapterlist-box" class="m-chapterlistBox">
+                        <div class="m-chapterList" id="chapterList">
+                        </div>
+                    </div>
+                </div>
+                <script type="text/html" id="chapterList_html">
+                    {{each CourseChapterModelOutput}}
+                    <div class="chapter">
+                        <!--<span class="f-fl ch"></span>-->
+                        <span class="f-fl f-thide chaptericon"><span></span></span>
+                        <span class="f-fl f-thide chaptername" title="{{$value.CapterName}}">{{$value.CapterName}}</span>
+                    </div>
+                    <div class="chapterList">
+                        {{each $value.SubChapterList}}
+                        {{if $value.IsExercise == 0}}
+                        <div class="section {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" id="{{$value.VideoId}}" VideoUrl="{{$value.VideoUrl}}" title="{{$value.CapterName}}" chapterId="{{$value.Id}}" ChapterName="{{$value.CapterName}}" VideoId="{{$value.VideoId}}" data-lesson="0">
+                            <!--<span class="f-fl f-thide ks" style="color: rgb(153, 153, 153);">&nbsp;</span>-->
+                            <span class="f-fl ksw">
+                                @*<span class="u-clicon ksicon ksicon-0" title="未开始"></span>*@
+                            </span>
+                            <span class="f-fl ksname">{{$value.CapterName}}</span>
+                            <span class="f-fr ksinfo">
+                                <span class="f-fr ksinfoicon ksinfoicon-3" title="文本"></span>
+                                <span class="f-fr flag flag-10" title=""></span>
+                            </span>
+                            <span class="f-fr ksinfo">
+                                <span class="f-fr ksinfoicon ksinfoicon-2" title="视频"></span>
+                                {{if $value.VideoUrl}}
+                                <span class="f-fr kstime">{{$value.VideoLongTime}}</span>
+                                {{else}}
+                                {{ if $value.SubChapterList}}
+                                {{else}}
+                                <span class="f-fr kstime">暂未上线..</span>
+                                {{/if}}
+                                {{/if}}
+                                <span class="f-fr flag flag-10" title=""></span>
+                            </span>
+                        </div>
+
+
+                        {{each $value.SubChapterList}}
+                        {{if $value.IsExercise == 0}}
+                        <div class="section {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" id="{{$value.VideoId}}" VideoUrl="{{$value.VideoUrl}}" title="{{$value.CapterName}}" chapterId="{{$value.Id}}" ChapterName="{{$value.CapterName}}" VideoId="{{$value.VideoId}}" data-lesson="0">
+                            <span class="f-fl  ks" style="color: rgb(153, 153, 153); width:25px;">&nbsp;</span>
+                            <span class="f-fl ksw">
+                                <span class="u-clicon ksicon ksicon-0" title="未开始"></span>
+                            </span>
+                            <span class="f-fl ksname" style="color: rgb(153, 153, 153);">{{$value.CapterName}}</span>
+                            <span class="f-fr ksinfo">
+                                <span class="f-fr ksinfoicon ksinfoicon-3" title="文本"></span>
+                                <span class="f-fr flag flag-10" title=""></span>
+                            </span>
+                            <span class="f-fr ksinfo">
+                                <span class="f-fr ksinfoicon ksinfoicon-2" title="视频"></span>
+                                {{if $value.VideoUrl}}
+                                <span class="f-fr kstime">{{$value.VideoLongTime}}</span>
+                                {{else}}
+                                <span class="f-fr kstime">暂未上线..</span>
+                                {{/if}}
+                                <span class="f-fr flag flag-10" title=""></span>
+                            </span>
+                        </div>
+                        {{/if}}
+                        {{/each}}
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                    {{/each}}
+
+                </script>
+                <div class="tabbox j-tabbox" id="note-tabbox"></div>
+            </div>
+        </div>
+        <div class="m-cltip x-hide" id="auto-id-1526901104214" style="bottom: 815px;">
+            <p class="title j-title">课时1：《说文解词》简介</p>
+            <p class="content j-content" style="max-height: 94px;">说文解词简介</p>
+            <div class="j-corner corner coursesprite f-pa"></div>
+        </div>
+    </div>
+</body>
+

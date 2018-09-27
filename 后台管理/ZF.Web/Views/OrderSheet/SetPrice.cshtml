@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "订单价格修改";
+    Layout = null;
+}
+<link href="@Url.Content("~/Libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Css/ladda-themeless.min.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Css/prism.css")" rel="stylesheet" />
+
+<link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/ionicons.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Libs/admintle/css/AdminLTE.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Libs/admintle/css/skins/_all-skins.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Libs/jqGrid.H/css/jqgrid/ui.jqgrid.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Libs/bootstrapvalidator/css/bootstrapValidator.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Libs/webuploader-0.1.5/webuploader.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Css/UploadFile.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Libs/plugins/datepicker/datepicker3.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Libs/My97DatePicker/开发包/skin/WdatePicker.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Libs/zTree_v3/zTreeStyle.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Css/ZFmenu.css")" rel="stylesheet" />
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="OrderNo" name="OrderNo"  />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>订单价格</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="OrderAmount" name="OrderAmount">
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="@Url.Content("~/Libs/plugins/jQuery/jquery-2.2.3.min.js")"></script>
+<script src="@Url.Content("~/Libs/plugins/jQuery/jquery-migrate-1.2.1.js")"></script>
+<script src="@Url.Content("~/Libs/bootstrap/js/bootstrap.min.js")"></script>
+<script src="@Url.Content("~/Libs/bootstrap/js/spin.min.js")"></script>
+<script src="@Url.Content("~/Libs/bootstrap/js/ladda.min.js")"></script>
+<script src="@Url.Content("~/Libs/plugins/slimScroll/jquery.slimscroll.min.js")"></script>
+<script src="@Url.Content("~/Libs/admintle/js/app.js")"></script>
+<script src="@Url.Content("~/Js/easyuiBase.js")"></script>
+<script src="@Url.Content("~/Js/layout.js")"></script>
+<script src="@Url.Content("~/Js/base.js")"></script>
+<script src="@Url.Content("~/Libs/layer/js/layer.js")"></script>
+<script src="@Url.Content("~/Libs/jqGrid.H/js/jqgrid/i18n/grid.locale-cn.js")"></script>
+<script src="@Url.Content("~/Libs/jqGrid.H/js/jqgrid/jquery.jqGrid.min.js")"></script>
+<script src="@Url.Content("~/Libs/bootstrapvalidator/js/bootstrapValidator.min.js")"></script>
+<script src="@Url.Content("~/Libs/bootstrapvalidator/js/language/zh_CN.js")"></script>
+<script src="@Url.Content("~/Libs/My97DatePicker/WdatePicker.js")"></script>
+<script src="@Url.Content("~/Js/extend.plug.js")"></script>
+<script src="@Url.Content("~/Libs/zTree_v3/jquery.ztree.all.js")"></script>
+<script src="@Url.Content("~/Libs/zTree_v3/jquery.ztree.excheck.js")"></script>
+<script src="@Url.Content("~/Libs/zTree_v3/jquery.ztree.all.js")"></script>
+<script src="@Url.Content("~/Js/ZFContextmenu.js")"></script>
+<script src="@Url.Content("~/Libs/plugins/datepicker/bootstrap-datepicker.js")"></script>
+<script src="~/Views/OrderSheet/SetPrice.js"></script>
+

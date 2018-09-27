@@ -1,0 +1,67 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Collections.Generic"#>
+<#@ output extension=".cs" #>
+<#@ include file="..\..\BusinessLogic.ttinclude" #>
+<#@ include file="..\..\DbHelper.ttinclude" #>
+<#@ include file="..\..\MultipleOutputHelper.ttinclude" #>
+
+<# 
+	//生成文件
+	var GenerationFileManager = new Manager(Host, GenerationEnvironment, true) { OutputPath = Path.GetDirectoryName(Host.TemplateFile)}; #>
+<# 
+ModelManager manager = new ModelManager();
+
+List<ModelManager.Class> tableNameList=manager.GetTableList(sqlWhere);
+#>
+
+<# 
+    foreach (var tableName in tableNameList)
+    {
+		string className;
+		string value;
+        DataTable table= manager.GetTableSchema(tableName.name);
+	    className = GetClassName(tableName.name);
+		value=tableName.value;
+ #>
+
+ <# 
+        GenerationFileManager.StartBlock(className+"Output.cs");
+ #>
+using System;
+using ZF.Core;
+
+namespace ZF.Application.Dto
+{
+    /// <summary>
+    /// 查询输出Output:<#= value #> 
+    /// </summary>
+    public class <#= className #>Output
+    {
+<#
+foreach(DataRow row in table.Rows)
+{
+#>
+       /// <summary>
+       /// <#=row["备注"]#>
+       /// </summary>     
+      public <#= TransFromSqlType(row["数据类型"].ToString(),row["长度"].ToString(),row["允许空值"].ToString())#> <#= GetPropertyName(row["字段名"].ToString())#>{ get; set; }
+<#}
+#>
+    }
+}
+
+<# GenerationFileManager.EndBlock(); #>
+
+<#
+    }  
+ #>     
+   
+<# GenerationFileManager.Process(true); #>
+

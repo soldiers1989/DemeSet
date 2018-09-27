@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="glyphicon glyphicon-arrow-left" style="color: green; cursor: pointer;" id="return_btn">返回</span>
+        <button type="submit" class="btn btn-primary" style="margin-left: 400px;" id="sumbit">保存</button>&nbsp;&nbsp;
+    </div>
+</div>
+<input hidden="hidden" value="@ViewBag.RoleId" id="RoleId">
+<div class="col-cs-12">
+    <div class="col-xs-5">
+        <ul id="treeDemoTwo" class="ztree"></ul>
+    </div>
+</div>
+<div class="box-footer col-xs-12" style="padding-bottom: 70px;">
+</div>
+<script src="~/Views/Role/AllocatingResources.js"></script>

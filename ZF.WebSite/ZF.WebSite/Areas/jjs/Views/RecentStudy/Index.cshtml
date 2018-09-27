@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "最近学习";
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" />
+    <title>最近学习</title>
+</head>
+<input type="hidden" Id="Rows" value="20" />
+<input type="hidden" Id="PageIndex" value="1" />
+<body class="body">
+    <div id="recentStudy">
+
+    </div>
+    <script type="text/html" id="recentStudy_html">
+        {{if Rows.length>0}}
+        {{each Rows}}
+        <div class="zjxx-list">
+            <div class="zjxx-nr1">
+                <dl>
+                    <dt><img src="{{$value.CourseIamge}}"></dt>
+                    <dd>{{$value.VideoName}}</dd>
+                    <div class="clear"></div>
+                </dl>
+                <span class="time">{{$value.WatchTime}}</span>
+            </div>
+            <div class="zjxx-nr2">
+                <p><a href="/jjs/CourseInfo/Index?id={{$value.courseId}}">{{$value.CourseName}} </a></p>
+                <a href="/jjs/CourseInfo/Index?code={{$value.VideoId}}&id={{$value.courseId}}">    <span style="cursor:pointer;">继续学习</span></a>
+                <div class="clear"></div>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="zanwu">
+            <img src="/Areas/jjs/resources/images/zanwu.png">
+            <p><a href="#">暂无记录</a></p>
+        </div>
+        {{/if}}
+        <div class="hei2em"></div>
+    </script>
+    <div class="header-nav">
+        <ul>
+            <li><a href="~/jjs/HomePage/Index" class="img01">首页</a></li>
+            <li style="display: none;"><a href="~/jjs/Information/Index" class="img02">最新资讯</a></li>
+            <li><a href="~/jjs/PersonalCenter/Index" class="img03">个人中心</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/RecentStudy/Index.js?v=1.0"></script>

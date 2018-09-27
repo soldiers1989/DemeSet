@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="33658a4e91b94a8b9759d986219435f9" Name="Diagram1">
+        <EntityTypeShape EntityType="PressDataModel.t_Article" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PressDataModel.t_Base_Menu" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PressDataModel.t_Base_Module" Width="1.75" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PressDataModel.t_Base_RegisterUser" Width="1.5" PointX="2.625" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PressDataModel.t_Base_User" Width="1.5" PointX="5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PressDataModel.t_Base_UserLoginLog" Width="1.5" PointX="7.125" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PressDataModel.t_Base_OperatorLog" Width="2.375" PointX="8.75" PointY="0.875" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

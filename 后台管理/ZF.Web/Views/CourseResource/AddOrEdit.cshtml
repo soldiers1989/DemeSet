@@ -1,0 +1,29 @@
+﻿@using ZF.Web.Models.File;
+@{
+    ViewBag.Title = "添加课程资源";
+}
+<div class="box">
+    <form id="resourceSubmitForm" name="submitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="CourseId" name="CourseId" value="@ViewBag.CourseId" />
+            <input hidden="hidden" id="Id" name="Id" value="@ViewBag.Id"/>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>资源名称</label><span class="text-danger">*</span>
+                    <input type="text" id="ResourceName" class="form-control"  name="ResourceName">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                @Html.Partial( "UploadFilePartialView", new UploadFileDto( )
+            {
+                UploadId = "IdFile",
+                KeyId = ViewBag.Id
+            } )
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" style="float:right;" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>           
+<script src="~/Views/CourseResource/AddOrEdit.js"></script>

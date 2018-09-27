@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Feedback</title>
+</head>
+<body>
+    <div> 
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    ("#sub").click(function () {
+        var title = topevery.Trim($("#Title").val());
+        var advice = topevery.Trim($("#Advice").val());
+        var relation1 = topevery.Trim($("#Relation1").val());
+
+        if (title) {
+            $(".m-feedbackinfoTitle").hide();
+            if (title.length < 6 || title.length > 20) {
+                $(".m-feedbackinfoTitle").show();
+                $(".m-feedbackinfoTitle").find("span").html("标题字数6-20个");
+                return;
+            }
+        } else {
+            $(".m-feedbackinfoTitle").show();
+            $(".m-feedbackinfoTitle").next().find("span").html("标题不能为空!");
+            return;
+        }
+
+        if (advice) {
+            $(".m-feedbackinfoAdvice").hide();
+        } else {
+            $(".m-feedbackinfoAdvice").show();
+            $(".m-feedbackinfoAdvice").find("span").html("内容不能为空!");
+            return;
+        }
+
+        if (relation1) {
+            $(".m-feedbackinfoRelation1").hide();
+        } else {
+            $(".m-feedbackinfoRelation1").show();
+            $(".m-feedbackinfoRelation1").find("span").html("联系方式不能为空!");
+            return;
+        }
+        topevery.ajax({
+            url: 'api/BaseDanye/InsertFeedback',
+            data: JSON.stringify({ title: title, advice: advice, relation1: relation1 })
+        }, function (data) {
+            if (data.Success) {
+                var html = '<div class="about_content j-aboutContent"><div class="m-feedSuccess f-cb"><div class="success-icon f-fl"></div><div class="txt f-fl"><p>提交成功，感谢您的宝贵意见！</p></div></div></div>';
+                $(".yjfk").html(html);
+            }
+        });
+    })
+</script>

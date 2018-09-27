@@ -1,0 +1,293 @@
+﻿
+@{
+    ViewBag.Title = "提交订单";
+    Layout = null;
+}
+
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/public.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/buyConfirm.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/css/zui.lite.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/SubmitOrderStyle.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/core.css" rel="stylesheet" />
+<script src="http://code.jquery.com/jquery-2.2.3.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/ajax.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/vue.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/reuglar.0.3.1.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+
+<div class="border_top_cart"  id="alpqy">
+    <input type="hidden" value="@ViewBag.parment" id="hiparament" />
+    <input type="hidden" value="@ViewBag.cartcount" id="hicartcount" />
+    <div class="container payment-con">
+        <form target="_blank" action="#" id="pay-form" method="post">
+
+            <div class="order_box">
+                <div class="order_cg">
+                    <div class="order_img">
+                        <img src="@HttpContext.Current.Application["DefuleDomain"]/Images/CartImg/dingdan.png" alt="">
+                    </div>
+                    <div class="order_new">
+                        <h4>您的订单提交成功，请尽快付款！</h4>
+                        <p id="orderno"></p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="order_rmb">
+                    <div class="order_rmb_nr">
+                        <dl>
+                            <dt>订单总额：</dt>
+                            <dd><b id="sumPrice">0</b>元</dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <dl>
+                            <dt>活动优惠：</dt>
+                            <dd><b id="preferential">0</b></dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <dl>
+                            <dt>优惠券抵扣：</dt>
+                            <dd><b id="discount">0</b>元</dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <dl id="discountCardArea"></dl>
+                        <dl>
+                            <dt>应付总额：</dt>
+                            <dd><b class="yfze" id="totalPrice">0</b>元</dd>
+                            <div class="clear"></div>
+                        </dl>
+                    </div>
+                </div>
+                <input type="hidden" id="hiOrderNO" />
+                <input type="hidden" id="amount" />
+                <input type="hidden" id="hiAmount" />
+            </div>
+            <!--学习卡选择以及满减活动 start-->
+            <!--学习卡选择以及满减活动 end-->
+            <div class="xm-plain-box">
+            </div>
+            <div id="accordion">
+                <!--<p>
+                    <a href="#collapseExample3" data-toggle="collapse" data-parent="#accordion" class="btn btn-link collapsed">订单详情</a>
+                </p>-->
+                <div class="collapse" id="collapseExample3" style="border:1px solid #E4E4E4;">
+                    <table style="width:100%;">
+                        <thead class="checkout-goods-list">
+                            <tr style="height:50px;">
+                                <td class="td1"></td>
+                                <td class="td2">
+                                    商品名称
+                                </td>
+                                <td class="td3">
+                                    购买价格
+                                </td>
+                                <td class="td4">
+                                    购买数量
+                                </td>
+                                <td class="td4">
+                                    有效日期
+                                </td>
+                                <td class="td5">
+                                    小计（元）
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody id="datas"></tbody>
+
+                    </table>
+                    <script id="datainfo" type="text/html">
+                        {{each Result}}
+                        <tr name="{{$value.Id}}">
+                            <td></td>
+                            <td>{{$value.CourseName}}</td>
+                            <td>{{$value.FavourablePrice}}</td>
+                            <td>{{$value.Num}}</td>
+
+                            <td>
+                                {{$value.ValidityEndDate}}
+                            </td>
+                            @*{{if $value.ValidityPeriod===0}}
+                                <td>永久有效</td>
+                                {{else}}
+                                <td>{{$value.ValidityPeriod}}</td>
+                                {{/if}}*@
+
+                            <td>{{$value.Amount}}</td>
+                        </tr>
+                        {{/each}}
+                    </script>
+
+                </div>
+            </div>
+            <div style="height:20px;"></div>
+
+            <!--<div style="height:20px;"></div>-->
+            <div id="handoutIsShow" style="display:none;">
+                <p>
+                    <label><input type="checkbox" class="invoice" id="inDiag" name="name" value="" style="margin:10px;" checked="checked" />邮寄讲义</label><!--选中显示下面的发票-->
+                </p>
+
+                <span id="pathval" class="span tips">
+                </span>
+                <div class="checkout-steps" id="pathshow">
+                    <div class="step-tit">
+                        <h3>收件人信息</h3>
+                        <div class="extra-r">
+                            <a href="#none" class="ftx-05 J_consignee_global" onclick="alertAddAddressDiag()">新增收件地址</a>
+                            <input type="hidden" id="del_consignee_type" value="0">
+                        </div>
+                    </div>
+                    <div class="step-cont" id="overflowShow">
+                        <div id="consignee-addr" class="consignee-content">
+                            <div class="ui-scrollbar-wrap" style="position: relative; overflow: hidden;z-index: 10;">
+                                <div class="consignee-scrollbar">
+                                    <div class="ui-scrollbar-main">
+                                        <div class="consignee-scroll">
+                                            <div class="consignee-cont" id="consignee1">
+                                                <ul id="consignee-list"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="ui-scrollbar-bg" style="position: absolute; left: 927px; top: 0px; width: 11px; z-index: 11; height: 168px; display: block;">
+                                    </div>*@
+                            </div>
+                        </div>
+                        <div class="addr-switch switch-on hide" id="consigneeItemAllClick" onclick="show_ConsigneeAll()">
+                            <span>更多地址</span><b></b>
+                        </div>
+                        <input type="hidden" id="consigneeList_giftSenderConsigneeMobile" value="">
+                        <input type="hidden" id="consigneeList_giftSenderConsigneeName" value="">
+                    </div>
+
+                    <script type="text/html" id="path_html">
+                        {{if length>0}}
+                        {{each}}
+                        <li class="ui-switchable-panel ui-switchable-panel-selected" style="display: list-item;" id="consignee_index_138641522" selected="selected" c_li_custom_label="consignee_li">
+                            {{if $value.DefaultAddress===1}}
+                            <div class="consignee-item item-selected" name="{{$value.Id}}" onclick="enditiClass(this)" id="consignee_index_div_138641522">
+                                <span limit="8" title="{{$value.Contact}}">{{$value.Contact}}</span><b></b>
+                            </div>
+                            {{else}}
+                            <div class="consignee-item" onclick="enditiClass(this)" name="{{$value.Id}}" id="consignee_index_div_138641522" consigneetype="0">
+                                <span limit="8" title="{{$value.Contact}}">{{$value.Contact}}</span><b></b>
+                            </div>
+                            {{/if}}
+                            <div class="addr-detail">
+                                <span class="addr-name" limit="6" title="{{$value.Contact}}">{{$value.Contact}}</span>
+                                <span class="addr-info" limit="45" title="{{$value.Province}} {{$value.City}} {{$value.Town}} {{$value.DetailedAddress}}">{{$value.Province}} {{$value.City}} {{$value.Town}} {{$value.DetailedAddress}}</span>
+                                <span class="addr-tel">{{$value.ContactPhone}}</span>
+                                {{if $value.DefaultAddress===1}}
+                                <span class="addr-default">默认地址</span>
+                                {{/if}}
+                            </div>
+                            <div class="op-btns" consigneeid="138641522" isoldaddress="false">
+                                {{if $value.DefaultAddress===0}}
+                                <a href="#none" name="{{$value.Id}}" onclick="makeAddressAllDefaultByoverseas(this)" class="ftx-05 edit-consignee" fid="138641522" clstag="pageclick|keycount|trade_201602181|6">设置为默认地址</a>
+                                {{/if}}
+                                <a href="#none" class="ftx-05 edit-consignee" fid="138641522" name="{{$value.Id}}" onclick="alertUpdateAddressDiagByoverseas(this);" clstag="pageclick|keycount|trade_201602181|6">编辑</a>
+                                <a href="#none" onclick="alertDelAddressDiag(this);" id="{{$value.Id}}" class="ftx-05 del-consignee" fid="138641522" clstag="pageclick|keycount|trade_201602181|5">删除</a>
+                            </div>
+                        </li>
+                        {{/each}}
+                        {{else}}
+                        <li class="ui-switchable-panel ui-switchable-panel-selected" style="display: list-item;" id="consignee_index_138641522" selected="selected" c_li_custom_label="consignee_li">
+                            暂无收货地址
+                        </li>
+                        {{/if}}
+                    </script>
+                </div>
+            </div>
+            <div style="height:20px;"></div>
+
+            <div id="electronicInvoice">
+                <p>
+                    <label><input type="checkbox" class="invoice" id="invoice" name="name" value="" style="margin:10px;" />电子发票(一个月内可以补开发票)</label><!--选中显示下面的发票-->
+                    <!--<label onclick="getElectronicInvoiceInfo()"> <a href="#electronicInvoiceInfo" data-toggle="collapse" data-parent="#electronicInvoice" class="btn btn-link collapsed">电子发票</a></label>-->
+                </p>
+                <div class="collapse" id="electronicInvoiceInfo" style="border:1px solid #E4E4E4;background-color: white;padding:10px 0;display:none;">
+                    <div class="electronicInvoice">
+                        @*<div class="layui-form-item" style="margin-left: 80px;">
+                                <label class="shop-name" clstag="click|keycount|orderinfo|xqshangjiamingcheng"><input style="margin-bottom:7px;" type="radio" id="grRadio" onclick="personal(1)" checked="checked" name="personalRadio" class="invoice" /> 个人</label>
+                                <label class="shop-name" clstag="click|keycount|orderinfo|xqshangjiamingcheng"><input style="margin-bottom:7px;" type="radio" id="qyRadio" name="personalRadio" onclick="personal(2)" class="invoice" /> 企业</label>
+                            </div>*@
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"> 抬头:</label>
+                            <div class="layui-input-inline"><input class="fpclass" type="text" id="txtInvoiceHeader" /> </div>
+                        </div>
+                        <div class="layui-form-item" id="divpersonal">
+                            <label class="layui-form-label" style="width:122px;"> 纳税人识别号:</label>
+                            <div class="layui-input-inline"><input class="fpclass" type="text" id="txtTaxpayerIdentificationNumber" /></div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="color:red;">*手机号:</label>
+                            <div class="layui-input-inline"><input class="fpclass" type="text" id="txtInvoicePhone" /></div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="color:red;">*邮箱:</label>
+                            <div class="layui-input-inline"><input class="fpclass" type="text" id="txtInvoiceMailbox" /></div>
+                            <span class="tips" style="display:inline-block; margin:0 0 0 16px;">该邮箱为接收电子发票的邮箱地址</span>
+                        </div>
+                        <div class="layui-form-item" style="text-align:center;width: 50%;">
+                            仅提供电子发票，每个订单发票只能开具一次<br />
+                            发票无法退换，敬请谅解。
+                        </div>
+                        @*<div class="electronicInvoice"><span> 抬头:</span><input type="text" id="txtInvoiceHeader" /> <span> 邮箱:</span><input type="text" id="txtInvoiceMailbox" /> <span> 纳税人识别号:</span><input type="text" id="txtTaxpayerIdentificationNumber" /></div>*@
+                    </div>
+                </div>
+            </div>
+
+            <div style="height:20px;"></div>
+
+            <div class="payArea">
+                <div id="j-main" class="f-cb">
+                    <div class="pattern" id="auto-id-1522745466802">
+                        <p class="lb">支付方式</p><div class="j-pattern auto-1522745466701-parent">
+                            <div class="f-pr u-body auto-1522745466701" id="auto-id-1522745466811">
+                                <div class="u-payList f-cb">
+                                    <div class="u-payList-row f-cb">
+                                        <div class="j-payBlock f-fl pay0 f-pr" id="zfbdiv"><span class="f-pa f-ib check"></span></div>
+                                        <div class="j-payBlock f-fl payweixin f-pr active" id="wxdiv">
+                                            <img class="wxlogo f-pa" src="//nos.netease.com/test-edu-image/1BD9F69D6760CE1508D2269864AA54F8.png" alt="微信logo">
+                                            <span class="f-pa f-ib check"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="foot f-cb">
+                    <a class="goPay f-fl" href="javascript:OrderClick()" id="payBtn">去支付</a>
+                    <div id="j-payTip" class="payTip f-fl">
+                        下单后，请在24小时内完成支付。超出24小时再支付可能导致购买失败，需重新下单购买。
+                    </div>
+                </div>
+                <form action="/pay/orderRedirectPage.htm" name="payForm" id="payForm">
+                    <input type="hidden" name="orderUrl" id="toPayUrl">
+                </form>
+                <div class="actuallyPay">
+                    @*<div class="treaty f-cb">
+                            <input type="checkbox" checked="" class="j-agree" id="agreePay">
+                            <label for="j-agree">我已经阅读并同意</label>
+                            <a id="j-treatyLink">《云课堂用户付费协议》</a>
+                            <p class="treatyFb f-dn j-treatyFb">请先阅读并勾选《云课堂用户付费协议》</p>
+                        </div>*@
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+</div>
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/js/zui.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/js/zui.lite.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/SubmitOrder.js?v=1.0"></script>

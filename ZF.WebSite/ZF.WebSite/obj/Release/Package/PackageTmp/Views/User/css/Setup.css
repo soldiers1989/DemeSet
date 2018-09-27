@@ -1,0 +1,281 @@
+﻿.header {
+    height: 40px;
+    margin-top: 5px;
+}
+
+.header .fk {
+    line-height: 40px;
+    margin-left: 20px;
+    font-size: 12px;
+    font-family: '宋体';
+    color: #ccc;
+}
+
+.editBox {
+    padding: 20px;
+}
+.b-20 {
+    height: 90px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.b-10, .b-20, .b-30, .b-15, .b-40, .b-50, .b-70 {
+    clear: both;
+    height: 10px;
+    overflow: hidden;
+    display: block;
+}
+
+.editBox .title {
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    vertical-align: top;
+    color: #666;
+    padding: 0 20px 0 0;
+    font-family: '微软雅黑';
+}
+
+.editBox .eBcon {
+    width: 568px;
+    margin: 0 0 30px;
+}
+element.style {
+    width: 175px;
+    height: 25px;
+}
+
+.u-insug .area {
+    padding: 5px;
+    position: relative;
+    zoom: 1;
+    height: 21px;
+    background: #FAFAFA;
+    border: 1px solid #DFDFDF;
+    -webkit-box-shadow: inset 1px 1px 2px #DFDFDF;
+    -moz-box-shadow: inset 1px 1px 2px #DFDFDF;
+    box-shadow: inset 1px 1px 2px #DFDFDF;
+}
+
+.auto-1523867003661 div {
+    text-align: left;
+}
+
+.auto-1523867003596 {
+    padding: 5px 0 5px 15px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+/*.auto-1523867003596 .warningbox .right {
+    float: left;
+    background: url(../../../Images/ui/common.png?2c88f76…) no-repeat -20px 0;
+    height: 20px;
+    width: 20px;
+}*/
+
+.auto-1523867003596 .warningbox {
+    color: #cc3333;
+}
+
+.auto-1523867003661 div {
+    text-align: left;
+}
+
+.m-infoEdit .editBox .eBcon {
+    width: 568px;
+    margin: 0 0 30px;
+}
+
+.auto-1523867003664 .imgbox {
+    float: left;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #dfdfdf;
+}
+
+.auto-1523867003664 .img {
+    width: 100%;
+    height: 100%;
+}
+.auto-1523867003664 .infobox {
+    float: left;
+    margin-left: 10px;
+}
+
+.auto-1523867003664 .infobox .info {
+    color: #999;
+    font-size: 12px;
+}
+
+.auto-1523867003664 div {
+    text-align: left;
+}
+
+.auto-1523867003664 .infobox .opt {
+    margin-top: 10px;
+}
+
+.auto-1523867003664 .infobox .opt .uploadbox {
+    float: left;
+}
+
+.auto-1523867003664 div {
+    text-align: left;
+}
+
+.u-upd-img-btn .upbtn {
+    text-align: center;
+    font-size: 12px;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    width: 83px;
+    height: 34px;
+    line-height: 33px;
+    background: url(../../../Images/UserImg/settings.png?5afad03…) no-repeat 0 -204px;
+}
+
+.u-upd-img-btn .flashbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 83px;
+    height: 34px;
+}
+
+object[Attributes Style] {
+    width: 100%;
+    height: 100%;
+}
+
+.m-infoEdit .editBox .eBcon {
+    width: 568px;
+    margin: 0 0 30px;
+}
+
+input {
+    vertical-align: middle;
+    margin: 0px;
+}
+
+.editBox .sex label {
+    font-size: 13px;
+    margin: 0 14px 0 4px;
+}
+.editBox .accMail .verify {
+    line-height: 34px;
+}
+.editBox .accMail .verify .mailN {
+    margin-right: 15px;
+}
+.editBox .accMail .verify .change {
+    margin-left: 5px;
+    color: #81bc9b;
+    font-size: 12px;
+}
+
+.bg, .f-bg {
+    background-color: #fff;
+    -webkit-box-shadow: 0px 1px 2px #bbb;
+    -moz-box-shadow: 0px 1px 2px #bbb;
+    box-shadow: 0px 1px 2px #bbb;
+}
+
+.g-doc, .g-wrap, .g-flow, .g-superflow, .g-all {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+}
+.g-doc, .g-wrap, .g-flow, .g-superflow, .g-all {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.b-10, .b-20, .b-30, .b-15, .b-40, .b-50, .b-70 {
+    clear: both;
+    height: 10px;
+    overflow: hidden;
+    display: block;
+}
+
+.u-insug .area {
+    padding: 5px;
+    position: relative;
+    zoom: 1;
+    height: 21px;
+    background: #FAFAFA;
+    border: 1px solid #DFDFDF;
+    -webkit-box-shadow: inset 1px 1px 2px #DFDFDF;
+    -moz-box-shadow: inset 1px 1px 2px #DFDFDF;
+    box-shadow: inset 1px 1px 2px #DFDFDF;
+}
+.m-infoEdit .footer {
+    height: 63px;
+    border-top: 1px solid #eaeaea;
+    background-color: #fafafa;
+    padding: 20px 0 0 108px;
+}
+
+.m-infoEdit .footer .btn span {
+    display: block;
+    text-align: center;
+    padding-left: 10px;
+    width: 68px;
+    font-size: 14px;
+    height: 44px;
+    line-height: 42px;
+    color: #fff;
+    background-position: -40px -300px;
+}
+
+.m-infoEdit .footer .btn {
+    display: block;
+    width: 88px;
+    width: 88px;
+    text-decoration: none;
+    background-position: 78px -300px;
+    border: 0;
+    margin: 0 37px 0 0;
+    font-weight: bold;
+    float: left;
+    font-family: '微软雅黑';
+}
+
+body {
+    text-align: left;
+    background: #eee;
+}
+
+.g-superflow, .g-flow {
+    width: 905px;
+}
+
+.buttonsprite, .u-sugInput .add, .u-sugInput .add span, .m-infoEdit .editBox .accMail .add .btn, .m-infoEdit .editBox .accMail .add .btn span, .m-infoEdit .editBox .accMail .verify .btn1, .m-infoEdit .editBox .accMail .verify .btn1 span, .m-infoEdit .editBox .accMail .verify .btn2, .m-infoEdit .editBox .accMail .verify .btn2 span, .m-infoEdit .editBox .addEdu, .m-infoEdit .editBox .addEdu span, .m-infoEdit .footer .btn, .m-infoEdit .footer .btn span, .m-AccBox .m-accBaseInfo .urlEditBox .btn, .m-AccBox .m-accBaseInfo .urlEditBox .btn span, .epayAccount .add .btn, .epayAccount .add .btn span, .epayAccount .verify .btn1, .epayAccount .verify .btn1 span, .epayAccount .verify .btn2, .epayAccount .verify .btn2 span, .m-AccBox .u-bindItem .opr .btn, .m-AccBox .u-bindItem .opr .btn span, .m-epayBind .actEpayBtn, .m-epayBind .actEpayBtn span, .m-setBox .btn, .m-setBox .btn span, .m-setBox .m-settingsAddress .footer .btn, .m-setBox .m-settingsAddress .footer .btn span {
+    background: url(../../../Images/UserImg/button.png?8da8e50…) no-repeat 4449px 4449px;
+}
+

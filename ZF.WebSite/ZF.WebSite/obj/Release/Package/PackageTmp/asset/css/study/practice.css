@@ -1,0 +1,7 @@
+/*练习记录-收藏课程*/
+.top{height:104px;display: block; background: url(../../image/study/line.png) repeat-x;padding:20px;}
+.reportName{    padding-left: 100px; background: url(../../image/study/title.png) 0 0 no-repeat; height: 76px;padding-top:15px; color: #fff; font-size: 16px;}
+.kc{background-image:url(../../image/study/kc.png) ;}
+.top div{font-size:16px; color:#fff;}
+
+

@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+    <title>进入考试答题</title>
+</head>
+<body class="body">
+    <div class="dati_h2">
+        <h2 id="PaperName"></h2>
+    </div>
+    <div class="dati_mx">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td class="bor">试卷分数<b id="QuestionScore">100分</b></td>
+                    <td class="bor">答题时间<b id="TestTime">120分</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="bor">已答题人数<b id="Count1"></b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="dati_anniu">
+        <a href="#" onclick="jxcp();">开始练习</a>
+    </div>
+    <div class="dati_js">
+        <h3>试卷介绍</h3>
+        <h4>一 标题介绍</h4>
+        <div id="btjs">
+
+        </div>
+        <h4>二 考前必读</h4>
+        <p>
+            1.如果你准备好了，就点击”开始练习“按钮开始考试。<br>
+            2.选项前的单选框<input type="radio"/>表示该题只能选择一个答案。<br>
+            3.选项前的复选框<input type="checkbox" />表示该题可以选择一个或多个答案。
+        </p>
+    </div>
+    <input type="hidden" id="PaperId" value="@ViewBag.PaperId" />
+    <input type="hidden" id="PaperRecordsId" value="@ViewBag.PaperRecordsId" />
+</body>
+<script type="text/javascript">
+    function jxcp() {
+        window.location.href = "/jjs/MyPaperTest/PaperPractice?PaperId=" + $("#PaperId").val() + "&paperRecordsId=" + $("#PaperRecordsId").val();
+    }
+    topevery.ajaxwx({
+        url: "api/Economy/GetExaminationPaper?PaperId=" + $("#PaperId").val() + "&PaperRecordsId=" + $("#PaperRecordsId").val(),
+        type: "Post",
+        async: false,
+        data: JSON.stringify({})
+    }, function (data) {
+        if (data.Success) {
+            var row = data.Result;
+            $("#PaperName").html(row.PaperName);
+            $("#QuestionScore").html(row.QuestionScore+"分");
+            $("#TestTime").html(row.TestTime + "分钟");
+            $("#Count1").html(row.Count1);
+        }
+    });
+    topevery.ajaxwx({
+        url: "api/Economy/GetPaperInfo?PaperId=" + $("#PaperId").val(),
+        type: "Get",
+        data: JSON.stringify({})
+    }, function (data) {
+        if (data.Success) {
+            var row = data.Result;
+            var html = "";
+            for (var i = 0; i < row.length; i++) {
+                html += "<p>" + (i + 1) + "." + row[i].ClassName + "（共" + row[i].QuestionCount + "题，每题" + row[i].QuestionScore + "分，共" + row[i].QuestionTypeScoreSum + "分。）" + "</p>";
+            }
+            $("#btjs").html(html);
+        }
+    });
+</script>

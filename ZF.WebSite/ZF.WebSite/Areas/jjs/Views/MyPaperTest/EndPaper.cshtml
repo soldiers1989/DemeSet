@@ -1,0 +1,107 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+    <title>测试结果</title>
+</head>
+<body class="body">
+    <div class="circleChart" id="0"></div>
+    <div class="ceshi_box">
+        <h4 id="message"></h4>
+        <span class="xbiaoti" id="PaperName"></span>
+    </div>
+    <div class="ceshi_dc" id="c1">
+
+    </div>
+    <div class="cs_anniu">
+        <a href="#" onclick="jxdt();" class="cs_an1">继续答题</a>
+        <a href="#" onclick="ckpx();" class="cs_an2">查看评析</a>
+    </div>
+    <!--底部导航开始-->
+    <div class="header-nav">
+        <ul>
+            <li><a href="~/jjs/HomePage/Index" class="img01">首页</a></li>
+            <li style="display: none;"><a href="~/jjs/Information/Index" class="img02">最新资讯</a></li>
+            <li><a href="~/jjs/PersonalCenter/Index" class="img03">个人中心</a></li>
+        </ul>
+    </div>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/circleChart.min.js?v=1.0"></script>
+    <script>
+        $(".circleChart#1").circleChart({
+            size: 200
+        });
+        topevery.ajaxwx({
+            url: "api/CourseAppraise/MyPaperRecordsJg?PaperRecordsId=" + topevery.getQueryString("PaperRecordsId"),
+            type: "Post",
+            data: JSON.stringify({})
+        }, function (data) {
+            if (data.Success) {
+                var row = data.Result;
+                $("#PaperName").html(row.PaperName + "<i>" + row.AddTime + "</i>");
+                $("#c1").html("本次共答" + row.c1 + "题，答对<span class=\"cs_red\">" + row.c2 + "</span>题");
+                $(".circleChart#0").circleChart({
+                    size: 200,
+                    value: row.Score,
+                    text: 0,
+                    onDraw: function (el, circle) {
+                        circle.text(Math.round(circle.value) + "分");
+                    }
+                });
+                var message = "";
+                if (row.Score >= 0 && row.Score <= 60) {
+                    message = "分数有点低！再接再厉";
+                } else if (row.Score > 60 && row.Score <= 70) {
+                    message = " 合格了，继续加油";
+
+                } else if (row.Score > 70 && row.Score <= 80) {
+                    message = " 加油！下次可以做到更好";
+
+                } else if (row.Score > 80 && row.Score <= 80) {
+                    message = " 真棒！继续保持";
+                }
+                else if (row.Score > 90) {
+                    message = " 考试达人！继续努力";
+                }
+                $("#message").html(message);
+            }
+        });
+
+        function jxdt() {
+            topevery.ajaxwx({
+                url: "api/Economy/InsertIntoPaperRecords?PaperId=" + $("#PaperId").val(),
+                type: "Post",
+            }, function (data) {
+                if (data.Success) {
+                    var row = data.Result;
+                    if (row.PaperId == "-1") {
+                        parent.layer.msg("该试卷暂未上线,敬请期待!", {
+                            time: 4000
+                        });
+                    } else {
+                        //跳转到试卷页面
+                        window.location.href = "/jjs/MyPaperTest/PaperPractice?PaperId=" + row.PaperId + "&paperRecordsId=" + row.PaperRecordsId;
+                    }
+                }
+            });
+        }
+
+        function ckpx() {
+            window.location.href = "/jjs/MyPaperTest/PaperAnalyzes?PaperId=" + $("#PaperId").val() + "&paperRecordsId=" + $("#PaperRecordsId").val();
+        }
+    </script>
+    <input type="hidden" id="PaperId" value="@ViewBag.PaperId" />
+    <input type="hidden" id="PaperRecordsId" value="@ViewBag.PaperRecordsId" />
+</body>
+</html>

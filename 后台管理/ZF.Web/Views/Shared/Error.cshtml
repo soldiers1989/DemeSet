@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>错误页面</title>
+</head>
+<body>
+    <div>
+        <p>
+            There was a <b>@Model.Exception.GetType().Name</b>
+            while rendering <b>@Model.ControllerName</b>'s
+            <b>@Model.ActionName</b> action.
+        </p>
+        <p style="color:Red">
+            <b>@Model.Exception.Message</b>
+        </p>
+        <p>Stack trace:</p>
+        <pre style="background-color:Orange">@Model.Exception.StackTrace</pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>套餐课程：</label>
+                    <label id="PackCourseName" name="PackCourseName"></label>
+                    <input type="hidden" id="PackCourseId" class="form-control" name="PackCourseId" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label> 子课程：</label><label id="CourseName" name="CourseName"></label>
+                    <input type="hidden" id="CourseId" name="CourseId" class="form-control" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label> 排序：</label> 
+                    <input type="number" min="0" step="1" id="OrderNo"  name="OrderNo" class="form-control" />
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" style="float:right;" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $(function () {
+        if ($('#Id').val()) {
+            topevery.ajax({
+                url: "api/CourseSuitDetail/GetDetail",
+                data: JSON.stringify({Id:$('#Id').val()})
+            }, function (data) {
+                var row = data.Result;
+                topevery.setParmByLookForm(row)
+                $('#PackCourseName').text(row.PackCourseName);
+                $('#CourseName').text(row.CourseName);
+            });
+        }
+
+    })
+
+    
+    var addorEditUrl = "api/CourseSuitDetail/AddOrEdit";
+    $('#sumbitForm').bootstrapValidatorAndSumbit(addorEditUrl, {
+        OrderNo: { validators: { notEmpty: { message: '请输入排序号!' } } },
+    }, "", "", function () {
+        $(".layui-layer-close")[1].click();
+        layer.msg("修改成功!", {
+            icon: 1,
+            title: false, //不显示标题
+            offset: 'auto',
+            time: 3000, //10秒后自动关闭
+            anim: 5
+        });
+    }, 'sumbitForm');
+</script>
+

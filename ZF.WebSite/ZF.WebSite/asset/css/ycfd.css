@@ -1,0 +1,183 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*reset css*/
+
+.izl-rmenu a:hover,.izl-rmenu a:active{opacity: 1;}
+.izl-rmenu{
+	       margin-right: 0;
+	       width: 45px;
+	       position: fixed;
+	       right: 10px;
+	       bottom: 5%;
+	       z-index:1;
+}
+
+.izl-rmenu .consult04{    
+	background-image: url(../image/fudong01.png);
+    background-repeat: no-repeat;
+    background-position: center 0px;
+    display: block;
+    height: 53px;
+    width: 45px;
+	position: relative;
+	color: #fff;
+}
+.izl-rmenu .consult04:hover{
+	background-image: url(../image/fudong01_01.png);
+	color:#b21516;
+}
+
+.gwc_sp{ 
+	position: absolute;
+	top: 8px;
+	right: 5px; 
+	font-size: 10px; 
+	display: block; 
+	width: 14px; 
+	height: 14px; 
+	text-align: center;
+}
+
+
+.izl-rmenu .consult04 .phone {
+	background: #fff;
+    position: absolute;
+    width: 200px;
+    left: -200px;
+    top: 0px;
+    line-height: 78px;
+    color: #fd9903;
+    font-size: 18px;
+    text-align: center;
+    display: none;
+    box-shadow: #666 -1px 1px 4px;
+		font-size: 30px;
+}
+.izl-rmenu a.consult04:hover .phone{display:inline !important;}
+
+
+
+.izl-rmenu .consult{    
+	background-image: url(../image/fudong01.png);
+    background-repeat: no-repeat;
+    background-position: center -53px;
+    display: block;
+    height: 55px;
+    width: 45px;
+}
+.izl-rmenu .consult:hover{background-image: url(../image/fudong01_01.png);}
+.izl-rmenu .consult .phone {
+	background: #fff;
+    position: absolute;
+    width: 200px;
+    left: -200px;
+    top: 77px;
+    line-height: 77px;
+    color: #fd9903;
+    font-size: 18px;
+    text-align: center;
+    display: none;
+    box-shadow: #666 -1px 1px 4px;
+		font-size: 30px;
+}
+.izl-rmenu a.consult:hover .phone{display:inline !important;}
+
+
+
+.izl-rmenu .consult01{    
+	background-image: url(../image/fudong01.png);
+    background-repeat: no-repeat;
+    background-position: center -108px;
+    display: block;
+    height: 54px;
+    width: 45px;
+}
+.izl-rmenu .consult01:hover{background-image: url(../image/fudong01_01.png);}
+.izl-rmenu .consult01 .phone {
+	background: url(../image/kefudianhua.png) no-repeat;
+    position: absolute;
+    width: 287px;
+	height: 170px;
+    left: -287px;
+    bottom: 0;
+    line-height: 76px;
+    color: #000;
+    font-size: 18px;
+    text-align: center;
+    display: none;
+
+}
+.izl-rmenu a.consult01:hover .phone{display:inline !important;}
+
+
+.izl-rmenu .consult02{    
+	background-image: url(../image/fudong01.png);
+    background-repeat: no-repeat;
+    background-position: center -162px;
+    display: block;
+    height: 54px;
+    width: 45px;
+}
+.izl-rmenu .consult02:hover{background-image: url(../image/fudong01_01.png);}
+.izl-rmenu .consult02 .phone {
+    background-color: rgb(247,247,255);
+    position: absolute;
+	background: url(../image/yc_app.jpg) no-repeat;
+    width: 200px;
+	height: 230px;
+    left: -200px;
+    bottom: 0;
+    line-height: 75px;
+    color: #000;
+    font-size: 18px;
+    text-align: center;
+    display: none;
+    box-shadow: #b9b9b9 -1px 1px 4px;
+	border-radius: 10px;
+}
+.izl-rmenu a.consult02:hover .phone{display:inline !important;}
+
+
+.izl-rmenu .consult03{    
+	background-image: url(../image/fudong01.png);
+    background-repeat: no-repeat;
+    background-position: center -216px;
+    display: block;
+    height: 54px;
+    width: 45px;
+}
+.izl-rmenu .consult03:hover{background-image: url(../image/fudong01_01.png);}
+.izl-rmenu .consult03 .phone {
+    background-color: rgb(247,247,255);
+    position: absolute;
+	background: url(../image/yc_gongzhonghao.jpg) no-repeat;
+    width: 200px;
+	height: 252px;
+    left: -200px;
+	bottom: 0;
+    display: none;
+ 
+}
+.izl-rmenu a.consult03:hover .phone{display:inline !important;}
+
+
+
+
+.izl-rmenu .btn_top {
+    background-image: url(../image/fudong02.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    display: block;
+    height: 39px;
+    width: 45px;
+    -webkit-transition: all 0s ease-in-out;
+    -moz-transition: all 0s ease-in-out;
+    -o-transition: all 0s ease-in-out;
+    transition: all 0s ease-in-out;
+}
+.izl-rmenu .btn_top:hover {
+	background-image: url(../image/fudong02.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+

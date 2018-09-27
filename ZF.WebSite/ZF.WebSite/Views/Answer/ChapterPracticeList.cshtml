@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = null;
+}
+
+<style>
+    .neirong {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        background: #fafafa;
+        margin: 5px;
+    }
+
+        .neirong span {
+            width: 200px;
+            margin-left: 15px;
+        }
+
+    .bitaoti {
+        width: 50%;
+        float: left;
+    }
+    .jc {
+        font-weight: bold;
+    }
+</style>
+
+<div id="PopularCourses">
+</div>
+<script id="PopularCourses_html" type="text/html">
+    <div style="padding: 10px;">
+        <div class="neirong">
+            <div class="bitaoti jc">
+                <span>练习序号</span>
+            </div>
+            <div class="bitaoti jc">
+                <span>练习时间</span>
+            </div>
+        </div>
+        {{each Result}}
+        <div class="neirong">
+            <div class="bitaoti">
+                <span><a href="/Answer/ChapterPracticeView?ChapterQuestionsId={{$value.Id}}" target="_blank">{{$value.PracticeNo}}</a></span>
+            </div>
+            <div class="bitaoti">
+                <span>{{$value.AddTime}}</span>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</script>
+<script type="text/javascript">
+    var ChapterId = topevery.getQueryString("ChapterId");
+    //初始化
+    topevery.ajax({
+        url: "api/CourseAppraise/GetCourseChapterQuestionses?ChapterId=" + ChapterId,
+        type: "Post",
+        data: JSON.stringify({})
+    }, function (data) {
+        if (data.Success) {
+            $("#PopularCourses").html(template("PopularCourses_html", data));
+        }
+    });
+</script>

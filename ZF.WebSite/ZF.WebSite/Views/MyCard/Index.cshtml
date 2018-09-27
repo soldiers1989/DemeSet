@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "我的学习卡";
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/mycenter/learnCard.css" rel="stylesheet" />
+
+<div class="personTit"><label>学习卡</label></div>
+<div class="pd2">
+    <div class="t_right layui-form-item"><a href="javascript:;" class="layui-btn layui-btn-primary add" onclick="LoadCard();">添加学习卡</a></div>
+    <div class="layui-col-space20 layui-row">
+        <div id="bindCardInfo">
+        </div>
+        <script type="text/html" id="card_html">
+            {{if length>0}}
+            {{each}}
+            <div class="layui-col-xs6" style="padding: 10px;">
+                <div class="box1">
+                    <span class="bgw">经济师通用学习卡</span>
+                    <div class="layui-row">
+                        <div class="layui-col-xs6 cardNum">&nbsp;</div>
+                        <div class="layui-col-xs6 ">
+                            <div class="money t_right">¥ {{$value.Amount}}</div>
+                            {{if !$value.TargetCourse}}
+                            <div class="use t_right">通用</div>
+                            {{else}}
+                            <div class="use t_right">{{$value.TargetCourse}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="down">
+                        <div class="layui-col-xs4">
+                            状态：
+                            {{if $value.IfUse==0}}
+                            可用
+                            {{/if}}
+                            {{if $value.IfUse==1}}
+                            不可用
+                            {{/if}}
+                            {{if $value.IfUse==2}}
+                            已过期
+                            {{/if}}
+                        </div>
+                        <div class="layui-col-xs8 t_right">
+                            可用期限：
+                            {{if !$value.EndDate }}
+                            永久有效
+                            {{else}}
+                            {{$value.EndDate}}前
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="normal xxk">暂无卡片</div>
+            {{/if}}
+        </script>
+
+
+    </div>
+</div>
+<script type="text/html" id="add">
+    <div class="inputWrap">
+        <div class="layui-form-item">
+            <label class="layui-form-label">学习卡号：</label>
+            <div class="layui-input-block"><input type="text" id="txtNumber" class="layui-input" /><p class="error_msg"></p></div>
+        </div>
+    </div>
+</script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/MyCard/Index.js?v=1.0"></script>

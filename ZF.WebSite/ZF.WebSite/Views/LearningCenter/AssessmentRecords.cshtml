@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/report.css" rel="stylesheet"/>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<div class="subTit">
+    <label>测评记录</label>
+    <div class="search right">
+        <input class="layui-input" id="query" />
+        <a class="layui-icon  layui-icon-search" onclick="data.loading()"></a>
+    </div>
+</div>
+<div id="AssessmentRecords">
+</div>
+<div class="m-style M-box1" style="float: right; padding-right: 6px;"></div>
+<div class="clear"></div>
+
+<script type="text/html" id="paperClassify_html">
+    <div>
+
+    </div>
+</script>
+
+<script type="text/html" id="AssessmentRecords_html">
+    {{if Rows.length>0}}
+    {{each Rows}}
+    <div class="layui-form-item layui-row box">
+        <div class="layui-col-xs10">
+            <div class="testName layui-elip">{{$value.PaperName}} </div>
+            <div class="details">
+                <span>分数：<font class="red">{{$value.Score}}</font></span>
+                <span>排名：<font class="red">{{$value.RowNumber1}}</font></span>
+                <span class="time">{{$value.AddTime}}</span>
+            </div>
+        </div>
+        <div class="layui-col-xs2">
+            <a href="/Answer/IndexView?PaperId={{$value.PaperId}}&PaperRecordsId={{$value.Id}}" target="_blank" class="look">查看评析</a>
+            <a href="javascript:data.checkPaperRecord('{{$value.PaperId}}','{{$value.Id}}','{{$value.CourseId}}');" class="edit">继续测评</a>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="normal">您还没有进行测评记录，快去测评吧……</div>
+    {{/if}}
+</script>
+<input type="hidden" Id="Rows" value="5" />
+<input type="hidden" Id="PageIndex" value="1" />
+<script type="text/javascript">
+    var data = {
+        loading: function () {
+            topevery.ajax({
+                url: 'api/CoursePaperRecord/GetList',
+                data: JSON.stringify({ query: $('#query').val(), page: $('#PageIndex').val(), rows: $('#Rows').val() })
+            }, function (data1) {
+                if (data1.Success) {
+                    $("#AssessmentRecords").html(template("AssessmentRecords_html", data1.Result));
+                    if (data1.Result.Records > 0) {
+                        $('.M-box1').show();
+                        $('.M-box1').pagination({
+                            pageCount: Math.ceil(data1.Result.Records / parseInt($("#Rows").val())),
+                            jump: true,
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function (api) {
+                                $("#PageIndex").val(api.getCurrent());
+                                data.loading1();
+                            }
+                        });
+                    } else {
+                        $('.M-box1').hide();
+                    }
+                }
+            });
+        },
+        loading1: function () {
+            topevery.ajax({
+                url: 'api/CoursePaperRecord/GetList',
+                data: JSON.stringify({ query: $('#query').val(), page: $('#PageIndex').val(), rows: $('#Rows').val() })
+            }, function (data1) {
+                if (data1.Success) {
+                    $("#AssessmentRecords").html(template("AssessmentRecords_html", data1.Result));
+                }
+            });
+        },
+        checkPaperRecord: function (paperId) {
+            topevery.ajax({
+                url: "api/Economy/InsertIntoPaperRecords?paperId=" + paperId,
+                data: JSON.stringify({})
+            }, function (data) {
+                if (data.Result) {
+                    var row = data.Result;
+                    if (row.PaperId == "-1") {
+                        parent.layer.msg("该试卷暂未上线,敬请期待!", {
+                            time: 4000
+                        });
+                    } else {
+                        //跳转到试卷页面
+                        topevery.myopen("/Answer/Index?paperId=" + row.PaperId + "&paperRecordsId=" + row.PaperRecordsId);
+                    }
+                } else {
+                    layer.msg("暂无权限练习试卷,请前往购买!", {
+                        time: 4000
+                    });
+                }
+            });
+        },
+        ViewPaper: function (paperId, paperRecordsId) {
+            location.href = "/Answer/IndexView?PaperId=" + paperId + "&PaperRecordsId=" + paperRecordsId;
+        }
+    }
+    data.loading();
+</script>

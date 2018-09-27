@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<link href="~/Libs/select2-4.0.6/css/select2.min.css" rel="stylesheet" />
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>订单管理</a>/<a>订单管理</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-12 box">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group col-xs-12">
+                <label>订单编号：</label>
+                    <input id="QueryOrderNo" name="OrderNo" style="width: 179px;"  class="form-control" />
+                <label>用户名：</label>
+                <input id="QueryRegisterUserName" Name="RegisterUserName" class="form-control" />
+                <label>下单时间起：</label>
+                <input class="form-control Wdate" onFocus="WdatePicker({ el: 'AddTimeBegin', dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'AddTimeEnd\')}' })" id="AddTimeBegin" name="AddTimeBegin" style="height: 34px; width: 179px;" />
+                <label>下单时间止：</label>
+                <input class="form-control Wdate" onFocus="WdatePicker({ el: 'AddTimeEnd', dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'AddTimeBegin\')}' })" id="AddTimeEnd" name="AddTimeEnd" style="height: 34px; width: 179px;" />
+                <input class="btn btn-success query_btn" type="button" value="查询">
+                <input type="hidden" id="QueryState" name="State" value="1" />
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+<style>
+    #selectFrom label {
+        min-width: 100px !important;
+        text-align: left;
+    }
+
+    #selectFrom select {
+        width: 179px;
+    }
+</style>
+<script src="~/Libs/select2-4.0.6/js/select2.min.js"></script>
+<script src="~/Libs/select2-4.0.6/js/i18n/zh-CN.js"></script>
+<script src="~/Libs/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Views/OrderSheet/EnditiOrderPrice.js"></script>

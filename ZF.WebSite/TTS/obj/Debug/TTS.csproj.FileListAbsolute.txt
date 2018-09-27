@@ -1,0 +1,5 @@
+G:\XYZ\ZF.WebSite\TTS\bin\Debug\TTS.dll
+G:\XYZ\ZF.WebSite\TTS\bin\Debug\TTS.pdb
+G:\XYZ\ZF.WebSite\TTS\obj\Debug\TTS.csprojResolveAssemblyReference.cache
+G:\XYZ\ZF.WebSite\TTS\obj\Debug\TTS.dll
+G:\XYZ\ZF.WebSite\TTS\obj\Debug\TTS.pdb

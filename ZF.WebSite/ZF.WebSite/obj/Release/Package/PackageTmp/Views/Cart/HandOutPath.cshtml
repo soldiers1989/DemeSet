@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/mycenter/address.css">
+    <div class="personTit"><label>收货地址</label><div class="search right"><input class="layui-input" /><a class="layui-icon  layui-icon-search"></a></div></div>
+    <div class="pd2">
+        <div class="layui-form-item">
+            <a href="javascript:;" onclick="alertAddAddressDiag()" class="layui-btn layui-btn-primary address">新增收货地址</a>
+            <span class="layui-text">您已创建<span id="addressNum_top" class="ftx-02"></span>个收货地址，最多可创建20个</span>
+        </div>
+        <div id="bindinfo">
+        </div>
+
+        <script type="text/html" id="path_html">
+            {{if length>0}}
+            {{each}}
+            <div class="box layui-form-item">
+                <div class="username">
+                    {{$value.Contact}}
+                    {{if $value.DefaultAddress===1}}
+                    <span class="npc">默认地址</span>
+                    {{/if}}
+                </div>
+                <div class="message">
+                    <p>收货人：{{$value.Contact}}</p>
+                    <p>地址：{{$value.Province}}-{{$value.City}}-{{$value.Town}}</p>
+                    <p>手机号：{{$value.ContactPhone}}</p>
+                </div>
+                <div class="t_right">
+                    {{if $value.DefaultAddress===0}}
+                    <a name="{{$value.Id}}" onclick="makeAddressAllDefaultByoverseas(this)" href="javascript:;" class="link setNpc">设为默认地址</a>
+                    {{/if}}
+                    <a href="javascript:;" class="link editAddress"  name="{{$value.Id}}" onclick="alertUpdateAddressDiagByoverseas(this);">编辑</a>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+                <div class="u-emptybig"><p class="emptytext">暂无收货地址</p></div>
+            {{/if}}
+        </script>
+            <div class="layui-form-item" id="addAddressDiv_bottom">
+                <a href="javascript:;" onclick="alertAddAddressDiag()" class="layui-btn layui-btn-primary address">新增收货地址</a>
+                <span class="layui-text">您已创建 <span id="addressNum_botton" class="ftx-02">2</span>个收货地址，最多可创建20个</span>
+            </div>
+</div>
+<script src="~/Views/Cart/HandOutPath.js"></script>

@@ -1,0 +1,146 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .m-myOrder .m-data-lists .u-OrderCard {
+        margin: 0px;
+    }
+
+    .j-left-info {
+        padding: 5px;
+    }
+
+    .m-myOrder .m-data-lists .u-OrderCard .info {
+        background: #ea644a;
+        color: #333;
+        padding: 5px;
+    }
+
+    .m-myOrder .u-mounav .order-status .j-tab {
+        border-bottom: 4px solid #fff;
+    }
+
+    .ui-pager div * {
+        height: 40px;
+        line-height: 20px;
+        vertical-align: middle;
+    }
+
+    .m-style a {
+        float: left;
+        margin: 0 5px;
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+        background: #fff;
+        border: 1px solid #ebebeb;
+        color: #bdbdbd;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .m-style .next, .m-style .prev {
+        font-family: "Simsun";
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .orderTime {
+        font-weight: bold;
+    }
+</style>
+<link href="~/Views/HandOutManage/css/HandOutManage.css" rel="stylesheet" />
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>运营</a>/<a>电子发票</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div id="myTabContent" class="tab-content" style="margin-left:10px;">
+    <div class="tab-pane fade in active" id="home">
+        <div class="m-myOrder" id="j-my-orders">
+            <div class="m-myOrders f-cb">
+                <div style="height: 10px;"></div>
+                <div class="form-group col-xs-12" style="margin-top: 5px;">
+                    <input class="btn btn-success report_btn" type="button" value="导出未寄出发票">
+                    <input class="btn btn-success report_btn1" type="button" value="导出已寄出发票">
+                </div>
+                <div class="u-mounav f-cb f-bg">
+                    <div class="g-flow" style="margin: 90px 0px 0px 10px;">
+                        <div class="f-cb order-status j-order-status">
+                            <a class="f-fl tab f-pr j-tab current" id="pendingPayment" style="cursor:pointer;" name="0">未处理</a>
+                            <a class="f-fl tab f-pr j-tab" id="tradingSuccess" name="1" style="cursor:pointer;">已处理</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="g-flow">
+                    <div class="f-cb f-bg header j-header" style="display: block;" id="tdTitle">
+                    </div>
+                    <div class="orderCon">
+                        <div class="j-ordersList f-cb listWrap auto-1523169589007-parent" id="isInfo" style="display: block;">
+                            <div class="m-basepool f-cb auto-1523169589007" id="auto-id-1523169589353">
+                                <div class="m-data-lists f-cb f-pr j-data-list" id="orderList" style="">
+                                    <div id="electronicInvoiceHtml" class="first">
+                                    </div>
+                                    <script type="text/html" id="electronicInvoice_jshtml">
+                                        {{if Result.length>0}}
+                                        {{each Result}}
+                                        <div class="u-OrderCard">
+                                            <div class="info" name="00995">
+                                                <span class="orderTime">购买时间：</span>
+                                                <span>{{$value.AddTime}}</span>
+                                                <span class="orderTime">订单编号：</span>
+                                                <span>{{$value.OrderNo}}</span>
+                                            </div>
+                                            <div class="express">
+                                                <span class="orderTime">
+                                                    发票抬头：
+                                                </span>
+
+                                                <span>
+                                                    {{$value.InvoiceHeader}}
+                                                </span>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <span class="orderTime">纳税人识别号：</span>
+                                                <span>  {{$value.TaxpayerIdentificationNumber}}</span>        &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <span class="orderTime">
+                                                    发票邮箱：
+                                                </span>
+                                                <span>
+                                                    {{$value.InvoiceMailbox}}
+                                                </span> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                <span class="orderTime">手机号：</span>
+                                                <span>  {{$value.InvoicePhone}}</span>
+                                                {{if $value.InvoiceState==0}}
+                                                <input type="button" onclick="setElectronicInvoice(this)" name="{{$value.Id}}" class="btn" style="line-height: 22px;" value="处理" />
+                                                {{/if}}
+                                            </div>
+                                            <hr style="height:1px;border:none;border-top:1px dashed #555555;" />
+                                        </div>
+                                        {{/each}}
+                                        {{else}}
+                                        <div class="u-OrderCard">
+                                            暂无数据
+                                        </div>
+                                        {{/if}}
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Js/template.js"></script>
+<script src="~/Js/base.js"></script>
+<script src="~/Views/OrderSheet/ElectronicInvoiceInfo.js"></script>

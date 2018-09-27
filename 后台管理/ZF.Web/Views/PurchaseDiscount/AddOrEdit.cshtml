@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "满减优惠券";
+    Layout = null;
+}
+<div class="box" >
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            @*<div class="col-xs-12">
+                <div class="form-group">
+                    <label>可用于购买课程</label><span class="text-danger">*</span>
+                    <select id="TargetCourse" name="TargetCourse" class="form-control" />
+                </div>
+            </div>*@
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>购买金额</label><span class="text-danger">*</span>
+                    <input class="form-control" maxlength="6" id="TopNum" name="TopNum" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>减免金额</label><span class="text-danger">*</span>
+                    <input  class="form-control" maxlength="6" id="MinusNum" name="MinusNum" />
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label>有效期</label><span class="text-danger">*</span>
+                <div class="form-group">
+                    <input class="form-control Wdate" onFocus="WdatePicker({ el: 'BeginDate', dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'EndDate\')}' })" id="BeginDate" name="BeginDate" style="height: 34px; width: 179px;" />
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label></label>
+                <div class="form-group" style="padding-top: 5px;">
+                    <input class="form-control Wdate" onFocus="WdatePicker({ el: 'EndDate', dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'BeginDate\')}' })" id="EndDate" name="EndDate" style="height: 34px; width: 179px;" />
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Libs/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Views/PurchaseDiscount/AddOrEdit.js"></script>

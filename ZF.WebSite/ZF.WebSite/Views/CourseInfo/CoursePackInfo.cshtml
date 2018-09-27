@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>中国人事考试在线_</title>
+<link rel="shortcut icon" href="~/asset/image/public/logo.png" type="image/x-icon">
+<meta charset="utf-8">
+<script type="text/javascript" src="~/asset/public/layui/layui.js?v=1.0"></script>
+<link rel="stylesheet" type="text/css" href="~/asset/public/layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="~/asset/css/public/global.css">
+<link rel="stylesheet" type="text/css" href="~/Views/CourseInfo/css/taocan.css">
+<input type="hidden" id="courseid" value="@ViewBag.CourseId" />
+<style>
+    .footer {
+        top: 20px;
+    }
+
+    #courseList .cur {
+        background: #ddd;
+    }
+</style>
+<div class="tc_tit">
+    <div class="tc_img"><img id="CourseIamge"></div>
+    <div class="tc_tit_r">
+    </div>
+    <script type="text/html" id="tc_tit_r_html">
+        <h3>{{#CourseName}}</h3>
+        <p>
+            <span>课程时长：{{#CourseLongTime}}</span>
+            <span>课程数： {{#CourseWareCount}}</span>
+        </p>
+        <div class="tc_pj">
+            <span class="xuexi">{{#PurchaseNum}}次学习</span>
+            @*<span class="pingjia">{{#AppraiseNum}}次评价</span>*@
+        </div>
+        <div class="tc_yj">原价:¥{{#Price}}</div>
+        <div class="tc_xj">
+            <b>¥ {{#FavourablePrice}} </b>
+            {{if ValidityEndDate}}
+            <span>有效期：购买起至：{{#ValidityEndDate}}</span>
+            {{/if}}
+        </div>
+        <div class="tc_anniu">
+            <a href="#" style="display:none;" id="Unshelve" class="anniu01">已下架</a>
+            <a href="javascript:btnLearnNow();" style="display:none;" id="btnLearnNow" class="anniu01">立即参加</a>
+            <a  style="display:none;" id="AddToCart" class="anniu02">加入购物车</a>
+            <div class="clear"></div>
+        </div>
+    </script>
+    <div class="clear"></div>
+</div>
+<div class="tc_main">
+    <div class="tc_left">
+        <div class="tc_kclb tab-wrapper">
+            <ul class="tab-menu">
+                <li class="liebiao">课程列表</li>
+                <li class="liebiao" style="display: none;">套餐课程简介</li>
+                <div class="clear"></div>
+            </ul>
+            <div class="tc_kclb tab-content">
+                <div style="padding: 20px 3%;">
+                    <ul id="courseList"></ul>
+
+                    <script type="text/html" id="courseList_html">
+                        {{each SubCourseList}}
+                        <a courseId="{{$value.Id}}">
+                            <li>
+                                课程{{$index+1}}：{{$value.CourseName}}
+                                <span class="keshi">{{$value.CourseWareCount}}课时</span>
+                            </li>
+                        </a>
+                        {{/each}}
+                    </script>
+                </div>
+                <div class="tc_kcjj ">
+                    <div class="txt">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tc_kclb tab-wrapper" style="margin-top: 15px;">
+            <iframe id="mainIframe" width="100%;"  name="mainIframe" src="" frameborder="0" scrolling="no" onload=""></iframe>
+        </div>
+    </div>
+    <div class="tc_r" id="CourseByTagExceptSelf">
+    </div>
+    <script type="text/html" id="CourseByTagExceptSelf_html">
+        <h4>推荐课程</h4>
+        {{each Rows}}
+        <a href="/CourseInfo/CourseInfo?courseId={{$value.Id}}&courseType={{$value.CourseType}}" class="tc_tuijian">
+            <img src="{{$value.CourseIamge}}">
+            <h5>{{$value.CourseName}}</h5>
+            <p>¥ {{$value.FavourablePrice}}<span>{{$value.Count}}人购买</span></p>
+        </a>
+        {{/each}}
+    </script>
+    <div class="clear"></div>
+
+</div>
+<!--套餐内容结束-->
+<script type="text/javascript" src="/js/jquery-addShopping.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/CourseInfo/CoursePackInfo.js?v=1.0"></script>

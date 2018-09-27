@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A59BF620-3D84-4E2E-A613-6DD0E11B5192}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZF.Application</RootNamespace>
+    <AssemblyName>ZF.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\ZF.Application.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AopSdk, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\RefDlls\alipay\AopSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=10.4.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\JetBrains.Annotations.10.4.0\lib\net\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="qcloudsms_csharp">
+      <HintPath>..\..\packages\qcloud.qcloudsms_csharp.0.1.5\lib\net40\qcloudsms_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Qiniu, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="ServiceStack.Interfaces, Version=4.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\RefDlls\Redis\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Dynamic.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Linq.Dynamic.Core.1.0.6.13\lib\net45\System.Linq.Dynamic.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.QRCode">
+      <HintPath>..\..\RefDlls\alipay\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppServer.cs" />
+    <Compile Include="AppService\AfficheHelpAppService.cs" />
+    <Compile Include="AppService\ArticleAppService.cs" />
+    <Compile Include="AppService\BaseDataAppService.cs" />
+    <Compile Include="AppService\BaseTagAppService.cs" />
+    <Compile Include="AppService\BaseTagMiddleAppService.cs" />
+    <Compile Include="AppService\CourseAppraiseAppService.cs" />
+    <Compile Include="AppService\CourseChapterAppService.cs" />
+    <Compile Include="AppService\CourseFaceToFaceAppService.cs" />
+    <Compile Include="AppService\CourseInfoAppService.cs" />
+    <Compile Include="AppService\CourseOnTeachersAppService.cs" />
+    <Compile Include="AppService\CoursePackcourseInfoAppService.cs" />
+    <Compile Include="AppService\CoursePaperAppService.cs" />
+    <Compile Include="AppService\CourseResourceAppService.cs" />
+    <Compile Include="AppService\CourseSecurityCodeAppService.cs" />
+    <Compile Include="AppService\CourseSubjectAppService.cs" />
+    <Compile Include="AppService\CourseSuitDetailAppService.cs" />
+    <Compile Include="AppService\CourseVideoAppService.cs" />
+    <Compile Include="AppService\CourseVideoFileAppService.cs" />
+    <Compile Include="AppService\DanyeAppService.cs" />
+    <Compile Include="AppService\DataTypeAppService.cs" />
+    <Compile Include="AppService\DeliveryAddressAppService.cs" />
+    <Compile Include="AppService\DiscountCardAppService.cs" />
+    <Compile Include="AppService\ExamInfoAppService.cs" />
+    <Compile Include="AppService\ExpressCompanyAppService.cs" />
+    <Compile Include="AppService\FileRelationshipAppService.cs" />
+    <Compile Include="AppService\MenuAppService.cs" />
+    <Compile Include="AppService\ModuleAppService.cs" />
+    <Compile Include="AppService\OperatorLogAppService.cs" />
+    <Compile Include="AppService\OrderCartAppService.cs" />
+    <Compile Include="AppService\OrderCartDetailAppService.cs" />
+    <Compile Include="AppService\OrderDetailAppService.cs" />
+    <Compile Include="AppService\OrderInstitutionsAppService.cs" />
+    <Compile Include="AppService\OrderSheetAppService.cs" />
+    <Compile Include="AppService\PaperDetatailAppService.cs" />
+    <Compile Include="AppService\PaperGroupAppService.cs" />
+    <Compile Include="AppService\PaperGroupRelationAppService.cs" />
+    <Compile Include="AppService\PaperInfoAppService.cs" />
+    <Compile Include="AppService\PaperPaperParamAppService.cs" />
+    <Compile Include="AppService\PaperParamDetailAppService.cs" />
+    <Compile Include="AppService\PaperStructureDetailAppService.cs" />
+    <Compile Include="AppService\ProjectAppService.cs" />
+    <Compile Include="AppService\ProjectClassAppService.cs" />
+    <Compile Include="AppService\PromoteCompanyAppService.cs" />
+    <Compile Include="AppService\PromotePromotersAppService.cs" />
+    <Compile Include="AppService\PurchaseDiscountAppService.cs" />
+    <Compile Include="AppService\RoleAppService.cs" />
+    <Compile Include="AppService\RoleMenuAppService.cs" />
+    <Compile Include="AppService\RoleUserAppService.cs" />
+    <Compile Include="AppService\SlideSettingAppService.cs" />
+    <Compile Include="AppService\SmsendLogAppService.cs" />
+    <Compile Include="AppService\SmsSendService.cs" />
+    <Compile Include="AppService\StructureAppService.cs" />
+    <Compile Include="AppService\SubjectBookAppService.cs" />
+    <Compile Include="AppService\SubjectSmallquestionAppService.cs" />
+    <Compile Include="AppService\SubjectBigQuestionAppService.cs" />
+    <Compile Include="AppService\SubjectClassAppService.cs" />
+    <Compile Include="AppService\SubjectKnowledgePointAppService.cs" />
+    <Compile Include="AppService\RegisterUserAppService.cs" />
+    <Compile Include="AppService\SubjectAppService.cs" />
+    <Compile Include="AppService\SysSetAppService.cs" />
+    <Compile Include="AppService\UseDescriptionAppService.cs" />
+    <Compile Include="AppService\UserAppService.cs" />
+    <Compile Include="AppService\UserDiscountCardAppService.cs" />
+    <Compile Include="AppService\UserLoginLogAppService.cs" />
+    <Compile Include="AppService\UserMenuAppService.cs" />
+    <Compile Include="BaseDto\BasePageInput.cs" />
+    <Compile Include="BaseDto\DictionaryDto.cs" />
+    <Compile Include="BaseDto\FileUploadOutput.cs" />
+    <Compile Include="BaseDto\IdInput.cs" />
+    <Compile Include="BaseDto\IdInputIds.cs" />
+    <Compile Include="BaseDto\JqGridOutput.cs" />
+    <Compile Include="BaseDto\MessagesOutput.cs" />
+    <Compile Include="BaseDto\ModelJob.cs" />
+    <Compile Include="Dto\AfficheHelpInput.cs" />
+    <Compile Include="Dto\AfficheHelpListInput.cs" />
+    <Compile Include="Dto\AfficheHelpOutput.cs" />
+    <Compile Include="Dto\ArticleInput.cs" />
+    <Compile Include="Dto\ArticleListInput.cs" />
+    <Compile Include="Dto\ArticleOutput.cs" />
+    <Compile Include="Dto\BasedataInput.cs" />
+    <Compile Include="Dto\BasedataListInput.cs" />
+    <Compile Include="Dto\BaseTagInput.cs" />
+    <Compile Include="Dto\BaseTagListInput.cs" />
+    <Compile Include="Dto\BaseTagMiddleInput.cs" />
+    <Compile Include="Dto\BaseTagMiddleOutput.cs" />
+    <Compile Include="Dto\BaseTagOutput.cs" />
+    <Compile Include="Dto\CourseFaceToFaceInput.cs" />
+    <Compile Include="Dto\CourseFaceToFaceListInput.cs" />
+    <Compile Include="Dto\CourseFaceToFaceOutput.cs" />
+    <Compile Include="Dto\CourseOnTeachersInput.cs" />
+    <Compile Include="Dto\CourseOnTeachersListInput.cs" />
+    <Compile Include="Dto\CourseOnTeachersOutput.cs" />
+    <Compile Include="Dto\CoursePaperInput.cs" />
+    <Compile Include="Dto\CoursePaperListInput.cs" />
+    <Compile Include="Dto\CoursePaperOutput.cs" />
+    <Compile Include="Dto\CourseSecurityCodeInput.cs" />
+    <Compile Include="Dto\CourseSecurityCodeListInput.cs" />
+    <Compile Include="Dto\CourseSecurityCodeOutput.cs" />
+    <Compile Include="Dto\CourseVideoFileInput.cs" />
+    <Compile Include="Dto\CourseVideoFileListInput.cs" />
+    <Compile Include="Dto\CourseVideoFileOutput.cs" />
+    <Compile Include="Dto\DanyeInput.cs" />
+    <Compile Include="Dto\DanyeListInput.cs" />
+    <Compile Include="Dto\DanyeOutput.cs" />
+    <Compile Include="Dto\DeliveryAddressInput.cs" />
+    <Compile Include="Dto\DeliveryAddressListInput.cs" />
+    <Compile Include="Dto\DeliveryAddressOutput.cs" />
+    <Compile Include="Dto\DiscountCardInput.cs" />
+    <Compile Include="Dto\DiscountCardListInput.cs" />
+    <Compile Include="Dto\DiscountCardOutput.cs" />
+    <Compile Include="Dto\ExamInfoInput.cs" />
+    <Compile Include="Dto\ExamInfoListInput.cs" />
+    <Compile Include="Dto\ExamInfoOutput.cs" />
+    <Compile Include="Dto\ExpressCompanyInput.cs" />
+    <Compile Include="Dto\ExpressCompanyListInput.cs" />
+    <Compile Include="Dto\ExpressCompanyOutput.cs" />
+    <Compile Include="Dto\FileRelationshipInput.cs" />
+    <Compile Include="Dto\FileRelationshipListInput.cs" />
+    <Compile Include="Dto\FileRelationshipOutput.cs" />
+    <Compile Include="Dto\OrderInstitutionsInput.cs" />
+    <Compile Include="Dto\OrderInstitutionsListInput.cs" />
+    <Compile Include="Dto\OrderInstitutionsOutput.cs" />
+    <Compile Include="Dto\SecurityCodeStatisticsOutput.cs" />
+    <Compile Include="Dto\SecurityCodeUsageInput.cs" />
+    <Compile Include="Dto\SecurityCodeUsageOutput.cs" />
+    <Compile Include="WebApiAppService\CourseSecurityCodeModule\ComplaintsInput.cs" />
+    <Compile Include="WebApiDto\CourseModule\AdvertisingOutput.cs" />
+    <Compile Include="WebApiDto\MyCollectionItemModule\SubjectPracticeModelInput.cs" />
+    <Compile Include="WebApiDto\MyCollectionItemModule\SubjectPracticeModelOutput.cs" />
+    <Compile Include="Dto\ErrorSubjectFeedBackOutput.cs" />
+    <Compile Include="WebApiDto\SubjectModule\MyPaperRecordsOutput.cs" />
+    <Compile Include="Dto\OrderCartDetailInput.cs" />
+    <Compile Include="Dto\OrderCartDetailListInput.cs" />
+    <Compile Include="Dto\OrderCartDetailOutput.cs" />
+    <Compile Include="Dto\OrderCartInput.cs" />
+    <Compile Include="Dto\OrderCartListInput.cs" />
+    <Compile Include="Dto\OrderCartOutput.cs" />
+    <Compile Include="Dto\PaperGroupInput.cs" />
+    <Compile Include="Dto\PaperGroupListInput.cs" />
+    <Compile Include="Dto\PaperGroupOutput.cs" />
+    <Compile Include="Dto\PaperGroupRelationInput.cs" />
+    <Compile Include="Dto\PaperGroupRelationListInput.cs" />
+    <Compile Include="Dto\PaperGroupRelationOutput.cs" />
+    <Compile Include="Dto\PaperPaperParamInput.cs" />
+    <Compile Include="Dto\PaperPaperParamListInput.cs" />
+    <Compile Include="Dto\PaperPaperParamOutput.cs" />
+    <Compile Include="Dto\PaperParamDetailInput.cs" />
+    <Compile Include="Dto\PaperParamDetailListInput.cs" />
+    <Compile Include="Dto\PaperParamDetailOutput.cs" />
+    <Compile Include="Dto\PromoteCompanyInput.cs" />
+    <Compile Include="Dto\PromoteCompanyListInput.cs" />
+    <Compile Include="Dto\PromoteCompanyOutput.cs" />
+    <Compile Include="Dto\PromotePromotersInput.cs" />
+    <Compile Include="Dto\PromotePromotersListInput.cs" />
+    <Compile Include="Dto\PromotePromotersOutput.cs" />
+    <Compile Include="Dto\PurchaseDiscountInput.cs" />
+    <Compile Include="Dto\PurchaseDiscountListInput.cs" />
+    <Compile Include="Dto\PurchaseDiscountOutput.cs" />
+    <Compile Include="Dto\RoleInput.cs" />
+    <Compile Include="Dto\RoleListInput.cs" />
+    <Compile Include="Dto\RoleMenuInput.cs" />
+    <Compile Include="Dto\RoleMenuListInput.cs" />
+    <Compile Include="Dto\RoleMenuOutput.cs" />
+    <Compile Include="Dto\RoleOutput.cs" />
+    <Compile Include="Dto\RoleUserInput.cs" />
+    <Compile Include="Dto\RoleUserListInput.cs" />
+    <Compile Include="Dto\RoleUserOutput.cs" />
+    <Compile Include="Dto\SalesReports\SalesReportsInput.cs" />
+    <Compile Include="Dto\SalesReports\SalesReportsOutPut.cs" />
+    <Compile Include="Dto\SlideSettingInput.cs" />
+    <Compile Include="Dto\SlideSettingListInput.cs" />
+    <Compile Include="Dto\SlideSettingOutput.cs" />
+    <Compile Include="Dto\SubjectBookInput.cs" />
+    <Compile Include="Dto\SubjectBookListInput.cs" />
+    <Compile Include="Dto\SubjectBookOutput.cs" />
+    <Compile Include="Dto\SysSetInput.cs" />
+    <Compile Include="Dto\SysSetListInput.cs" />
+    <Compile Include="Dto\SysSetOutput.cs" />
+    <Compile Include="Dto\UseDescriptionInput.cs" />
+    <Compile Include="Dto\UseDescriptionListInput.cs" />
+    <Compile Include="Dto\UseDescriptionOutput.cs" />
+    <Compile Include="Dto\UserDiscountCardListInput.cs" />
+    <Compile Include="Dto\UserDiscountCardOutput.cs" />
+    <Compile Include="Dto\UserLoginLogCountOutput.cs" />
+    <Compile Include="Dto\BasedataOutput.cs" />
+    <Compile Include="Dto\CourseAppraiseInput.cs" />
+    <Compile Include="Dto\CourseAppraiseListInput.cs" />
+    <Compile Include="Dto\CourseAppraiseOutput.cs" />
+    <Compile Include="Dto\CourseChapterInput.cs" />
+    <Compile Include="Dto\CourseChapterListInput.cs" />
+    <Compile Include="Dto\CourseChapterOutput.cs" />
+    <Compile Include="Dto\CourseInfoInput.cs" />
+    <Compile Include="Dto\CourseInfoListInput.cs" />
+    <Compile Include="Dto\CourseInfoOutput.cs" />
+    <Compile Include="Dto\CoursePackcourseInfoInput.cs" />
+    <Compile Include="Dto\CoursePackcourseInfoListInput.cs" />
+    <Compile Include="Dto\CoursePackcourseInfoOutput.cs" />
+    <Compile Include="Dto\CourseResourceInput.cs" />
+    <Compile Include="Dto\CourseResourceListInput.cs" />
+    <Compile Include="Dto\CourseResourceOutput.cs" />
+    <Compile Include="Dto\CourseSubjectInput.cs" />
+    <Compile Include="Dto\CourseSubjectListInput.cs" />
+    <Compile Include="Dto\CourseSubjectOutput.cs" />
+    <Compile Include="Dto\CourseSuitDetailInput.cs" />
+    <Compile Include="Dto\CourseSuitDetailListInput.cs" />
+    <Compile Include="Dto\CourseSuitDetailOutput.cs" />
+    <Compile Include="Dto\CourseVideoInput.cs" />
+    <Compile Include="Dto\CourseVideoListInput.cs" />
+    <Compile Include="Dto\CourseVideoOutput.cs" />
+    <Compile Include="Dto\DataTypeInput.cs" />
+    <Compile Include="Dto\DataTypeListInput.cs" />
+    <Compile Include="Dto\DataTypeOutput.cs" />
+    <Compile Include="Dto\GetListOperatorLogInput.cs" />
+    <Compile Include="Dto\ListMenuInput.cs" />
+    <Compile Include="Dto\ListModuleInput.cs" />
+    <Compile Include="Dto\LoginInput.cs" />
+    <Compile Include="Dto\MenuInput.cs" />
+    <Compile Include="Dto\MenuListInput.cs" />
+    <Compile Include="Dto\MenuOutput.cs" />
+    <Compile Include="Dto\ModifyPassWordInput.cs" />
+    <Compile Include="Dto\ModuleInput.cs" />
+    <Compile Include="Dto\ModuleListInput.cs" />
+    <Compile Include="Dto\ModuleOutput.cs" />
+    <Compile Include="Dto\MyAnswerRecordsInput.cs" />
+    <Compile Include="Dto\MyAnswerRecordsListInput.cs" />
+    <Compile Include="Dto\MyAnswerRecordsOutput.cs" />
+    <Compile Include="Dto\MyCollectionInput.cs" />
+    <Compile Include="Dto\MyCollectionItemInput.cs" />
+    <Compile Include="Dto\MyCollectionItemListInput.cs" />
+    <Compile Include="Dto\MyCollectionItemOutput.cs" />
+    <Compile Include="Dto\MyCollectionListInput.cs" />
+    <Compile Include="Dto\MyCollectionOutput.cs" />
+    <Compile Include="Dto\MyCourseInput.cs" />
+    <Compile Include="Dto\MyCourseListInput.cs" />
+    <Compile Include="Dto\MyCourseOutput.cs" />
+    <Compile Include="Dto\MyErrorSubjectInput.cs" />
+    <Compile Include="Dto\MyErrorSubjectListInput.cs" />
+    <Compile Include="Dto\MyErrorSubjectOutput.cs" />
+    <Compile Include="Dto\OperatorLogInput.cs" />
+    <Compile Include="Dto\OperatorLogListInput.cs" />
+    <Compile Include="Dto\OperatorLogOutput.cs" />
+    <Compile Include="Dto\OrderDetailInput.cs" />
+    <Compile Include="Dto\OrderDetailListInput.cs" />
+    <Compile Include="Dto\OrderDetailOutput.cs" />
+    <Compile Include="Dto\OrderHistoryInput.cs" />
+    <Compile Include="Dto\OrderHistoryListInput.cs" />
+    <Compile Include="Dto\OrderHistoryOutput.cs" />
+    <Compile Include="Dto\OrderSheetInput.cs" />
+    <Compile Include="Dto\OrderSheetListInput.cs" />
+    <Compile Include="Dto\OrderSheetOutput.cs" />
+    <Compile Include="Dto\PaperDetatailInput.cs" />
+    <Compile Include="Dto\PaperDetatailListInput.cs" />
+    <Compile Include="Dto\PaperDetatailOutput.cs" />
+    <Compile Include="Dto\PaperInfoInput.cs" />
+    <Compile Include="Dto\PaperInfoListInput.cs" />
+    <Compile Include="Dto\PaperInfoOutput.cs" />
+    <Compile Include="Dto\PaperParamInput.cs" />
+    <Compile Include="Dto\PaperParamListInput.cs" />
+    <Compile Include="Dto\PaperParamOutput.cs" />
+    <Compile Include="Dto\PaperStructureDetailInput.cs" />
+    <Compile Include="Dto\PaperStructureDetailListInput.cs" />
+    <Compile Include="Dto\PaperStructureDetailOutput.cs" />
+    <Compile Include="Dto\PaperStructureInput.cs" />
+    <Compile Include="Dto\PaperStructureListInput.cs" />
+    <Compile Include="Dto\PaperStructureOutput.cs" />
+    <Compile Include="Dto\ProjectClassInput.cs" />
+    <Compile Include="Dto\ProjectClassListInput.cs" />
+    <Compile Include="Dto\ProjectClassOutput.cs" />
+    <Compile Include="Dto\ProjectInput.cs" />
+    <Compile Include="Dto\ProjectListInput.cs" />
+    <Compile Include="Dto\ProjectOutput.cs" />
+    <Compile Include="Dto\UserMenuInput.cs" />
+    <Compile Include="Dto\UserMenuListInput.cs" />
+    <Compile Include="Dto\UserMenuOutput.cs" />
+    <Compile Include="WebApiAppService\AfficheHelpModule\AfficheHelpAppService.cs" />
+    <Compile Include="WebApiAppService\AlipayModule\AlipayModuleAppService.cs" />
+    <Compile Include="WebApiAppService\CartModule\CartModuleAppService.cs" />
+    <Compile Include="WebApiAppService\CourseAppraiseModule\CourseAppraiseAppService.cs" />
+    <Compile Include="WebApiAppService\CourseDiscussionModule\CourseDiscussionAppService.cs" />
+    <Compile Include="WebApiAppService\CourseLearnProgressModule\CourseLearnProgressAppService.cs" />
+    <Compile Include="WebApiAppService\CourseSecurityCodeModule\CourseSecurityCodeAppService.cs" />
+    <Compile Include="WebApiAppService\CourseVideoModule\CourseVideoAppService.cs" />
+    <Compile Include="WebApiAppService\DeliveryAddressService\DeliveryAddressAppService.cs" />
+    <Compile Include="WebApiAppService\ModuleSiteConfiguration\BaseDanyeAppService.cs" />
+    <Compile Include="WebApiAppService\CoursePackModule\CoursePackAppService.cs" />
+    <Compile Include="WebApiAppService\MyCollectionItemModule\MyCollectionItemAppService.cs" />
+    <Compile Include="WebApiAppService\CourseChapterModule\CourseChapterAppService.cs" />
+    <Compile Include="WebApiAppService\CourseModule\CourseInfoAppService.cs" />
+    <Compile Include="WebApiAppService\CourseOnTeacherModule\CourseOnTeacherAppService.cs" />
+    <Compile Include="WebApiAppService\CourseResourceModule\CourseResourceAppService.cs" />
+    <Compile Include="WebApiAppService\CourseSubjectModule\CourseSubjectAppService.cs" />
+    <Compile Include="WebApiAppService\MyCollectionModule\MyCollectionAppService.cs" />
+    <Compile Include="WebApiAppService\MyCourseModule\MyCourseApiService.cs" />
+    <Compile Include="WebApiAppService\MyCourseModule\MyCourseLearnProgressAppService.cs" />
+    <Compile Include="WebApiAppService\MyCourseModule\MyFootprintAppService.cs" />
+    <Compile Include="WebApiAppService\MyCourseModule\MyVideoWatchAppService.cs" />
+    <Compile Include="WebApiAppService\MyErrorSubjectModule\MyErrorSubjectAppService.cs" />
+    <Compile Include="WebApiAppService\MyPaperRecordModule\MyPaperRecordAppService.cs" />
+    <Compile Include="WebApiAppService\OrderCardModeul\OrderCardAppService.cs" />
+    <Compile Include="WebApiAppService\PaperDetatailModule\PaperDetatailAppService.cs" />
+    <Compile Include="WebApiAppService\PublicInFormationModule\PublicInformationAppService.cs" />
+    <Compile Include="WebApiAppService\PurchaseDiscountModule\PurchaseDiscountAppService.cs" />
+    <Compile Include="WebApiAppService\QuestionCheckerModule\QuestionCheckerAppService.cs" />
+    <Compile Include="WebApiAppService\SheetModule\SheetApiService.cs" />
+    <Compile Include="WebApiAppService\SubjectModule\SubjectBigQuestionAppService.cs" />
+    <Compile Include="WebApiAppService\SystemModule\RegisterUserAppApiService.cs" />
+    <Compile Include="WebApiAppService\SystemModule\ProjectApiService.cs" />
+    <Compile Include="WebApiAppService\UserDiscountCardModule\DiscountCardAppService.cs" />
+    <Compile Include="WebApiAppService\UserDiscountCardModule\UserDiscountCardAppService.cs" />
+    <Compile Include="WebApiAppService\WxpayModule\WxpayModuleAppService.cs" />
+    <Compile Include="WebApiDto\AccountModul\AccountDtoModul.cs" />
+    <Compile Include="WebApiDto\AfficheHelpModule\AfficheHelpListInput.cs" />
+    <Compile Include="WebApiDto\AfficheHelpModule\AfficheHelpOutput.cs" />
+    <Compile Include="WebApiDto\CartDtoModule\CartModelInput.cs" />
+    <Compile Include="WebApiDto\CartDtoModule\CartModelOutput.cs" />
+    <Compile Include="WebApiDto\CartDtoModule\OrderCartDetailInput.cs" />
+    <Compile Include="WebApiDto\ChapterExerciseModule\CourseChapterExerciseInput.cs" />
+    <Compile Include="WebApiDto\ChapterExerciseModule\CourseChapterExerciseOuput.cs" />
+    <Compile Include="WebApiDto\ChapterExerciseModule\CoursePaperRecordInput.cs" />
+    <Compile Include="WebApiDto\CourseAppraiseModule\CourseAppraiseModelInput.cs" />
+    <Compile Include="WebApiDto\CourseAppraiseModule\CourseAppraiseModelOutput.cs" />
+    <Compile Include="WebApiDto\CourseChapterModule\CourseChapterModelInput.cs" />
+    <Compile Include="WebApiDto\CourseChapterModule\CourseChapterModelOutput.cs" />
+    <Compile Include="WebApiDto\CourseChapterModule\CourseChapterOutput.cs" />
+    <Compile Include="WebApiDto\CourseChapterModule\MyPaperRecordsOutput.cs" />
+    <Compile Include="WebApiDto\CoursediscussionModule\CourseDiscussionModelInput.cs" />
+    <Compile Include="WebApiDto\CoursediscussionModule\CourseDiscussionModelOutput.cs" />
+    <Compile Include="WebApiDto\CourseLearnProgressModule\CourseLearnProgressModelInput.cs" />
+    <Compile Include="WebApiDto\CourseLearnProgressModule\CourseLearnProgressModelOutput.cs" />
+    <Compile Include="WebApiDto\CourseModule\CourseInfoVideoOutput.cs" />
+    <Compile Include="WebApiDto\CourseModule\CourseStatus.cs" />
+    <Compile Include="WebApiDto\CourseModule\MyCourseSubjectOutput.cs" />
+    <Compile Include="WebApiDto\CourseModule\MyCourseModelOutput.cs" />
+    <Compile Include="WebApiDto\CourseModule\PaidListingsInput.cs" />
+    <Compile Include="WebApiDto\CourseModule\PaidListingsModel.cs" />
+    <Compile Include="WebApiDto\CourseModule\CourseInfoModelOutput.cs" />
+    <Compile Include="WebApiDto\CourseModule\CourseInfoModel.cs" />
+    <Compile Include="WebApiDto\CourseModule\CourseInfoModelInput.cs" />
+    <Compile Include="WebApiDto\CourseModule\ProjectCourseModel.cs" />
+    <Compile Include="WebApiDto\CourseModule\ProjectSubjectOutput.cs" />
+    <Compile Include="WebApiDto\CourseModule\TitleInput.cs" />
+    <Compile Include="WebApiDto\CoursePackModule\CoursePackcourseInfoModelOutput.cs" />
+    <Compile Include="WebApiDto\CoursePackModule\CoursePackModelInput.cs" />
+    <Compile Include="WebApiDto\CoursePackModule\CoursePackModelOutput.cs" />
+    <Compile Include="WebApiDto\CoursePackModule\FaceToFaceModelOupput.cs" />
+    <Compile Include="WebApiDto\CoursePaperRecordModule\CoursePaperRecordOutput.cs" />
+    <Compile Include="WebApiDto\CoursePaperRecordModule\PaperInfoOutput.cs" />
+    <Compile Include="WebApiDto\CourseRelatedModule\CourseLearnUserInput.cs" />
+    <Compile Include="WebApiDto\CourseRelatedModule\UserLearnOutput.cs" />
+    <Compile Include="WebApiDto\CourseResourceModule\CourseResourceModelInput.cs" />
+    <Compile Include="WebApiDto\CourseResourceModule\CourseResourceModelOutput.cs" />
+    <Compile Include="WebApiDto\CourseSubjectModule\CourseSubjectBigQuestionModelOutput.cs" />
+    <Compile Include="WebApiDto\CourseSubjectModule\CourseSubjectModelInput.cs" />
+    <Compile Include="WebApiDto\CourseSubjectModule\CourseSubjectSmallQuestionModelOutput.cs" />
+    <Compile Include="WebApiDto\QuestionCheckerModule\QuestionCheckerInput.cs" />
+    <Compile Include="WebApiDto\CourseTeacherModule\CourseOnTeacherModelOutput.cs" />
+    <Compile Include="WebApiDto\CourseVideoModule\CourseVideoModelInput.cs" />
+    <Compile Include="WebApiDto\CourseVideoModule\CourseVideoModelOutput.cs" />
+    <Compile Include="WebApiDto\DeliveryAddressModule\DeliveryAddressModelInput.cs" />
+    <Compile Include="WebApiDto\DeliveryAddressModule\DeliveryAddressModuleOutPut.cs" />
+    <Compile Include="WebApiDto\ModuleSiteConfiguration\FeedbackMolde.cs" />
+    <Compile Include="WebApiDto\ErrorSubjeModule\ErrorSubjectModeInput.cs" />
+    <Compile Include="WebApiDto\ErrorSubjeModule\ErrorSubjectsModelOutput.cs" />
+    <Compile Include="WebApiDto\MyCollectionItemModule\MySubjectVideoInfoOutput.cs" />
+    <Compile Include="WebApiDto\MyCollectionModule\MyCollectionModuleInput.cs" />
+    <Compile Include="WebApiDto\MyCollectionModule\MyCollectionModuleListInput.cs" />
+    <Compile Include="WebApiDto\MyCollectionModule\MyCollectionModuleOutput.cs" />
+    <Compile Include="WebApiDto\MyCourseModule\MyCourseLearnProgressInput.cs" />
+    <Compile Include="WebApiDto\MyCourseModule\MyCourseLearnProgressOutput.cs" />
+    <Compile Include="WebApiDto\MyCourseModule\MyFootprintInput.cs" />
+    <Compile Include="WebApiDto\MyCourseModule\MyFootprintListInput.cs" />
+    <Compile Include="WebApiDto\MyCourseModule\MyFootprintOutput.cs" />
+    <Compile Include="WebApiDto\MyCourseModule\MyVideoWatchInput.cs" />
+    <Compile Include="WebApiDto\MyCourseModule\MyVideoWatchListInput.cs" />
+    <Compile Include="WebApiDto\MyCourseModule\MyVideoWatchOutput.cs" />
+    <Compile Include="WebApiDto\OrderCardModule\OrderCardInput.cs" />
+    <Compile Include="WebApiDto\OrderCardModule\OrderCardOutput.cs" />
+    <Compile Include="WebApiDto\PublicInformationModule\PublicInformationModelInput.cs" />
+    <Compile Include="WebApiDto\PublicInformationModule\PublicInformationModelOutput.cs" />
+    <Compile Include="WebApiDto\PurchaseDiscountModule\PurchaseDiscountModelOutput.cs" />
+    <Compile Include="WebApiDto\SheetDtoModule\SheetDetailModelInput.cs" />
+    <Compile Include="WebApiDto\SheetDtoModule\SheetModelInput.cs" />
+    <Compile Include="WebApiDto\SheetDtoModule\SheetModelOutput.cs" />
+    <Compile Include="WebApiDto\SubjectModule\AnswerQuestionInput.cs" />
+    <Compile Include="WebApiDto\SubjectModule\ChapterModel.cs" />
+    <Compile Include="WebApiDto\SubjectModule\ChapterPracticeOutput.cs" />
+    <Compile Include="WebApiDto\SubjectModule\ChapterPracticeViewListModel.cs" />
+    <Compile Include="WebApiDto\SubjectModule\ChapterQuestionsModel.cs" />
+    <Compile Include="WebApiDto\SubjectModule\CourseChapterQuestionsDetailInput.cs" />
+    <Compile Include="WebApiDto\SubjectModule\PaperInfoOutput.cs" />
+    <Compile Include="WebApiDto\SubjectModule\QuestionListInput.cs" />
+    <Compile Include="WebApiDto\SubjectModule\SubjectBigQuestionInput.cs" />
+    <Compile Include="WebApiDto\SubjectModule\ChapterQuestionsDetailOutput.cs" />
+    <Compile Include="WebApiDto\SubjectModule\SubjectBigQuestionOutput.cs" />
+    <Compile Include="WebApiDto\MyCollectionItemModule\MyCollectionItemModelInput.cs" />
+    <Compile Include="WebApiDto\SystemModule\ProjectClassModel.cs" />
+    <Compile Include="WebApiDto\SystemModule\ProjectMode.cs" />
+    <Compile Include="WebApiDto\SystemModule\ProjectModeInput.cs" />
+    <Compile Include="WebApiDto\SystemModule\SubjectModel.cs" />
+    <Compile Include="WebApiDto\SystemModule\RegisterUserInput.cs" />
+    <Compile Include="Dto\RegisterUserListInput.cs" />
+    <Compile Include="Dto\RegisterUserOutput.cs" />
+    <Compile Include="Dto\SmsendLogInput.cs" />
+    <Compile Include="Dto\SmsendLogListInput.cs" />
+    <Compile Include="Dto\SmsendLogOutput.cs" />
+    <Compile Include="Dto\SubjectBigQuestionInput.cs" />
+    <Compile Include="Dto\SubjectBigQuestionListInput.cs" />
+    <Compile Include="Dto\SubjectBigQuestionOutput.cs" />
+    <Compile Include="Dto\SubjectClassInput.cs" />
+    <Compile Include="Dto\SubjectClassListInput.cs" />
+    <Compile Include="Dto\SubjectClassOutput.cs" />
+    <Compile Include="Dto\SubjectInput.cs" />
+    <Compile Include="Dto\SubjectKnowledgePointInput.cs" />
+    <Compile Include="Dto\SubjectKnowledgePointListInput.cs" />
+    <Compile Include="Dto\SubjectKnowledgePointOutput.cs" />
+    <Compile Include="Dto\SubjectListInput.cs" />
+    <Compile Include="Dto\SubjectOutput.cs" />
+    <Compile Include="Dto\SubjectSmallquestionInput.cs" />
+    <Compile Include="Dto\SubjectSmallquestionListInput.cs" />
+    <Compile Include="Dto\SubjectSmallquestionOutput.cs" />
+    <Compile Include="Dto\UserEditInPut.cs" />
+    <Compile Include="Dto\UserInput.cs" />
+    <Compile Include="Dto\UserListInput.cs" />
+    <Compile Include="Dto\UserListOutputDto.cs" />
+    <Compile Include="Dto\UserLoginLogInput.cs" />
+    <Compile Include="Dto\UserLoginLogListInput.cs" />
+    <Compile Include="Dto\UserLoginLogOutput.cs" />
+    <Compile Include="Dto\UserOutput.cs" />
+    <Compile Include="IAppServer.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebApiAppService\PersonalCenter\MyCollectionAppService.cs" />
+    <Compile Include="WebApiDto\SystemModule\SubjectModelInput.cs" />
+    <Compile Include="WebApiDto\UserDiscountCardModule\DiscountCardModelInput.cs" />
+    <Compile Include="WebApiDto\UserDiscountCardModule\DiscountCardModelOutput.cs" />
+    <Compile Include="WebApiDto\UserDiscountCardModule\UserDiscountCardModelInput.cs" />
+    <Compile Include="WebApiDto\UserDiscountCardModule\UserDiscountCardModelOutput.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\公共类库\ZF.AtupMapper\ZF.AutoMapper.csproj">
+      <Project>{BAB275B3-C292-4A63-B7B3-DA79C36D13F0}</Project>
+      <Name>ZF.AutoMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\公共类库\ZF.Infrastructure\ZF.Infrastructure.csproj">
+      <Project>{57495A9C-9F92-4DDA-94E9-D551686F7A3C}</Project>
+      <Name>ZF.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DapperExtensions\DapperExtensions.csproj">
+      <Project>{4C1A2C6C-A469-4C87-98D1-F1D517FA1ACF}</Project>
+      <Name>DapperExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dapper\Dapper.csproj">
+      <Project>{9845D7C1-9697-4195-8794-1B9E6388AD04}</Project>
+      <Name>Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZF.Core\ZF.Core.csproj">
+      <Project>{bdfe6680-fb76-4c1d-825c-4619ad795ed8}</Project>
+      <Name>ZF.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZF.Dapper.Db\ZF.Dapper.Db.csproj">
+      <Project>{c1602562-939d-47ba-8e71-e9ecd05f796a}</Project>
+      <Name>ZF.Dapper.Db</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\ZF.Application.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\ZF.Application.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\ZF.Application.dll" />
+    <Content Include="obj\Debug\ZF.Application.pdb" />
+    <Content Include="Topevery.Application.csproj.user" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

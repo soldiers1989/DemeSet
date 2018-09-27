@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "密码修改";
+}
+
+<div class="box">
+    <div class="box-body">
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label>原密码</label><span class="text-danger">*</span>
+                <input type="password" class="form-control" id="OldPassWord" name="OldPassWord">
+            </div>
+            <div class="form-group">
+                <label>新密码</label><span class="text-danger">*</span>
+                <input type="password" class="form-control" id="PassWord" name="PassWord">
+            </div>
+        </div>
+        <div class="box-footer col-xs-12">
+            <button class="btn btn-primary" id="sumbit">保存</button>
+        </div>
+    </div>
+</div>
+<script src="~/Views/Login/Modify.js"></script>

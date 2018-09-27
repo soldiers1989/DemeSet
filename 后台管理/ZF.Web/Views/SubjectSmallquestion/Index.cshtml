@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-xs-12">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom1" name="selectFrom1">
+            <div class="form-group">
+                <input class="btn btn-success add_btn1" type="button" value="添加">&nbsp;
+                <input class="btn btn-info edit_btn1" type="button" value="编辑">&nbsp;
+                <input class="btn btn-danger del_btn1" type="button" value="删除">&nbsp;
+            </div>
+            <div class="form-group">
+                <label>试题标题：</label>
+                <input id="QuerySmallquestionQuestionTitle" Name="QuestionTitle" class="form-control"/>
+
+                <label>试题类型：</label>
+                <select id="QuerySmallquestionSubjectType" Name="SubjectType" class="form-control"></select>
+
+                <input type="hidden" id="QueryBigQuestionId" Name="BigQuestionId" value="@ViewBag.BigQuestionId" class="form-control" />
+                <input class="btn btn-success query_btn1" type="button" value="查询">
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData1"></table>
+        <div id="pager1"></div>
+    </div>
+</div>
+<style>
+    #selectFrom1 .form-control {
+        min-width: 179px;
+    }
+    .ui-jqgrid tr.jqgrow td {
+        white-space: normal !important;
+        height: auto;
+        vertical-align: text-top;
+        padding-top: 2px;
+    }
+</style>
+<script src="~/Views/SubjectSmallquestion/Index.js"></script>

@@ -1,0 +1,9 @@
+body{overflow: hidden;}
+.perMes{width:700px; overflow:hidden;height:450px; background:url(../../image/virtual/success/bei.png) no-repeat;margin:150px auto 0;}
+.perMes.end{background-image:url(../../image/virtual/success/end.png);}
+.main p{font-size:14px; color:#999;text-align:center;}
+.main p a{color:#707070;font-size:16px;line-height: 40px;}
+.main p a:hover{color:#42acff;}
+.main .one{margin-top:310px;}
+.main .two{margin-top:45px;}
+/* .prompt a:hover{color:#0092ff;} */

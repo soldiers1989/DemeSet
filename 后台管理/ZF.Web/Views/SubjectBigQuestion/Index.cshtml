@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>试题管理</a>/<a>试题维护</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-2 KnowledgePointTree"  style="overflow: auto;">
+    <ul id="treeDemo1" class="ztree"></ul>
+</div>
+<div class="col-xs-10" style="border-left-style: solid; border-width: 1px;">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <input class="btn btn-success add_btn" type="button" value="添加">&nbsp;
+                <input class="btn btn-info edit_btn" type="button" value="编辑">&nbsp;
+                <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+            </div>
+            <div class="form-group">
+                <label>试题标题：</label>
+                <input id="QueryQuestionTitle" Name="QuestionTitle" class="form-control"/>
+                <select id="QuerySubjectId" Name="SubjectId" class="form-control"  style="display: none;"></select>
+                <label>难度等级：</label>
+                <select type="text" class="form-control" id="QueryDifficultLevel" name="DifficultLevel"></select>
+
+                <label>题型：</label>
+                <select type="text" class="form-control" id="QuerySubjectClassId" name="SubjectClassId"></select>
+
+                <input type="hidden" id="QuerySubjectIdTree" Name="SubjectIdTree" class="form-control" />
+                <input type="hidden" id="QueryKnowledgePointId" Name="KnowledgePointId" class="form-control" />
+                <input type="hidden" id="QueryLevelId" Name="LevelId" class="form-control"/>
+
+                <input type="hidden" id="QueryProjectClassId" Name="ProjectClassId" class="form-control" />
+                <input type="hidden" id="QueryProjectId" Name="ProjectId" class="form-control" />
+                <input class="btn btn-success query_btn" type="button" value="查询">
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+<style>
+    #selectFrom .form-control {
+        min-width: 179px;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        white-space: normal !important;
+        height: auto;
+        vertical-align: text-top;
+        padding-top: 2px;
+    }
+</style>
+<script src="~/Views/SubjectBigQuestion/Index.js"></script>

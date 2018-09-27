@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <input type="button" onclick="weixinData.GetWeiXinUserList();" value="获取用户信息" /><br/>
+        <input type="button" onclick="weixinData.GetWeiXinUser();" value="获取用户信息" /><br />
+        <input type="button" onclick="weixinData.SendTextMessage();" value="发送消息" /><br />
+        <label>用户id</label> <input id="id" name="id" /><br />
+        <label>消息内容</label> <input id="context" name="context"/><br />
+        <label>返回结果</label> <textarea id="textarea" style="width: 400px; height: 300px;"></textarea>
+    </div>
+</body>
+</html>
+<script src="http://code.jquery.com/jquery-2.2.3.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<script type="text/javascript">
+    var weixinData = {
+        GetWeiXinUserList: function () {
+            topevery.ajaxToThis({
+                type: "Get",
+                url: "http://localhost:8002/api/WeiXin11/GetWeiXinUserList",
+            }, function (data) {
+                $("#textarea").text(JSON.stringify(data, null, "\t"));
+            });
+        },
+        GetWeiXinUser: function () {
+            topevery.ajaxToThis({
+                type: "Get",
+                url: "http://localhost:8002/api/WeiXin11/GetWeiXinUser?id=" + $("#id").val(),
+            }, function (data) {
+                $("#textarea").text(JSON.stringify(data, null, "\t"));
+            });
+        },
+        SendTextMessage: function () {
+            topevery.ajaxToThis({
+                type: "Post",
+                data: JSON.stringify({ openId: $('#id').val(), context: $('#context').val() }),
+                url: "http://localhost:8002/api/WeiXin11/SendTextMessage"
+            }, function (data) {
+                $("#textarea").text(JSON.stringify(data, null, "\t"));
+            });
+        }
+    }
+</script>

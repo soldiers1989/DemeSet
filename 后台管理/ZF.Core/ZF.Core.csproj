@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BDFE6680-FB76-4C1D-825C-4619AD795ED8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZF.Core</RootNamespace>
+    <AssemblyName>ZF.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="Entity\AfficheHelp.cs" />
+    <Compile Include="Entity\Article.cs" />
+    <Compile Include="Entity\Basedata.cs" />
+    <Compile Include="Entity\Base_Tag.cs" />
+    <Compile Include="Entity\Base_TagMiddle.cs" />
+    <Compile Include="Entity\CourseAppraise.cs" />
+    <Compile Include="Entity\CourseChapter.cs" />
+    <Compile Include="Entity\CourseChapterQuestions.cs" />
+    <Compile Include="Entity\CourseChapterQuestionsDetail.cs" />
+    <Compile Include="Entity\CourseDiscussion.cs" />
+    <Compile Include="Entity\CourseFaceToFace.cs" />
+    <Compile Include="Entity\CourseInfo.cs" />
+    <Compile Include="Entity\CourseLearnProgress.cs" />
+    <Compile Include="Entity\CourseOnTeachers.cs" />
+    <Compile Include="Entity\CoursePackcourseInfo.cs" />
+    <Compile Include="Entity\CoursePaper.cs" />
+    <Compile Include="Entity\CourseResource.cs" />
+    <Compile Include="Entity\CourseSecurityCode.cs" />
+    <Compile Include="Entity\CourseSubject.cs" />
+    <Compile Include="Entity\CourseSuitDetail.cs" />
+    <Compile Include="Entity\CourseVideo.cs" />
+    <Compile Include="Entity\CourseVideoFile.cs" />
+    <Compile Include="Entity\Danye.cs" />
+    <Compile Include="Entity\DataType.cs" />
+    <Compile Include="Entity\DeliveryAddress.cs" />
+    <Compile Include="Entity\Discount_Card.cs" />
+    <Compile Include="Entity\ExamInfo.cs" />
+    <Compile Include="Entity\ExpressCompany.cs" />
+    <Compile Include="Entity\FileRelationship.cs" />
+    <Compile Include="Entity\ImageManage.cs" />
+    <Compile Include="Entity\Menu.cs" />
+    <Compile Include="Entity\Module.cs" />
+    <Compile Include="Entity\MyCollectionItem.cs" />
+    <Compile Include="Entity\MyAnswerRecords.cs" />
+    <Compile Include="Entity\MyCollection.cs" />
+    <Compile Include="Entity\MyCourse.cs" />
+    <Compile Include="Entity\MyErrorSubject.cs" />
+    <Compile Include="Entity\MyFeedback.cs" />
+    <Compile Include="Entity\MyFootprint.cs" />
+    <Compile Include="Entity\MyPaperRecords.cs" />
+    <Compile Include="Entity\MyVideoWatch.cs" />
+    <Compile Include="Entity\My_StudyCard.cs" />
+    <Compile Include="Entity\OperatorLog.cs" />
+    <Compile Include="Entity\OrderCard.cs" />
+    <Compile Include="Entity\OrderCart.cs" />
+    <Compile Include="Entity\OrderCartDetail.cs" />
+    <Compile Include="Entity\OrderDetail.cs" />
+    <Compile Include="Entity\OrderHistory.cs" />
+    <Compile Include="Entity\OrderHistoryDetail.cs" />
+    <Compile Include="Entity\OrderInstitutions.cs" />
+    <Compile Include="Entity\OrderSheet.cs" />
+    <Compile Include="Entity\PaperDetatail.cs" />
+    <Compile Include="Entity\PaperGroup.cs" />
+    <Compile Include="Entity\PaperGroupRelation.cs" />
+    <Compile Include="Entity\PaperInfo.cs" />
+    <Compile Include="Entity\PaperPaperParam.cs" />
+    <Compile Include="Entity\PaperParam.cs" />
+    <Compile Include="Entity\PaperParamDetail.cs" />
+    <Compile Include="Entity\PaperStructure.cs" />
+    <Compile Include="Entity\PaperStructureDetail.cs" />
+    <Compile Include="Entity\Project.cs" />
+    <Compile Include="Entity\ProjectClass.cs" />
+    <Compile Include="Entity\PromoteCompany.cs" />
+    <Compile Include="Entity\PromotePromoters.cs" />
+    <Compile Include="Entity\PurchaseDiscount.cs" />
+    <Compile Include="Entity\QuestionChecker.cs" />
+    <Compile Include="Entity\RegisterUser.cs" />
+    <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\RoleMenu.cs" />
+    <Compile Include="Entity\RoleUser.cs" />
+    <Compile Include="Entity\SlideSetting.cs" />
+    <Compile Include="Entity\SmsendLog.cs" />
+    <Compile Include="Entity\Subject.cs" />
+    <Compile Include="Entity\SubjectBigQuestion.cs" />
+    <Compile Include="Entity\SubjectBook.cs" />
+    <Compile Include="Entity\SubjectClass.cs" />
+    <Compile Include="Entity\SubjectKnowledgePoint.cs" />
+    <Compile Include="Entity\SubjectPractice.cs" />
+    <Compile Include="Entity\SubjectPracticeQuestions.cs" />
+    <Compile Include="Entity\SubjectSmallquestion.cs" />
+    <Compile Include="Entity\SysSet.cs" />
+    <Compile Include="Entity\UseDescription.cs" />
+    <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\UserLoginLog.cs" />
+    <Compile Include="Entity\UserMenu.cs" />
+    <Compile Include="Entity\User_Discount_Card.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IRepository\IAfficheHelpRepository.cs" />
+    <Compile Include="IRepository\IArticleRepository.cs" />
+    <Compile Include="IRepository\IBasedataRepository.cs" />
+    <Compile Include="IRepository\IBaseTagMiddleRepository.cs" />
+    <Compile Include="IRepository\IBaseTagRepository.cs" />
+    <Compile Include="IRepository\ICourseAppraiseRepository.cs" />
+    <Compile Include="IRepository\ICourseChapterQuestionsDetailRepository.cs" />
+    <Compile Include="IRepository\ICourseChapterQuestionsRepository.cs" />
+    <Compile Include="IRepository\ICourseChapterRepository.cs" />
+    <Compile Include="IRepository\ICourseDiscussionRepository.cs" />
+    <Compile Include="IRepository\ICourseFaceToFaceRepository.cs" />
+    <Compile Include="IRepository\ICourseInfoRepository.cs" />
+    <Compile Include="IRepository\ICourseLearnProgressRepository.cs" />
+    <Compile Include="IRepository\ICourseOnTeachersRepository.cs" />
+    <Compile Include="IRepository\ICoursePackcourseInfoRepository.cs" />
+    <Compile Include="IRepository\ICoursePaperRepository.cs" />
+    <Compile Include="IRepository\ICourseResourceRepository.cs" />
+    <Compile Include="IRepository\ICourseSecurityCodeRepository.cs" />
+    <Compile Include="IRepository\ICourseSubjectRepository.cs" />
+    <Compile Include="IRepository\ICourseSuitDetailRepository.cs" />
+    <Compile Include="IRepository\ICourseVideoFileRepository.cs" />
+    <Compile Include="IRepository\ICourseVideoRepository.cs" />
+    <Compile Include="IRepository\IDanyeRepository.cs" />
+    <Compile Include="IRepository\IDataTypeRepository.cs" />
+    <Compile Include="IRepository\IDeliveryAddressRepository.cs" />
+    <Compile Include="IRepository\IDiscount_CardRepository.cs" />
+    <Compile Include="IRepository\IExamInfoRepository.cs" />
+    <Compile Include="IRepository\IExpressCompanyRepository.cs" />
+    <Compile Include="IRepository\IFileRelationshipRepository.cs" />
+    <Compile Include="IRepository\IMenuRepository.cs" />
+    <Compile Include="IRepository\IModuleRepository.cs" />
+    <Compile Include="IRepository\IMyAnswerRecordsRepository.cs" />
+    <Compile Include="IRepository\IMyCollectionItemRepository.cs" />
+    <Compile Include="IRepository\IMyCollectionRepository.cs" />
+    <Compile Include="IRepository\IMyCourseRepository.cs" />
+    <Compile Include="IRepository\IMyErrorSubjectRepository.cs" />
+    <Compile Include="IRepository\IMyFeedbackRepository.cs" />
+    <Compile Include="IRepository\IMyFootprintRepository.cs" />
+    <Compile Include="IRepository\IMyPaperRecordsRepository.cs" />
+    <Compile Include="IRepository\IMyVideoWatchRepository.cs" />
+    <Compile Include="IRepository\IMy_StudyCardRepository.cs" />
+    <Compile Include="IRepository\IOperatorLogRepository.cs" />
+    <Compile Include="IRepository\IOrderCardRepository.cs" />
+    <Compile Include="IRepository\IOrderCartDetailRepository.cs" />
+    <Compile Include="IRepository\IOrderCartRepository.cs" />
+    <Compile Include="IRepository\IOrderDetailRepository.cs" />
+    <Compile Include="IRepository\IOrderHistoryDetailRepository.cs" />
+    <Compile Include="IRepository\IOrderHistoryRepository.cs" />
+    <Compile Include="IRepository\IOrderInstitutionsRepository.cs" />
+    <Compile Include="IRepository\IOrderSheetRepository.cs" />
+    <Compile Include="IRepository\IPaperDetatailRepository.cs" />
+    <Compile Include="IRepository\IPaperGroupRelationRepository.cs" />
+    <Compile Include="IRepository\IPaperGroupRepository.cs" />
+    <Compile Include="IRepository\IPaperInfoRepository.cs" />
+    <Compile Include="IRepository\IPaperPaperParamRepository.cs" />
+    <Compile Include="IRepository\IPaperParamDetailRepository.cs" />
+    <Compile Include="IRepository\IPaperParamRepository.cs" />
+    <Compile Include="IRepository\IPaperStructureDetailRepository.cs" />
+    <Compile Include="IRepository\IPaperStructureRepository.cs" />
+    <Compile Include="IRepository\IProjectClassRepository.cs" />
+    <Compile Include="IRepository\IProjectRepository.cs" />
+    <Compile Include="IRepository\IPromoteCompanyRepository.cs" />
+    <Compile Include="IRepository\IPromotePromotersRepository.cs" />
+    <Compile Include="IRepository\IPurchaseDiscountRepository.cs" />
+    <Compile Include="IRepository\IQuestionCheckerRepository.cs" />
+    <Compile Include="IRepository\IRegisterUserRepository.cs" />
+    <Compile Include="IRepository\IRoleMenuRepository.cs" />
+    <Compile Include="IRepository\IRoleRepository.cs" />
+    <Compile Include="IRepository\IRoleUserRepository.cs" />
+    <Compile Include="IRepository\ISlideSettingRepository.cs" />
+    <Compile Include="IRepository\ISmsendLogRepository.cs" />
+    <Compile Include="IRepository\ISubjectBigQuestionRepository.cs" />
+    <Compile Include="IRepository\ISubjectBookRepository.cs" />
+    <Compile Include="IRepository\ISubjectClassRepository.cs" />
+    <Compile Include="IRepository\ISubjectKnowledgePointRepository.cs" />
+    <Compile Include="IRepository\ISubjectRepository.cs" />
+    <Compile Include="IRepository\ISubjectSmallquestionRepository.cs" />
+    <Compile Include="IRepository\ISysSetRepository.cs" />
+    <Compile Include="IRepository\IUseDescriptionRepository.cs" />
+    <Compile Include="IRepository\IUserDiscountCardRepository.cs" />
+    <Compile Include="IRepository\IUserLoginLogRepository.cs" />
+    <Compile Include="IRepository\IUserMenuRepository.cs" />
+    <Compile Include="IRepository\IUserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\公共类库\ZF.Infrastructure\ZF.Infrastructure.csproj">
+      <Project>{57495A9C-9F92-4DDA-94E9-D551686F7A3C}</Project>
+      <Name>ZF.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

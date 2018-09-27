@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = null;
+}
+<input hidden="hidden" id="CourseIdParam" value="@ViewBag.CourseId"/>
+<div class="col-xs-12">
+
+    @* 加载课程下章节树 *@
+    <div>章节列表：</div>
+    <div class="col-xs-12" style="border: 1px;border-style: dotted;">
+        <ul id="chapterTree" class="ztree" style="height:470px;overflow:scroll;"></ul>
+    </div>
+
+</div>
+ <div class="col-xs-12" style="padding-top: 5px;border:1px;">
+    <button class="btn btn-danger del_btn" style="float:right;margin-right: 20px;" id="delChapter">删除</button>&nbsp;
+    <button class="btn btn-success edit_btn" style="float:right;margin-right: 20px;" id="eidtChatper">编辑</button>&nbsp;
+    <button class="btn btn-primary add_btn" style="float:right;margin-right: 20px;" id="addChapter">添加</button>&nbsp;
+</div>
+<script src="~/Views/CourseChapter/Index.js"></script>

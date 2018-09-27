@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+    <title>设置</title>
+</head>
+<body class="body">
+    <div class="sz_logo" id="LoginIndex">
+    </div>
+    <script type="text/html" id="question_common1">
+        <a href="/jjs/PersonalCenter/PersonalInformation">
+            <dl>
+                <dt class="sz_ures"><img src="{{HeadImage}}"></dt>
+                <dd>{{NickNamw}}</dd>
+                <div class="clear"></div>
+            </dl>
+        </a>
+    </script>
+    <div class="sz_list">
+        <ul>
+            <a href="/jjs/PersonalCenter/Advice?Code=gywm"><li>关于我们</li></a>
+            <a href="/jjs/PersonalCenter/Advice?Code=lxwm"><li>联系我们</li></a>
+            <a href="/jjs/PersonalCenter/Advice?Code=fltk"><li>法律条款</li></a>
+            <a href="/jjs/PersonalCenter/Feedback"><li>意见反馈</li></a>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/PersonalCenter/Setting.js?v=1.0"></script>

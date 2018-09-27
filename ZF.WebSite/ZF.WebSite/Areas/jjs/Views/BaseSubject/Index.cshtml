@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" />
+    <title>请选择您的专业</title>
+</head>
+<body>
+
+    <div class="kcfl" id="projectAll">
+        <script type="text/html" id="ProjectAll_html">
+            {{each Result}}
+            <div class="kcfl_new">
+                <div class="kcfl_new_h3"><h3>{{$value.ProjectName}}</h3></div>
+                <div class="kcfl_mc">
+                    {{each $value.SubjectModel}}
+                    <a href="#" subjectId="{{$value.Id}}"><span>{{$value.SubjectName}}</span></a>
+                    {{/each}}
+                </div>
+            </div>
+            {{/each}}
+            <div class="clear"></div>
+        </script>
+    </div>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/BaseSubject/Index.js?v=1.0"></script>

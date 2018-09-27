@@ -1,0 +1,122 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/collection.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/practice.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<style type="text/css">
+    /*.page {
+        text-align: center;
+        overflow: hidden;
+        padding: 10px;
+        clear: both;
+    }
+
+        .page a {
+            display: inline-block;
+            min-width: 30px;
+            height: 30px;
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            line-height: 30px;
+            vertical-align: middle;
+        }
+
+        .page div > a {
+            display: inline-block;
+            min-width: 30px;
+            height: 30px;
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            line-height: 30px;
+            vertical-align: middle;
+        }
+
+        .page input {
+            height: 30px;
+            width: 40px;
+            border: 1px solid #dcdcdc;
+            border-radius: 3px;
+            text-align: center;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .page .cur {
+            color: #fff;
+            background-color: #e4393c;
+            border-color: #e4393c;
+        }
+
+        .page .jump {
+            padding: 0 10px;
+        }*/
+</style>
+<input type="hidden" Id="Rows" value="3" />
+<input type="hidden" Id="PageIndex" value="1" />
+<div class="subTit">
+    <label>收藏试题</label>
+    <div class="search right">
+        <input class="layui-input">
+        <a id="btn_search_item" class="layui-icon  layui-icon-search">
+        </a>
+    </div>
+</div>
+<div style="margin:0;padding:0;" id="collectedSubject">
+
+</div>
+<div class="normal st" id="empty_area" style="display:none;">您还没有收藏试题……</div>
+<div class="m-style M-box1" style="float: right; padding-right: 6px;"></div>
+<div class="clear"></div>
+@*<script type="text/html" id="caseAnalysis_html">
+    <div class="layui-form-item box">
+        <div class="topic">
+            <span class="type">案例分析题</span>
+            <div>
+                某客运班车由甲地发往乙地，早８：００ 检票，８：３０ 发车，途中经停服务区３０ 分钟，１２：００ 抵达乙地。甲乙两地距离３００ 千米。该班次客车的座位利用率为６０％，到达乙地后，第二天再由乙地载客返回甲地。该客车所属客运企业全年完成运输工作量为１ ２００ 万吨千米（１０ 人千米折算１ 吨千米），同期该企业全部劳动者平均人数５００ 人。 ）
+            </div>
+        </div>
+        <div class="toggleWrap anli">
+            <div class="topicItem">
+                <div class="topic">
+                    <span class="type">单选题</span>
+                    <div>1、案例分析题题目题目题目题目题目题目题目题目题目题目题目</div>
+                </div>
+                <ul class="item">
+                    <li>A、经济基础</li>
+                    <li>B、上层建筑</li>
+                    <li>C、社会制度</li>
+                    <li>D、意识形态</li>
+                </ul>
+
+                <div class="answer">
+                    <div class="state">
+                        <label class="isTrue"><i class="layui-icon layui-icon-close"></i>回答错误</label>
+                        <label>您的答案：<font class="red">A</font></label>
+                        <label>正确答案：D</label>
+                    </div>
+                    <div class="details">【评析】本题考查需求价格弹性的相关知识。需求价格弹性系数=需求量的相对变动／价格的相对变动，需求量的相对变动=需求价格弹性系数×价格的相对变动=0．5×10％=5％，即销售量增加了5％。原来的销售量为1000元，提高5％，则销售量=1000×(1+5％)=1050 (台)。</div>
+                </div>
+            </div>
+        </div>
+        <div class="operation">
+            <a href="javascript:;" class="time">2019-34-34</a>
+            <a href="javascript:;" class="remove">删除</a>
+            <a href="javascript:;" class="toggle">展开</a>
+        </div>
+    </div>
+    <div class="normal st" id="empty_area" style="display:none;">您还没有收藏试题……</div>
+    <div class="page" style="display:none;">
+        <a class="prev"><<</a>
+        <span id="pageContent">
+
+        </span>
+        <a href="javascript:;" class="next">>></a>
+        <input type="text">
+        <a href="javascript:;" class="jump">跳转</a>
+    </div>
+</script>*@
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/LearningCenter/CollectionItem.js?v=1.0"></script>
+

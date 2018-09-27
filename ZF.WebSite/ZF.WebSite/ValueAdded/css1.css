@@ -1,0 +1,117 @@
+@charset "utf-8";
+.clear{ clear: both; height: 0; width: 100%; overflow: hidden;}
+body{ font-family:acme}
+*{ margin: 0; padding: 0;}
+.top_banner{ 
+	width: 100%; 
+	overflow: hidden;
+}
+.top_banner img{ width: 100%;}
+
+.linqu{ width: 100%; margin: 0 auto; overflow: hidden;}
+.linqu h2{ line-height:3em; font-size:2em; color: #5b546e; text-align: center; font-family: 黑体; }
+.linqu_box{ width: 100%;}
+.yhjbox{ width: 47%; height: 6.55em; overflow: hidden; background: url(images/yhj_04.jpg) no-repeat; background-size: 100%; position: relative; box-shadow:0px 1px 5px 0px rgba(0, 0, 0, 0.18); float: left; margin-left: 2%; margin-top: 1em;}
+.yhjbox .rbm{ 
+	position: absolute;
+	top: 0.5em; 
+	left: 0.5em;
+	color: #fff;
+	font-size: 1em;
+	
+	width: 10em;
+}
+.yhjbox .rbm .font48{ font-size: 1.3em; font-family: Impact; padding-left: 0px; display: block;}
+.yhjbox .rbm b{ font-size: 30px; font-family: Impact; padding-left: 1.5em;}
+.yhjbox .rbm p{ padding-left: 0.5em;}
+
+.ling{ 
+	position: absolute; 
+	display: block;
+	border: 4px solid #03a8b2;
+	top: 10px;
+	right: 10px;
+	border-radius: 100px;
+	padding: 5px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #007781;
+}
+.ling:hover{ border: 4px solid #2bb4ff; color: red;} 
+.time{
+	position: absolute;
+	right: 0.2em;
+	bottom: 0.2em;
+	color: #007781;
+	 text-align: right;
+	line-height: 1.5em;
+	font-size: 0.8em;
+}
+
+.zxspkc{ background: #0dd5f9; padding-bottom: 40px;}
+.zxspkc h2{line-height: 120px; font-size: 40px; color: #fff; text-align: center; font-family: 黑体; }
+.zxspkc_box{ width:100%; margin: 0 auto;  text-align: center;}
+.zxspkc_box a{ }
+.zxspkc_box img{ width: 45%; box-shadow:0px 1px 10px 0px rgba(0, 0, 0, 0.28); margin-left: 2%; margin-bottom: 2%;}
+.zxspkc_box img:hover{ box-shadow:0px 1px 10px 0px rgba(0, 0, 0, 0.88);}
+.zxspkc_box a.gengduo{
+	display: block;
+	width:300px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 20px;
+	text-decoration: none;
+	margin: 0 auto;
+	background: #65090b;
+	border-radius: 100px;
+	color: #fff;
+	margin-top: 30px;
+}
+.zxspkc_box a:hover.gengduo{
+	background: #b80004;
+}
+
+.tiku{ width: 100%;}
+.tiku img{ width: 100%;}
+.tushu{ width: 100%; position: relative; }
+.tushu img{ width: 100%;}
+.chakan{ display: block; width: 5em; height: 2em; border-radius: 2em; background: #ff8a01; color: #fff; box-shadow:0px 1px 10px 0px rgba(0, 0, 0, 0.18);
+ text-align: center; line-height: 2em; font-size: 1em; text-decoration: none; position: absolute; bottom: 0.5em; left: 40%;
+}
+.chakan:hover{ background: red;}
+
+.zengzhifuwu{ width: 100%; background: #e7efec; text-align: center;}
+.zengzhifuwu h2{line-height: 3em; font-size: 2em; color: #5b546e; text-align: center; font-family: 黑体; }
+.zengzhifuwu img{ width: 80%;}
+.lxwm{ width: 100%; background: #9aeaf8; padding-bottom: 40px;}
+.lxwm h2{line-height: 120px; font-size: 40px; color: #5b546e; text-align: center; font-family: 黑体;}
+.lxwm_box{ width: 90%; margin:  0 auto; }
+.l_left{ background: url(images/huodong_03.jpg) no-repeat; background-size: 100%; height: 20em; width: 100%; position: relative;}
+.l_left a{ display: block; width: 10em; height: 2em; background: #f5e82a; color: #000; line-height: 38px; text-align: center; text-decoration: none; border-radius: 10px;  box-shadow:0px 0px 10px 0px rgba(0, 0, 0, 0.58); font-size: 20px; position: absolute; bottom: 1em; left: 22%;}
+
+.l_cent{ width: 100%; padding-top:2em;}
+.l_cent img{ width: 160px;}
+.zzh{ float: left; text-align: center;}
+.qqqun{ float: right; text-align: center;}
+
+.l_right{ float: left; background: url(images/huodong_06.jpg) no-repeat 0px 180px;  height: 220px; padding-left: 180px; font-size: 20px; padding-top: 200px; line-height: 40px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

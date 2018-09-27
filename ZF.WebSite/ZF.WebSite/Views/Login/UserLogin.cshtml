@@ -1,0 +1,102 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Login/css/UserLogin.css" rel="stylesheet" />
+<div class="zcnt">
+    <input type="hidden" id="hiUserIp" value="@ViewBag.userIp" />
+    <div id="j-loginSet-box">
+        <div class="m-loginbox f-cb">
+            <div class="">
+                <div class="title f-f0 f-cb" id="auto-id-1527068105010">
+                    @*<div class="u-tab u-tel-tab f-f0 f-fl " id="pwd_login">手机号登录</div>*@
+                    @*<div class="u-tab u-urs-tab f-f0 f-fl z-sel" id="yzm_login">短信登录</div>*@
+                    @*<div class="u-tab u-urs-tab f-f0 f-fl" id="sm_login">扫码登录</div>*@
+                </div>
+                <div class="wrap f-fl telContainer">
+                    <div class="m-tel-login">
+                        <div class="inputbox" id="div_phone">
+                            <div class="u-logo">
+                                <div class="u-logo-tel">
+
+                                </div>
+                            </div>
+                            <div class="u-input box f-f0">
+                                <span class="prefix f-pr">+86</span>
+                                <input type="tel" placeholder="请输入手机号" autofocus="autofocus" name="tel" id="tel">
+                            </div>
+                        </div>
+                        <div class="inputbox" id="div_pwd" >
+                            <div class="u-logo">
+                                <div class="u-logo-pwd"></div>
+                            </div>
+                            <div class="u-input box f-f0">
+                                <input type="password" placeholder="请输入密码" name="pwd" id="pwd">
+                            </div>
+                       
+                        </div>
+
+                        @*<div class="code" style="overflow:hidden;"  >
+             
+                            <div class="u-input box f-f0 inputbox"  id="div_yz" style="width: 48%;float: left;height: 42px;text-decoration: none;margin-left: auto;" >
+                                <input placeholder="请输入验证码" type="text" id="txtphoneyzm" style="height: 40px;line-height: 20px;width:100%;text-indent:10px;" />
+                            </div>
+                           <div style="float: right;width:48%;">
+                               <input type="button" style="width:100%;background-color:  #f32426;color: white;height:  44px;line-height:44px;cursor:pointer;" id="btngetyzm" value="获取验证码" />
+                           </div>
+                        </div>*@
+
+                      
+
+                        <div class="m-error-box" style="display: none;">
+                            <div class="ferrortail f-ib"></div>
+                            <div class="ferrorhead f-ib"></div>
+                        </div>
+                        <div class="u-loginbtn" style="cursor:pointer;">登录</div>
+                        <div class="m-unlogin">
+                            @*<div class="b-unlogin">
+                                <span class="u-checkbox tabfocus u-checkbox-select">
+                                    <input type="checkbox" id="un-login" name="un-login" class="un-login">
+                                </span>
+                                <label for="un-login">忘记密码</label>
+                            </div>*@
+                            <div class="forgetpwd j-redirect">忘记密码？</div>
+                            <div id="changepage" class="u-regbtn bgcolor tabfocus j-redirect">去注册</div>
+                        </div>
+                    </div>
+                    <div class="sm-login" id="twoCode" style="display:none;">
+                        @*<img src="~/Images/CartImg/wx.png"  style="display: block;margin: 40px auto;" />
+                        <a class="j-slink itm1 f-hide" data-var-name="WEIBO" target="_self">微信扫码登录</a>*@
+                    </div>
+                </div>
+
+                @*<div class="bd f-fl f-pr">
+        <div class="f-pa bdtxt">或</div>
+    </div>*@
+
+                @*<div class="side f-fl">
+    <div class="socialBox j-social-box">
+        <a class="j-slink itm0 f-hide" data-var-name="WECHAT" target="_self">微信</a>
+        <a class="j-slink itm1 f-hide" data-var-name="WEIBO" target="_self">新浪微博</a>
+        <a class="j-slink itm2 f-hide" data-var-name="QQ" target="_self">腾讯QQ</a>
+        <a class="j-slink itm3 f-hide" data-var-name="RENREN" target="_self">人人网</a>
+        <a class="j-slink itm4 f-hide" data-var-name="ICOURSE" target="_self">爱课程网</a>
+                        <img src="~/Images/CartImg/wx.png" id="wikiLoginImage" style="margin-top:40px;" />
+                        <a class="j-slink itm1 f-hide" data-var-name="WEIBO" target="_self">微信扫码登录</a>
+                    </div>
+                </div>*@
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/plugins/jQuery/jquery-3.0.0.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/js/bootstrap.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/js/bootstrapValidator.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/md5.js?v=1.0"></script>
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Login/UserLogin.js?v=1.0"></script>

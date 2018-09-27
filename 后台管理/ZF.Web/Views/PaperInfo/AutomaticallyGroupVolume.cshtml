@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "自动组卷";
+}
+<div class="box">
+        <div class="box-body">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>试卷名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="PaperName" name="PaperName">
+                </div>
+                <div class="form-group">
+                    <label>试卷数量</label><span class="text-danger">*</span>
+                    <input type="number" class="form-control" id="PapersNo" name="PapersNo" max="99">
+                </div>
+                <div class="form-group">
+                    <label>试卷参数</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="PaperParamId" name="PaperParamId"></select>
+                </div>
+                <div class="form-group">
+                    <label>试卷类别</label>
+                    <select type="text" class="form-control" id="QuizpaperType" name="QuizpaperType">
+                        <option value="0">历年真题</option>
+                        <option value="1">模拟试卷</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>考试时长</label>
+                    <input type="number" class="form-control" id="TestTime" name="TestTime">
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-3 text-center progress-demo">
+                <button  class="btn btn-primary ladda-button" data-style="expand-left" id="btnsave"><span class="ladda-label">开始组卷</span></button>
+            </div>
+        </div>
+</div>
+<script src="~/Views/PaperInfo/AutomaticallyGroupVolume.js"></script>

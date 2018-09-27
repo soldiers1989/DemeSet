@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "课程购买抵用券";
+    Layout = null;
+}
+<link href="~/Libs/select2-4.0.6/css/select2.min.css" rel="stylesheet" />
+<div class="box" id="box1">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>名称</label><span class="text-danger">*</span>
+                    <input class="form-control" id="CardName" name="CardName" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>卡号</label><span class="text-danger">*</span>
+                    <input class="form-control" id="CardCode" name="CardCode" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>金额(元)</label><span class="text-danger">*</span>
+                    <input type="text" id="Amount" maxlength="6" name="Amount" class="form-control" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>可用于购买课程</label>
+                    <select id="TargetCourse" name="TargetCourse" class="form-control" />
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label>有效期</label>
+                <div class="form-group">
+                    <input class="form-control Wdate" onFocus="WdatePicker({ el: 'BeginDate', dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'EndDate\')}' })" id="BeginDate" name="BeginDate" style="height: 34px; width: 179px;" />
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label></label>
+                <div class="form-group" style="padding-top: 5px;">
+                    <input class="form-control Wdate" onFocus="WdatePicker({ el: 'EndDate', dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'BeginDate\')}' })" id="EndDate" name="EndDate" style="height: 34px; width: 179px;" />
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Libs/select2-4.0.6/js/select2.min.js"></script>
+<script src="~/Libs/select2-4.0.6/js/i18n/zh-CN.js"></script>
+<script src="~/Libs/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Views/DiscountCard/AddOrEdit.js"></script>

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "数据字典新增(修改)";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>数据类型代码</label><span class="text-danger">*</span>
+                    <input id="Code" name="Code" class="form-control" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>数据名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="Name" name="Name">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>分类名称</label><span class="text-danger">*</span>
+                    <select id="DataTypeId" name="DataTypeId" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>排序号</label>
+                    <input type="number" min="1" step="1" class="form-control" id="Sort" name="Sort" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>说明</label>
+                    <textarea class="form-control" id="Desc" name="Desc" />
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/BaseData/AddOrEdit.js"></script>

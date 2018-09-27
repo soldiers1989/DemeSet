@@ -1,0 +1,44 @@
+﻿.title {
+    margin-left: 10px;
+    font-weight: bolder;
+    font-size: 25px;
+    color: red;
+    font-family: cursive;
+    line-height: 40px;
+}
+
+.titleOne {
+    font-weight: bolder;
+    font-size: 25px;
+    line-height: 40px;
+}
+
+.clause {
+    padding: 8px 15px;
+    margin: 5px;
+}
+.clause p {
+    font-size: 14px;
+    line-height: 150%;
+    text-indent: 2em;
+    line-height: 150%;
+}
+
+.clause .unline {
+    text-decoration: underline;
+    color: #000;
+}
+
+.clause .unline {
+    text-decoration: underline;
+    color: #000;
+}
+
+#container {
+    border: 1px #656565 solid;
+    margin: 0 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+

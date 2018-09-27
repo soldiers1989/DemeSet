@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<style>
+    #selectFrom .form-control {
+        min-width: 179px;
+    }
+</style>
+<link href="~/Views/Subject/Index.css" rel="stylesheet" />
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>用户管理</a>/<a>登录日志管理</a></span>
+    </div>
+</div>
+
+<div>
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#DataTable" data-toggle="tab">登录日志</a></li>
+        <li><a href="#DataEcharts" data-toggle="tab">图表</a></li>
+    </ul>
+</div>
+
+<div class="tab-content">
+    <div class="tab-pane fade in active" id="DataTable">
+        <div class="col-xs-12">
+            <div class="content-header form-inline row">
+                <form id="selectFrom" name="selectFrom">
+                    <div class="form-group">
+                        <label>登录起止时间：</label>
+                        <input class="form-control Wdate" onFocus="WdatePicker({ el: 'BeginDateTime', dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'EndDateTime\')}' })" id="BeginDateTime" name="BeginDateTime" style="height: 34px;" />
+                        -
+                        <input class="form-control Wdate" onFocus="WdatePicker({ el: 'EndDateTime', dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'BeginDateTime\')}' })" id="EndDateTime" name="EndDateTime" style="height: 34px;" />
+                        <input class="btn btn-success query_btn" type="button" value="查询">
+                    </div>
+                </form>
+            </div>
+            <div class="box-body row">
+                <table id="tblData"></table>
+                <div id="pager"></div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="tab-pane fade" id="DataEcharts">
+        <div id="SmoothLine" style="width: 600px;height:400px;float:left;"></div>
+        <div id="StackBar" style="width: 650px;height:400px;float:left;"></div>
+        <div  style="float:left;padding-top: 11px;padding-left: 100px;">
+            <select id="YearSelector"></select>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Views/UserLoginLog/Index.js"></script>

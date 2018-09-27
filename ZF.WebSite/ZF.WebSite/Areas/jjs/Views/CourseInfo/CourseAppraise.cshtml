@@ -1,0 +1,110 @@
+﻿
+@{
+    Layout = null;
+}
+<input type="hidden" id="PageIndex" value="1" />
+<input type="hidden" id="Rows" value="5" />
+
+<div id="appraiseList">
+    <script type="text/html" id="appraise_html">
+        {{if Rows.length>0}}
+        {{each Rows}}
+        <div class="pj-list_box">
+            <div class="pj-list-nav">
+                <dt><div class="ures"><img src="{{$value.HeadImage}}"></div></dt>
+                <dd><span>{{$value.UserName}}</span><span class="wujiaoxing">{{$value.AppraiseLevel | formmaterLevel}} </span></dd>
+                <span class="time">{{$value.AppraiseTime | formmaterDate }}</span>
+                <div class="clear"></div>
+            </div>
+            <p>{{$value.AppraiseCotent}}</p>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</div>
+<!--我要评价-->
+<div class="pj-header-nav">
+    <div class="pj_he_l"><input id="appraiseContent" type="text"></div>
+    <div class="pj_he_r"><a id="appraisesubmit">我要评价</a></div>
+    <div class="clear"></div>
+</div>
+<!--我要评价-->
+<script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+    $('.jjs-header-nav').attr("style","display:none;");
+    var courseid = $('#courseId').val();
+    var state = $('#ifPlay').attr("data");
+    if (state == "1") {
+        $("#courseCover").attr("style", "display:none;");
+    } else {
+        $("#courseCover").attr("style", "display:block;");
+    }
+    $(function () {
+        GetAppraiseList();
+    })
+
+    function GetAppraiseList() {
+        topevery.ajaxwx({
+            url: 'api/CourseChapter/GetList',
+            data: JSON.stringify({ CourseId: courseid, Page: $("#PageIndex").val(), Rows: $("#Rows").val() })
+        }, function (data) {
+            if (data.Success) {
+                $('#appraiseList').html(template("appraise_html", data.Result));
+            }
+        })
+    }
+
+    $('#appraisesubmit').click(function () {
+        //该课程是否已购买
+        topevery.ajaxwx({
+            url: 'api/Sheet/IfAreadyPay',
+            data: JSON.stringify({ CourseId: courseid, CourseType: 0 })
+        }, function (data) {
+            if (data.Result) {
+                var content = $('#appraiseContent').val();
+                console.log(content,'ddd');
+                if ($.trim(content) != "") {
+                    topevery.ajax({
+                        url: 'api/CourseAppraise/Add',
+                        data: JSON.stringify({ AppraiseCotent: $('#appraiseContent').val(), AppraiseLevel: 5, CourseId: courseid, CourseType: 0, AppraiseIp: returnCitySN.cip })
+                    }, function (data) {
+                        //成功发表评价，更新评价列表，清空评价内容
+                        if (data.Success) {
+                            $('#appraiseContent').val('');
+                            layer.msg(data.Result.Message);
+                            GetAppraiseList();
+                        } else {
+                            layer.msg(data.Result.Message);
+                        }
+                    });
+                } else {
+                    layer.msg("请输入评论内容!");
+                }
+            } else {
+                $('#appraiseContent').val('');
+                parent.layer.msg("您尚未购买该课程，暂不能评价!");
+            }
+        });
+    });
+
+    template.helper("formmaterLevel", function (level) {
+        if (level) {
+            var content = "";
+            var value = parseInt(level);
+            for (var i = 0; i < value; i++) {
+                content += "★";
+            }
+            return content;
+        }
+    });
+
+    template.helper("formmaterDate", function (date) {
+        if (date) {
+            return date.split(' ')[0];
+        }
+    });
+
+
+   
+</script>
+

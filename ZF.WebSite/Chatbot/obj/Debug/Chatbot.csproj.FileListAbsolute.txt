@@ -1,0 +1,6 @@
+G:\XYZ\ZF.WebSite\Chatbot\bin\Debug\Chatbot.dll
+G:\XYZ\ZF.WebSite\Chatbot\bin\Debug\Chatbot.pdb
+G:\XYZ\ZF.WebSite\Chatbot\bin\Debug\AIMLbot.dll
+G:\XYZ\ZF.WebSite\Chatbot\obj\Debug\Chatbot.csprojResolveAssemblyReference.cache
+G:\XYZ\ZF.WebSite\Chatbot\obj\Debug\Chatbot.dll
+G:\XYZ\ZF.WebSite\Chatbot\obj\Debug\Chatbot.pdb

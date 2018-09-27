@@ -1,0 +1,183 @@
+﻿body {
+    text-align: left;
+    font-family: "Arial","Hiragino Sans GB", 微软雅黑, "Helvetica", "sans-serif";
+}
+
+.uc-myclass-head {
+    background: #fff url(//s2.stu.126.net/res/images/web/page/my/head.png?2ac0de6e41a0d91d6e31fc10004bbf36) no-repeat;
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.uc-myclass-head_wrap {
+    padding-top: 60px;
+}
+
+.g-doc, .g-wrap, .g-flow, .g-all {
+    width: 1205px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.uc-myclass-head_logo > img {
+    height: 100%;
+    width: 100%;
+}
+
+.uc-myclass-head_logo {
+    border-radius: 80px;
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+    /*border: 4px solid rgba(250, 250, 250, 0.6);*/
+}
+
+.uc-myclass-head_txt {
+    height: 73px;
+    padding-top: 15px;
+    padding-left: 20px;
+}
+
+.mc-my-myclass_navwrap_tabs {
+    background-color: #fff !important;
+    width: 600px;
+}
+
+.ux-tabs {
+    border-radius: 3px;
+    background-color: #f5f7f7;
+}
+
+.mc-my-myclass_navwrap_tabs .ux-tabs_hd {
+    border-bottom: none;
+}
+
+.ux-tabs_hd {
+    box-sizing: border-box;
+    height: 40px;
+    border-bottom: 1px solid #49AF4F;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mc-my-myclass_navwrap_tabs .ux-tabs_hd > li {
+    -webkit-box-flex: none;
+    -moz-box-flex: none;
+    box-flex: none;
+    -webkit-flex: none;
+    -moz-flex: none;
+    -ms-flex: none;
+    flex: none;
+    width: auto !important;
+    height: 60px;
+    line-height: 60px;
+    border: none;
+    padding: 0;
+    font-size: 18px;
+    color: #666;
+    margin-right: 76px;
+}
+
+.ux-tabs_hd > li {
+    box-sizing: border-box;
+    margin: 0px;
+    margin-right: 0px;
+    padding: 0px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #859295;
+    border: 1px solid transparent;
+    margin-bottom: -1;
+}
+
+.ux-tabs_hd > li {
+    float: left;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+}
+
+.ux-tabs_hd > li.z-crt {
+    background: white;
+    border-color: #49AF4F;
+    border-bottom-color: #fff;
+    color: #49AF4F;
+}
+
+.ux-tabs_hd > li.z-crt {
+    position: relative;
+}
+
+.uc-ykt-course-card_title {
+    font-size: 16px;
+    margin: 10px 10px 15px;
+    color: #3a4348;
+    height: 48px;
+    line-height: 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.uc-ykt-course-card_btn {
+    height: 30px;
+    width: 156px;
+    border-radius: 20px;
+    border: 2px solid #49af4f !important;
+    color: #49af4f;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    display: block;
+}
+
+    .uc-ykt-course-card_btn:hover {
+        color: #fff;
+        background: #49af4f;
+    }
+
+.uc-ykt-course-card_done {
+    width: 205px;
+    margin: 0 auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    background: url(//nos.netease.com/edu-image/1C2CBA3C5568875897ED3C92FEAD9BE5.png?imageView&quality=100) no-repeat;
+    background-size: auto auto;
+    background-size: 20px;
+    padding-left: 24px;
+    margin-right: 5px;
+    font-size: 14px;
+    color: #49af4f;
+}
+
+.uc-ykt-course-card_progress {
+    width: 205px;
+    margin: 0 auto;
+}
+
+.uc-ykt-course-card_progress_all {
+    height: 6px;
+    width: 100%;
+    background: #d8d8d8;
+    margin-bottom: 8px;
+}
+
+.uc-ykt-course-card_progress_current {
+    height: 100%;
+    width: 0%;
+    background: #49af4f;
+}
+
+.uc-ykt-course-card_progress_txt {
+    width: 100%;
+    color: #49af4f;
+    font-size: 14px;
+}

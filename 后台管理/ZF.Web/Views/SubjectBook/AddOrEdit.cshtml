@@ -1,0 +1,48 @@
+﻿@using ZF.Web.Models.File
+@{
+    ViewBag.Title = "";
+    Layout = null;
+}
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <input hidden="hidden" Id="SubjectId" name="SubjectId" value="@ViewBag.SubjectId" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>书籍名称：</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="BookName" name="BookName">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>链接Url：</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="Url" name="Url">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label> 排序号：</label>
+                    <input type="number" class="form-control" min="0" max="100" id="OrderNo" name="OrderNo">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="summary">封面图片(300*340)</div>
+                    @Html.Partial("UploadFilePartialView", new UploadFileDto()
+               {
+                   UploadId = "IdFile",
+                   KeyId = ViewBag.Id,
+                   UploadContentType = "jpg,png",
+                   ServerUrl = "File/UploadFile?parameter=300,340",
+                   Type = 0
+               })
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" style="float:right;" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/SubjectBook/AddOrEdit.js"></script>

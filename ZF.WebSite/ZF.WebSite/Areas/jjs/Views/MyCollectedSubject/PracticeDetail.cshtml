@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/collection.css" rel="stylesheet" />
+    <title>在线测评</title>
+    <style>
+        .bj01 {
+            background: #40e00c;
+        }
+
+        .stlb_sz_zq {
+            background: #40e00c;
+        }
+
+        .alfx-head ul li {
+            width: 25%;
+        }
+
+        .alfx-head1 ul li {
+            width: 33%;
+            float: left;
+            text-align: center;
+            height: 3em;
+            line-height: 3em;
+        }
+
+        .alfx-head1 {
+            width: 100%;
+            height: 3em;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0em;
+            z-index: 999;
+            background: #fff;
+        }
+         .ctj_tb ul li {
+            width:33.33%;
+        }
+
+        .alfx-head ul .al-hd04 {
+            background: #56ff00;
+            color: #fff;
+        }
+
+        .close {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="alfx-box">
+        <div id="Item">
+        </div>
+
+        <div class="alfx-head">
+            <ul>
+                <li style="width:33.33%" class="al-hd01">上一题</li>
+                <li  href="/jjs/MyCollectedSubject/Index"style="width:33.33%" class="al-hd02">返回收藏试题集</li>
+                <li style="width:33.33%" class="al-hd03">下一题</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+
+    <input type="hidden" id="practiceNo" value="@ViewBag.PracticeNo" />
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/ctj.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/MyErrorSubject/PracticeDetail.js?v=1.0"></script>

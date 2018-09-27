@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "章节视频";
+    Layout = null;
+}
+
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/video_play.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/Video/css/video-js.css" rel="stylesheet" />
+<style>
+    .vjs-paused .vjs-big-play-button,
+    .vjs-paused.vjs-has-started .vjs-big-play-button {
+        display: block;
+    }
+
+    .video-js .vjs-big-play-button {
+        font-size: 2.5em;
+        line-height: 2.3em;
+        height: 2.5em;
+        width: 2.5em;
+        -webkit-border-radius: 2.5em;
+        -moz-border-radius: 2.5em;
+        border-radius: 2.5em;
+        background-color: #73859f;
+        background-color: rgba(115, 133, 159, .5);
+        border-width: 0.15em;
+        margin-top: 11.75em;
+        margin-left: 32.25em;
+    }
+    /* 中间的播放箭头 */
+    .vjs-big-play-button .vjs-icon-placeholder {
+        font-size: 1.63em;
+    }
+    /* 加载圆圈 */
+    .vjs-loading-spinner {
+        font-size: 2.5em;
+        width: 2em;
+        height: 2em;
+        border-radius: 1em;
+        margin-top: -1em;
+        margin-left: -1.5em;
+    }
+
+
+    #auto-id-1526901104201 {
+        height: 100%;
+    }
+</style>
+<link rel="shortcut icon" href="@HttpContext.Current.Application["DefuleDomain"]/asset/image/public/logo.png" type="image/x-icon">
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/jquery.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application[" DefuleDomain"]/Libs/Video/js/video.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/LearningCenter/QuestionRelateVideo.js?v=1.0"></script>
+<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css" />
+<script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js?v=1.0"></script>
+<input hidden="hidden" id="VideoId" value="@ViewBag.videoId" />
+<body leftmargin=0 topmargin=0>
+    <div class="coursebox f-cb" id="j-coursebox">
+        <div class="m-courselb">
+            <div id="course-learn-box" class="course-learn">
+                <div class="m-courselearn">
+                    <div class="learn-total" style="top:0px;">
+                        <div id="lesson-learn-box" class="learn-box">
+                            <div class="m-video-box">
+                                <div class="j-videobox">
+                                    <div id="auto-id-1523434837783"></div>
+                                    <div class="ux-video-player">
+                                        <div class="u-edu-h5player" id="auto-id-1523434837787">
+                                            @*<div class="u-edu-h5player-mainvideo f-pa j-mainVideo">
+                                                    <video id="example_video_1" class="video-js vjs-default-skin" style="width: 100%; height: 100%;" controls preload="none" poster="" data-setup="{}"></video>
+                                                </div>*@
+                                            <div class="prism-player" id="J_prismPlayer" style="position: absolute"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nextChap" style="display:none;"><div><p>下一节：播放完显示这个 </p><a href="javascript:;" class="next">播放下一节</a><a href="javascript:;" class="again">重播</a></div></div>
+                                <div class="u-coursePlanPayMsg f-pa" style="display: none;">
+                                    <div class="msg f-pa f-cb msg-course j-msg msg-p2">
+                                        <div class="wicon f-fl"></div>
+                                        <div class="wcon f-fl j-con">
+                                            <h3 class="title j-paycourse-tip" id="message"></h3>
+                                            <div class="priceList">
+                                                <div class="presentPrice"></div>
+                                                <del class="originPrice"></del>
+                                            </div>
+                                            <div class="joinBtn j-joinBtn" id="joincourseBtn"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fsmask j-fsmask" title="登录后才能全屏" id="auto-id-1523434837777" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

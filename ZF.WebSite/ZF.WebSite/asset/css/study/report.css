@@ -1,0 +1,7 @@
+/*测评记录*/
+.box{padding:20px 20px 20px 112px;background:#fff url(../../image/study/report.png) 20px center no-repeat;}
+
+.testName{font-size:24px; line-height:38px; color:#000;}
+.details span{font-size:16px;height:25px;line-height:25px;display: inline-block; margin-right:30px;color:#4e4e4e;}
+.look,.edit{font-size:16px; color:#686868;background:url(../../image/study/icon.png) 30px -29px no-repeat;padding-left:60px;height:30px;line-height: 30px; display: block;border-left:1px solid #d9d9d9;}
+.edit{-ms-background-position-y: -60px;background-position-y: -60px;}

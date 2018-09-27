@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PressDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="ArticleTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ArticleContent" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" />
+          <Property Name="Type" Type="int" />
+          <Property Name="IsDelete" Type="int" />
+          <Property Name="ArticleImage" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="t_Base_Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="ModuleId" Type="nvarchar" MaxLength="36" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="Class" Type="nvarchar" MaxLength="20" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="t_Base_Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="ModuleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Class" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“PressData.dbo.t_Base_OperatorLog”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="t_Base_OperatorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ModuleId" />
+            <PropertyRef Name="KeyId" />
+            <PropertyRef Name="OperatorName" />
+            <PropertyRef Name="OperatorDate" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="KeyId" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="OperatorName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OperatorDate" Type="datetime" Nullable="false" />
+          <Property Name="OperatorType" Type="int" />
+          <Property Name="OperatorId" Type="nvarchar" MaxLength="36" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+          <Property Name="OperatorIp" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="t_Base_RegisterUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="30" />
+          <Property Name="LoginPwd" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelphoneNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="RegisterIp" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RegiesterType" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="NickNamw" Type="nvarchar" MaxLength="30" />
+          <Property Name="WechatId" Type="nvarchar" MaxLength="200" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="AreaCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="HeadImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="Code" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="t_Base_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsAdmin" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="AddUserId" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUserId" Type="nvarchar" MaxLength="36" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Base_UserLoginLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="36" />
+          <Property Name="LoginTime" Type="datetime" />
+          <Property Name="LoginIp" Type="nvarchar" MaxLength="20" />
+          <Property Name="LoginType" Type="nvarchar" MaxLength="36" />
+        </EntityType>
+        <EntityContainer Name="PressDataModelStoreContainer">
+          <EntitySet Name="t_Article" EntityType="Self.t_Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Base_Menu" EntityType="Self.t_Base_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Base_Module" EntityType="Self.t_Base_Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Base_RegisterUser" EntityType="Self.t_Base_RegisterUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Base_User" EntityType="Self.t_Base_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Base_UserLoginLog" EntityType="Self.t_Base_UserLoginLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Base_OperatorLog" EntityType="Self.t_Base_OperatorLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [t_Base_OperatorLog].[Id] AS [Id], 
+    [t_Base_OperatorLog].[ModuleId] AS [ModuleId], 
+    [t_Base_OperatorLog].[KeyId] AS [KeyId], 
+    [t_Base_OperatorLog].[OperatorName] AS [OperatorName], 
+    [t_Base_OperatorLog].[OperatorDate] AS [OperatorDate], 
+    [t_Base_OperatorLog].[OperatorType] AS [OperatorType], 
+    [t_Base_OperatorLog].[OperatorId] AS [OperatorId], 
+    [t_Base_OperatorLog].[Remark] AS [Remark], 
+    [t_Base_OperatorLog].[OperatorIp] AS [OperatorIp]
+    FROM [dbo].[t_Base_OperatorLog] AS [t_Base_OperatorLog]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PressDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArticleTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArticleContent" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Precision="3" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="IsDelete" Type="Int32" />
+          <Property Name="ArticleImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_Base_Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModuleId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="Class" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_Base_Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t_Base_RegisterUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LoginPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelphoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RegisterIp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegiesterType" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="NickNamw" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="WechatId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="AreaCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HeadImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_Base_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdmin" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddUserId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Base_UserLoginLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
+          <Property Name="LoginIp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LoginType" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_Base_OperatorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ModuleId" />
+            <PropertyRef Name="KeyId" />
+            <PropertyRef Name="OperatorName" />
+            <PropertyRef Name="OperatorDate" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+          <Property Name="KeyId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperatorName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperatorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OperatorType" Type="Int32" />
+          <Property Name="OperatorId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="OperatorIp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="PressDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_Article" EntityType="Self.t_Article" />
+          <EntitySet Name="t_Base_Menu" EntityType="Self.t_Base_Menu" />
+          <EntitySet Name="t_Base_Module" EntityType="Self.t_Base_Module" />
+          <EntitySet Name="t_Base_RegisterUser" EntityType="Self.t_Base_RegisterUser" />
+          <EntitySet Name="t_Base_User" EntityType="Self.t_Base_User" />
+          <EntitySet Name="t_Base_UserLoginLog" EntityType="Self.t_Base_UserLoginLog" />
+          <EntitySet Name="t_Base_OperatorLog" EntityType="Self.t_Base_OperatorLog" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PressDataModelStoreContainer" CdmEntityContainer="PressDataEntities">
+          <EntitySetMapping Name="t_Article">
+            <EntityTypeMapping TypeName="PressDataModel.t_Article">
+              <MappingFragment StoreEntitySet="t_Article">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ArticleTitle" ColumnName="ArticleTitle" />
+                <ScalarProperty Name="ArticleContent" ColumnName="ArticleContent" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="ArticleImage" ColumnName="ArticleImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Base_Menu">
+            <EntityTypeMapping TypeName="PressDataModel.t_Base_Menu">
+              <MappingFragment StoreEntitySet="t_Base_Menu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Base_Module">
+            <EntityTypeMapping TypeName="PressDataModel.t_Base_Module">
+              <MappingFragment StoreEntitySet="t_Base_Module">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Base_RegisterUser">
+            <EntityTypeMapping TypeName="PressDataModel.t_Base_RegisterUser">
+              <MappingFragment StoreEntitySet="t_Base_RegisterUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="TelphoneNum" ColumnName="TelphoneNum" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="RegisterIp" ColumnName="RegisterIp" />
+                <ScalarProperty Name="RegiesterType" ColumnName="RegiesterType" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="NickNamw" ColumnName="NickNamw" />
+                <ScalarProperty Name="WechatId" ColumnName="WechatId" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="HeadImage" ColumnName="HeadImage" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Base_User">
+            <EntityTypeMapping TypeName="PressDataModel.t_Base_User">
+              <MappingFragment StoreEntitySet="t_Base_User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="AddUserId" ColumnName="AddUserId" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Base_UserLoginLog">
+            <EntityTypeMapping TypeName="PressDataModel.t_Base_UserLoginLog">
+              <MappingFragment StoreEntitySet="t_Base_UserLoginLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="LoginIp" ColumnName="LoginIp" />
+                <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Base_OperatorLog">
+            <EntityTypeMapping TypeName="PressDataModel.t_Base_OperatorLog">
+              <MappingFragment StoreEntitySet="t_Base_OperatorLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+                <ScalarProperty Name="OperatorName" ColumnName="OperatorName" />
+                <ScalarProperty Name="OperatorDate" ColumnName="OperatorDate" />
+                <ScalarProperty Name="OperatorType" ColumnName="OperatorType" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="OperatorIp" ColumnName="OperatorIp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

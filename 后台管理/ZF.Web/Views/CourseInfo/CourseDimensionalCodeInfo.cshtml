@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link href="~/Libs/layer/js/skin/default/layer.css" rel="stylesheet" />
+<link href="~/Css/DimensionalCode/style.css" rel="stylesheet" />
+<link href="~/Css/DimensionalCode/lrtk.css" rel="stylesheet" />
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>课程二维码</title>
+</head>
+<body style="background-color:grey;">
+    <div class="container">
+        <input type="hidden" value="@ViewBag.jsonData" id="hidata" />
+        <section>
+            <ul id="da-thumbs" class="da-thumbs">
+            </ul>
+        </section>
+    </div>
+    <script type="text/html" id="Course_html">
+        <li class="lis">
+                @*<img src="{{ImgUrl}}" />*@
+                <div>课程名称：<span>{{ImgName}}</span></div>
+        </li>
+        {{if videoCode!=null}}
+        {{each videoCode}}
+        <li class="li">
+            <a href="#">
+                <img src="{{$value.VideoCodeUrl}}" />
+                <div><span>{{$value.VideoCodeName}}</span></div>
+            </a>
+        </li>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+<script src="~/Libs/plugins/jQuery/jquery-1.8.2.min.js"></script>
+<script src="~/Js/easyuiBase.js"></script>
+<script src="~/Libs/layer/js/layer.js"></script>
+<script src="~/Js/DimensionalCode/jquery.min.js"></script>
+<script src="~/Js/DimensionalCode/jquery.hoverdir.js"></script>
+<script src="~/Js/template.js"></script>
+<script type="text/javascript">
+    $(function () {
+        topevery.ajax({
+            url: "../api/CourseInfo/GetTwoDimensionalCode",
+            data: $("#hidata").val(),
+            async: false,
+            beforeSend: function () {
+                topevery.ajaxLoading();
+            },
+            complete: function () {
+                topevery.ajaxLoadEnd();
+            }
+        }, function (data) {
+            if (data.Success) {
+                $("#da-thumbs").html(template("Course_html", data.Result))
+            } else if (data.Result.length <= 0) {
+                layer.msg("没有需生成的二维码", { time: 2000, icon: 2 });
+            }
+
+        });
+    });
+</script>

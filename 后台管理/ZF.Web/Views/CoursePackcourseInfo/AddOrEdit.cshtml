@@ -1,0 +1,453 @@
+﻿@using ZF.Web.Models.File
+@{
+    ViewBag.Title = "套餐课程新增(修改)";
+}
+<style>
+      body {
+        color: #555;
+        font: 12px/1.5 Verdana,Microsoft YaHei,宋体;
+    }
+    .summary {
+        font-size: 18px;
+        line-height: 58px;
+    }
+
+    select, textarea {
+        font: 12px/1.5 Verdana,Microsoft YaHei,宋体;
+    }
+
+    b.text {
+        font-weight: 400;
+        padding-left: 8px;
+    }
+
+    .chargearea .left {
+        width: 63px;
+        height: 34px;
+        line-height: 34px;
+        position: absolute;
+        top: 10px;
+        left: 0;
+    }
+
+    .chargearea .right {
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+    }
+
+    .originPrice {
+        height: 34px;
+        line-height: 34px;
+    }
+
+    .chargearea .original-price {
+        width: 145px;
+        height: 30px;
+        padding: 5px 0 5px 5px;
+        line-height: 30px;
+        margin-right: 10px;
+    }
+
+    .chargearea {
+        position: relative;
+        padding: 10px 0 0 63px;
+    }
+
+        .chargearea .pencent {
+            background: #FCFCFC;
+            color: #C4C4C4;
+            width: 50px;
+            border: 1px solid #FCFCFC;
+            height: 23px;
+        }
+
+        .chargearea .finalprcie {
+            width: 145px;
+            height: 30px;
+            padding: 5px 0 5px 5px;
+            line-height: 30px;
+            margin-right: 10px;
+        }
+
+    .error {
+        color: red;
+        display: none;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: #6d6d6d !important;
+    }
+
+    .des {
+        color: #aaa;
+        margin-bottom: 20px;
+    }
+
+    .clearfix {
+        display: block;
+    }
+
+    .comp-select-tag-wrap .comp-select-tag {
+        width: 740px;
+        border: 1px solid #CCC;
+    }
+
+        .comp-select-tag-wrap .comp-select-tag .text-layer, .comp-select-tag-wrap .comp-select-tag .tag-layer {
+            padding: 10px 10px 0;
+            *padding-bottom: 10px;
+        }
+
+            .comp-select-tag-wrap .comp-select-tag .text-layer .tag {
+                cursor: text;
+                padding-right: 0;
+                margin-right: 10px;
+            }
+
+        .comp-select-tag-wrap .comp-select-tag .tag {
+            float: left;
+            display: block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border: 1px solid #92D65C;
+            border-radius: 2px;
+            padding: 0 10px;
+            padding-right: 10px;
+            height: 23px;
+            line-height: 23px;
+            color: #555;
+            background-color: #F4FEED;
+        }
+
+            .comp-select-tag-wrap .comp-select-tag .tag .delete {
+                padding-left: 5px;
+                padding-right: 10px;
+                cursor: pointer;
+                color: #AAA;
+            }
+
+        .comp-select-tag-wrap .comp-select-tag .text-layer input {
+            display: block;
+            height: 20px;
+            width: 200px;
+            margin-bottom: 10px;
+            border: 0;
+            color: #AAA;
+            font-weight: 700;
+            background-color: transparent;
+        }
+
+        .comp-select-tag-wrap .comp-select-tag .tag-layer .tag-wrap {
+            margin-top: 10px;
+        }
+
+        .comp-select-tag-wrap .comp-select-tag .tag-layer .tag .delete {
+            display: none;
+        }
+
+    .comp-select-tag-wrap .mod-error {
+        color: red;
+        display: none;
+        margin-top: 10px;
+    }
+
+    .seo {
+        width: 642px;
+        color: #555;
+    }
+
+        .seo .seo-content .content {
+            min-height: 0px;
+        }
+
+        .seo .seo-content p {
+            margin: 0 0 5px 5px;
+        }
+
+        .seo .seo-content b {
+            margin-right: 10px;
+        }
+
+        .seo .seo-content .err-wrap {
+            position: relative;
+        }
+
+        .seo .seo-content .limit {
+            color: #aaa;
+            width: 98%;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: url(http://img.ablesky.cn/stata/images/s_d2112c43.gif) repeat 0 0 transparent;
+            padding: 5px 0 5px 5px;
+        }
+
+        .seo .title .char-counter {
+            position: absolute;
+            bottom: -2px;
+            right: 14px;
+            border: 0;
+        }
+
+    .describe .char-counter {
+        height: 19px;
+        position: absolute;
+        bottom: 0;
+        right: -100px;
+        line-height: 19px;
+        padding: 0 8px;
+        text-align: right;
+        color: #AAA;
+    }
+
+    .seo .error {
+        color: #F33;
+        display: none;
+        font-weight: 700;
+        margin-top: 10px;
+    }
+
+    .seo .seo-content .title-input {
+        line-height: 30px;
+    }
+
+    .seo .keyword-wrap {
+        width: 98%;
+        padding: 7px 7px 7px 0;
+        padding-left: 0px;
+        padding-left: 3px;
+        border: 1px solid #ddd;
+    }
+
+    .seo .seo-content .tag {
+        float: left;
+        display: block;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        border: 1px solid #92D65C;
+        border-radius: 2px;
+        padding: 0 10px;
+        padding-right: 10px;
+        height: 23px;
+        line-height: 23px;
+        color: #555;
+        background-color: #F4FEED;
+        padding-right: 0;
+    }
+
+        .seo .seo-content .tag .delete {
+            padding-left: 5px;
+            padding-right: 10px;
+            cursor: pointer;
+            color: #AAA;
+        }
+
+    .seo .keyword-wrap input {
+        background: #fff;
+        height: 25px;
+        width: 19%;
+        border: 0;
+        color: #aaa;
+        padding-left: 3px;
+    }
+</style>
+<div class="box" style="padding-left:80px;padding-top:20px;padding-bottom:70px;">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="form-group">
+                <label>课程名称</label><span class="text-danger">*</span>
+                <input type="text" class="form-control" id="CourseName" name="CourseName" style="width: 30%;">
+            </div>
+
+            <div data-name="price" class="comp-modify-price form-group" id="setPrice">
+                <div class="summary">课程价格</div>
+                <div class="setPrice">
+                    <label for="J_free" style="margin-right: 40px;">
+                        <input name="setPrice" class="free" id="J_free" type="radio" style="vertical-align: middle;">
+                        <b class="text">免费</b>
+                    </label>
+                    <label for="J_charge">
+                        <input name="setPrice" class="charge" id="J_charge" checked="checked" type="radio" style="vertical-align: middle;">
+                        <b class="text">收费</b>
+                    </label>
+                </div>
+                <ul class="edit-price">
+                    <li class="calculate-price chargearea" style="display: list-item;">
+                        <div class="left">原价</div>
+                        <div class="right">
+                            <span class="originPrice">
+                                <input class="original-price price" id="Price" name="Price" type="number" step="0.01" min="0">
+                            </span>元
+                        </div>
+                    </li>
+                    <li class="calculate-price chargearea" style="display: list-item;">
+                        <div class="left">折扣</div>
+                        <div class="right">
+                            <div><input name="Discount" id="Discount" disabled="disabled" class="pencent percent" value="100.0" type="text">%</div>
+                        </div>
+                    </li>
+                    <li class="chargearea" style="display: block;">
+                        <div class="left">实际卖价</div>
+                        <div class="right">
+                            <div><input name="FavourablePrice" id="FavourablePrice" class="finalprcie percent" type="number" min="0" step="0.01">元</div>
+                            @*<p>课程价格不能低于课程播放成本<span class="totalClickPrice">77.60</span></p>*@
+                        </div>
+                    </li>
+                </ul>
+                <div class="error" style="margin-top: 0px; display: none;"></div>
+            </div>
+            <div class="form-group">
+                <div class="summary">是否邮寄讲义</div>
+                <input disabled="disabled" checked="checked" type="checkbox" id="EmailNotes" width="15" height="15" value="1" name="EmailNotes" />
+            </div>
+            <div class="form-group">
+                <label>课件数</label>
+                <input type="number" min="1" step="1" disabled="disabled" class="form-control" id="CourseWareCount" name="CourseWareCount" style="width: 200px;">
+            </div>
+
+            <input id="CourseTag" name="CourseTag" hidden="hidden" />
+            <div class="form-group" data-name="tag">
+                <div class="summary">课程标签</div>
+                <div class="tagManage">
+                    <div class="des clearfix">
+                        <span>标签可以使您的课程更容易被搜索到，最多可选择6个标签</span>
+                    </div>
+                    <div id="select-tag">
+                        <div class="comp-select-tag-wrap">
+                            <div class="comp-select-tag clearfix">
+                                <div class="text-layer clearfix">
+                                    <input style="display:block" type="text" placeholder="请输入课程标签">
+                                </div>
+                                <div class="tag-layer clearfix" style="display: block;">
+                                    <div>使用过的标签</div>
+                                    <div class="clearfix tag-wrap">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mod-error" style="display:none;">请选择课程标签</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>课程时长</label>
+                <input type="number" min="0" disabled="disabled" class="form-control" id="CourseLongTime" name="CourseLongTime" style="width: 200px;">
+            </div>
+            <div class="form-group" style="display:none;">
+                <label>有效期天数</label><span class="text-danger">*(0代表永久有效)</span>
+                <input type="number" min="0" step="1" class="form-control" id="ValidityPeriod" name="ValidityPeriod" style="width: 200px;">
+            </div>
+            <div class="form-group">
+                <div class="summary">有效截止日期<span class="text-danger" style="font-size: 14px;">*</span></div>
+                <input class="form-control Wdate" onFocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '%y-%M-#{%d+1}' })" id="ValidityEndDate" name="ValidityEndDate" style="height: 34px; width: 179px;">
+            </div>
+            <div class="form-group">
+                <label>是否推荐</label>
+                <select class="form-control" id="IsRecommend" name="IsRecommend" style="width: 200px;">
+                    <option value="1">是</option>
+                    <option value="0" selected="selected">否</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>是否置顶</label>
+                <select class="form-control" id="IsTop" name="IsTop" style="width: 200px;">
+                    <option value="1">是</option>
+                    <option value="0" selected="selected">否</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>排序</label>
+                <input type="number" min="0" class="form-control" id="OrderNo" name="OrderNo" style="width: 200px;">
+            </div>
+            <div class="form-group" style="width: 740px;">
+                <label>课程简介</label>
+                <script id="CourseContent" name="CourseContent" type="text/plain">
+                </script>
+            </div>
+            <input hidden="hidden" name="ClassId" id="ClassId" />
+            <div class="form-group">
+                <div class="summary">所属类目</div>
+                <div class="" style="overflow: scroll;height:300px;width:724px;border:solid 1px;">
+                    <ul id="projectTreeDemo" class="ztree"></ul>
+                </div>
+            </div>
+            <input hidden="hidden" name="KeyWord" id="KeyWord" />
+            <div class="form-group" data-name="seo">
+                <div class="summary" style="width:740px">
+                    课程详情页SEO
+                    @*<span style="color:#555;font-size:12px;font-weight: normal;margin-left:10px">(填写seo信息可以让更多学员搜索到您的课程。未填写时，系统将为您自动配置seo信息)</span>
+                <a href="http://ablesky.ablesky.com/org/336_zx_69649" target="_blank" style="color: rgb(0, 153, 255); font-size: 12px; font-weight: normal;" onmouseover="this.style.color='#F30'" onmouseout="this.style.color='#09F'">SEO说明</a>*@
+                </div>
+                <div class="seo" id="J_seo1526432119270">
+                    @*<div class="seoAutoSwitch">
+                    <label>
+                        <input name="seoAuto" class="seoAutoCheck" checked="" type="checkbox">标题、关键词、描述跟随课程信息编辑自动修改（勾选该项即为自动修改）
+                    </label>
+                </div>*@
+                    <div class="seo-content" style="display: block;">
+                        <div class="content title">
+                            <p><b>Title 标题</b>(填写此项可让更多学员搜索到您的课程，最多不超过50个汉字)</p>
+                            <div class="err-wrap">
+                                <input class="title-input limit" name="Title" id="Title" value="" defaultval="请输入seo标题" style="color: rgb(85, 85, 85);" type="text">
+                                <div class="char-counter">
+                                    <span class="used title_used">50</span>/<span class="total">50</span>
+                                </div>
+                            </div>
+                            <div class="error" style="display: none;">最多不超过50个汉字</div>
+                        </div>
+                        <div class="content keyword">
+                            <p><b>Keyword 关键词</b>(最多10个关键词，每个词最多7个汉字,用逗号隔开)</p>
+                            <div class="keyword-wrap clearfix">
+                                <input class="keyword-input" placeholder="请输入seo关键词" style="" type="text">
+                            </div>
+                            <div class="seo-error" style="color:#FF3333; display: none; font-weight: bold;line-height: 1em;margin-top: 10px;">最多10个关键词，每个词最多7个汉字,用逗号隔开。</div>
+                        </div>
+                        <div class="content describe">
+                            <p><b>Description 描述</b>(最多不超过100个字)</p>
+                            <div class="err-wrap">
+                                <textarea type="text" id="Description" name="Description" class="describe-input limit" data-maxlen="200" defaultval="请输入seo描述" style="color: rgb(85, 85, 85);width: 724px; height: 80px;"></textarea>
+                                <div class="char-counter">
+                                    <span class="used describe-used">100</span>/<span class="total">100</span>
+                                </div>
+                            </div>
+                            <div class="error" style="display: none;">最多不超过100个字。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>课程封面(450*250)</label>
+                @Html.Partial( "UploadFilePartialView", new UploadFileDto( )
+               {
+                   UploadId = "IdFile",
+                   KeyId = ViewBag.Id,
+                   UploadContentType = "jpg,png",
+                   ServerUrl = "File/UploadFile?parameter=450,250",
+                   Type = 0
+               } )
+            </div>
+            <div class="form-group">
+                <label>课程视频</label>
+                @Html.Partial( "UploadFilePartialView", new UploadFileDto( )
+               {
+                   UploadId = "CourseVedio",
+                   KeyId = ViewBag.Id,
+                   UploadContentType = "mp4",
+                   Type = 1
+               } )
+            </div>
+        </div>
+        <div class="box-footer col-xs-12">
+            <button type="button" class="btn btn-primary" style="float:right;" id="return">返回</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary" style="float:right;" id="sumbit">保存</button>
+        </div>
+    </form>
+</div>
+<script src="~/Libs/ueditor/ueditor.config.js"></script>
+<script src="~/Libs/ueditor/ueditor.all.js"></script>
+<script src="~/Libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="~/Views/CoursePackcourseInfo/AddOrEdit.js"></script>

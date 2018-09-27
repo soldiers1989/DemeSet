@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<input type="hidden" Id="OrderNo" name="OrderNo" value="@ViewBag.OrderNo" />
+<input type="hidden" Id="OrderAmount" name="OrderAmount" value="@ViewBag.OrderAmount" />
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/plugins/jQuery/jquery-3.0.0.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/md5.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var obj = new Object();
+        //订单编号
+        obj.OrderNo = $("#OrderNo").val();
+        //金额
+        obj.OrderAmount = $("#OrderAmount").val();
+        //取得支付宝平台地址
+        topevery.ajax({
+            url: "api/AliPay/GetAliPayUrl",
+            data: JSON.stringify(obj)
+        }, function (data) {
+            debugger
+            $("#alyPlay").append(data.Result.response.Body)
+            var bdhtml = "<div id=\"alyPlay\" style=\"display:none\">" + data.Result.response.Body + "</div>";
+            document.write(bdhtml);
+        });
+    })
+
+
+</script>

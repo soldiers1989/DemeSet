@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/zengzhi.css" rel="stylesheet"/>
+    <title>增值服务</title>
+</head>
+<body>
+<div class="zengz_box">
+    <h2>提示</h2>
+    <p style="padding: 4em; text-align: center; font-size: 1.4em; color: #666;" id="Message">该增值服务已被使用</p>
+    <dl class="zzqueding">
+        <dt><a href="/jjs/HomePage/Index">忽略</a></dt>
+        <dd><a href="/jjs/ValueAdded/Complaints?Code=@ViewBag.Code">投诉</a></dd>
+        <div class="clear"></div>
+    </dl>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var Message = decodeURI(topevery.getUrlParam("Message"));
+    $("#Message").html(Message);
+</script>

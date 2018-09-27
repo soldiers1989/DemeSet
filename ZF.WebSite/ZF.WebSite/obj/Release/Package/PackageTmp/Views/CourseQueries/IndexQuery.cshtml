@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "课程查询";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .right .last {
+        background: url(http://img.ablesky.cn/stats/images/searchresult/arrow_767e5f1f.png ) no-repeat 0 -35px;
+        height: 9px;
+        width: 9px;
+        display: inline-block;
+        vertical-align: middle;
+        overflow: hidden;
+        margin: -3px 0 0 5px;
+    }
+
+    .right .selected {
+        color: #f32426 !important;
+        text-decoration: none;
+    }
+
+    .right .down-ico {
+        background-position: 0px 0px;
+    }
+</style>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<div class="main">
+    <div class="crumb">
+        <div class="left">
+            <a href="~/Home/Index">首页</a> &gt;<a href="javascript:;" id="subjectName1"></a> <a href="javascript:;">全部课程</a>
+        </div>
+        <div class="right sort">
+            <a data="1" sord="Desc" href="javascript:;">综合排序<i class="last"></i></a>
+            <a data="2" sord="Desc" href="javascript:;">好评率<i class="last"></i></a>
+            <a data="3" sord="Desc" href="javascript:;">人气<i class="last"></i></a>
+            <a data="4" sord="Asc" href="javascript:;">价格<i class="last"></i></a>
+        </div>
+    </div>
+    <!-- 课程start -->
+    <div class="course" style="background: #f3f3f3;">
+        <script type="text/html" id="PopularCourses_html">
+            {{each Rows}}
+            <li class="layui-col-xs3">
+                <div>
+                    <a href="/CourseInfo/CourseInfo?courseId={{$value.Id}}" target="_blank" class="bookImg"><img src="{{$value.CourseIamge}}"></a>
+                    <a href="/CourseInfo/CourseInfo?courseId={{$value.Id}}" target="_blank" class="bookName" title="{{$value.CourseName}}">{{$value.CourseName}}</a>
+                    <p>
+                        <label>{{$value.SubjectName}}</label>
+                        {{if $value.Count}}
+                        <label>{{$value.Count}}购买</label>
+                        {{else}}
+                        <label>0购买</label>
+                        {{/if}}
+                    </p>
+                    <p class="cost">¥{{$value.FavourablePrice}}</p>
+                </div>
+            </li>
+            {{/each}}
+        </script>
+        <ul class="layui-col-space20  layui-row" id="PopularCourses"></ul>
+    </div>
+</div>
+<input type="hidden" Id="Rows" value="20" />
+<input type="hidden" Id="PageIndex" value="1" />
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/jquery.pagination.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/CourseQueries/IndexQuery.js"></script>

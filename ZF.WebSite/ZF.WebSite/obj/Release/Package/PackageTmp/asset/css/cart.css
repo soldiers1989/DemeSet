@@ -1,0 +1,26 @@
+.container{margin:30px auto;padding:0 20px 20px;background:#fff;overflow: hidden;}
+.topTit{height:56px;line-height: 56px;}
+.topTit label{font-size:18px; color:#313131;font-weight: bold;margin-right:40px;display: inline-block;}
+
+.layui-form-item .layui-form-checkbox[lay-skin=primary]{margin-top:0;}
+table{width:100%;margin-bottom: 15px;border:1px solid #d9d9d9;}
+table thead{background: #eaeaea;height:48px;line-height: 48px;font-size:14px; font-weight: bold;color:#313131;}
+
+td{padding:10px 0;}
+
+td img{margin-right:10px;color:#000000;font-size:14px;}
+.top{background: #faf4f4;}
+.num a{    width: 31px; height: 36px; display: inline-block; vertical-align: middle; border: 1px solid #9a9a9a; background: #fff; float: left; margin-left: -1px; text-align: center; line-height: 36px;
+    font-size: 22px;}
+.num .layui-input{display: inline-block;width:60px;float:left;border-color:#9a9a9a;margin-left: -1px;text-align:center;padding-left:0;}
+.remove{font-size: 30px;color: #f32426;}
+
+.yh{font-size:16px; color:#515151;line-height:28px;padding-right:30px;}
+.yh .layui-btn{margin-left:20px;}
+.card{color:#e4393c; font-size:12px; width:80px;height:24px;line-height:24px; background:url(../image/cart/card.png) no-repeat;display: block;text-indent:14px;}
+.card:hover{color:#f92629;}
+
+.normal{    padding-left: 100px; background: url(../image/cart/cart.png) 0 center no-repeat; color: #323232; font-size: 16px; height: 100px; padding-top: 55px; width: 170px;line-height: 30px; margin: 100px auto;}
+.link{font-size:16px;color:#0b3cf6;}
+
+.inline{display: inline;margin-left: 40px;}

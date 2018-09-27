@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "试卷结构新增(修改)";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <input type="hidden" id="sId" value="@ViewBag.subjectId" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>试卷结构名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="StuctureName" name="StuctureName">
+                </div>
+                <div class="form-group">
+                    <label>所属科目</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="SubjectId" name="SubjectId"></select>
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button  type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/Structure/AddOrEdit.js"></script>

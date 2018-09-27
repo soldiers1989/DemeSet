@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "科目知识点新增(修改)";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <input type="hidden" Id="SubjectId" name="SubjectId" value="@ViewBag.SubjectId" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>上级知识点</label>
+                    <input type="hidden" class="form-control" value="@ViewBag.ParentId" id="ParentId" name="ParentId">
+                    <input readonly="readonly" type="text" id="ParentName" value="@ViewBag.ParentName" name="ParentName" class="form-control" value="" onclick="showMenu(); return false;">
+                    <div id="menuContent" class="menuContent" style="display: none; position: absolute; z-index: 9999999; background-color: #fff; width: 100%;border-style:  solid; border-width: 1px;">
+                        <ul id="treeDemo" class="ztree"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>知识点名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="KnowledgePointName" name="KnowledgePointName">
+                </div>
+                <div class="form-group">
+                    <label>电子书页码</label>
+                    <input type="text" class="form-control" id="DigitalBookPage" name="DigitalBookPage">
+                </div>
+
+
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/SubjectKnowledgePoint/AddOrEdit.js"></script>

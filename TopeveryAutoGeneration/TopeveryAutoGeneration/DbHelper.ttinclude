@@ -1,0 +1,161 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="$(SolutionDir)\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="Oracle.ManagedDataAccess.Client" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Collections.Generic"#>
+<#@ output extension=".cs" #>
+
+<#+  
+    public class ModelManager
+    {
+        /// <summary>
+        /// 数据库连接字符串
+        /// </summary>
+       private const string CONNECTION_STRING = "Data Source=192.168.2.208;Initial Catalog=PressData;User ID=sa;Password=123456;";
+        /// <summary>
+        /// 用户信息表名
+        /// </summary>
+        private const string PERSONINFO_TABLE_NAME = "USERINFO";
+        /// <summary>
+        /// 根据表名查询表结构信息
+        /// </summary>
+        private const string SELECT_SCHEMA_BY_TABLE_NAME = @"SELECT 
+		cs.name 字段名,
+		cs.xtype 数据类型,
+		cs.length 长度,
+		cs.isnullable 允许空值,
+		pr.value 备注,
+		tb.name 表名
+		FROM sys.tables tb 
+		inner JOIN sys.syscolumns  cs ON tb.object_id = cs.id
+		inner JOIN sys.extended_properties pr  ON tb.object_id=pr.major_id
+		AND cs.colid=pr.minor_id and tb.name like '%t_Order_Institutions%'  AND tb.name = '{0}'";
+																	
+        /// <summary>
+        /// 获得数据连接
+        /// </summary>
+        /// <returns></returns>
+        private SqlConnection GetConnection()
+        {
+            return new SqlConnection(CONNECTION_STRING);
+        }
+
+        /// <summary>
+        /// 得到当前用户的所有表名
+        /// </summary>
+        /// <returns></returns>
+        public List<Class> GetTableList(string sqlwhere = "")
+        {
+            string sql = "SELECT tb.*,pr.value FROM sys.tables  tb LEFT JOIN sys.extended_properties pr ON tb.object_id=pr.major_id where 1=1 and tb.name like '%t_Order_Institutions%' " + sqlwhere;
+            DataTable dt = SqlHelper.ExecuteDataTable(sql);
+            List<Class> list = new List<Class>();
+            if (dt!=null&&dt.Rows.Count>0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    list.Add(new Class{name=dt.Rows[i]["Name"].ToString(),value=dt.Rows[i]["value"].ToString()});
+                } 
+            }
+            return list;
+         }
+
+		 public class Class{
+			 public string name{get;set;}
+		 	 public string value{get;set;}
+		 }
+
+        /// <summary>
+        /// 释放连接
+        /// </summary>
+        /// <param name="con"></param>
+        private void ReleaseConnection(SqlConnection con)
+        {
+            if (con != null)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+
+        public DataTable GetTableSchema(string tableName)
+        {
+            DataTable dt;
+            using (SqlConnection con = GetConnection())
+            {
+                con.Open();
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = string.Format(SELECT_SCHEMA_BY_TABLE_NAME,tableName);
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet(); 
+                adapter.Fill(ds);
+                dt = ds.Tables[0];
+            }
+
+            return dt;
+        }
+
+     
+    }
+#>
+
+<#+ 
+    public class SqlHelper
+    {
+
+        private static string SqlConnectionStr = "Data Source=192.168.2.208;Initial Catalog=PressData;User ID=sa;Password=123456";
+        public static DataTable ExecuteDataTable(string sql, params SqlParameter[] paramList)
+        {
+            using (SqlConnection conn = new SqlConnection(SqlConnectionStr))
+            {
+                conn.Open();
+                using (SqlCommand command = conn.CreateCommand())
+                {
+                    command.CommandText = sql;
+                    command.Parameters.AddRange(paramList);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        public static int ExecuteNonQuery(string sql, params SqlParameter[] paramList)
+        {
+            using (SqlConnection conn = new SqlConnection(SqlConnectionStr))
+            {
+                conn.Open();
+                using (SqlCommand command = conn.CreateCommand())
+                {
+                    command.CommandText = sql;
+                    command.Parameters.AddRange(paramList);
+                    return command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static object ExecuteScalar(string sql, params SqlParameter[] paramList)
+        {
+            using (SqlConnection conn = new SqlConnection(SqlConnectionStr))
+            {
+                conn.Open();
+                using (SqlCommand command = conn.CreateCommand())
+                {
+                    command.CommandText = sql;
+                    command.Parameters.AddRange(paramList);
+                    return command.ExecuteScalar();
+                }
+            }
+        }
+    }
+
+ #>

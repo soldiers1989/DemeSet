@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        body, img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="dddd" style="display: none;">
+        <img src="http://dashboard.appcan.cn/images/wechatdownloadnotice.jpg" alt="">
+    </div>
+</body>
+</html>
+<script src="Js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    var ua = navigator.userAgent.toLowerCase();
+    var isWeixin = ua.indexOf('micromessenger') != -1;
+    if (isWeixin) {
+        $(".dddd").show();
+    } else {
+        window.location.href = "http://zgrskspx.class.com.cn/00.00.0001.apk";
+    }
+</script>

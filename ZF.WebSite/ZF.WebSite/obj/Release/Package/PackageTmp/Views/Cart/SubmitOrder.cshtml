@@ -1,0 +1,257 @@
+﻿
+@{
+    ViewBag.Title = "提交订单";
+    Layout = null;
+}
+
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/public.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/base.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/checkOut.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/buyConfirm.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/css/zui.min.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/css/zui.lite.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/SubmitOrderStyle.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_talk.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/core.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_list.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_note.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_noteIndex.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_reply.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Shared/_Layout2Style.css" rel="stylesheet" />
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery-2.2.3.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/ajax.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/vue.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/reuglar.0.3.1.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js"></script>
+<style>
+    .electronicInvoice span {
+        margin-left: 5px;
+        font-weight: 300;
+        font-size: 15px;
+    }
+
+    .electronicInvoice input {
+        height: 30px;
+        border: 1px solid darkgrey;
+        margin: 10px;
+        width: 290px;
+        border-right: #ffffff 0px solid;
+        border-top: #ffffff 0px solid;
+        font-size: 10pt;
+        border-left: #ffffff 0px solid;
+        border-bottom: #c0c0c0 1px solid;
+        background-color: #ffffff;
+    }
+</style>
+<div class="border_top_cart">
+    <input type="hidden" value="@ViewBag.parment" id="hiparament" />
+    <input type="hidden" value="@ViewBag.cartcount" id="hicartcount" />
+    <div class="container payment-con">
+        <form target="_blank" action="#" id="pay-form" method="post">
+            <div class="order-info" style="margin-top:40px;">
+                <div class="msg">
+                    <h3>您的订单已提交成功！</h3>
+                    <p></p>
+                </div>
+                <div class="info">
+                    <p>
+                        金额：<strong id="amount" name="" style="color:red;">0元</strong>
+                    </p>
+                    <p>
+                        订单：<strong id="orderno"></strong>
+                    </p>
+                </div>
+                <div class="icon-box">
+                    <i class="iconfont"><img src="~/Images/CartImg/yes_ok.png"></i>
+                </div>
+                <input type="hidden" id="hiOrderNO" />
+            </div>
+            <div class="xm-plain-box">
+            </div>
+            <div id="accordion">
+                <p>
+                    <a href="#collapseExample3" data-toggle="collapse" data-parent="#accordion" class="btn btn-link collapsed">订单详情</a>
+                </p>
+                <div class="collapse" id="collapseExample3" style="border:1px solid #E4E4E4;">
+                    <table style="width:100%;">
+                        <thead class="checkout-goods-list">
+                            <tr style="height:50px;">
+                                <td class="td1"></td>
+                                <td class="td2">
+                                    商品名称
+                                </td>
+                                <td class="td3">
+                                    购买价格
+                                </td>
+                                <td class="td4">
+                                    购买数量
+                                </td>
+                                <td class="td4">
+                                    有效天数
+                                </td>
+                                <td class="td5">
+                                    小计（元）
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody id="datas"></tbody>
+
+                    </table>
+                    <script id="datainfo" type="text/html">
+                        {{each Result}}
+                        <tr name="{{$value.Id}}">
+                            <td></td>
+                            <td>{{$value.CourseName}}</td>
+                            <td>{{$value.FavourablePrice}}</td>
+                            <td>{{$value.Num}}</td>
+                            {{if $value.ValidityPeriod===0}}
+                            <td>永久有效</td>
+                            {{else}}
+                            <td>{{$value.ValidityPeriod}}</td>
+                            {{/if}}
+                            <td>{{$value.Amount}}</td>
+                        </tr>
+                        {{/each}}
+                    </script>
+
+                </div>
+            </div>
+            <div style="height:20px;"></div>
+            <span id="pathval" style="display:none;" class="span">
+            </span>
+            <div class="checkout-steps" id="pathshow" style="display:none;">
+                <div class="step-tit">
+                    <h3>收件人信息</h3>
+                    <div class="extra-r">
+                        <a href="#none" class="ftx-05 J_consignee_global" onclick="alertAddAddressDiag()">新增收件地址</a>
+                        <input type="hidden" id="del_consignee_type" value="0">
+                    </div>
+                </div>
+                <div class="step-cont" id="overflowShow">
+                    <div id="consignee-addr" class="consignee-content">
+                        <div class="ui-scrollbar-wrap" style="position: relative; overflow: hidden; width: 938px; height: 168px; z-index: 10;">
+                            <div class="consignee-scrollbar" style="left: 0px; top: 0px; overflow: hidden; position: absolute; height: 294px;">
+                                <div class="ui-scrollbar-main">
+                                    <div class="consignee-scroll">
+                                        <div class="consignee-cont" id="consignee1" style="height: 294px;">
+                                            <ul id="consignee-list"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-scrollbar-bg" style="position: absolute; left: 927px; top: 0px; width: 11px; z-index: 11; height: 168px; display: block;">
+                            </div>
+                            <div class="ui-scrollbar-item-consignee" style="position: absolute; left: 927px; top: 2px; width: 9px; z-index: 12; height: 96px;"></div>
+                        </div>
+                    </div>
+                    <div class="addr-switch switch-on hide" id="consigneeItemAllClick" onclick="show_ConsigneeAll()">
+                        <span>更多地址</span><b></b>
+                    </div>
+                    <input type="hidden" id="consigneeList_giftSenderConsigneeMobile" value="">
+                    <input type="hidden" id="consigneeList_giftSenderConsigneeName" value="">
+                </div>
+
+                <script type="text/html" id="path_html">
+                    {{if length>0}}
+                    {{each}}
+                    <li class="ui-switchable-panel ui-switchable-panel-selected" style="display: list-item;" id="consignee_index_138641522" selected="selected" c_li_custom_label="consignee_li">
+                        {{if $value.DefaultAddress===1}}
+                        <div class="consignee-item item-selected" name="{{$value.Id}}" onclick="enditiClass(this)" id="consignee_index_div_138641522">
+                            <span limit="8" title="{{$value.Contact}}">{{$value.Contact}}</span><b></b>
+                        </div>
+                        {{else}}
+                        <div class="consignee-item" onclick="enditiClass(this)" name="{{$value.Id}}" id="consignee_index_div_138641522" consigneetype="0">
+                            <span limit="8" title="{{$value.Contact}}">{{$value.Contact}}</span><b></b>
+                        </div>
+                        {{/if}}
+                        <div class="addr-detail">
+                            <span class="addr-name" limit="6" title="{{$value.Contact}}">{{$value.Contact}}</span>
+                            <span class="addr-info" limit="45" title="{{$value.Province}} {{$value.City}} {{$value.Town}} {{$value.DetailedAddress}}">{{$value.Province}} {{$value.City}} {{$value.Town}} {{$value.DetailedAddress}}</span>
+                            <span class="addr-tel">{{$value.ContactPhone}}</span>
+                            {{if $value.DefaultAddress===1}}
+                            <span class="addr-default">默认地址</span>
+                            {{/if}}
+                        </div>
+                        <div class="op-btns" consigneeid="138641522" isoldaddress="false">
+                            {{if $value.DefaultAddress===0}}
+                            <a href="#none" name="{{$value.Id}}" onclick="makeAddressAllDefaultByoverseas(this)" class="ftx-05 edit-consignee" fid="138641522" clstag="pageclick|keycount|trade_201602181|6">设置为默认地址</a>
+                            {{/if}}
+                            <a href="#none" class="ftx-05 edit-consignee" fid="138641522" name="{{$value.Id}}" onclick="alertUpdateAddressDiagByoverseas(this);" clstag="pageclick|keycount|trade_201602181|6">编辑</a>
+                            <a href="#none" onclick="alertDelAddressDiag(this);" id="{{$value.Id}}" class="ftx-05 del-consignee" fid="138641522" clstag="pageclick|keycount|trade_201602181|5">删除</a>
+                        </div>
+                    </li>
+                    {{/each}}
+                    {{else}}
+                    <li class="ui-switchable-panel ui-switchable-panel-selected" style="display: list-item;" id="consignee_index_138641522" selected="selected" c_li_custom_label="consignee_li">
+                        暂无收货地址
+                    </li>
+                    {{/if}}
+                </script>
+            </div>
+            <div style="height:20px;"></div>
+
+            <div id="electronicInvoice">
+                <p>
+                    <label onclick="getElectronicInvoiceInfo()"> <a href="#electronicInvoiceInfo" data-toggle="collapse" data-parent="#electronicInvoice" class="btn btn-link collapsed">电子发票</a></label>
+                </p>
+                <div class="collapse" id="electronicInvoiceInfo" style="border:1px solid #E4E4E4;background-color: white;height: 50px;">
+                    <div class="electronicInvoice"><span> 抬头:</span><input type="text" id="txtInvoiceHeader" /> <span> 邮箱:</span><input type="text" id="txtInvoiceMailbox" /> <span> 纳税人识别号:</span><input type="text" id="txtTaxpayerIdentificationNumber" /></div>
+                </div>
+            </div>
+
+            <div style="height:20px;"></div>
+
+            <div class="payArea">
+                <div id="j-main" class="f-cb">
+                    <div class="pattern" id="auto-id-1522745466802">
+                        <p class="lb">支付方式</p><div class="j-pattern auto-1522745466701-parent">
+                            <div class="f-pr u-body auto-1522745466701" id="auto-id-1522745466811">
+                                <div class="u-payList f-cb">
+                                    <div class="u-payList-row f-cb">
+                                        <div class="j-payBlock f-fl pay0 f-pr" id="zfbdiv"><span class="f-pa f-ib check"></span></div>
+                                        <div class="j-payBlock f-fl payweixin f-pr active" id="wxdiv">
+                                            <img class="wxlogo f-pa" src="//nos.netease.com/test-edu-image/1BD9F69D6760CE1508D2269864AA54F8.png" alt="微信logo">
+                                            <span class="f-pa f-ib check"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="foot f-cb">
+                    <a class="goPay f-fl" href="javascript:OrderClick()" target="_blank" id="payBtn">去支付</a>
+                    <div id="j-payTip" class="payTip f-fl">
+                        下单后，请在24小时内完成支付。超出24小时再支付可能导致购买失败，需重新下单购买。
+                    </div>
+                    <div class="payHelp f-fr">
+                        <span class="help-txt">支付遇到问题？联系云课堂客服获得帮助。</span>
+                    </div>
+                </div>
+                <form action="/pay/orderRedirectPage.htm" name="payForm" id="payForm">
+                    <input type="hidden" name="orderUrl" id="toPayUrl">
+                </form>
+                <div class="actuallyPay">
+                    <div class="treaty f-cb">
+                        <input type="checkbox" checked="" class="j-agree" id="agreePay">
+                        <label for="j-agree">我已经阅读并同意</label>
+                        <a id="j-treatyLink">《云课堂用户付费协议》</a>
+                        <p class="treatyFb f-dn j-treatyFb">请先阅读并勾选《云课堂用户付费协议》</p>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/js/zui.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/js/zui.lite.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/SubmitOrder.js"></script>

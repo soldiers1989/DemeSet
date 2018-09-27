@@ -1,0 +1,35 @@
+﻿<div class="box-body">
+    <div class="col-xs-12">
+        <div class="form-group" style="margin-top: 15px;">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <input type="hidden" Id="Callback" name="Callback" value="@ViewBag.Callback" />
+            <input type="hidden" Id="RowIndex" name="RowIndex" value="@ViewBag.RowIndex" />
+            <input type="hidden" Id="Number1" name="Number1" value="@ViewBag.Number1" />
+            <input id="NumberChoose" placeholder="数量" name="NumberChoose" type="number" min="1" value="1" class="form-control" style="width: 179px; display: inline-block" />
+            <button class="btn btn-primary" onclick="save();" id="sumbit">确认</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function save() {
+        if ($("#NumberChoose").val()) {
+            if (/^\+?[1-9][0-9]*$/.test($("#NumberChoose").val())) {
+                if ($("#Number1").val()) {
+                    if (parseInt($("#Number1").val()) < parseInt($("#NumberChoose").val())) {
+                        layer.alert("移除部分数量不能大于已添加数量!");
+                    } else {
+                        var callback1 = parent.eval($("#Callback").val());
+                        callback1($("#Id").val(), $("#RowIndex").val(), $("#NumberChoose").val());
+                    }
+                } else {
+                    var callback = parent.eval($("#Callback").val());
+                    callback($("#Id").val(), $("#RowIndex").val(), $("#NumberChoose").val());
+                }
+            } else {
+                layer.alert("数量必须为整数!");
+            }
+        } else {
+            layer.alert("数量不能为空!");
+        }
+    }
+</script>

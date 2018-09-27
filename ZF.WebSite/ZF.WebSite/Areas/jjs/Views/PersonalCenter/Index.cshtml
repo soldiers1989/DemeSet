@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+    <title>个人中心</title>
+</head>
+<body>
+    <div class="ueer-box">
+        <div class="user-logobg">
+        </div>
+        <script type="text/html" id="question_common1">
+            <div class="user-logo">
+                <dt class="ures"><img src="{{HeadImage}}"></dt>
+                <dd>
+                    <span>{{NickNamw}}</span>
+                    <span>我的专业：{{SubjectName}}<a href="/jjs/Subject/Index?SubjectId={{SubjectId}}" class="zygh">更换专业</a></span>
+                </dd>
+                <div class="clear"></div>
+            </div>
+        </script>
+        <!-- 导航开始-->
+        <div class="user-nav" id="user-nav" style="display: none;">
+            <dl><a href="~/jjs/RecentStudy/Index"><dt><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user02@2x.png"></dt><dd>最近练习</dd></a></dl>
+            <dl id="zzfw" style="display: none;" class="line"><a href="~/jjs/MyCourse/Index"><dt><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user01@2x.png"></dt><dd>我的课程</dd></a></dl>
+            <dl><a href="~/jjs/MyCollection/Index"><dt><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user03@2x.png"></dt><dd>我的收藏</dd></a></dl>
+            <div class="clear"></div>
+        </div>
+        <!-- 导航结束-->
+        <div class="user-line3px"></div>
+        <div class="user-list">
+            <ul>
+                <li id="wddd" style="display: none;"><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user11.png" alt=""><a href="~/jjs/PersonalCenter/MyOrder">我的订单</a></li>
+                <li><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user12.png" alt=""><a href="~/jjs/MyCourse/MyQuestion">机考仿真</a></li>
+                <li><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user06.png" alt=""><a href="~/jjs/MyErrorSubject/Index">错题集</a></li>
+                <li><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user10.png" alt=""><a href="~/jjs/MyCollectedSubject/Index">收藏试题</a></li>
+                <li><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user07.png" alt=""><a href="~/jjs/ChapterExercise/Index">练习记录</a></li>
+                <li><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user07.png" alt=""><a href="~/jjs/MyPaperTest/Index">测评记录</a></li>
+                <li><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user05.png" alt=""><a href="~/jjs/PersonalCenter/SecurityTwoCode">输入防伪码</a></li>
+                <li id="wdkj" style="display: none;" ><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user05.png" alt=""><a href="/jjs/PersonalCenter/MyCard">我的卡券</a></li>
+                <li class="line3">
+                    <a href="/jjs/PersonalCenter/PersonalInformation">
+                        <img src="~/Areas/jjs/resources/images/user13.png" alt="">个人信息
+                    </a>
+                </li>
+                <li id="shdz" style="display: none;" class="line3"><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/user04.png" alt=""><a href="/jjs/PersonalCenter/MyHandOutPath">收货地址</a></li>
+                <li>
+                    <a href="~/jjs/PersonalCenter/Setting">
+                        <img src="~/Areas/jjs/resources/images/user09.png" alt="">设置
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="height46"></div>
+        <!--底部导航开始-->
+        <div class="header-nav">
+            <ul>
+                <li><a href="~/jjs/HomePage/Index" class="img01">首页</a></li>
+                <li style="display: none;"><a href="~/jjs/Information/Index" class="img02">最新资讯</a></li>
+                <li class="hover"><a href="#" class="img03">个人中心</a></li>
+            </ul>
+        </div>
+        <!--底部导航结束-->
+    </div>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/PersonalCenter/Index.js?v=1.0"></script>

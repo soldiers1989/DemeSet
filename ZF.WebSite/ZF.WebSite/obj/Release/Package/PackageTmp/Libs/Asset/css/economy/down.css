@@ -1,0 +1,7 @@
+.textContent{padding-left:80px;margin-top:30px;}
+.textChange dt{margin:20px 0; color: #666666;font-size:20px; font-weight: bold;}
+.textContent ul li{width:inherit;overflow:hidden;}
+.textContent .downbox li a{display:block;padding-left:35px;margin-bottom:20px;height:30px; line-height: 30px;}
+.wordImg{background:url(../../image/economy/down/pdf.png) 0 center no-repeat;}
+.calcImg{background:url(../../image/economy/down/calc_logo2.png) 0 center no-repeat;}
+.htmlImg{background:url(../../image/economy/down/html.png) 0 center no-repeat;}

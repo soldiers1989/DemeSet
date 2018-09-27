@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id"/>
+            <input hidden="hidden" Id="CourseId" name="CourseId" value="@ViewBag.CourseId" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>防伪码</label><span class="text-danger">*</span>
+                    <input id="Code" name="Code" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>是否增值服务</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" id="IsValueAdded" name="IsValueAdded">
+                        <option value="0" selected="selected">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/CourseSecurityCode/AddOrEdit.js"></script>

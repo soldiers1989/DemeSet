@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/zengzhi.css" rel="stylesheet" />
+    <title>增值服务</title>
+</head>
+<body>
+    <div class="zengz_box">
+        <h2>增值服务</h2>
+        <ul id="message"></ul>
+        <script type="text/html" id="message_html">
+            {{if courseCount>0}}
+            <li class="zzbg_01">
+                恭喜获得{{#courseCount}}套课程
+                <p>
+                    <a href="/jjs/MyCourse/Index">请到个人中心/我的课程查看</a>
+                </p>
+            </li>
+            {{/if}}
+            {{if tikuCount>0}}
+            <li class="zzbg_02">
+                恭喜获得{{#tikuCount}}套机考仿真练习
+                <p>
+                    <a href="/jjs/MyCourse/MyQuestion">请到个人中心/仿真练习查看</a>
+                </p>
+            </li>
+            {{/if}}
+            {{if cardCount>0}}
+            <li class="zzbg_03">
+                恭喜获得{{#pic}}元优惠券
+                <p>
+                    <a href="/jjs/PersonalCenter/MyCard">请到个人中心/我的卡券查看</a>
+                </p>
+            </li>
+            {{/if}}
+            <p style="line-height: 3em; padding-left: 2em; font-size: 1.1em;">*增值服务与该微信号已唯一绑定 </p>
+        </script>
+        <dl class="zzqueding">
+            <dt><a href="/jjs/HomePage/Index">取消</a></dt>
+            <dd><a href="/jjs/MyCourse/Index">确定</a></dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var Message = decodeURI(topevery.getUrlParam("Message"));
+    var code = Message.split(",");
+    var obj = new Object();
+    obj.courseCount = parseInt(code[0]);
+    obj.tikuCount = parseInt(code[1]);
+    obj.cardCount = parseInt(code[2]);
+    obj.pic = parseInt(code[3]);
+    if (topevery.IsValueAddedWebApp) {
+        obj.cardCount = 0;
+        obj.courseCount = 0;
+    }
+    $("#message").html(template("message_html", obj));
+</script>

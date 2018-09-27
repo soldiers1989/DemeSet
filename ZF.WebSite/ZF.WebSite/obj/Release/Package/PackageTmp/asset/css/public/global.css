@@ -1,0 +1,106 @@
+﻿@charset "utf-8"; html{color:#000; background:#FFF; }
+body,a,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,footer,article,aside,header,section,nav,figure,figcaption,hgroup{margin:0; padding:0;  font-family:"Microsoft YaHei";}
+body{    font-size: 14px; font-family:"Microsoft YaHei";} 
+table{border-collapse:collapse; border-spacing:0; }
+fieldset,img{border:0; }
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal; }
+ol,ul{list-style:none; }
+caption,th{text-align:left; }
+h1,h2,h3,h4,h5,h6{font-weight:normal; }
+q:before,q:after{content:''; }
+abbr{border:0; font-variant:normal; }
+sup{vertical-align:text-top; }
+input,textarea,select{font-family:inherit; font-size:inherit; font-weight:inherit; *font-size:100%; }
+legend{color:#000; }
+input{cursor:pointer;}
+a{text-decoration: none;outline:none; color:#555; text-decoration:none;}
+a:hover,a:active{ text-decoration:none; opacity: 0.8;cursor:pointer;}
+input:focus,textarea:focus,button,button:active{outline:none;}
+input,a:active{hidefocus:true;}/* ie8点击去掉虚线框 */
+.ui-row:after {content: ""; display: block; height:0; clear:both; visibility: hidden;}
+.ui-row { *zoom:1; }
+html,body{height:100%;background: #f3f3f3;min-width:1024px;}
+img{max-width:100%;}
+.main{width:1000px;margin:0 auto;max-width: 100%;}
+@media screen and (min-width:1227px){
+	.main{width:1220px;}
+}
+
+
+
+/*头部start*/
+.header{position:relative;margin-bottom: -100px;padding:16px 0;background:#fff;box-shadow: 0px 5px 8px 0px 
+		rgba(0, 0, 0, 0.09);}
+.header .logo{float:left;}
+.logo span{	font-size: 22px;color:#282828;padding:0 10px;border-right:1px solid #9a9a9a;}
+.logo label{font-size:16px; color:#2e2e2e;}
+.nav{float:right;}
+.nav ul{float:left;}
+.nav ul li{float:left;padding: 14px 0;}
+.navIn a{font-size:16px;display:block; color:#4c4c4c;height:35px;line-height:35px;padding:0 20px;margin:0 10px;}
+
+.navIn .cur a,.navIn a:hover{background:#f32426;border-radius:50px;color:#fff;}
+.nav .person a{font-size:14px; color:#555555;height:35px;line-height:35px; margin:0 15px;}
+.person img{width:40px;height:40px;border-radius: 50px;}
+.nav .person .cart{color:#f32426;position:relative;}
+.person li{position:relative;}
+.layui-icon-cart{font-size:27px;position:relative;}
+.layui-icon-cart em{    position: absolute; color: #fff; background: #f32426; border-radius: 20px; font-size: 12px; top: -3px; line-height: 17px; height: 17px; padding: 0 4px; right: -10px;}
+.nav .drop{ display: none; top:40px;  position: absolute; width: 134px; z-index: 999; text-align: center;padding:5px;}
+.drop .dropIn{background: #fff;box-shadow: 0 0 10px #ccc;margin-top:13px;}
+.nav .person .drop a{    display: block;color: #333;}
+.drop .jian{ width: 0; height: 0; border-style: dashed dashed solid dashed; border-color: transparent transparent #fff transparent; overflow: hidden; cursor: pointer; position: absolute; top: 0; margin-top: -3px; border-width: 11px; left: 50%; margin-left: -11px;}
+.drop::before{content:""; width: 0; height: 0; border-style: dashed dashed solid dashed; border-color: transparent transparent #ccc transparent; overflow: hidden; cursor: pointer; position: absolute; top: 0; margin-top: -4px; border-width: 11px; left: 50%; margin-left: -11px;}
+.personCenter:hover .drop{display:block;}
+.curSubject{margin-left:30px;font-size:16px;}
+.layui-input{border:none;font-size:16px; color:#2f2f2f;}
+.layui-form-select dl dd{font-size:14px;}
+.layui-form-select dl dd.layui-this{background: #f32426}
+/*头部end*/
+.content{min-height:100%;}
+.contentIn{padding:100px 0 210px;min-height: 700px;}
+.title{   padding:55px 0 42px; text-align: center; font-size: 22px; letter-spacing: 10px; color: #434a51;}
+.footer{position: relative; margin-top: -210px; background: #ffffff; overflow: hidden; padding: 70px 0 30px;}
+.footer .layui-col-xs3{border-right:1px solid #c4c4c4;min-height: 110px;}
+.flogo{padding:24px 0;}
+.flogo a{font-size:16px; color:#2e2e2e;}
+.flogo span{display: inline-block; margin-left: 10px;}
+.footer .sao{text-align:center;}
+.fnav li{float:left;}
+.fnav a{font-size:14px; color:#434343;display: block;display: inline-block; margin-right:35px;line-height:24px;}
+.fnav .copyright{font-size:14px; color:#424141;clear:both;}
+.fnav .copyright label{font-size:12px; color:#444444;}
+.fnav,.copyright{margin-left:104px;}
+.footer .third{padding:33px 0;}
+/*footen end*/
+
+.search{position:relative;}
+.search .layui-input{height:30px; line-height: 30px; border-radius:20px;}
+.search .layui-icon{position: absolute; right: 8px; top: 50%; font-size: 20px; margin-top: -10px; color: #757575;}
+
+.crumb{padding:30px 0;overflow: hidden;}
+.crumb a{color:#07111b;font-size:18px;}
+
+.subTit label{font-size:18px; color:#191919;border-bottom: 2px solid #f32426;    line-height: 35px;padding: 5px 0;}
+.subTit{margin-bottom: 10px;border-bottom: 1px solid #d9d9d9;}
+
+.bookName{text-align:left;font-size: 18px; color: #07111b; margin: 15px 0; height: 50px; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; word-break: break-all; display: -webkit-box; -webkit-box-orient: vertical;}
+.bookImg{height:170px;overflow:hidden;border-radius:5px;display:block;}
+.bookImg img{width:100%;height:100%;}
+.cost{color:#fd3537;font-size:18px; font-weight: bold;margin-top:5px;}
+.t_center{text-align:center;}
+.t_right{text-align:right;}
+.wrap{height:100%;overflow-y:auto;}
+.btnWrap{position: relative; margin-top: -50px; height: 38px; padding: 6px 0; text-align: center; background: #fff;}
+.windowIn{padding:10px 10px 60px 10px;}
+.red{color:#f32426!important;}
+.pd2{padding:20px;}
+.layui-btn-danger{background: #f32426;}
+.left{float:left;}
+.right{float:right;}
+.inputWrap{padding:20px 30px 0 0;}
+.error_msg{    background: #ffe9e9; color: red; text-indent: 10px; line-height: 21px;}
+
+/*layui*/
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{border-bottom: 2px solid #e2231a;}
+.layui-tab-brief>.layui-tab-title .layui-this{color:#e2231a;}

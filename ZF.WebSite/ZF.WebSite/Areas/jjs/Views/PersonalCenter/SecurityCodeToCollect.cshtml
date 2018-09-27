@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <title>领取增值服务</title>
+</head>
+<body class="saoma_bg">
+    <div class="saoma">
+        <a href="javascript:;" id="sys"><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/saoma2.png"></a>
+        <p class="fwmfont"><a href="/jjs/PersonalCenter/SecurityTwoCode">不想扫码？试试输入防伪码！</a></p>
+    </div>
+    <script type="text/javascript" src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/top/koala.min.1.5.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jweixin-1.0.0.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/PersonalCenter/SecurityCodeToCollect.js?v=1.0"></script>
+</body>
+
+</html>

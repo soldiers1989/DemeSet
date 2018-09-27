@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "我的购物车";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<iframe id="mainIframe" width="100%;"  style="min-height: 800px;" name="mainIframe" src="Indexbak" frameborder="0" scrolling="no" onload="setIframeHeight(this)"></iframe>
+<script>
+    function setIframeHeight(iframe) {
+        if (iframe) {
+            var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+            if (iframeWin.document.body) {
+                iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+            }
+        }
+    };
+</script>

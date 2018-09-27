@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "编辑课程章节";
+}
+
+<input hidden="hidden" id="CourseId" value="@ViewBag.CourseId" />
+<div class="box">
+    <form id="ChapterEditSumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.ChapterId" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>章节名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="CapterName" name="CapterName">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>章节编码</label><span class="text-danger">*</span>
+                    <input id="CapterCode" name="CapterCode" class="form-control" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>排序号</label> <span class="text-danger">*</span>
+                    <input id="OrderNo" type="number" name="OrderNo" min="0" max="99" class="form-control" />
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" style="float:right;" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/CourseChapter/EditCourseChapter.js"></script>

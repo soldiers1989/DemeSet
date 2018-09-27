@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "课程分类";
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" type="text/css">
+    <style>
+        .kcfl_mc span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="kcfl" id="ProjectAll">
+    </div>
+    <div class="clear"></div>
+    <div class="clear"></div>
+    <!--底部导航开始-->
+    <div class="header-nav">
+        <ul>
+            <li><a href="~/jjs/HomePage/Index" class="img01">首页</a></li>
+            <li style="display: none;" class="hover"><a href="~/jjs/Information/Index" class="img02">最新资讯</a></li>
+            <li><a href="~/jjs/PersonalCenter/Index" class="img03">个人中心</a></li>
+        </ul>
+    </div>
+    <!--底部导航结束-->
+</body>
+</html>
+<script type="text/html" id="ProjectAll_html">
+    {{each Result}}
+    <div class="kcfl_new">
+        <div class="kcfl_new_h3">
+            <h3>{{$value.ProjectName}}</h3>
+        </div>
+        <div class="kcfl_mc">
+            {{each $value.SubjectModel}}
+            {{ if subjectId==$value.Id}}
+            <a href="#" subjectId="{{$value.Id}}"><span class="kjkc_hover">{{$value.SubjectName}}</span></a>
+            {{else}}
+            <a href="#" subjectId="{{$value.Id}}"><span>{{$value.SubjectName}}</span></a>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/Subject/Class.js?v=1.0"></script>
+

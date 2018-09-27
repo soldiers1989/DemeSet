@@ -1,0 +1,220 @@
+﻿.f-fr {
+    float: right;
+}
+
+.f-pr {
+    position: relative;
+}
+
+.f-fl {
+    float: left;
+}
+
+
+.f-cb, .f-cbli li {
+    zoom: 1;
+}
+
+.f-pa {
+    position: absolute;
+}
+
+.m-yktNav .u-navsearchUI.off .box input {
+    background-color: #eee;
+}
+
+
+element.style {
+}
+.m-yktNav .u-navsearchUI.off .box input {
+    background-color: #eee;
+}
+.m-yktNav .u-navsearchUI .box input {
+     background-color: #fff; 
+     height: 34px; 
+     line-height: 34px; 
+     color: #666; 
+    font-size: 14px;
+    overflow: hidden;
+    width: 100%;
+    text-indent: 5px;
+    border: none;
+}
+
+.f-thide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+}
+
+.m-yktNav .u-navsearchUI .search-type {
+    line-height: 34px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.submitOne {
+    display: block;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    background-image: url('../../Images/Layout2/34BB5668E77F7D10A8581CBFAB5EA5CF.png');
+}
+
+.f-pa {
+    position: absolute;
+}
+
+.m-yktNav .userinfo .login {
+    width: 435px;
+}
+
+.m-yktNav .userinfo .login .username {
+    max-width: 450px;
+    float: right;
+    color: #fff;
+}
+.m-yktNav .userinfo {
+    padding: 15px 0;
+    height: 30px;
+    line-height: 30px;
+}
+
+.m-yktNav .userinfo .login .line {
+    float: right;
+}
+.m-yktNav .userinfo .login .name {
+    float: right;
+    color: #999;
+    text-align: right;
+    margin: 0 0 0 10px;
+}
+
+.advertisement_box {
+    width: 140px;
+    height: 260px;
+    bottom: 190px;
+    left: 0;
+    z-index: 200;
+}
+
+.m-yktNav .userinfo .login .mystudy {
+    float: right;
+    color: #fff;
+    margin: 0 30px 0 40px;
+    font-size: 14px;
+}
+
+.m-yktNav .g-flow {
+    width: 1205px;
+}
+/*.g-doc, .g-wrap, .g-flow, .g-superflow, .g-all {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+}*/
+
+.m-yktNav .u-navsearchUI {
+    position: relative;
+    margin: 12px 0 0 0;
+    background-color: #fff;
+    float: right;
+    height: 34px;
+    border: 1px solid #49af4f;
+    padding-right: 34px;
+    width: 296px;
+    -moz-transition: width 0.2s ease-out 0s;
+    -o-transition: width 0.2s ease-out 0s;
+    -webkit-transition: width 0.2s ease-out 0s;
+    transition: width 0.2s ease-out 0s;
+}
+
+.m-yktNav .userinfo .login .name .face {
+    width: 30px;
+    height: 30px;
+}
+
+
+.m-yktNav .u-navsearchUI .search-type .bottom-arr {
+    content: " ";
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-width: 4px 3px;
+    border-top-color: #666;
+    display: inline-block;
+    right: 0;
+    top: 16px;
+}
+
+.m-yktNav .u-navsearchUI .box label {
+    height: 36px;
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    color: #aaa;
+    font-size: 14px;
+    cursor: text;
+    line-height: 34px;
+}
+
+.m-yktNav .u-navsearchUI.off {
+    width: 224px;
+    -moz-transition: width 0.2s ease-out 0s;
+    -o-transition: width 0.2s ease-out 0s;
+    -webkit-transition: width 0.2s ease-out 0s;
+    transition: width 0.2s ease-out 0s;
+}
+
+.m-yktNav .userinfo .login {
+}
+
+.m-yktNav .userinfo .login .mes, .m-yktNav .userinfo .login .cart {
+    float: right;
+    margin-right: 12px;
+    height: 30px;
+    color: #fff;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.m-yktNav .u-navsearchUI .box {
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+}
+
+.f-cb:after, .f-cbli li:after {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    content: ".";
+}
+
+.m-yktNav .u-navsearchUI .search-type {
+    line-height: 34px;
+    cursor: pointer;
+    position: relative;
+}
+
+#login1 {
+    position: absolute;
+    z-index: 100;
+    top: 77px;
+    width: 188px;
+    height: 210px;
+    display: none;
+    right: 33px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.hidddenClass {
+    visibility: hidden;
+}

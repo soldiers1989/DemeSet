@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewBag.Title = "_PersonalCenterLayout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>中国人事考试在线_</title>
+    <link rel="shortcut icon" href="~/asset/image/public/logo.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/public/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/global.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/index.css">
+    <link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/course.css">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/mycourse.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/center.css" rel="stylesheet" />
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/jquery.js" type="text/javascript"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js"></script>
+</head>
+<body>
+    <!-- 公共部分-头部start -->
+    <div class="header layui-row">
+        <div class="main">
+            <h1 class="logo">
+                <a href="javascript:;">
+                    <img src="~/asset/image/public/blogo.png">
+                    <span>中国人事考试在线</span>
+                    <label>经济师</label>
+                </a>
+                <div class="layui-input-inline layui-form subject">
+                    <select>
+                        <option>中级工商管理</option>
+                        <option>中级工商管理</option>
+                        <option>中级工商管理</option>
+                    </select>
+                </div>
+            </h1>
+            <div class="nav">
+                <!-- cur--当前页选中 -->
+                <ul class="navIn">
+                    <li class="cur"><a href="/Home/Index">首页</a></li>
+                    <li><a href="javascript:;" class="wechat">微信公众号</a></li>
+                    <li><a href="javascript:;" id="xxzx">学习中心</a></li>
+                </ul>
+                <ul class="person"></ul>
+                <script type="text/html" id="question_userinfo">
+                    {{if !userToken}}
+                    <li>
+                        <a href="/Cart/Index" class="cart">
+                            <i class="layui-icon layui-icon-cart">
+                                <em>0</em>
+                            </i>
+                        </a>
+                    </li>
+                    <li> <a href="javascript:;" onclick="userLogin();">登录</a></li>
+                    {{else}}
+                    <li>
+                        <a href="/Cart/Index" class="cart">
+                            <i class="layui-icon layui-icon-cart">
+                                <em>{{CartCount}}</em>
+                            </i>
+                        </a>
+                    </li>
+                    <li><a href="../Cart/CartLeftMouldPlate" target="_blank" title="个人中心">{{NickNamw}} <img src="{{HeadImage}}"></a></li>
+                    {{/if}}
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- 公共部分-头部end -->
+    <!-- 中间内容部分 -start-->
+    <div class="content">
+        <div class="contentIn">
+            <div class="center main layui-row" style="width:1510px;">
+                <div class="leftMenu" style="width: 13%;">
+                    <div class="centerTit">个人中心</div>
+                    <a name="1" url="IframMyOrder" href="javascript:;" class="cur">我的订单</a>
+                    <a name="2" url="HandOutPath" href="javascript:;">收货地址</a>
+                    <a name="3" url="~/MyCard/Index" href="javascript:;">学习卡</a>
+                    <a name="4" url="~/User/UserSetUp" href="javascript:;">基本信息</a>
+                </div>
+                <div class="rightContent personContent">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 公共部分底部start -->
+    <div class="footer">
+        <div class="main">
+            <div class="layui-col-xs3">
+                <div class="flogo">
+                    <a href="javascript:;">
+                        <img src="~/asset/image/public/logo.png">
+                        <span>中国人事考试在线</span>
+                    </a>
+                </div>
+            </div>
+            <div class="layui-col-xs3">
+                <div class="sao layui-col-xs6">
+                    <p>扫码关注</p>
+                    <img src="~/asset/image/public/gz.png " />
+                    <p>微信二维码</p>
+                </div>
+                <div class="sao layui-col-xs6">
+                    <p>APP下载</p>
+                    <img src="~/asset/image/public/app.png " />
+                    <p>APP二维码</p>
+                </div>
+            </div>
+            <div class="layui-col-xs6 third">
+                <ul class="fnav layui-row">
+                    <li><a href="javascript:;">关于我们</a></li>
+                    <li><a href="javascript:;">联系我们</a></li>
+                    <li><a href="javascript:;">法律条款</a></li>
+                    <li><a href="javascript:;">意见反馈</a></li>
+                </ul>
+                <p class="copyright">©1997-2018<label>中国人事考试在线</label> </p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('.leftMenu>a').click(function () {
+                $('.leftMenu>a').each(function () {
+                    $(this).removeClass('cur');
+                });
+                $(this).addClass("cur");
+                var args = $.extend({}, { type: "get", dataType: "html", contentType: "application/json", url: $(this).attr("url") });
+                $.ajax(args).done(function (data) {
+                    $(".rightContent").html(data);
+                });
+            });
+            $(".leftMenu>a").first().click();
+
+
+            $("#xxzx").click(function () {
+                if (topevery.GetCookie("userToken")) {
+                    location.href = "/LearningCenter/Index";
+                } else {
+                    userLogin();
+                }
+            });
+            $(document).on("click", ".wechat", function () {
+                layer.open({
+                    type: 1,
+                    title: '扫码关注',
+                    content: "<img src='@HttpContext.Current.Application["DefuleDomain"]/asset/image/public/gz.png' width='100%' height='100%'/>",
+                    area: ['400px', '400px']
+            });
+        });
+
+        });
+
+        var object = new Object();
+        object.userToken = topevery.GetCookie("userToken");
+        if (object.userToken) {
+            topevery.ajax({
+                type: "GET",
+                url: "api/Home/GetUserInfoByTicket"
+            }, function (data) {
+                if (data.Success) {
+                    object.NickNamw = data.Result.NickNamw;
+                    object.CartCount = data.Result.CartCount;
+                    object.LearnCount = data.Result.LearnCount;
+                    object.HeadImage = data.Result.HeadImage;
+                    $(".person").html(template("question_userinfo", object));
+                }
+            });
+        } else {
+            $(".person").html(template("question_userinfo", object));
+        }
+        //跳转登录页
+        function userLogin() {
+            layer.open({
+                type: 2,
+                title: '用户登录',
+                shadeClose: true,
+                maxmin: false, //开启最大化最小化按钮
+                area: ['650px', '430px'],
+                shade: [0.7, '#BEBEBE'], //0.7透明度的白色
+                content: '/Login/UserLogin?RefUrl=' + location.href,
+                end: function () {
+                    //location.reload();
+                }
+            });
+        }
+
+        function setClass(pname) {
+            $('.leftMenu>a').each(function () {
+                var setCss = $(this).attr("name");
+                if (setCss == pname) {
+                    $(this).addClass("cur");
+                } else {
+                    $(this).removeClass('cur');
+                }
+
+            });
+
+        }
+    </script>
+</body>
+</html>
+

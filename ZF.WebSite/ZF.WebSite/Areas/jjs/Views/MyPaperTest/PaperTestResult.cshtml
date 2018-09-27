@@ -1,0 +1,93 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" type="text/css">
+    <title>测试结果</title>
+</head>
+
+
+<body class="body">
+    <input type="hidden" id="PaperId" value="@ViewBag.PaperId" />
+    <input type="hidden" id="PaperRecordsId" value="@ViewBag.PaperRecordsId" />
+    <div id="paperResult">
+
+    </div>
+    <script type="text/html" id="result_html">
+        <div class="circleChart" id="0"></div>
+        <div class="ceshi_box">
+            <p class="time">用时：31分钟</p>
+            <h4>考试达人！继续努力</h4>
+            <span class="xbiaoti">{{#PaperName}}<i>{{AddTime}}</i></span>
+        </div>
+        <div class="ceshi_dc">
+            本次共答{{Total}}题，答错<span class="cs_red">{{ErrorCount}}</span>题
+        </div>
+        <div class="cs_anniu">
+            <a onclick="jxcp('{{PaperId}}')" class="cs_an1">继续答题</a>
+            <a  href="/jjs/MyPaperTest/PaperAnalyzes?paperId={{PaperId}}&paperRecordsId={{Id}}"  class="cs_an2">查看评析</a>
+        </div>
+    </script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/jquery.js" type="text/javascript"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/circleChart.min.js?v=1.0"></script>
+    <script>
+        $(function () {
+            topevery.ajaxwx({
+                url: 'api/CoursePaperRecord/Get?paperId=' + $("#PaperId").val() + "&paperRecordsId=" + $("#PaperRecordsId").val()
+            }, function (data) {
+                if (data.Result) {
+                    $("#paperResult").html(template('result_html', data.Result));
+
+                    $(".circleChart#1").circleChart({
+                        size: 200
+                    });
+                    $(".circleChart#0").circleChart({
+                        size: 200,
+                        value: parseInt(data.Result.Score),
+                        text: 0,
+                        onDraw: function (el, circle) {
+                            circle.text(Math.round(88) + "分");
+                        }
+                    });
+                }
+            })
+        })
+
+        function jxcp(PaperId) {
+            topevery.ajaxwx({
+                url: "api/Economy/InsertIntoPaperRecords?PaperId=" + PaperId,
+                type: "Post",
+            }, function (data) {
+                if (data.Success) {
+                    var row = data.Result;
+                    if (row.PaperId == "-1") {
+                        parent.layer.msg("该试卷暂未上线,敬请期待!", {
+                            time: 4000
+                        });
+                    } else {
+                        //跳转到试卷页面
+                        window.location.href = "/jjs/MyPaperTest/PaperPractice?PaperId=" + row.PaperId + "&paperRecordsId=" + row.PaperRecordsId;
+                    }
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

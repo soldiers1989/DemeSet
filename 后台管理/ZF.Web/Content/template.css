@@ -1,0 +1,244 @@
+html, body {
+    height: 100%;
+    font-size: 14px;
+    font-family: "Microsoft Yahei";
+}
+
+* {
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+ul, li {
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.pa-no {
+    padding: 0px;
+}
+
+.mar-no {
+    margin: 0px;
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+.content-box {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.content-box,
+.content-box-left,
+.content-box-right {
+    height: 100%;
+}
+
+.content-box-left {
+    background: #F2F2F2;
+    border-right: 1px solid #ddd;
+    overflow: auto;
+}
+
+    .content-box-left .menu-title {
+        font-size: 16px;
+        color: #000;
+        height: 50px;
+        line-height: 50px;
+        padding: 0px 10px;
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+    }
+
+        .content-box-left .menu-title i {
+            font-size: 20px;
+            color: #3C8DBC;
+            margin-right: 10px;
+            position: relative;
+            top: 4px;
+        }
+
+
+.menu-list .text-center > p {
+    padding: 10px 20px;
+    margin: 0px;
+    font-size: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+    .menu-list .text-center > p > i {
+        font-size: 18px;
+        color: #B4B4B4;
+        transition: all 0.5s;
+    }
+
+.content-box-left .menu-list-second > li a {
+    color: #999;
+    text-decoration: none;
+    display: block;
+    padding: 10px 5px;
+    transition: all 0.2s;
+}
+
+    .content-box-left .menu-list-second > li a:hover {
+        color: #333;
+        background: #fff;
+    }
+
+.content-box-left .menu-list-second > li.active-on a {
+    color: #333;
+    background: #fff;
+}
+
+
+.menu-list-second > li {
+    border-bottom: 1px solid #ddd;
+}
+
+
+.content-box-right {
+    background: #FAFAFA;
+}
+
+
+.info-top {
+    padding: 10px 0px;
+    line-height: 34px;
+    margin:0px;
+}
+
+
+.btn-list a {
+    margin-left: 25px;
+}
+
+.uesr-info span {
+    margin-right: 35px;
+}
+
+.content-box-right .table-box {
+    min-width: 100%;
+    overflow: auto;
+}
+
+.table-info{
+    table-layout: fixed;
+    min-width: 100%;
+}
+
+.table-info thead th{
+    min-width: 80px;
+    padding: 8px 5px;
+    text-align: center;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.table-info tbody td{
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: pre;
+}
+
+
+    .table-info tbody tr:nth-child(odd) td {
+        background-color: #F4F4F4;
+    }
+
+    .table-info tbody tr:hover td {
+        background-color: #D9EDF7;
+    }
+
+
+    .table-info tbody tr.active-click td {
+        background-color: #dff0d8;
+    }
+
+.active-on {
+    color: #333;
+    background: #fff;
+}
+
+
+.tab-btns {
+    height: 60px;
+    line-height: 60px;
+    background:#efefef;
+    border-bottom: 1px solid #ddd;
+}
+
+    .tab-btns a {
+        margin-left: 20px;
+    }
+
+    .tab-btns .tj-title{
+        font-size:19px;
+    }
+
+
+
+.btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+
+.btn-outline {
+    color: inherit;
+    background-color: transparent;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    border-color: #46b8da;
+}
+
+
+.tab-btns a.tab-active {
+    color: #fff;
+    background: #32B0D5;
+}
+
+.tab-list {
+    width: 100%;
+}
+
+    .tab-list .echart-wrapper {
+        width: 50%;
+        height: 50%;
+        padding: 10px;
+    }
+
+.bdt {
+    border-top: 1px solid #ddd;
+}
+
+.bdr {
+    border-right: 1px solid #ddd;
+}
+
+.bdb {
+    border-bottom: 1px solid #ddd;
+}
+
+.bdl {
+    border-left: 1px solid #ddd;
+}
+
+.tab-cons {
+    overflow: auto;
+}

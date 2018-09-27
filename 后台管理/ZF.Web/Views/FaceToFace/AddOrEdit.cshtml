@@ -1,0 +1,472 @@
+﻿@using ZF.Web.Models.File
+@{
+    ViewBag.Title = "课程新增(修改)";
+    //Layout = null;
+}
+<link href="~/Libs/select2-4.0.6/css/select2.min.css" rel="stylesheet" />
+<style>
+    body {
+        color: #555;
+        font: 12px/1.5 Verdana,Microsoft YaHei,宋体;
+    }
+    /*select2在Bootstrap的modal中默认被遮盖，现在强制显示在最前*/
+    .select2-drop {
+        z-index: 10050 !important;
+    }
+
+    .select2-search-choice-close {
+        margin-top: 0 !important;
+        right: 2px !important;
+        min-height: 10px;
+    }
+
+        .select2-search-choice-close:before {
+            color: black !important;
+        }
+    /*防止select2不会自动失去焦点*/
+    .select2-container {
+        z-index: 16000 !important;
+    }
+
+    .select2-drop-mask {
+        z-index: 15990 !important;
+    }
+
+    .select2-drop-active {
+        z-index: 15995 !important;
+    }
+
+    .summary {
+        font-size: 18px;
+        line-height: 58px;
+    }
+
+    select, textarea {
+        font: 12px/1.5 Verdana,Microsoft YaHei,宋体;
+    }
+
+    b.text {
+        font-weight: 400;
+        padding-left: 8px;
+    }
+
+    .chargearea .left {
+        width: 63px;
+        height: 34px;
+        line-height: 34px;
+        position: absolute;
+        top: 10px;
+        left: 0;
+    }
+
+    .chargearea .right {
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+    }
+
+    .originPrice {
+        height: 34px;
+        line-height: 34px;
+    }
+
+    .chargearea .original-price {
+        width: 145px;
+        height: 30px;
+        padding: 5px 0 5px 5px;
+        line-height: 30px;
+        margin-right: 10px;
+    }
+
+    .chargearea {
+        position: relative;
+        padding: 10px 0 0 63px;
+    }
+
+        .chargearea .pencent {
+            background: #FCFCFC;
+            color: #C4C4C4;
+            width: 50px;
+            border: 1px solid #FCFCFC;
+            height: 23px;
+        }
+
+        .chargearea .finalprcie {
+            width: 145px;
+            height: 30px;
+            padding: 5px 0 5px 5px;
+            line-height: 30px;
+            margin-right: 10px;
+        }
+
+    .error {
+        color: red;
+        display: none;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: #6d6d6d !important;
+    }
+
+    .des {
+        color: #aaa;
+        margin-bottom: 20px;
+    }
+
+    .clearfix {
+        display: block;
+    }
+
+    .comp-select-tag-wrap .comp-select-tag {
+        width: 740px;
+        border: 1px solid #CCC;
+    }
+
+        .comp-select-tag-wrap .comp-select-tag .text-layer, .comp-select-tag-wrap .comp-select-tag .tag-layer {
+            padding: 10px 10px 0;
+            *padding-bottom: 10px;
+        }
+
+            .comp-select-tag-wrap .comp-select-tag .text-layer .tag {
+                cursor: text;
+                padding-right: 0;
+                margin-right: 10px;
+            }
+
+        .comp-select-tag-wrap .comp-select-tag .tag {
+            float: left;
+            display: block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border: 1px solid #92D65C;
+            border-radius: 2px;
+            padding: 0 10px;
+            padding-right: 10px;
+            height: 23px;
+            line-height: 23px;
+            color: #555;
+            background-color: #F4FEED;
+        }
+
+            .comp-select-tag-wrap .comp-select-tag .tag .delete {
+                padding-left: 5px;
+                padding-right: 10px;
+                cursor: pointer;
+                color: #AAA;
+            }
+
+        .comp-select-tag-wrap .comp-select-tag .text-layer input {
+            /*display: block;
+            height: 20px;
+            width: 200px;
+            margin-bottom: 10px;
+            border: 0;
+            color: #AAA;
+            font-weight: 700;
+            background-color: transparent;*/
+        }
+
+        .comp-select-tag-wrap .comp-select-tag .tag-layer .tag-wrap {
+            margin-top: 10px;
+        }
+
+    /*.comp-select-tag-wrap .comp-select-tag .tag-layer .tag .delete {
+            display: none;
+        }*/
+
+    .comp-select-tag-wrap .mod-error {
+        color: red;
+        display: none;
+        margin-top: 10px;
+    }
+
+    .seo {
+        width: 642px;
+        color: #555;
+    }
+
+        .seo .seo-content .content {
+            min-height: 0px;
+        }
+
+        .seo .seo-content p {
+            margin: 0 0 5px 5px;
+        }
+
+        .seo .seo-content b {
+            margin-right: 10px;
+        }
+
+        .seo .seo-content .err-wrap {
+            position: relative;
+        }
+
+        .seo .seo-content .limit {
+            color: #aaa;
+            width: 98%;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: url(http://img.ablesky.cn/stata/images/s_d2112c43.gif) repeat 0 0 transparent;
+            padding: 5px 0 5px 5px;
+        }
+
+        .seo .title .char-counter {
+            position: absolute;
+            bottom: -2px;
+            right: 14px;
+            border: 0;
+        }
+
+    .describe .char-counter {
+        height: 19px;
+        position: absolute;
+        bottom: 0;
+        right: -100px;
+        line-height: 19px;
+        padding: 0 8px;
+        text-align: right;
+        color: #AAA;
+    }
+
+    .seo .error {
+        color: #F33;
+        display: none;
+        font-weight: 700;
+        margin-top: 10px;
+    }
+
+    .seo .seo-content .title-input {
+        line-height: 30px;
+    }
+
+    .seo .keyword-wrap {
+        width: 98%;
+        padding: 7px 7px 7px 0;
+        padding-left: 0px;
+        padding-left: 3px;
+        border: 1px solid #ddd;
+    }
+
+    .seo .seo-content .tag {
+        float: left;
+        display: block;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        border: 1px solid #92D65C;
+        border-radius: 2px;
+        padding: 0 10px;
+        padding-right: 10px;
+        height: 23px;
+        line-height: 23px;
+        color: #555;
+        background-color: #F4FEED;
+        padding-right: 0;
+    }
+
+        .seo .seo-content .tag .delete {
+            padding-left: 5px;
+            padding-right: 10px;
+            cursor: pointer;
+            color: #AAA;
+        }
+
+    .seo .keyword-wrap input {
+        background: #fff;
+        height: 25px;
+        width: 19%;
+        border: 0;
+        color: #aaa;
+        padding-left: 3px;
+    }
+</style>
+<input hidden="hidden" id="subjectId_copy" value="@ViewBag.SubjectId" />
+
+<div class="box" style="padding-left: 40px;">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-footer col-xs-12" style="padding-bottom: 10px;border-bottom: 1px solid #f4f4f4 !important;">
+            <button type="button" class="btn btn-primary" style="float: left;" id="return1">返回</button>
+        </div>
+        <div class="col-xs-6">
+            <input hidden="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="form-group">
+                <label>名称</label><span class="text-danger">*</span>
+                <input type="text" class="form-control" id="ClassName" name="ClassName">
+            </div>
+            <div class="form-group">
+                <label>价格</label>
+                <div class="form-group">
+                    <input type="number" min="0" step="0.01" max="9999" id="Price" name="Price">X
+                    <input type="number" min="0" step="0.01" value="100" readonly="readonly" id="Discount" name="Discount">%=
+                    <input type="number" min="0" step="0.01" id="FavourablePrice" placeholder="最终价格" name="FavourablePrice">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>邮件讲义</label><span class="text-danger">*</span>
+                <div class="form-group">
+                    <input type="radio" id="radio1" value="0" name="EmailNotes" /><label for="radio1">是</label>(学员将在报名时填写联系地址以便接受讲义)
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="radio2" checked="checked" value="1" name="EmailNotes" /><label for="radio2">否</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>上课时间</label><span class="text-danger">*</span>
+                <div class="form-group">
+                    <input class="Wdate" onFocus="WdatePicker({ el: 'ClassTimeStart', dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'ClassTimeEnd\')}' })" id="ClassTimeStart" name="ClassTimeStart" width="200" style="height: 34px;" />
+                    <label>-</label>
+                    <input class="Wdate" onFocus="WdatePicker({ el: 'ClassTimeEnd', dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'ClassTimeStart\')}' })" id="ClassTimeEnd" name="ClassTimeEnd" width="200" style="height: 34px;" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label>详细描述</label>
+                <script id="CourseContent" name="CourseContent" type="text/plain">
+                </script>
+            </div>
+            <div class="form-group">
+                <label>上课地点</label><span class="text-danger">*</span>
+                <input class="form-control" style="width: 600px;" id="Address" name="Address" />
+            </div>
+            <div class="form-group">
+                <label>班级人数</label><span class="text-danger">*</span>
+                <input class="form-control" type="number" min="1" max="99" style="width: 300px;" id="Number" name="Number" />
+            </div>
+            <div class="form-group">
+                <label>备注</label>
+                <input class="form-control" id="Remark" name="Remark" />
+            </div>
+            <div class="form-group">
+                <label>科目分类</label><span class="text-danger">*</span>
+                <div class="form-group">
+                    <select class="form-control" id="SubjectId" name="SubjectId"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>服务分类</label><span class="text-danger">*</span>
+                <div class="form-group">
+                    <select class="form-control" id="ClassId" name="ClassId"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>授课教师</label>
+                <div class="form-group">
+                    <select class="form-control" id="TeacherId" name="TeacherId"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>课程属性</label>
+                <select class="form-control" id="CourseAttribute" name="CourseAttribute"></select>
+            </div>
+            <div class="form-group">
+                <label>课程介绍</label><span class="text-danger">*</span>
+                <script id="CourseIntroduce" name="CourseIntroduce" type="text/plain">
+                </script>
+            </div>
+            <div class="form-group">
+                <label>课程安排</label>
+                <script id="Curriculum" name="Curriculum" type="text/plain">
+                </script>
+            </div>
+
+            <div class="form-group">
+                <label>授课内容</label>
+                <script id="WhatTeach" name="WhatTeach" type="text/plain">
+                </script>
+            </div>
+
+            <div class="form-group">
+                <label>教学对象</label>
+                <input class="form-control" id="TeachingObject" name="TeachingObject" />
+            </div>
+            <div class="form-group">
+                <label>教学目标</label>
+                <textarea class="form-control" type="text" style="height: 200px;" id="TeachingGoal" name="TeachingGoal"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>课程特色</label>
+                <textarea class="form-control" type="text" style="height: 200px;" id="Characteristic" name="Characteristic"></textarea>
+            </div>
+            <input id="CourseTag" name="CourseTag" hidden="hidden" />
+            <div class="form-group" data-name="tag">
+                <div class="summary">课程标签</div>
+                <div class="tagManage">
+                    <div class="des clearfix">
+                        <span>标签可以使您的课程更容易被搜索到，最多可选择6个标签</span>
+                    </div>
+                    <div id="select-tag">
+                        <div class="comp-select-tag-wrap">
+                            <div class="comp-select-tag clearfix">
+                                <div class="text-layer clearfix" id="tagViw">
+                                </div>
+                                <input class="form-control" style="display: block; width: 200px;" id="TagName" type="text" placeholder="请输入课程标签"><a style="cursor: pointer;" onclick="tagAdd();" class="btn-xs">添加</a>
+                                <div class="tag-layer clearfix" style="display: block;">
+                                    <div>使用过的标签</div>
+                                    <div class="clearfix tag-wrap">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mod-error" style="display: none;">请选择课程标签</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>是否置顶</label>
+                <select class="form-control" id="IsTop" name="IsTop">
+                    <option value="1">是</option>
+                    <option value="0" selected="selected">否</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>是否首页推荐</label>
+                <select class="form-control" id="IsRecommend" name="IsRecommend">
+                    <option value="1">是</option>
+                    <option value="0" selected="selected">否</option>
+                </select>
+            </div>
+
+            <div class="" data-name="seo">
+                <div class="summary" style="width: 740px">
+                    课程详情页SEO
+                </div>
+                <div class="form-group">
+                    <label>Title 标题(填写此项可让更多学员搜索到您的课程，最多不超过50个汉字)</label>
+                    <input class="form-control" id="Title" name="Title" />
+                </div>
+                <div class="form-group">
+                    <label>Keyword 关键词(最多10个关键词，每个词最多7个汉字,用逗号隔开)</label>
+                    <input class="form-control" id="KeyWord" name="KeyWord" />
+                </div>
+                <div class="form-group">
+                    <label>Description 描述(最多不超过100个字)</label>
+                    <input class="form-control" id="Description" name="Description" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>点击上传封面图片,图片格式为jpg,png,最佳尺寸(225*142)</label>
+                @Html.Partial("UploadFilePartialView", new UploadFileDto()
+           {
+               UploadId = "IdFile",
+               KeyId = ViewBag.Id,
+               UploadContentType = "jpg,png",
+               ServerUrl = "File/UploadFile?parameter=225,142",
+               Type = 0
+           })
+            </div>
+            <div class="box-footer col-xs-12" style="padding-bottom: 40px;">
+                <button type="button" class="btn btn-primary" style="float: right;" id="return">取消</button>
+                <button type="submit" class="btn btn-primary" style="float: right; margin-right: 7px;" id="sumbit">发布</button>&nbsp;
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Libs/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Libs/select2-4.0.6/js/select2.min.js"></script>
+<script src="~/Libs/select2-4.0.6/js/i18n/zh-CN.js"></script>
+<script src="~/Libs/ueditor/ueditor.config.js"></script>
+<script src="~/Libs/ueditor/ueditor.all.js"></script>
+<script src="~/Libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="~/Views/FaceToFace/AddOrEdit.js"></script>

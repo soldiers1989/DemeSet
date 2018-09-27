@@ -1,0 +1,1 @@
+﻿$.topevery.setViewUploadFile($("#Id").val(), "UrlList")

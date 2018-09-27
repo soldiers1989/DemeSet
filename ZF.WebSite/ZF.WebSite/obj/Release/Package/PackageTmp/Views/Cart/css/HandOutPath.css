@@ -1,0 +1,317 @@
+﻿#container, #container .w {
+    background-color: #f5f5f5;
+}
+.w {
+    width: 990px;
+    margin: 0 auto;
+}
+
+#content {
+    padding-left: 120px;
+    padding-top: 20px;
+    display: inline-block;
+    display: block;
+}
+
+input[type="hidden" i], input[type="image" i], input[type="file" i] {
+    -webkit-appearance: initial;
+    background-color: initial;
+    cursor: default;
+    padding: initial;
+    border: initial;
+}
+
+#sub {
+    float: left;
+    width: 120px;
+    position: relative;
+    left: -120px;
+}
+
+#main {
+    float: left;
+    width: 99.9%;
+    margin-left: -120px;
+    overflow: hidden;
+}
+
+.mod-comm {
+    padding: 10px 20px 20px;
+}
+
+.mod-main {
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.mod-comm .mt {
+    padding: 10px 0;
+}
+.mod-main .mt {
+    display: inline-block;
+    display: block;
+    padding: 10px;
+}
+
+a.add-btn {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 700;
+    padding: 0 14px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 14px;
+    margin: 0 10px 0 0;
+}
+
+
+.btn-5, .btn-6, .btn-7, .btn-8 {
+    background-color: #f5fbef;
+    background-image: -moz-linear-gradient(top,#f5fbef,#eaf6e2);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#f5fbef),color-stop(1,#eaf6e2));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5fbef', endColorstr='#eaf6e2', GradientType='0');
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5fbef', endColorstr='#eaf6e2');
+    background-image: linear-gradient(to bottom,#f5fbef 0,#eaf6e2 100%);
+    border-radius: 2px;
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    border: 1px solid #bfd6af;
+    padding: 2px 14px 3px;
+    color: #323333;
+}
+
+.ftx-03, .ftx03 {
+    color: #999;
+}
+
+.ftx-02, .ftx02 {
+    color: #71b247;
+}
+
+.mod-comm .mc {
+    line-height: 20px;
+}
+.mod-main .mc {
+    overflow: visible;
+}
+
+.easebuy-m {
+    border: 2px solid #e6e6e6;
+    margin: 0 0 10px;
+}
+
+.easebuy-m .smt {
+    padding-left: 10px;
+    line-height: 26px;
+    height: 35px;
+    position: relative;
+    display: inline-block;
+    display: block;
+    overflow: visible;
+}
+
+.easebuy-m .smt .alias-edit {
+    width: 12px;
+    height: 12px;
+    background-position: -51px 0;
+    margin: 0 10px;
+}
+.easebuy-m .smt .alias-edit {
+    display: inline-block;
+    background-image: url(../../../Images/CartImg/sprite-t-icon.png);
+    background-repeat: no-repeat;
+}
+.easebuy-m .smt h3 .ftx-04 {
+    margin: 0 0 0 10px;
+    font-size: 12px;
+    background: #ffaa45;
+    padding: 2px;
+    color: #fff;
+    font-weight: 400;
+}
+.easebuy-m .smt h3 .ftx-02 {
+    margin: 0 0 0 10px;
+    font-size: 12px;
+    background: #84c360;
+    padding: 2px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.easebuy-m .smt .extra {
+    float: right;
+    margin: -8px 10px 0 0;
+}
+
+.easebuy-m .smt .extra .del-btn {
+    margin-top: 10px;
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    text-indent: 2em;
+    background: url(../../../Images/CartImg/close.png) no-repeat;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.easebuy-m .smt .alias-form {
+    display: none;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 218px;
+    height: 126px;
+    border: 1px solid #ddd;
+    background: #fff;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0,0,0,.15);
+}
+
+.easebuy-m .smt .alias-form .alias-new {
+    width: 220px;
+    height: 25px;
+    margin-top: -1px;
+    margin-left: -1px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.easebuy-m .smt .alias-form .alias-new .ipt-text {
+    float: left;
+    width: 156px;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 5px;
+    border: 1px solid #ccc;
+    border-right: medium none;
+}
+
+.easebuy-m .smt .alias-form .alias-new .btn-save {
+    float: left;
+    width: 53px;
+    height: 25px;
+    line-height: 25px;
+    padding: 0;
+    border: medium none;
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+    background: #e64346;
+}
+
+.easebuy-m .smt .alias-form .alias-common {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.easebuy-m .smt .alias-form .alias-common .ac-tip {
+    margin-bottom: 5px;
+    font: 12px/22px SimSun;
+    color: #999;
+}
+
+.easebuy-m .smt .alias-form .alias-common .ac-con {
+    width: 210px;
+    margin-right: -10px;
+    overflow: hidden;
+}
+
+.easebuy-m .smt .alias-form .alias-common .ac-con .item {
+    float: left;
+    height: 23px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font: 12px/23px SimSun;
+    border-radius: 3px;
+}
+
+.easebuy-m .smc {
+    padding: 10px;
+    line-height: 22px;
+    width: 788px;
+}
+
+.easebuy-m .smc .new-items {
+    position: relative;
+    width: 788px;
+}
+
+.easebuy-m .smc .item-lcol {
+    width: 450px;
+    float: left;
+}
+
+.easebuy-m .smc .item span {
+    float: left;
+    width: 70px;
+    color: #999;
+    text-align: right;
+}
+
+.clear, .clr {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+}
+
+.easebuy-m .smc .item-lcol .fl {
+    width: 360px;
+}
+
+.easebuy-m .smc .item-rcol {
+    width: 320px;
+    float: left;
+    padding-left: 10px;
+    height: 100%;
+}
+
+.easebuy-m .smc .item-rcol .extra {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.ftx-05, .ftx05 {
+    color: #005ea7;
+}
+
+.clear, .clr {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+body {
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #666;
+    /*background: #fff;*/
+    background: #f4f4f4
+}
+
+.fl {
+    float: left;
+}
+
+.m, .sm {
+    margin-bottom: 10px;
+}
+

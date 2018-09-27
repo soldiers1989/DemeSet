@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_StudyCenterLayout.cshtml";
+}
+<style>
+    .leftMenu .lm10 i {
+        background-position-y: -384px;
+    }
+</style>
+<div class="leftMenu">
+    <a href="javascript:;" url="MyCourse" title="我的课程" class="lm1 cur"><i></i>我的课程</a>
+    <a href="javascript:;" url="MyQuestion" title="机考仿真" class="lm10"><i></i>机考仿真</a>
+    <a href="javascript:;" class="lm2" url="CollectionCourse" title="收藏视频"><i></i>收藏视频</a>
+    <a href="javascript:;" class="lm3" url="CollectionItem" title="收藏试题"><i></i>收藏试题</a>
+    <a href="javascript:;" class="lm4" url="MyErrors" title="我的错题"><i></i>我的错题</a>
+    <a href="javascript:;" class="lm5" url="PracticeRecords" title="练习记录"><i></i>练习记录</a>
+    <a href="javascript:;" class="lm6" url="AssessmentRecords" title="测评记录"><i></i>测评记录</a>
+    <a href="javascript:;" class="lm7" url="MyFootprint" title="我的足迹"><i></i>我的足迹</a>
+    <a href="javascript:;" class="lm8" url="RecentStudy" title="最近学习"><i></i>最近学习</a>
+    <a name="5" url="~/Cart/SecurityCodeToCollect" href="javascript:;" title="领取增值服务" class="lm9"><i></i>领取增值服务</a>
+</div>
+<div class="rightContent">
+</div>
+<script type="text/javascript">
+    $(function () {
+        var mycard = topevery.getUrlParam("index");
+
+        $('.leftMenu>a').click(function () {
+            $('.leftMenu>a').each(function () {
+                $(this).removeClass('cur');
+            });
+            $(this).addClass("cur");
+            document.getElementsByTagName('title')[0].innerText = "学习中心-" + $(this).attr('title');
+            var args = $.extend({}, { type: "get", dataType: "html", contentType: "application/json", url: $(this).attr("url") });
+            $.ajax(args).done(function (data) {
+                $(".rightContent").html(data);
+            });
+        });
+        if (mycard) {
+            $("a[name='5']").first().click();
+        } else {
+            $(".leftMenu>a").first().click();
+        }
+
+    });
+</script>

@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<script src="http://code.jquery.com/jquery-2.2.3.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/ajax.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/vue.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/reuglar.0.3.1.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<input type="hidden" value="@ViewBag.isTrue" id="isTrue" />
+<input type="hidden" value="@ViewBag.orderNo" id="orderNo" />
+<input type="hidden" value="@ViewBag.price" id="price" />
+<script type="text/javascript">
+    $(function () {
+        var istrue = $("#isTrue").val();
+        var obj = new Object();
+        obj.OrderNo = $("#orderNo").val();
+        obj.OrderAmount = $("#price").val();
+        if (istrue) {
+            obj.State = 0;
+        } else {
+            obj.State = 1;
+        }
+        topevery.ajaxwx({
+            url: "api/Sheet/EnditSheetStates",
+            data: JSON.stringify(obj),
+            async: false
+        }, function (data) {
+            var dataInfo = data.Result;
+            if (dataInfo.Success) {
+                window.location.href = "/LearningCenter/Index";
+            } else {
+                window.location.href = "/LearningCenter/Index";
+            }
+        });
+    })
+</script>

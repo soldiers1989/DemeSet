@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "模块新增(修改)";
+}
+
+<div class="box">
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Id" name="Id" value="@ViewBag.Id" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>模块名称</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="ModuleName" name="ModuleName">
+                </div>
+                <div class="form-group">
+                    <label>样式</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="Class" name="Class">
+                </div>
+                <div class="form-group">
+                    <label>排序号</label><span class="text-danger">*</span>
+                    <input type="number" class="form-control" min="0" max="100" id="Sort" name="Sort">
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <button type="submit" class="btn btn-primary" id="sumbit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Views/Module/ModuleAddOrEdit.js"></script>

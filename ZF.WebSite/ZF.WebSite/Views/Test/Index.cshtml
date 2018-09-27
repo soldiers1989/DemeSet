@@ -1,0 +1,331 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script src="~/Js/jquery-2.2.3.min.js"></script>
+    <script src="~/Js/vue.min.js"></script>
+    <style>
+        .class1 {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        @*<h1> {{ site }}</h1>
+        <h1> {{ url }}</h1>
+        <h1>{{ details() }}</h1>*@
+        <div v-html="message"></div>
+
+        <label for="r1">修改颜色</label><input type="checkbox" v-model="checked" id="r1">@*v-model绑定数据class1 *@
+        <br><br>
+        <div v-bind:class="{'class1': checked}">
+            directiva v-bind:class
+        </div>
+
+        <p v-if="checked">现在你看到我了</p>
+        <p v-show="checked">现在你看到我了</p>
+        <pre><a v-bind:href="url">百度一下</a></pre>
+
+        <a v-on:click="doSomething">绑定事件</a>
+
+        <p>{{ message }}</p>
+        <input v-model="message">
+
+        @* 过滤器 *@
+        <!-- 在两个大括号中 -->
+        {{ msg | capitalize }}
+
+        <!-- 在 v-bind 指令中 -->
+        <div v-bind:id="msg | capitalize"></div>
+        @* v-bind 缩写 *@
+        <div :id="msg | capitalize"></div>
+        @* v-on:click 缩写 *@
+        @*<a @click="doSomething">绑定事件</a>*@
+
+        @* if-else *@
+        <div v-if="Math.random() > 0.5">
+            Sorry
+        </div>
+        <div v-else>
+            Not sorry
+        </div>
+
+        <div>{{ date | formatDate }}</div>
+
+        <ul v-for="site in sites">
+            <li>{{ site.name }}</li>
+        </ul>
+
+
+        @*内联样式 *@
+        @*<div id="app">
+            <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">菜鸟教程</div>
+        </div>*@
+        @* 动态切换多个样式 *@
+        @*<div class="static"
+             v-bind:class="{ active: isActive, 'text-danger': hasError }">
+        </div>*@
+        @* 绑定返回对象的计算属性 *@
+        @*<div v-bind:class="classObject"></div>*@
+        @* 数组形式绑定多个样式 *@
+        @*<div v-bind:class="[activeClass, errorClass]"></div>*@
+        @* 三元表达式绑定样式 *@
+        @*<div v-bind:class="[errorClass ,isActive ? activeClass : '']"></div>*@
+    </div>
+
+
+
+
+
+
+
+
+    @* 事件处理 *@
+    <div id="app2">
+        @*<!-- 阻止单击事件冒泡 -->
+        <a v-on:click.stop="doThis"></a>
+        <!-- 提交事件不再重载页面 -->
+        <form v-on:submit.prevent="onSubmit"></form>
+        <!-- 修饰符可以串联  -->
+        <a v-on:click.stop.prevent="doThat"></a>
+        <!-- 只有修饰符 -->
+        <form v-on:submit.prevent></form>
+        <!-- 添加事件侦听器时使用事件捕获模式 -->
+        <div v-on:click.capture="doThis">...</div>
+        <!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+        <div v-on:click.self="doThat">...</div>
+        <!-- click 事件只能点击一次，2.1.4版本新增 -->
+        <a v-on:click.once="doThis"></a>
+        <!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
+        <input v-on:keyup.13="submit">
+        <!-- 同上 -->
+        <input v-on:keyup.enter="submit">*@
+
+        @*全部的按键别名：
+        .enter
+        .tab
+        .delete (捕获 "删除" 和 "退格" 键)
+        .esc
+        .space
+        .up
+        .down
+        .left
+        .right
+        .ctrl
+        .alt
+        .shift
+        .meta*@
+
+    </div>
+
+    @* 表单元素绑定 *@
+    <div id="app3">
+        <input v-model="message" placeholder="编辑我……">
+        <p>消息是: {{ message }}</p>
+        <p>textarea 元素：</p>
+        <p style="white-space: pre">{{ message2 }}</p>
+        <textarea v-model="message2" placeholder="多行文本输入……"></textarea>
+
+        <p>单个复选框：</p>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+
+        <p>多个复选框：</p>
+        <input type="checkbox" id="runoob" value="Runoob" v-model="checkedNames">
+        <label for="runoob">Runoob</label>
+        <input type="checkbox" id="google" value="Google" v-model="checkedNames">
+        <label for="google">Google</label>
+        <input type="checkbox" id="taobao" value="Taobao" v-model="checkedNames">
+        <label for="taobao">taobao</label>
+
+        <input type="radio" id="runoob" value="Runoob" v-model="picked">
+        <label for="runoob">Runoob</label>
+        <br>
+        <input type="radio" id="google" value="Google" v-model="picked">
+        <label for="google">Google</label>
+        <br>
+        <span>选中值为: {{ picked }}</span>
+
+        自定义组件
+        <customComponent></customComponent>
+    </div>
+
+    <script>
+        var padDate = function (value) {
+            return value < 10 ? '0' + value : value;
+        };
+
+        //全局注册自定义组件
+        Vue.component('customComponent', {
+            template: "<h1>自定义组件!</h1>"
+        })
+
+        var app = new Vue({
+            el: '#app',
+            props: {
+                food: {
+                    type: Object
+                }
+            },
+            data: {
+                activeClass: 'active',
+                errorClass: 'text-danger',
+                error: null,
+                isActive: true,
+                hasError:true,
+                fontSize:30,
+                site: "菜鸟教程",
+                url: "www.runoob.com",
+                alexa: "10000",
+                message: "<h1>菜鸟教程</h1>",
+                checked: false,
+                url: "http://www.baidu.com",
+                msg: "adbcddg",
+                date: new Date(),
+                sites: [
+                      { name: 'Runoob' },
+                      { name: 'Google' },
+                      { name: 'Taobao' }
+                ],
+                //$watch 数据
+                kilometers: 0,
+                meters: 0
+            },
+            methods: {
+                details: function () {
+                    return this.site + " - 学的不仅是技术，更是梦想！";
+                },
+                doSomething: function () {
+                    this.checked = true;
+                }
+            },
+            filters: {
+                capitalize: function (value) {
+                    if (!value) return ''
+                    value = value.toString()
+                    return value.charAt(0).toUpperCase() + value.slice(1)
+                },
+                formatDate: function () {
+                    var date = new Date();
+                    var year = date.getFullYear();
+                    var month = padDate(date.getMonth() + 1);
+                    var day = padDate(date.getDate());
+                    var hours = padDate(date.getHours());
+                    var minutes = padDate(date.getMinutes());
+                    var seconds = padDate(date.getSeconds());
+                    return year + '-' + month + '-' + day + '-' + ' ' + hours + ':' + minutes + ':' + seconds;
+                }
+            },
+            mounted () {
+                var _this = this; //声明一个变量指向vue实例this,保证作用域一致
+                this.timer = setInterval(function () {
+                    _this.date = new Date();//修改数据date
+                }, 1000);
+            },
+            beforeDestroy () {
+                if (this.timer) {
+                    clearInterval(this.timer);//在vue实例销毁钱，清除我们的定时器
+                }
+            },
+            computed: {
+                //我们可以使用 methods 来替代 computed，效果上两个都是一样的，但是 computed 是基于它的依赖缓存，
+                //只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。
+                // 计算属性的 getter
+                reversedMessage: function () {
+                    // `this` 指向 vm 实例
+                    return this.message.split('').reverse().join('')
+                },
+                classObject: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal',
+                    }
+                }
+            },
+            watch: {//watch 会实时监听数据变化并改变自身的值
+                kilometers: function (val) {
+                    this.kilometers = val;
+                    this.meters = val * 1000;
+                },
+                meters: function (val) {
+                    this.kilometers = val / 1000;
+                    this.meters = val;
+                }
+            }
+        })
+
+
+
+        var app2 = new Vue({
+            el: '#app2',
+            data: {},
+            methods: {
+
+            }
+        });
+
+
+        //.lazy
+        //在默认情况下， v-model 在 input 事件中同步输入框的值与数据，但你可以添加一个修饰符 lazy ，从而转变为在 change 事件中同步：
+
+        //<!-- 在 "change" 而不是 "input" 事件中更新 -->
+        //<input v-model.lazy="msg" >
+        //.number
+        //如果想自动将用户的输入值转为 Number 类型（如果原值的转换结果为 NaN 则返回原值），可以添加一个修饰符 number 给 v-model 来处理输入值：
+
+        //<input v-model.number="age" type="number">
+        //这通常很有用，因为在 type="number" 时 HTML 中输入的值也总是会返回字符串类型。
+
+        //.trim
+        //如果要自动过滤用户输入的首尾空格，可以添加 trim 修饰符到 v-model 上过滤输入：
+
+        //<input v-model.trim="msg">
+
+        var app3 = new Vue({
+            el: '#app3',
+            data: {
+                message: '',
+                message2: '',
+                checked: '',
+                checkedNames: [
+
+                ],
+                picked:true,
+                checkedArr: ["Runoob", "Taobao", "Google"]
+
+            },
+            methods: {////全选与取消全选
+                changeAllChecked: function () {
+                    if (this.checked) {
+                        this.checkedNames = this.checkedArr
+                    } else {
+                        this.checkedNames = []
+                    }
+                }
+            },
+            watch: {
+                "checkedNames": function () {
+                    if (this.checkedNames.length == this.checkedArr.length) {
+                        this.checked = true
+                    } else {
+                        this.checked = false
+                    }
+                }
+            }
+        });
+
+
+       
+
+        
+
+    </script>
+</body>
+</html>
+

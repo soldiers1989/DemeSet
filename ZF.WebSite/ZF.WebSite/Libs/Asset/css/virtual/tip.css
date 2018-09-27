@@ -1,0 +1,21 @@
+.content p,.content div{font-family: "宋体";}
+h3{font-size:24px; font-family: '\65B9\6B63\5C0F\6807\5B8B\7B80\4F53'; text-align:center;line-height: 30px;color:#000;font-weight: bold;margin-bottom:55px;}
+.content p{font-size:21px;color:#000;text-indent:32px;line-height: 
+	40px;overflow:hidden;}
+	ul{overflow: hidden;}
+ul li{float:left;margin-right: 25px;}
+.content font{font-weight:bold;}
+
+.mains{max-width:98%;margin:10px auto;}
+
+.header{position:fixed;top:0;width:100%;}
+.content{margin-top: 	90px;}
+body,html{overflow-y:auto;}
+
+table{background:#fff;border-collapse: collapse;}
+td,th{border:1px solid #000;background:#fff; text-align:center;}
+.topic p{text-indent: 0;font-size:15px;}
+ul{padding-left:30px;line-height: 30px;}
+.box{border:1px solid #000;width:293px;margin:20px auto;}
+.box span{display:inline-block; margin:10px;}
+.red{color:red;}

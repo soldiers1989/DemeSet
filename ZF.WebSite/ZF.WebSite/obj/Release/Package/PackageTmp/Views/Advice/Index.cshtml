@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "云课堂";
+    Layout = "~/Views/Shared/_StudyCenterLayout.cshtml";
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/about.css" rel="stylesheet" />
+<input hidden="hidden" id="aboutType" value="@ViewBag.aboutType" />
+<div class="leftMenu">
+    <a href="javascript:;" url="AboutUs" class="cur">关于我们</a>
+    <a href="javascript:;" url="ContactUs">联系我们</a>
+    <a href="javascript:;" url="LegalProvisions">法律条款</a>
+    <a href="javascript:;" url="Feedback">意见反馈</a>
+</div>
+<div class="rightContent">
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.leftMenu>a').click(function () {
+            $('.leftMenu>a').each(function () {
+                $(this).removeClass('cur');
+            });
+            $(this).addClass("cur");
+            var args = $.extend({}, { type: "get", dataType: "html", contentType: "application/json", url: $(this).attr("url") });
+            $.ajax(args).done(function (data) {
+                $(".rightContent").html(data);
+            });
+        });
+        var aboutType = $('#aboutType').val();
+        if (aboutType == "8") {
+            $(".leftMenu>a")[3].click();
+        } else if (aboutType == "1") {
+            $(".leftMenu>a")[0].click();
+        } else if (aboutType == "2") {
+            $(".leftMenu>a")[1].click();
+        } else if (aboutType == "3") {
+            $(".leftMenu>a")[2].click();
+        } else {
+            $(".leftMenu>a")[0].click();
+        }
+    });
+</script>

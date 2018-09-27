@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "登录跳转";
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+
+<input type="hidden" Id="Url" value="@ViewBag.Url" />
+<input type="hidden" Id="Ticket" value="@ViewBag.Ticket" />
+<input type="hidden" Id="SubjectId" value="@ViewBag.SubjectId"/>
+<input type="hidden" Id="IsRegistered" value="@ViewBag.IsRegistered" />
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Images/Home/js/ajax.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        if ($("#Ticket").val()) {
+            if ($("#SubjectId").val()) {
+                topevery.SetCookie("SubjectId", $("#SubjectId").val());
+            }
+            if ($("#IsRegistered").val()) {
+                topevery.SetCookie("IsRegistered", $("#IsRegistered").val());
+            }
+            topevery.SetCookie("userToken", $("#Ticket").val());
+            if ($("#Url").val().indexOf("HomePage/Index,Subject/Course") > -1) {
+                if ($("#SubjectId").val()) {
+                    topevery.SetCookie("SubjectId", $("#SubjectId").val());
+                    location.href = "/jjs/" + $("#Url").val();
+                } else {
+                    location.href = "/jjs/Subject/Index";
+                }
+            } else {
+                location.href = "/jjs/" + $("#Url").val();
+            }
+        }
+    })
+</script>

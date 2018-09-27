@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="yjfk">
+    <!--意见反馈模板-->
+    <div class="aboutTit">
+        <label>意见反馈</label>
+    </div>
+    <div class="feed">
+        <div class="tits"><font class="red">*</font>标题</div>
+        <input type="text" class="layui-input" id="Title" name="name" value="" />
+        <div class="m-feedbackinfoTitle">
+            <span style="color: red;"></span>
+        </div>
+        <div class="tits"><font class="red">*</font>反馈内容：</div>
+        <textarea class="layui-textarea" id="Advice"></textarea>
+        <div class="m-feedbackinfoAdvice">
+            <span style="color: red;"></span>
+        </div>
+        <div class="tits"><font class="red">*</font>联系方式：</div>
+        <div class="layui-row layui-form-item">
+            <div class="left" style="width: 48%;">
+                <input type="text" name="name" class="layui-input" id="Relation1" placeholder="QQ/Email" value="" />
+            </div>
+        </div>
+        <div class="m-feedbackinfoRelation1">
+            <span style="color: red;"></span>
+        </div>
+        <a class="layui-btn layui-btn-danger" id="sub" onclick="subFrom();" style="width:300px;float:right;">提交</a>
+    </div>
+</div>
+<style>
+    .feed {
+        padding: 15px 30px;
+    }
+
+    .tits {
+        color: #434343;
+        font-size: 16px;
+        margin: 20px auto 10px;
+    }
+
+    .m-about .about_con .about_content {
+        color: #666;
+        font-size: 14px;
+        padding: 20px;
+        line-height: 24px;
+    }
+
+    .m-feedSuccess, .m-recruitSuccess {
+        height: 416px;
+    }
+
+        .m-feedSuccess .success-icon, .m-recruitSuccess .success-icon {
+            background: url(//s.stu.126.net/res/images/ui/dialogicon.png?2d5114c…) no-repeat 0 -65px;
+            margin: 47px 10px 0 80px;
+            height: 50px;
+            width: 55px;
+        }
+
+        .m-feedSuccess .txt, .m-recruitSuccess .txt {
+            margin-top: 50px;
+        }
+
+    .f-fl {
+        float: left;
+    }
+</style>
+
+<script type="text/javascript">
+    function subFrom() {
+        var title = topevery.Trim($("#Title").val());
+        var advice = topevery.Trim($("#Advice").val());
+        var relation1 = topevery.Trim($("#Relation1").val());
+        if (title) {
+            $(".m-feedbackinfoTitle").hide();
+            if (title.length < 6 || title.length > 20) {
+                $(".m-feedbackinfoTitle").show();
+                $(".m-feedbackinfoTitle").find("span").html("标题字数6-20个");
+                return;
+            }
+        } else {
+            $(".m-feedbackinfoTitle").show();
+            $(".m-feedbackinfoTitle").find("span").html("标题不能为空!");
+            return;
+        }
+
+        if (advice) {
+            $(".m-feedbackinfoAdvice").hide();
+        } else {
+            $(".m-feedbackinfoAdvice").show();
+            $(".m-feedbackinfoAdvice").find("span").html("内容不能为空!");
+            return;
+        }
+
+        if (relation1) {
+            $(".m-feedbackinfoRelation1").hide();
+        } else {
+            $(".m-feedbackinfoRelation1").show();
+            $(".m-feedbackinfoRelation1").find("span").html("联系方式不能为空!");
+            return;
+        }
+        topevery.ajax({
+            url: 'api/BaseDanye/InsertFeedback',
+            data: JSON.stringify({ title: title, advice: advice, relation1: relation1 })
+        }, function (data) {
+            if (data.Success) {
+                var html = '<div class="about_content j-aboutContent"><div class="m-feedSuccess f-cb"><div class="success-icon f-fl"></div><div class="txt f-fl"><p>提交成功，感谢您的宝贵意见！</p></div></div></div>';
+                $(".yjfk").html(html);
+
+            }
+        });
+    }
+</script>

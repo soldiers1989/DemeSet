@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>网站配置相关</a>/<a>使用指南</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-12">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <input class="btn btn-success add_btn" type="button" value="添加">&nbsp;
+                <input class="btn btn-info edit_btn" type="button" value="编辑">&nbsp;
+                <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+            </div>
+            <div class="form-group">
+                <label>所属类别</label>
+                <select type="text" class="form-control" id="QueryBigClassId" name="BigClassId"></select>
+                <select type="text" class="form-control" id="QueryClassId" name="ClassId">
+                    <option value="">--全部--</option>
+                </select>
+                <input class="btn btn-success query_btn" type="button" value="查询">
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+<style>
+    #selectFrom select {
+        width: 150px;
+    }
+</style>
+<script src="~/Views/UseDescription/Index.js"></script>

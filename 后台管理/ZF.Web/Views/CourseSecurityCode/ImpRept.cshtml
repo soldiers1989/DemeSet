@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "ImpRept";
+    Layout = null;
+}
+
+@using (Html.BeginForm("Export", "CourseSecurityCode", new { type = ViewBag.type }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <style>
+        fieldset {
+            border: 1px dotted #939393;
+        }
+
+        .input {
+            color: #fff;
+            border: 1px solid #32b16c;
+            border-radius: 4px;
+            background-color: #32b16c;
+            cursor: pointer;
+            padding: 4px 12px;
+            line-height: 20px;
+            font-family: "Microsoft Yahei";
+        }
+
+        .right-text {
+            top: 101px !important;
+            left: 114px !important;
+        }
+
+        .right-textimp {
+            margin: 14px 0px !important;
+        }
+    </style>
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <script src="~/Libs/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="~/Js/easyuiBase.js"></script>
+    <div class="container-body">
+        <div>
+            <input type="hidden" id="CourseId" name="CourseId" value="@ViewBag.CourseId"/>
+            <fieldset id="myfieldset">
+                <legend>模版格式下载 </legend>
+                <font style="color: red; position: relative; top: -4px;">导入 @ViewBag.Name 模板格式如下，若模板格式不正确，则相应的信息不能导入!</font><br/>
+                <p style="color: Red; text-align: center;">
+                    <a id="XZMB">下载模版(.xlsx)</a>
+                </p>
+                <p style="color: Red; text-align: center;">
+                    <a id="XZMBDbf">下载模版(.dbf)</a>
+                </p>
+            </fieldset>
+        </div>
+        <p></p>
+        <div>
+            <fieldset id="myfieldset1">
+                <legend>@ViewBag.Name 导入</legend>
+                <p class="file">
+                    选择文件
+                    <input class="input" id="FileUpload" type="file" name="files" />
+                </p>
+                <input id="rightText" class="right-textimp" style="margin: 17px 0px !important">
+                <p>
+                    <input class="input" id="btnImport" type="submit" value="导入" style="width: 60px; height: 28px;" />
+                </p>
+                <p style="color: Red; text-align: center;">@ViewBag.error</p>
+            </fieldset>
+            <p></p>
+        </div>
+    </div>
+
+    <script>
+        $("#btnImport").click(function () {
+            topevery.ajaxLoading();
+        });
+        var fileBtn = $("input[type=file]");
+        fileBtn.on("change", function() {
+            var index = $(this).val().lastIndexOf("\\");
+            var sFileName = $(this).val().substr((index + 1));
+            $("#rightText").val(sFileName);
+        });
+        $("#XZMB").click(function() {
+            window.location = '/CourseSecurityCode/GetFile?type=xlsx';
+        });
+        $("#XZMBDbf").click(function () {
+            window.location = '/CourseSecurityCode/GetFile?type=dbf';
+        });
+    </script>
+}

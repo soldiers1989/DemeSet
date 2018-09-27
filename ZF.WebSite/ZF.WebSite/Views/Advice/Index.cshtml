@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_StudyCenterLayout.cshtml";
+}
+<style>
+    #pd2 {
+        padding: 20px;
+    }
+</style>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/about.css" rel="stylesheet" />
+<input hidden="hidden" id="aboutType" value="@ViewBag.aboutType" />
+<div class="leftMenu">
+    <a href="javascript:;" url="AboutUs" class="cur" title="关于我们">关于我们</a>
+    <a href="javascript:;" url="ContactUs" title="联系我们">联系我们</a>
+    <a href="javascript:;" url="LegalProvisions" title="法律条款">法律条款</a>
+    <a href="javascript:;" url="Feedback" title="意见反馈">意见反馈</a>
+</div>
+<div class="rightContent">
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.leftMenu>a').click(function () {
+            $('.leftMenu>a').each(function () {
+                $(this).removeClass('cur');
+            });
+            $(this).addClass("cur");
+            document.getElementsByTagName('title')[0].innerText = "中国人事考试在线-" + $(this).attr('title');
+            var args = $.extend({}, { type: "get", dataType: "html", contentType: "application/json", url: $(this).attr("url") });
+            $.ajax(args).done(function (data) {
+                $(".rightContent").html(data);
+            });
+        });
+        var aboutType = $('#aboutType').val();
+        if (aboutType == "8") {
+            $(".leftMenu>a")[3].click();
+        } else if (aboutType == "1") {
+            $(".leftMenu>a")[0].click();
+        } else if (aboutType == "2") {
+            $(".leftMenu>a")[1].click();
+        } else if (aboutType == "3") {
+            $(".leftMenu>a")[2].click();
+        } else {
+            $(".leftMenu>a")[0].click();
+        }
+    });
+</script>

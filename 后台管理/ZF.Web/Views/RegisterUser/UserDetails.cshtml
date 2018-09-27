@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "用户信息";
+}
+
+<div class="container" style="width:100%;margin-top: 10px;">
+    <input type="hidden" id="UserId" value="@ViewBag.UserId" />
+    <div class="col-md-10 col-md-offset-1">
+        <input type="hidden" Id="UserId" name="UserId" value="@ViewBag.UserId" />
+
+        <div class="form-group has-feedback">
+            <label style="font-weight:normal;">用&nbsp;&nbsp;户&nbsp;&nbsp;名：</label><span id="uname"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <label style="font-weight:normal;">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label><span id="unick"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <label style="font-weight:normal;">用户状态：</label><span id="usate"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <label style="font-weight:normal;">注册时间：</label><span id="registertime"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <label style="font-weight:normal;">注&nbsp;册&nbsp;&nbsp;&nbsp;IP：</label><span id="registerip"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        debugger
+        var obj = new Object();
+        obj.Id = $("#UserId").val();
+        topevery.ajax({
+            url: "api/RegisterUser/GetOne",
+            data: JSON.stringify(obj)
+        }, function (data) {
+            var info = data.Result;
+            if (data.Success) {
+                $("#uname").text(info.UserName);
+                $("#unick").text(info.NickNamw);
+                $("#usate").text(userSate(info.State));
+                $("#registertime").text(info.AddTime);
+                $("#registerip").text(info.RegisterIp);
+            } else {
+                //  layer.msg("数据异常", { time: 2000, icon: 2 });
+            }
+        });
+    })
+    function userSate(tm) {
+        if (tm === 0) {
+            return "启用";
+        } else if (tm === 1) {
+            return "禁用";
+        }
+        return "";
+    }
+</script>

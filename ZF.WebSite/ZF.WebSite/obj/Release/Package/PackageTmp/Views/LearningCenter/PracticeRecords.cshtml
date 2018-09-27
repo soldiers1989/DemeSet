@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/practice.css" rel="stylesheet" />
+<div class="subTit">
+    <label>练习记录</label>
+    <div class="search right">
+        <input id="query" class="layui-input" />
+        <a class="layui-icon  layui-icon-search" onclick="data.loading();"></a>
+    </div>
+</div>
+<div class="mycourse layui-row layui-col-space20" id="PracticeRecords">
+</div>
+<script type="text/html" id="PracticeRecords_html">
+    {{if Result.length>0}}
+    {{each Result}}
+    <div class="layui-col-xs4">
+        <div class="box">
+            <a href="javascript:data.checkChapterExercise('{{$value.Id}}');" class="top">
+                <div class="reportName">{{$value.VideoName}}</div>
+                <div class="layui-row">
+                    <div class="left">完成率：{{$value.Completion}}%</div>
+                    <div class="right">正确率：{{$value.Correct}}%</div>
+                </div>
+            </a>
+            <a href="javascript:;" class="details">
+                <p class="bookName">{{$value.CourseName}}</p>
+                <p>
+                    <label>{{$value.AddTime}}</label>
+                </p>
+            </a>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="normal">您还没有开始相关课程，快去学习吧……</div>
+    {{/if}}
+</script>
+<script type="text/javascript">
+    var data = {
+        loading: function () {
+            topevery.ajax({
+                url: 'api/ChapterExerciseRecord/GetExerciseRecords?query=' + $('#query').val(),
+            }, function (data) {
+                if (data.Success) {
+                    $("#PracticeRecords").html(template("PracticeRecords_html", data));
+                }
+            });
+        },
+        checkChapterExercise: function (id) {
+            window.open("/Answer/ChapterPracticeView?&ChapterQuestionsId=" + id, '_blank');
+        }
+    }
+    data.loading();
+</script>

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "课程评价";
+    Layout = null;
+}
+
+<style>
+    .ui-jqgrid tr.jqgrow td { text-overflow : ellipsis; }
+</style>
+
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>课程管理</a>/<a>课程评价管理</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-12 ">
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group col-xs-12">
+                <label class="">课程类型：</label>
+                <select style="width: 179px;" class="form-control" id="QueryCourseType" Name="CourseType" >
+                    <option value="-1"  selected="selected">---全部---</option>
+                    <option value="0" selected="selected">课程</option>
+                    <option value="1">套餐</option>
+                </select>
+                <label class="">课程名称：</label>
+                <select class="form-control" id="QueryCourseId" Name="CourseId" />
+                <input class="btn btn-success query_btn" type="button" value="查询">&nbsp;
+                <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+                <input class="btn btn-success upper_btn" type="button" value="审核">&nbsp;
+                <input class="btn btn-danger lower_btn" type="button" value="取消审核">&nbsp;
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+<script src="~/Views/CourseAppraise/Index.js"></script>

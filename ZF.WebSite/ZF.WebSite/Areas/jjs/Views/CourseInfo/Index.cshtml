@@ -1,0 +1,302 @@
+﻿@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<title></title>
+<style>
+    .jjs_nav ul li {
+        cursor: pointer;
+    }
+
+    .content {
+        display: none;
+    }
+
+    .jjs_nav ul li {
+        width: 20% !important;
+    }
+
+        .jjs_nav ul li a {
+            width: 100% !important;
+        }
+
+    .enter-x5-player {
+        height: 100% !important;
+    }
+
+    .js-box {
+        position: inherit !important;
+    }
+</style>
+<div class="js-box">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/CourseInfo/index.css" rel="stylesheet" />
+    <input type="hidden" id="code" value="@ViewBag.code" />
+    <input type="hidden" id="courseId" value="@ViewBag.CourseId" />
+    <input type="hidden" id="coursename" value="">
+    <input type="hidden" id="currentChapter" />
+    <input type="hidden" id="ifPlay" value="0" />
+    <input type="hidden" id="hasPay" value="0" />
+    <input type="hidden" id="isValueAdd" value="0" />
+    <div class="video" id="J_prismPlayer" style="min-height: 230px;">
+        <img id="courseCover">
+    </div>
+
+    <div class="jjs_nav">
+        <ul>
+            <li index="1" id="zj" style="display:none;" url="/jjs/CourseInfo/CourseChapter?code=@ViewBag.code"><a>目录</a></li>
+            <li index="3" id="mnsj" url="/jjs/CourseInfo/CourseTestPaper" style="display: none;"><a>模拟试卷</a></li>
+            <li index="5" id="lnzt" url="/jjs/CourseInfo/CourseLLztPaper" style="display: none;"><a>试题精解</a></li>
+            <li index="2" url="/jjs/CourseInfo/CourseContent"><a class="jjs-hover">介绍</a></li>
+            <li index="4" id="pj" url="/jjs/CourseInfo/CourseAppraise" style="display: none;"><a>评价</a></li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="zj-news">
+        <div id="content1" style="display: block;" class="content"></div>
+        <div id="content2" class="content"></div>
+        <div id="content3" class="content"></div>
+        <div id="content4" class="content"></div>
+        <div id="content5" class="content"></div>
+        <!--购买导航开始-->
+        <div class="hei3em"></div>
+        <div class="jjs-header-nav">
+
+        </div>
+        <script type="text/html" id="course_html">
+            <ul>
+                <li class="jjs_nav01">¥ {{FavourablePrice}}</li>
+                <li class="jjs_nav02">
+                    <a href="/jjs/PersonalCenter/MyShoppingCart">
+                        <div class="jjs_gwc"><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/gwc@2x.png"><span>{{ViewCount}}</span></div>
+                    </a>
+                </li>
+                {{if IfAreadyPay==1}}
+                <li class="jjs_nav03" name="{{Id}}">已购买</li>
+                {{else}}
+                <li class="jjs_nav03" onclick="AddToCart();" name="{{Id}}">加入购物车</li>
+                {{/if}}
+            </ul>
+        </script>
+        <script type="text/html" id="course1_html">
+            <div style="width: 100%; height: 3em; font-weight: 100; background: #fff; text-align: center; overflow: hidden; position: fixed; bottom: 0em; z-index: 999; border-top: 1px solid #f3f3f3;">
+                <div style="width: 80%; float: left; line-height: 3em;">购买书籍后扫描防伪码领取</div>
+
+                {{if IfAreadyPay==1}}
+                <div style="width: 20%; float: right; padding-top: 0.5em;">
+                    <a href="#" style="display: block; text-align: center; line-height: 2em; width: 90%; height: 2em; color: #fff; font-size: 0.9em; background: #bcbcbc; border-radius: 20px;">已领取</a>
+                </div>
+                {{else}}
+                <div style="width: 20%; float: right; padding-top: 0.5em;">
+                    <a href="/jjs/PersonalCenter/SecurityCodeToCollect" style="display: block; text-align: center; line-height: 2em; width: 90%; height: 2em; color: #fff; font-size: 0.9em; background: #ce1719; border-radius: 20px;">去领取</a>
+                </div>
+                {{/if}}
+                <div class="clear">
+                </div>
+            </div>
+        </script>
+    </div>
+</div>
+
+<!--购买导航结束-->
+
+<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css" />
+<script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js?v=1.0"></script>
+<script type="text/javascript">
+    var player = new Object();
+
+    $(function () {
+        $('.jjs_nav>ul>li').click(function () {
+            $('.jjs_nav>ul>li').each(function () {
+                $(this).find("a").removeClass('jjs-hover');
+            });
+            $(this).find("a").addClass("jjs-hover");
+            var index = $(this).attr("index");
+            if (index == "4") {
+                $('.jjs-header-nav').hide();
+            } else {
+                $('.jjs-header-nav').show();
+            }
+            var args = $.extend({}, { type: "get", dataType: "html", contentType: "application/json", url: $(this).attr("url") });
+            $(".content").hide();
+            $("#content" + index).show();
+            $.ajax(args).done(function (data) {
+                if (index === "1") {
+                    if (!$("#content1").html()) {
+                        $("#content1").html(data);
+                    }
+                } else if (index === "2") {
+                    if (!$("#content2").html()) {
+                        $("#content2").html(data);
+                    }
+                } else if (index === "3") {
+                    if (!$("#content3").html()) {
+                        $("#content3").html(data);
+                    }
+                } else if (index === "4") {
+                    if (!$("#content4").html()) {
+                        $("#content4").html(data);
+                    }
+                } else if (index === "5") {
+                    if (!$("#content5").html()) {
+                        $("#content5").html(data);
+                    }
+                }
+            });
+        })
+
+
+        topevery.ajax({
+            url: 'api/CourseInfo/GetCourseStatus',
+            data: JSON.stringify({ Id: $("#courseId").val() }),
+            async: false
+        }, function (data) {
+            //判断是否开启评价功能
+            if (data.Success) {
+                var row = data.Result;
+                $('#courseCover').attr('src', row.CourseIamge);
+                var courseName = row.CourseName;
+                $('#coursename').val(courseName);
+                if (courseName.indexOf("同步训练") > -1) {
+                    $('#zj').children().first().text('章节练习');
+                    $(".jjs_nav>ul>li").first().click();
+                } else if (courseName.indexOf("应试指南") > -1) {
+                    $('#zj').children().first().text('应试指南');
+                    $(".jjs_nav>ul>li").first().click();
+                } else if (courseName.indexOf("试题精解") > -1 || courseName.indexOf("章节练习") > -1) {
+                    $(".jjs_nav>ul>li").first().click();
+                }
+                else {
+                    if (row.IsValueAdded === 1 && topevery.IsValueAddedWebApp) {
+                        row.zjCount = 0;
+                        $('#zj').attr('style', 'display:none;');
+                        $(".jjs_nav>ul>li")[1].click();
+                    }
+                }
+                if (row.ArguValue === 1) {
+                    $('#pj').attr('style', 'display:block;');
+                }
+                if (row.lnztCount > 0) {
+                    $('#lnzt').attr('style', 'display:block;');
+                }
+
+                if (row.mnsjCount > 0) {
+                    $('#mnsj').attr('style', 'display:block;');
+                }
+
+                if (row.zjCount > 0) {
+                    $('#zj').attr('style', 'display:block;');
+                    $(".jjs_nav>ul>li")[0].click();
+                } else {
+                    if (row.mnsjCount === 0) {
+                        if (row.lnztCount === 0) {
+                            $(".jjs_nav>ul>li")[3].click();
+                        } else {
+                            $(".jjs_nav>ul>li")[2].click();
+                        }
+                    } else {
+                        $(".jjs_nav>ul>li")[1].click();
+                    }
+                }
+            }
+        });
+
+        if ($("#code").val()) {
+            //判断当前登录帐号是否已关注公众号
+            topevery.ajaxToThis({
+                type: "Post",
+                url: "/jjs/Home/GetSubscribe",
+                dataType: "html"
+            }, function (data2) {
+                if (data2 === "True") {
+                    //该课程是否已购买
+                    topevery.ajaxwx({
+                        url: 'api/Sheet/IfAreadyPay',
+                        data: JSON.stringify({
+                            CourseId: $('#courseId').val(),
+                            CourseType: 0
+                        })
+                    }, function (data1) {
+                        if (!data1.Result) {
+                            topevery.ajaxToThis({ type: "get", url: "/jjs/PersonalCenter/SecurityTwoCode1", dataType: "html" }, function (data) {
+                                layer.open({
+                                    type: 1,
+                                    title: "输入防伪码",
+                                    area: ['100%', 330 + 'px'], //宽高
+                                    content: data,
+                                });
+                            }, true);
+                        }
+                    });
+                    $(".jjs_nav>ul>li")[0].click();
+                } else {
+                    location.href = "/jjs/wx/Index1";
+                }
+            });
+        }
+        getCourseInfo();
+
+    });
+
+    function getCourseInfo() {
+        var obj = new Object();
+        obj.Id = $("#courseId").val();
+        topevery.ajaxwx({
+            url: 'api/Sheet/GetCourseInfoByOneAndUserCartCount',
+            data: JSON.stringify(obj),
+            async: false
+        }, function (data) {
+            if (data.Success) {
+                document.getElementsByTagName('title')[0].innerText = data.Result.CourseName;
+                //该课程是否已购买
+                topevery.ajaxwx({
+                    url: 'api/Sheet/IfAreadyPay',
+                    data: JSON.stringify({
+                        CourseId: $('#courseId').val(), CourseType: 0
+                    })
+                }, function (data1) {
+                    if (data1.Result) {
+                        data.Result.IfAreadyPay = 1;
+                        $('#hasPay').val(1);
+                        if (data.Result.IsValueAdded === 1) {
+                            $(".jjs-header-nav").html(template("course1_html", data.Result));
+                            $('#isValueAdd').val(1);
+                        } else {
+                            $('#isValueAdd').val(0);
+                            $(".jjs-header-nav").html(template("course_html", data.Result));
+                        }
+                    } else {
+                        data.Result.IfAreadyPay = 0;
+                        $('#hasPay').val(0);
+                        if (data.Result.IsValueAdded === 1) {
+                            $('#isValueAdd').val(1);
+                            $(".jjs-header-nav").html(template("course1_html", data.Result));
+                        } else {
+                            $('#isValueAdd').val(0);
+                            $(".jjs-header-nav").html(template("course_html", data.Result));
+                        }
+                    }
+                });
+            }
+        });
+
+    }
+    function AddToCart() {
+        var courseId = $("#courseId").val();
+        topevery.ajaxwx({
+            url: 'api/Cart/Add',
+            data: JSON.stringify({
+                CourseType: 0, CourseId: courseId
+            })
+        }, function (data) {
+            if (data.Success) {
+                if (data.Result.Success) {
+                    getCourseInfo();
+                    parent.layer.msg(data.Result.Message);
+                    //setTimeout("location.reload()", 2000);
+                } else {
+                    parent.layer.msg(data.Result.Message);
+                }
+            }
+        });
+    }
+</script>

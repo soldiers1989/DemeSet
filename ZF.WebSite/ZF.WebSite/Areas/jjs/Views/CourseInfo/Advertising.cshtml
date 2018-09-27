@@ -1,0 +1,112 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <title>推荐套餐</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .tanchu {
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 10px;
+            background: #f2f2f2;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.18);
+        }
+
+            .tanchu h2 {
+                font-size: 1em;
+                background: #ce1719;
+                color: #fff;
+                position: relative;
+                padding: 0.2em 0;
+                padding-left: 1em;
+            }
+
+        .guanbi {
+            position: absolute;
+            top: 0.4em;
+            right: 1em;
+            display: block;
+            background: #ef1619;
+            font-size: 0.8em;
+            border-radius: 1em;
+            padding: 0 1em;
+            cursor: pointer;
+        }
+
+        .tanchuimg {
+            width: 50%;
+            margin: 0 auto;
+            padding: 1em 0;
+            text-align: center;
+            float: left;
+        }
+
+            .tanchuimg img {
+                width: 80%;
+            }
+
+            .tanchuimg p {
+                line-height: 1.5em;
+                text-align: center;
+                padding: 0 0.5em;
+            }
+
+            .tanchuimg a {
+                text-decoration: none;
+            }
+
+        .clear {
+            clear: both;
+            height: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="tanchu">
+        <script type="text/html" id="Advertising_html">
+            <h2>
+                如需深度学习，请参加下列课程
+            </h2>
+            {{each Result}}
+            <div class="tanchuimg">
+
+                <a href="/jjs/CourseInfo/Index?id={{$value.Id}}&CourseType={{$value.CourseType}}" class="tc_tuijian" target="_blank">
+                    <img src="{{$value.CourseIamge}}">
+                    <p>{{$value.CourseName}}</p>
+                </a>
+            </div>
+            {{/each}}
+        </script>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    topevery.ajaxwx({
+        url: 'api/CourseInfo/Advertising',
+        data: JSON.stringify({ Id: $("#courseId").val() })
+    }, function (data) {
+        if (data.Result) {
+            var obj = data;
+            $('.tanchu').html(template('Advertising_html', obj));
+        }
+    });
+</script>

@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "讲师信息";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<style>
+    body {
+        overflow: hidden;
+    }
+    .clearfloat {
+        clear: both;
+        height: 0;
+        font-size: 1px;
+        line-height: 0px;
+    }
+</style>
+<input hidden="hidden" id="teacherid" value="@ViewBag.TeacherId" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/TeacherInfo.css" rel="stylesheet" />
+<div class="m-cp-course" id="j-cp-box">
+    <div class="cp">
+        <!-- cp主页头图 -->
+        <div class="m-cp-orgInfo">
+            <div id="j-cp-orgInfo" class="j-cp-orgInfo">
+                <div class="ux-provider-info">
+                    <div class="ux-provider-info-center f-cb f-pr">
+                        <div class="ux-provider-info-left f-fl">
+                            <div class="ux-provider-info-left_img">
+                                <img id="teacherImage" style="width: 98px;height: 100px;" src="">
+                            </div>
+                        </div>
+                        @*<div class="ux-provider-info-right f-fl">
+                                <div class="ux-provider-info-right_name">ExcelPPT李则见&nbsp;<div class="ux-provider-info-right_logo"></div></div>
+                                <div class="ux-provider-info-right_description">
+                                    擅用简单明了的方法讲解Excel和PPT
+                                </div>
+                            </div>
+                            <div class="ux-provider-info-consult f-pa">
+                                <div class="ux-provider-consult-im f-pr">
+                                    <a class="ux-provider-consult-im_head" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1137889985&amp;site=qq&amp;menu=yes">
+                                        <span class="ux-icon ux-icon-QQ f-pa"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span>服务咨询</span>
+                                    </a>
+                                </div>
+
+                            </div>*@
+                    </div>
+                </div>
+
+                <div class="m-cp-navwrap">
+                    <div class="g-wrap">
+                        <div class="ux-tabs mc-my-myclass_navwrap_tabs">
+                            <ul class="ux-tabs_hd">
+                                <!--Regular list-->
+                                @*<li style="width: 25%;" class="">主页</li>*@
+
+                                <li data-id="coursetag" style="width: 25%;" class="z-crt"><!--Regular if4-->课程</li>
+
+                                <li data-id="metag" style="width: 25%;" class="">关于我</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="g-wrap" id="aboutcourse">
+            <div class="m-cpcourse-yktcourse">
+                <div id="j-cpcourse-yktcourse" class="j-cpcourse-yktcourse">
+                    <div class="uc-course-list-head f-pr">
+                        @*<span class="f-f0">随到随学</span>*@
+                        <div class="uc-course-list-head_more f-pa">
+                            <!--Regular if9-->
+                            <span class="current">最热</span> - <span class="">最新</span>
+
+                        </div>
+                    </div>
+                    <div class="uc-course-list g-flow">
+                        <div class="uc-course-list_content">
+                            <!--Regular if10-->
+                            <ul id="courselist" class="uc-course-list_ul"></ul>
+                            <!--Regular if20-->
+                            <div style="display: none;">
+                                <ul class="ux-pager z-hdn">
+                                    <li class="ux-pager_btn ux-pager_btn__prev">
+                                        <a class="th-bk-disable-gh">上一页</a>
+                                    </li>
+                                    <li class="ux-pager_itm">
+                                        <a class="th-bk-main">1</a>
+                                    </li>
+                                    <!--Regular if21-->
+                                    <!--Regular if22-->
+                                    <!--Regular if23-->
+                                    <!--Regular if24-->
+                                    <li class="ux-pager_btn ux-pager_btn__next">
+                                        <a class="th-bk-disable-gh">下一页</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--Regular if7-->
+                </div>
+            </div>
+            <div class="m-cpcourse-yooccourse">
+                <div id="j-cpcourse-yooccourse" class="j-cpcourse-yooccourse"><!--Regular if8--></div>
+            </div>
+            <div class="m-cpindex-empty" id="j-cpteacher-empty" style="display: none">
+                <img src="//s2.stu.126.net/res/images/web/page/course/blank.png?a7f3b52d9acaf67b56fac9472aa2c1e4" alt="空结果">
+                <div class="m-empty_tip">暂无个人信息</div>
+            </div>
+        </div>
+        <div id="aboutme" style="display:none;">
+            <div class="m-cpabout-aboutme g-wrap">
+                <div id="j-cpabout-aboutme" class="j-cpabout-aboutme">
+                    <div class="ux-about-me">
+                        <div class="ux-about-me_richText">
+                            <div class="ux-editor-rich-content edueditor_styleclass_0" id="infocontent">
+                            </div>
+                        </div>
+                        <!--Regular if7-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfloat"></div>
+    </div>
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/TeacherInfo/TeacherInfo.js?v=1.0"></script>

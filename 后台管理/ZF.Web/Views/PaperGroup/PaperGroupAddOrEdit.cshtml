@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="col-xs-12 ">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom1" name="selectFrom1">
+            <input hidden="hidden" value="@ViewBag.PaperGroupId" name="PaperGroupId" id="PaperGroupId1">
+            <div class="form-group">
+                <label>试卷名称：</label>
+                <input id="QueryPaperName1" Name="PaperName" class="form-control" />
+                <input class="btn btn-success query_btn1" type="button" value="查询">
+                <input class="btn btn-success add_btn1" type="button" value="保存">&nbsp;
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData1"></table>
+        <div id="pager1"></div>
+    </div>
+</div>
+
+<script src="~/Views/PaperGroup/PaperGroupAddOrEdit.js"></script>

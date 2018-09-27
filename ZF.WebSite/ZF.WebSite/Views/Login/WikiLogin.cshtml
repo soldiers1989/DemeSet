@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+<input type="hidden" id="hiparament" value="@ViewBag.parment" />
+<div style="color:red;" id="divmessage">
+
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/plugins/jQuery/jquery-3.0.0.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/js/bootstrap.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/js/bootstrapValidator.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/md5.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Login/WikiLogin.js?v=1.0"></script>
+<script type="text/javascript">
+    $(function () {
+        window.parent().window.parent().window.close();
+        return;
+        var parament = $("#hiparament").val();
+        topevery.ajax({
+            url: "api/Account/WikiLogin",
+            data: parament
+        }, function (data) {
+            if (data.Success) {
+                var info = data.Result;
+
+                if (!info.Success) {
+                    $("#divmessage").html(info.Message);
+                } else {
+                    topevery.SetCookie("userToken", info.Ticket);
+                    if (topevery.getQueryString("RefUrl")) {
+                        location.href = topevery.getQueryString("RefUrl");
+                    } else {
+                        location.href = "/Home/Index";
+                    }
+                }
+            }
+        });
+    })
+</script>

@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/practice.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<div class="subTit">
+    <label>练习记录</label>
+    <div class="search right">
+        <input id="query" class="layui-input" />
+        <a class="layui-icon  layui-icon-search" onclick="data.loading();"></a>
+    </div>
+</div>
+<div class="mycourse layui-row layui-col-space20" id="PracticeRecords">
+</div>
+<div class="m-style M-box1" style="float: right; padding-right: 6px;"></div>
+<div class="clear"></div>
+<script type="text/html" id="PracticeRecords_html">
+    {{if Rows.length>0}}
+    {{each Rows}}
+    <div class="layui-col-xs4">
+        <div class="box">
+            <a href="javascript:data.checkChapterExercise('{{$value.Id}}');" class="top">
+                <div class="reportName">{{$value.VideoName}}</div>
+                <div class="layui-row">
+                    <div class="left">完成率：{{$value.Completion}}%</div>
+                    <div class="right">正确率：{{$value.Correct}}%</div>
+                </div>
+            </a>
+            <a href="javascript:data.checkChapterExercise('{{$value.Id}}');" class="details">
+                <p class="bookName">{{$value.CourseName}}</p>
+                <p>
+                    <label>{{$value.AddTime}}</label>
+                </p>
+            </a>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="normal">您还没有开始相关课程，快去学习吧……</div>
+    {{/if}}
+</script>
+<input type="hidden" Id="Rows" value="9" />
+<input type="hidden" Id="PageIndex" value="1" />
+<script type="text/javascript">
+    var data = {
+        loading: function () {
+            topevery.ajax({
+                url: 'api/ChapterExerciseRecord/GetExerciseRecords',
+                data: JSON.stringify({ query: $('#query').val(), page: $('#PageIndex').val(), rows: $('#Rows').val() })
+            }, function (data1) {
+                if (data1.Success) {
+                    $("#PracticeRecords").html(template("PracticeRecords_html", data1.Result));
+                    if (data1.Result.Records > 0) {
+                        $('.M-box1').show();
+                        $('.M-box1').pagination({
+                            pageCount: Math.ceil(data1.Result.Records / parseInt($("#Rows").val())),
+                            jump: true,
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function (api) {
+                                $("#PageIndex").val(api.getCurrent());
+                                data.loading1();
+                            }
+                        });
+                    } else {
+                        $('.M-box1').hide();
+                    }
+                }
+            });
+        },
+        loading1: function () {
+            topevery.ajax({
+                url: 'api/ChapterExerciseRecord/GetExerciseRecords',
+                data: JSON.stringify({ query: $('#query').val(), page: $('#PageIndex').val(), rows: $('#Rows').val() })
+            }, function (data1) {
+                if (data1.Success) {
+                    $("#PracticeRecords").html(template("PracticeRecords_html", data1.Result));
+                }
+            });
+        },
+        checkChapterExercise: function (id) {
+            topevery.openClick("/Answer/ChapterPracticeView?&ChapterQuestionsId=" + id);
+        }
+    }
+    data.loading();
+</script>

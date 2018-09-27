@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "用户信息";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+    body {
+        overflow:hidden;
+    }
+</style>
+<link href="~/Views/User/css/UserInfo.css" rel="stylesheet" />
+<input hidden="hidden" id="Id" value="@ViewBag.UserId"/>
+<div class="g-user-homepage" id="j-user-box">
+    <div class="m-user-info">
+        <div id="j-user-info-head" class="j-user-info-head user-info-head">
+            <div class="ux-user-info">
+                <div class="ux-user-info-center">
+                    <div class="ux-user-info-top">
+                        <div class="ux-user-info-top_img">
+                            <img src="">
+                        </div>
+                    </div>
+                    <div class="ux-user-info-bottom">
+                        <div class="ux-user-info-bottom_name"></div>
+                        <div class="ux-user-info-bottom_description f-pr">
+                            <span></span>
+                            <a href="//study.163.com/user/setting.htm#/settings/personInfoEdit" target="_blank" style="display: none;">&nbsp;&nbsp;编辑我的资料</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ux-user-info_show">
+                    <img src="//edu-image.nosdn.127.net/BBA8DD7E2BA27FCA978648E2CEF43899.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Views/User/UserInfo.js"></script>

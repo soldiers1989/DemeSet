@@ -1,0 +1,142 @@
+﻿@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<title></title>
+<style>
+    .jjs_nav ul li {
+        cursor: pointer;
+    }
+
+    .content {
+        display: none;
+    }
+
+    .jjs_nav ul li {
+        width: 20% !important;
+    }
+
+        .jjs_nav ul li a {
+            width: 100% !important;
+        }
+</style><link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/index1.css" rel="stylesheet" />
+<input type="hidden" id="code" value="@ViewBag.code" />
+<input type="hidden" id="courseId" value="@ViewBag.CourseId" />
+<input type="hidden" id="currentChapter" />
+<input type="hidden" id="ifPlay" value="0" />
+<body class="video001">
+    <div class="js-box">
+        <div class="video" id="J_prismPlayer" style="min-height: 230px;">
+            <img id="courseCover" src="">
+        </div>
+        <div class="taocan_nav">
+            <ul>
+                <li index="2" url="/jjs/CourseInfo/CourseLsit"><a class="jjs-hover">套餐列表</a></li>
+                <li index="1" url="/jjs/CourseInfo/CoursePackContent"><a>套餐介绍</a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="zj-news">
+        <div id="content1" style="display: block;" class="content"></div>
+        <div id="content2" class="content"></div>
+        <!--购买导航开始-->
+        <div class="jjs-header-nav">
+
+        </div>
+        <script type="text/html" id="course_html">
+            <ul>
+                <li class="jjs_nav01">¥ {{FavourablePrice}}</li>
+                <li class="jjs_nav02">
+                    <a href="/jjs/PersonalCenter/MyShoppingCart">
+                        <div class="jjs_gwc"><img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/gwc@2x.png"><span>{{ViewCount}}</span></div>
+                    </a>
+                </li>
+                {{if IfAreadyPay==1}}
+                <li class="jjs_nav03" name="{{Id}}">已购买</li>
+                {{else}}
+                <li class="jjs_nav03" onclick="AddToCart();" name="{{Id}}">加入购物车</li>
+                {{/if}}
+            </ul>
+        </script>
+    </div>
+
+    <!--购买导航结束-->
+</body>
+<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css" />
+<script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js?v=1.0"></script>
+<script type="text/javascript">
+    var player = new Object();
+
+    $(function () {
+        $('.taocan_nav>ul>li').click(function () {
+            $('.taocan_nav>ul>li').each(function () {
+                $(this).find("a").removeClass('jjs-hover');
+            });
+            $(this).find("a").addClass("jjs-hover");
+            var index = $(this).attr("index");
+            var args = $.extend({}, { type: "get", dataType: "html", contentType: "application/json", url: $(this).attr("url") });
+            $(".content").hide();
+            $("#content" + index).show();
+            $.ajax(args).done(function (data) {
+                if (index === "1") {
+                    if (!$("#content1").html()) {
+                        $("#content1").html(data);
+                    }
+                } else if (index === "2") {
+                    if (!$("#content2").html()) {
+                        $("#content2").html(data);
+                    }
+                }
+            });
+        })
+        $(".taocan_nav>ul>li").first().click();
+        getCourseInfo();
+    });
+
+    function getCourseInfo() {
+        var obj = new Object();
+        obj.Id = $("#courseId").val();
+        topevery.ajaxwx({
+            url: 'api/Sheet/GetPackInfoByOneAndUserCartCount',
+            data: JSON.stringify(obj)
+        }, function (data) {
+            if (data.Success) {
+                document.getElementsByTagName('title')[0].innerText = data.Result.CourseName;
+                //该课程是否已购买
+                topevery.ajaxwx({
+                    url: 'api/Sheet/IfAreadyPay',
+                    data: JSON.stringify({
+                        CourseId: $('#courseId').val(), CourseType: 1
+                    })
+                }, function (data1) {
+                    if (data1.Result) {
+                        data.Result.IfAreadyPay = 1;
+                        $(".jjs-header-nav").html(template("course_html", data.Result));
+                    } else {
+                        data.Result.IfAreadyPay = 0;
+                        $(".jjs-header-nav").html(template("course_html", data.Result));
+                    }
+                });
+            }
+        });
+
+    }
+    function AddToCart() {
+        var courseId = $("#courseId").val();
+        topevery.ajaxwx({
+            url: 'api/Cart/Add',
+            data: JSON.stringify({
+                CourseType: 1, CourseId: courseId
+            })
+        }, function (data) {
+            if (data.Success) {
+                if (data.Result.Success) {
+                    getCourseInfo();
+                    parent.layer.msg(data.Result.Message);
+                } else {
+                    parent.layer.msg(data.Result.Message);
+                }
+            }
+        });
+    }
+</script>

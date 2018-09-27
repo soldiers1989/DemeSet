@@ -1,0 +1,13 @@
+G:\XYZ\ZF.WebSite\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+G:\XYZ\ZF.WebSite\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+G:\XYZ\ZF.WebSite\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+G:\XYZ\ZF.WebSite\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+G:\XYZ\ZF.WebSite\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+G:\XYZ\ZF.WebSite\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+G:\XYZ\ZF.WebSite\ConsoleApplication1\bin\Debug\Chatbot.dll
+G:\XYZ\ZF.WebSite\ConsoleApplication1\bin\Debug\Chatbot.pdb
+G:\XYZ\ZF.WebSite\ConsoleApplication1\bin\Debug\TTS.dll
+G:\XYZ\ZF.WebSite\ConsoleApplication1\bin\Debug\TTS.pdb
+G:\XYZ\ZF.WebSite\ConsoleApplication1\bin\Debug\Interop.SpeechLib.dll
+G:\XYZ\ZF.WebSite\ConsoleApplication1\obj\Debug\Interop.SpeechLib.dll
+G:\XYZ\ZF.WebSite\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.ResolveComReference.cache

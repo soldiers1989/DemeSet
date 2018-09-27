@@ -1,0 +1,14 @@
+.left{width:778px; float:left;border-right:1px solid #e7e7e7;padding-right:30px;}
+.right{width:136px; float:right;padding-left:50px;}
+.tit{font-size:20px; color:#454545;line-height: 35px;margin-bottom: 10px;}
+.time{font-size:12px; color:#444444;margin-bottom: 20px;padding-bottom:5px;    border-bottom: 1px dotted #dbdbdb;}
+.content{overflow:hidden;_zoom:1;padding-top: 45px;border-top: 1px solid #d2d2d2;}
+.details p{font-size:14px; color:#2b2b2b;line-height: 24px; margin-bottom: 15px;text-indent:28px;}
+.right a{display:block; color:#027eca;font-size: 14px;padding-left:30px;line-height:24px;margin-bottom: 10px;}
+.right a:hover{text-decoration: underline;}
+.right .title{font-size: 18px; color:#4c4c4c; padding-left:26px; border-left: 4px solid #027eca;margin-bottom: 20px;}
+.details .er{color:#0070c0;font-size:16px;text-indent:32px;margin:10px auto;}
+.details h6{font-size:20px; color:#000;font-weight:bold;margin-top: 20px;}
+.details .red{color:red;}
+.details .ques{font-weight:bold;margin-bottom: 4px;}
+.footer{margin-top: 40px;}

@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Login/css/global.css" rel="stylesheet" type="text/css" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Login/css/skin.css" rel="stylesheet" type="text/css" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Login/css/autoComplete.css" rel="stylesheet" type="text/css" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Login/css/login.css" rel="stylesheet" type="text/css" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/css/bootstrapValidator.min.css" rel="stylesheet" />
+<style>
+    .u-ipt input {
+        border: 1px solid #39a6ec;
+        background: #fff;
+    }
+</style>
+<div class="g-doc" style="visibility: visible;">
+    <div class="g-hd">
+        <div class="g-in">
+            <div class="m-logobar">
+                    <h2>
+                        <a href="/" >
+                            <img src="/Images/Home/imgs/login/logo.png" alt="云课堂" title="云课堂">
+                        </a>
+                        <i>|</i>登录
+                    </h2>
+               
+           
+                @*<h2 class="f-ff1"></h2>
+                <div class="notice"></div>*@
+            </div>
+        </div>
+
+    </div>
+    <div class="g-bd">
+        <div class="g-in" style="position:relative; padding:46px 0;background:url('/Images/Home/imgs/login/bg.jpg');">
+            <iframe id="advList" frameborder="0" scrolling="no" marginheight="0px" marginwidth="0px" style="display: block;width: 990px;height: 512px;position: absolute;bottom: 0px;left: 0px;" src=""></iframe>
+            <div class="m-tab m-tab-small">
+                <div class="tabHd">
+                    <ul class="f-cbli">
+                        <li rel="#loginByAccount" class="z-on"><a href="javascript:void(0);">用户登录</a></li>
+                        <li rel="#loginByCode" style="position:relative; "><span class="u-new"></span></li>
+                    </ul>
+                </div>
+                <div class="tabBd">
+                    <div id="loginByAccount">
+                        <div id="checkAlert">
+                            <p class="u-tips " style="display:none;">
+                                <em>&nbsp;</em><span></span>
+                            </p>
+                        </div>
+                        <form id="sumbitForm" name="sumbitForm">
+                            <div class="m-ipt">
+                                <div class="u-ipt">
+                                    <div class="form-group">
+                                        <input type="number" name="TelphoneNum" id="TelphoneNum" value="" myholder="帐号" placeholder="手机号">
+                                        <label for="TelphoneNum"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-ipt">
+                                <div class="u-ipt">
+                                    <div class="form-group">
+                                        <input type="password" name="LoginPwd" id="LoginPwd" value="" maxlength="16" myholder="密码" placeholder="密码">
+                                        <label for="LoginPwd"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="loginBtn" class="u-btn2">登录</button>
+                            </div>
+                            <input type="hidden" name="LoginType" id="LoginType" value="pc" />
+                        </form>
+                    </div>
+
+                    <div class="loginLinks">
+                        @*<a href="" target="_blank">忘记密码？</a>*@
+                        <span style="color:#337ab7;cursor:pointer;" id="RetrievePassword">忘记密码</span>|
+                        <a href="javascript:UserRegist()">注册</a>|
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="g-ft">
+            <div class="g-in">
+                <div class="m-cp">
+                    <p>
+                        <a href="" target="_blank">About NetEase</a>-
+                        <a href="" target="_blank">公司简介</a>-
+                        <a href="" target="_blank">联系方式</a>-
+                        <a href="" target="_blank">OAuth2.0认证</a>-
+                        <a href="" target="_blank">招聘信息</a>-
+                        <a href="" target="_blank">客户服务</a>-
+                        <a href="" target="_blank">相关法律</a>-
+                        <a href="" target="_blank">网络营销</a>
+                    </p>
+                    <p>
+                        网易公司版权所有 ©1997-2015
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="codeTrigger"></div>
+    </div>
+    <div id="autoCompleteList"></div>
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/plugins/jQuery/jquery-3.0.0.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/bootstrap/js/bootstrapValidator.min.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/md5.js"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Login/Index.js"></script>

@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/collection.css" rel="stylesheet" />
+<style type="text/css">
+    .page {
+        text-align: center;
+        overflow: hidden;
+        padding: 10px;
+        clear: both;
+    }
+
+        .page a {
+            display: inline-block;
+            min-width: 30px;
+            height: 30px;
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            line-height: 30px;
+            vertical-align: middle;
+        }
+         .page div> a {
+            display: inline-block;
+            min-width: 30px;
+            height: 30px;
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            line-height: 30px;
+            vertical-align: middle;
+        }
+
+        .page input {
+            height: 30px;
+            width: 40px;
+            border: 1px solid #dcdcdc;
+            border-radius: 3px;
+            text-align: center;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .page .cur {
+            color: #fff;
+            background-color: #e4393c;
+            border-color: #e4393c;
+        }
+
+        .page .jump {
+            padding: 0 10px;
+        }
+</style>
+<input type="hidden" Id="Rows" value="3" />
+<input type="hidden" Id="PageIndex" value="1" />
+<div class="subTit" >
+    <label>收藏试题</label>
+    <div class="search right">
+        <input class="layui-input">
+        <a id="btn_search_item" class="layui-icon  layui-icon-search">
+        </a>
+    </div>
+</div>
+<div style="margin:0;padding:0;" id="collectedSubject">
+
+</div>
+<div class="normal st" id="empty_area" style="display:none;">您还没有收藏试题……</div>
+
+
+<div class="page" style="display:none;">
+    <a class="prev"><<</a>
+    <span id="pageContent">
+
+    </span>
+    <a href="javascript:;" class="next">>></a>
+    <input type="text">
+    <a href="javascript:;" class="jump">跳转</a>
+</div>
+
+<script src="~/Views/LearningCenter/CollectionItem.js"></script>
+

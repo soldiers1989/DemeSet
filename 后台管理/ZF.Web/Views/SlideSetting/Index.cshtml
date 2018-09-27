@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>网站配置</a>/<a>首页幻灯片配置</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-12 ">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <input class="btn btn-success add_btn" type="button" value="添加">&nbsp;
+                <input class="btn btn-info edit_btn" type="button" value="编辑">&nbsp;
+                <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+            </div>
+            <div class="form-group">
+                <input type="hidden" Id="QueryType" name="Type" value="0" />
+                <label>链接地址：</label>
+                <input id="QueryLinkAddress" Name="LinkAddress" class="form-control"/>
+                <label>状态：</label>
+                <select type="text" class="form-control" id="QueryState" name="State"></select>
+                <input class="btn btn-success query_btn" type="button" value="查询">
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+<script src="~/Views/SlideSetting/Index.js"></script>

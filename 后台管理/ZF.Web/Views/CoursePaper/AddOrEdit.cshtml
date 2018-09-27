@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="col-xs-12">
+    <form id="paperSelectFrom" name="selectFrom">
+        <input hidden="hidden" name="CourseId" Id="AddCourseId" value="@ViewBag.CourseId" />
+    </form>
+    <div class="col-xs-12" style="padding-top: 5px;">
+        <button class="btn btn-primary success" style="float: right;" id="addPaperAdd">保存</button>
+    </div>
+    <div class="col-xs-12">
+        <div class="box-body row">
+            <table id="paperDataAdd"></table>
+            <div id="paperPagerAdd"></div>
+        </div>
+    </div>
+</div>
+<script src="~/Views/CoursePaper/AddOrEdit.js"></script>

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "我的购物车";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="myForm" method="post" target="myFrame">
+    <input type="hidden" name="parment" value="@ViewBag.parment" id="data_param" />
+</form>
+<iframe name="myFrame" width="100%" id="myFrame" height="800px" frameborder="0" scrolling="no" ></iframe>
+<script type="text/javascript">
+    $(function () {
+        if (topevery.GetCookie("userToken")) {
+            $("#myForm").attr("action", "Indexbak");
+            $("#myForm").submit();
+        } else {
+            $("#myForm").attr("action", "OrderNoLogin");
+            $("#myForm").submit();
+        }
+
+    })
+    function setIframeHeight(iframe) {
+        if (!iframe) {
+            iframe = document.getElementById("myFrame");
+        }
+        if (iframe) {
+            var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+            if (iframeWin.document.body) {
+                setTimeout(function () { iframe.height = $(window.frames["myFrame"].document.getElementsByClassName("g-flow")[0]).height() }, 200);
+            }
+        }
+    };
+</script>

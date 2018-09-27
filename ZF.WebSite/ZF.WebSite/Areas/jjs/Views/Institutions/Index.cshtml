@@ -1,0 +1,136 @@
+﻿
+@{
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            color: #666;
+            background: url(bg.png) no-repeat center bottom fixed;
+            background-size: 100%;
+        }
+
+        .zc_logo {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 2em;
+        }
+
+            .zc_logo img {
+                width: 8em;
+            }
+
+            .zc_logo p {
+                font-size: 1em;
+                padding-top: 1em;
+                font-family: 汉仪菱心体简;
+                font-size: 1.2em;
+                color: #EC1518;
+            }
+
+
+        .zc_box {
+            width: 18em;
+            margin: 0 auto;
+            padding-top: 3em;
+        }
+
+            .zc_box img {
+                width: 5em;
+                padding-left: 1em;
+            }
+
+            .zc_box dl {
+                width: 100%;
+                margin-bottom: 1.5em;
+            }
+
+                .zc_box dl dt {
+                    width: 2em;
+                    height: 2em;
+                    background: #ffd200;
+                    border-radius: 1000em;
+                    text-align: center;
+                    line-height: 2em;
+                    color: #fff;
+                    float: left;
+                    margin-right: 0.5em;
+                    font-size: 1.1em;
+                }
+
+                .zc_box dl dd {
+                    float: left;
+                    width: 8em;
+                }
+
+        .clear {
+            clear: both;
+            height: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="zc_logo">
+    </div>
+    <script type="text/html" id="zc_logo">
+        {{if IsRegistered>0}}
+        <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/Institutions/zhuce.png" alt="">
+        <p>您可以通过以下几种方式进行学习</p>
+        {{else}}
+        <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/Institutions/yzc.png" alt="">
+        <p>您可以通过以下几种方式进行学习</p>
+        {{/if}}
+    </script>
+    <div class="zc_box">
+        <dl>
+            <dt>1</dt>
+            <dd>识别二维码关注“人事社经济师课堂”</dd>
+            <p>
+                <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/Institutions/erweima.jpg">
+            </p>
+            <div class="clear"></div>
+        </dl>
+        <dl>
+            <dt>2</dt>
+            <dd>下载“人事社经济师课堂”APP</dd>
+            <p>
+                <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/Institutions/erweima.jpg">
+            </p>
+            <div class="clear"></div>
+        </dl>
+
+        <dl>
+            <dt>3</dt>
+            <dd style="height: 3em;">
+                电脑登录网址(http://zgrskspx.class.com.cn)<br>
+                进行学习
+            </dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var obj = new Object();
+    obj.IsRegistered = parseInt(topevery.GetCookie("IsRegistered"));
+    $(".zc_logo").html(template("zc_logo", obj));
+    topevery.SetCookie("IsRegistered", "0");
+</script>

@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>试卷管理</a>/<a>试卷管理</a></span>
+    </div>
+</div>
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-2 KnowledgePointTree" style="overflow: auto;">
+    <ul id="treeDemo1" class="ztree"></ul>
+</div>
+<div class="col-xs-10" style="border-left-style: solid; border-width: 1px;">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <input class="btn btn-success automatically_btn" type="button" value="自动组卷">&nbsp;
+                <input class="btn btn-info manual_btn" type="button" value="手工组卷">&nbsp;
+                <input class="btn btn-info edit_btn" type="button" value="编辑">&nbsp;
+                <input class="btn btn-danger del_btn" type="button" value="删除">&nbsp;
+                <input class="btn btn-danger export_btn" type="button" value="导出试卷">&nbsp;
+            </div>
+            <div class="form-group">
+                <label>试卷名称：</label>
+                <input id="QueryPaperName" Name="PaperName" class="form-control" />
+                <label>试卷类别：</label>
+                <select id="QueryType" Name="Type" class="form-control">
+                    <option value="-1">---全部---</option>
+                    <option value="0">历年正题</option>
+                    <option value="1">模拟试卷</option>
+                </select>
+                <input class="btn btn-success query_btn" type="button" value="查询">
+            </div>
+            <input type="hidden" id="QuerySubjectId" name="SubjectId"/>
+            <input type="hidden" id="QueryProjectClassId" Name="ProjectClassId" class="form-control" />
+            <input type="hidden" id="QueryProjectId" Name="ProjectId" class="form-control" />
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+<script src="~/Views/PaperInfo/Index.js"></script>

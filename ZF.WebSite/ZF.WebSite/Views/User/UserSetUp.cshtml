@@ -1,0 +1,114 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/mycenter/message.css" rel="stylesheet" />
+
+<style type="text/css">
+    /* Apply these styles only when #preview-pane has
+    been placed within the Jcrop widget */
+    .jcrop-holder #preview-pane {
+        display: block;
+        position: absolute;
+        z-index: 2000;
+        top: 10px;
+        right: -280px;
+        padding: 6px;
+        border: 1px rgba(0,0,0,.4) solid;
+        background-color: white;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .jcrop-holder {
+        margin-top: 10px;
+    }
+
+    #preview-pane .preview-container {
+        width: 250px;
+        height: 170px;
+        overflow: hidden;
+    }
+</style>
+<div class="personTit"><label>基本信息</label></div>
+<div class="pd2">
+
+
+</div>
+<script type="text/html" id="userInfo_html">
+    <form id="formid"  enctype="multipart/form-data" method="post">
+        <div class="imgup">
+            <img src="{{HeadImage}}" id="uimage" width="160" height="160" class="photo">
+            <div class="changeImg">
+                <p>修改头像</p>
+                <div class="up">
+                    <a  href="#" class="layui-btn layui-btn-danger filebtn">
+                        上传头像
+                        <input type="file" onchange="saveUserPhoto()" id="photoFile" class="file" name="photoFile" value="浏览">
+                    </a>
+                </div>
+                <div class="tips">请上传160*160像素的图片</div>
+            </div>
+        </div>
+        <input type="hidden" name="hiuid" id="hiuid" value="{{Id}}" />
+        <input id="hiimage" name="hiimage" type="hidden" value="{{HeadImage}}" />
+    </form>
+    <div class="editItem">
+        <div class="item">
+            <!-- leftName如果修改过就加cur -->
+            <div class="leftName">昵称：</div>
+            <div class="boxs">
+                <span id="nickShowBox" class="showBox text">{{NickNamw}}</span>
+                <span id="nickEditBox" class="editBox"><input type="text" id="inputNick" value="{{NickNamw}}"></span>
+                <a href="javascript:;" onclick="nickEdit(1, this)" name="edit" class="update">编辑</a>
+                <a href="javascript:;" onclick="infoSave('{{Id}}',1)" id="nikeSave" style="display:none;" class="update">保存</a>
+            </div>
+        </div>
+        <div class="item">
+            <!-- leftName如果修改过就加cur -->
+            <div class="leftName">手机：</div>
+            <div class="boxs">
+                <span id="phoneShowBox" class="showBox text">{{TelphoneNum}}</span>
+                <span id="phoneEditBox" class="editBox">
+                    <div class="layui-form-item"><input type="text" id="telphoneNum" value="{{TelphoneNum}}"></div>
+                    <div class="layui-col-xs6"><input alt="请输入验证码" type="text" id="txtphoneyzm"></div>
+                    <div class="layui-col-xs6 t_right"><a href="javascript:;" onclick="getPhoneCode(this)" class="layui-btn layui-btn-danger">获取验证码</a></div>
+                    {{if !TelphoneNum}}
+                    <div class="layui-form-item"  style="line-height: 70px;"><input type="password" id="telpassword" placeholder="请设置登录密码"></div>
+                    {{/if}}
+                </span>                
+                {{if !TelphoneNum}}
+                <a href="javascript:;" onclick="nickEdit(3,this)" name="save" class="update">绑定手机号</a>
+                {{else}}
+                <a href="javascript:;" onclick="nickEdit(3,this)" name="save" class="update">更换手机号</a>
+                {{/if}}
+                <a href="javascript:;" onclick="infoSave('{{Id}}',3)" style="display:none;" id="savePhone" class="update">绑定</a>
+            </div>
+        </div>
+        <div class="item">
+            <a href="javascript:;" onclick="nickEdit(2,this)" name="edit" class="update right">编辑</a>
+            <a href="javascript:;" onclick="infoSave('{{Id}}',2)" id="infoSave" style="display:none;" class="update right">保存</a>
+            <div class="layui-form-item">
+                <div class="leftName">邮箱：</div>
+                <div class="boxs">
+                    <div id="emailShowBox" class="showBox text">{{Email}}</div>
+                    <div id="emailEditBox" class="editBox"><input id="txtEmail" maxlength="40" value="{{Email}}" type="text"></div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="leftName">qq：</div>
+                <div class="boxs">
+                    <div id="qqShowBox" class="showBox text">{{QQ}}</div>
+                    <div id="qqEditBox" class="editBox"><input type="text" id="txtQQ" maxlength="20" value="{{QQ}}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.form.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/md5.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/User/UserSetUp.js?v=1.0"></script>

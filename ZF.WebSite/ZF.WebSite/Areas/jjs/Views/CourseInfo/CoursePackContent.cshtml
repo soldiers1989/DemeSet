@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+<style>
+    #courseContent h3 {
+    line-height: 2em;
+    font-size: 1em;
+    color: #f32426;
+    font-weight: 100;
+    border-bottom: 1px solid #ebebeb;
+}
+</style>
+<div id="courseContent" style="padding: 15px;">
+</div>
+<script type="text/html" id="baseInfo_html">
+    <h3>{{CourseName}}</h3>
+    {{#CourseContent }}
+</script>
+
+<script type="text/javascript">
+    var courseid = $('#courseId').val();
+    var state = $('#ifPlay').attr("data");
+    $('.jjs-header-nav').attr("style", "display:block;");
+    if (state == "1") {
+        $("#courseCover").attr("style", "display:none;");
+    } else {
+        $("#courseCover").attr("style", "display:block;");
+    }
+    $(function () {
+        topevery.ajaxwx({
+            url: 'api/CoursePack/GetCoursePackDetail',
+            data: JSON.stringify({ Id: courseid })
+        }, function (data) {
+            if (data) {
+                if (data.Success) {
+                    var courseinfo = data.Result;
+                    $('#courseContent').html(template('baseInfo_html', courseinfo));
+                    $('#courseCover').attr('src', courseinfo.CourseIamge);
+                }
+            }
+        });
+    })
+</script>

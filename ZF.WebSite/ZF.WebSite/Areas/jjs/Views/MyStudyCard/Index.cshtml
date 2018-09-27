@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "我的学习卡";
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" />
+    <title>学习卡</title>
+</head>
+<body class="body">
+    <script type="text/html" id="studycard_html">
+        {{if Result.length>0}}
+        {{each Result}}
+        <div class="xxk_box">
+            <div class="xxk_name">
+                {{$value.CardName}}
+            </div>
+            <div class="xxk_kh">
+                <dl>
+                    <dt>卡号：{{$value.CardCode}}</dt>
+                    <dd>
+                        ¥ {{$value.Amount}} {{if !$value.TargetCourse}}
+                        <span>通用</span>
+                        {{else}}
+                        <span>{{$value.TargetCourse}}</span>
+                        {{/if}}
+                    </dd>
+                </dl>
+            </div>
+            <div class="xxk_zt">
+                <span>状态：{{$value.IfUse | formatterState :$value.EndDate }}</span>
+                <i>
+                    可用期限：{{if !$value.EndDate }}
+                    永久有效
+                    {{else}}
+                    {{$value.EndDate | formatterDate }}前
+                    {{/if}}
+                </i>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="zanwu">
+            <img src="/Areas/jjs/resources/images/zanwu.png">
+            <p><a href="#">暂无学习卡</a></p>
+        </div>
+        {{/if}}
+    </script>
+</body>
+</html>
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/ctj.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/MyStudyCard/Index.js?v=1.0"></script>

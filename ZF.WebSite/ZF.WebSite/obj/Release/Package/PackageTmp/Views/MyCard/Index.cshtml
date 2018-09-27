@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "我的学习卡";
+    Layout =null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/mycenter/learnCard.css" rel="stylesheet" />
+    <div class="personTit"><label>学习卡</label><div class="search right"><input class="layui-input"></input><a class="layui-icon  layui-icon-search"></a></div></div>
+    <div class="pd2">
+        <div class="layui-col-space20 layui-row">
+            <div class="layui-col-xs6">
+                <div class="box" id="bindCardInfo">
+
+                </div>
+                <script type="text/html" id="card_html">
+                    {{if length>0}}
+                    {{each}}
+                    <span class="bgw">经济师通用学习卡</span>
+                    <div class="layui-row">
+                        <div class="layui-col-xs6 cardNum">卡号：{{$value.CardCode}}</div>
+                        <div class="layui-col-xs6 ">
+                            <div class="money t_right">¥ {{$value.Amount}}</div>
+                            {{if !$value.TargetCourse}}
+                            <div class="use t_right">通用</div>
+                            {{else}}
+                            <div class="use t_right">{{$value.TargetCourse}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="down">
+                        <div class="layui-col-xs4">状态：
+                        {{if $value.IfUse==0}}
+                            可用
+                        {{else}}
+                        不可用
+                        {{/if}}
+                        </div>
+                        <div class="layui-col-xs8 t_right">可用期限：
+                        {{if $value.EndDate }}
+                            永久有效
+                        {{else}}
+                            {{$value.EndDate}}前
+                        {{/if}}
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{else}}
+                    暂无卡片
+                    {{/if}}
+                </script>
+            </div>
+
+        </div>
+    </div>
+<script src="~/Views/MyCard/Index.js"></script>

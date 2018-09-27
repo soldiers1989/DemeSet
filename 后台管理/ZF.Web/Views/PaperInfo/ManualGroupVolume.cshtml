@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+@*<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title"><i class="fa fa-map-marker map-loc"></i>位置：<a>试卷管理</a>/<a>手工组卷</a></span>
+    </div>
+</div>*@
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-12">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFrom" name="selectFrom">
+            <div class="form-group">
+                <label>试卷参数</label>
+                <select type="text" class="form-control" id="PaperParamId" name="PaperParamId"></select>
+                <label>试卷名称</label>
+                <input id="PaperName" Name="PaperName" class="form-control" />
+                <label>试卷类别</label>
+                <select type="text" class="form-control" id="QuizpaperType" name="QuizpaperType">
+                    <option value="0">历年真题</option>
+                    <option value="1">模拟试卷</option>
+                </select>
+                <label>考试时长</label>
+                <input id="TestTime" type="number" Name="TestTime" class="form-control" />
+                <input class="btn btn-success automatically_btn" type="button" id="btnManualGroupVolume" value="保存">&nbsp;
+                <input class="btn btn-danger del_btn" id="btndel" type="button" value="删除试题">&nbsp;
+            </div>
+        </form>
+    </div>
+
+
+  
+</div>
+
+<div class="col-xs-12">
+    <div class="box-header nav-header">
+        <span class="title">选择知识点，勾选试题后进行组卷</span>
+    </div>
+</div>
+
+<div class="col-xs-5">
+    <ul id="treeDemo" class="ztree"></ul>
+</div>
+
+<div class="col-xs-5">
+    <ul id="treeDemoTwo" class="ztree"></ul>
+</div>
+<input type="hidden" id="groupType" value="@ViewBag.groupType" />
+<input type="hidden" id="paperId" value="@ViewBag.paperId" />
+<input type="hidden" id="paperState" value="@ViewBag.paperState" />
+<script src="~/Views/PaperInfo/ManualGroupVolume.js"></script>

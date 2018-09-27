@@ -1,0 +1,759 @@
+﻿#container {
+    padding-bottom: 80px;
+}
+    .electronicInvoice span {
+        margin-left: 5px;
+    font-weight: 300;
+    font-size: 12px;
+    }
+    .electronicInvoice input {
+        height: 30px;
+        border: 1px solid darkgrey;
+        margin: 10px;
+        width: 240px;
+    }
+#container {
+    background-color: #f5f5f5;
+    height: 1620px;
+    max-height:2000px;
+}
+a:hover {
+    color: #f30213;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+.emph-wrap {
+    background: #fff;
+}
+
+.root61 .w, .w1210 .w {
+    width: 1210px;
+}
+
+.w {
+    width: 990px;
+    margin: 0 auto;
+}
+
+.btn-video b, .delay-icon, .emph-wrap .emph-tips b, .invoice-icon, .remind-tipbox .remind-icon, a.btn-again b, a.btn-bean b, a.btn-code b, a.btn-coupon b, a.btn-del b, a.btn-print b, a.btn-rank b, a.btn-sample b, a.btn-scan b, a.btn-share b, a.btn-upload b {
+    background-image: url(../../../Images/CartImg/order-icons.png);
+    background-repeat: no-repeat;
+}
+
+body {
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #666;
+    background: #fff;
+}
+
+.emph-wrap .emph-tips {
+    height: 30px;
+    line-height: 30px;
+    background: #fff;
+}
+
+.emph-wrap .emph-tips b {
+    display: inline-block;
+    width: 11px;
+    height: 15px;
+    background-position: 0 -93px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.breadcrumb {
+    height: 50px;
+    overflow: hidden;
+    line-height: 50px;
+    vertical-align: baseline;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+.breadcrumb span {
+    font-family: "\5b8b\4f53";
+}
+
+a, address, b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, label, legend, li, ol, p, pre, small, span, strong, u, ul, var {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.breadcrumb strong {
+    font-weight: 700;
+    line-height: 50px;
+}
+
+#container .m {
+    margin-bottom: 20px;
+}
+
+.order-state02 {
+    border-color: #71b247;
+}
+
+.order-state01 {
+    border-color: #e4393c;
+}
+
+.order-state {
+    border-top: 3px solid #fff;
+}
+
+.m, .mb, .mc, .mt, .sm, .smb, .smc, .smt {
+    overflow: hidden;
+    zoom: 1;
+}
+
+#container .mc {
+    background: #fff;
+    border: 1px solid #eee;
+}
+.order-state .state-cont {
+    position: relative;
+}
+
+.root61 .order-state .state-bottom, .root61 .order-state .state-lcol {
+    width: 325px;
+}
+
+.order-state .state-lcol {
+    float: left;
+    width: 243px;
+    padding: 20px 0 38px;
+    text-align: center;
+}
+
+.order-state .state-top {
+    margin-bottom: 30px;
+    color: #999;
+}
+
+.order-state .state-txt {
+    font: 700 24px/34px "Microsoft YaHei";
+}
+.ftx-02, .ftx02 {
+    color: #71b247;
+}
+
+.order-state .remain-time {
+    color: #aaa;
+}
+
+.order-state .state-btns {
+    min-height: 107px;
+    _height: 107px;
+    margin: 20px 0 30px;
+}
+
+.order-state .state-btns .btn-1, .order-state .state-btns .btn-5, .order-state .state-btns .btn-9, .order-state .state-btns .btn-disabled {
+    width: 98px;
+    padding: 4px 0 5px;
+}
+
+.order-state .state-btns .btn-1 {
+    font-weight: 700;
+}
+.order-state .state-btns a {
+    display: block;
+    margin: 10px auto 0;
+}
+.btn-1, .btn-2, .btn-3, .btn-4 {
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 2px;
+    padding: 4px 14px 5px;
+    color: #e4393c;
+    background: #fff;
+    border: 1px solid #e4393c;
+}
+
+.root61 .order-state .state-bottom, .root61 .order-state .state-lcol {
+    width: 325px;
+}
+.order-state .state-bottom {
+    position: absolute;
+    width: 243px;
+    left: 0;
+    bottom: 20px;
+    text-align: center;
+}
+
+.order-state .state-lcol {
+    float: left;
+    width: 243px;
+    padding: 20px 0 38px;
+    text-align: center;
+}
+
+element.style {
+    display: inline;
+}
+.order-state .state-bottom a {
+    color: #333;
+}
+.hide {
+    display: none;
+}
+
+.order-state .state-bottom .btn-del {
+    margin-left: 70px;
+}
+
+.root61 .order-state .state-rcol {
+    width: 860px;
+}
+.order-state .state-rcol {
+    float: left;
+    border-left: 1px solid #f1f1f1;
+    padding: 20px 0 38px 20px;
+    width: 720px;
+}
+
+.order-state .state-rtop {
+    height: 70px;
+    overflow: hidden;
+}
+
+
+.ftx-03, .ftx03 {
+    color: #aaa;
+}
+
+.root61 #process-020, .root61 #process-04 {
+    width: 821px;
+}
+#process-04 {
+    width: 641px;
+}
+.order-process {
+    display: inline-block;
+    display: block;
+    margin: 38px 0 96px;
+}
+
+.root61 .order-process .node {
+    width: 65px;
+}
+.order-process .node {
+    position: relative;
+    top: -17px;
+    float: left;
+    width: 45px;
+    height: 43px;
+}
+
+.root61 .order-process .node .node-icon {
+    left: 11px;
+}
+.order-process .ready .icon-start {
+    background-position: 0 -108px;
+}
+
+.order-process .node .icon-start {
+    background-position: 0 -108px;
+}
+.order-process .node .node-icon {
+    position: absolute;
+    display: block;
+    left: 1px;
+    top: 0;
+    width: 43px;
+    height: 43px;
+    background: url(//misc.360buyimg.com/user/order/0.0.1/css/i/node-icons.png) no-repeat;
+    overflow: hidden;
+}
+
+.order-process .txt1 {
+    height: 36px;
+    margin-bottom: 53px;
+    font-size: 12px;
+}
+
+.order-process .ready .txt2, .order-process .ready .txt3 {
+    color: #333;
+}
+.order-process .txt2 {
+    font-size: 14px;
+    line-height: 25px;
+    color: #aaa;
+}
+
+.order-process .ready .txt2, .order-process .ready .txt3 {
+    color: #333;
+}
+
+.order-process .txt3 {
+    color: #aaa;
+    line-height: 15px;
+}
+
+.root61 .order-process .proce {
+    width: 124px;
+    background-image: url(//misc.360buyimg.com/user/order/0.0.1/css/i/proce-icons.png);
+}
+.order-process .done {
+    background-position: 0 -38px;
+}
+.order-process .proce {
+    position: relative;
+    float: left;
+    width: 104px;
+    height: 9px;
+    background: url(//misc.360buyimg.com/user/order/0.0.1/css/i/proce-icons02.png) no-repeat;
+}
+
+.order-process .done .txt1 {
+    color: #71b247;
+    font-weight: 700;
+}
+.order-process .txt1 {
+    height: 36px;
+    margin-bottom: 53px;
+    font-size: 12px;
+}
+
+.root61 .order-process .node {
+    width: 65px;
+}
+.order-process .node {
+    position: relative;
+    top: -17px;
+    float: left;
+    width: 45px;
+    height: 43px;
+}
+
+.root61 .order-process .node .node-icon {
+    left: 11px;
+}
+.order-process .ready .icon-pay {
+    background-position: -54px -108px;
+}
+.order-process .node .icon-pay {
+    background-position: -54px 0;
+}
+.order-process .node .node-icon {
+    position: absolute;
+    display: block;
+    left: 1px;
+    top: 0;
+    width: 43px;
+    height: 43px;
+    background: url(//misc.360buyimg.com/user/order/0.0.1/css/i/node-icons.png) no-repeat;
+    overflow: hidden;
+}
+em, i, u {
+    font-style: normal;
+}
+
+.root61 .order-process .node .node-icon {
+    left: 11px;
+}
+.order-process .node .icon-finish {
+    background-position: -216px 0;
+}
+.order-process .node .node-icon {
+    position: absolute;
+    display: block;
+    left: 1px;
+    top: 0;
+    width: 43px;
+    height: 43px;
+    background: url(//misc.360buyimg.com/user/order/0.0.1/css/i/node-icons.png) no-repeat;
+    overflow: hidden;
+}
+
+#container .m {
+    margin-bottom: 20px;
+}
+
+.m, .mb, .mc, .mt, .sm, .smb, .smc, .smt {
+    overflow: hidden;
+    zoom: 1;
+}
+
+#container .order-info-mod .mc {
+    border-top-width: 4px;
+}
+#container .mc {
+    background: #fff;
+    border: 1px solid #eee;
+}
+.root61 .order-info {
+    height: 288px;
+    overflow: hidden;
+}
+.order-info {
+    display: inline-block;
+    display: block;
+    position: relative;
+    padding: 15px 0;
+    height: 600px;
+}
+.m, .mb, .mc, .mt, .sm, .smb, .smc, .smt {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.root61 .order-info .ui-switchable-body {
+    height: 288px;
+}
+.order-info .ui-switchable-body {
+    height: 600px;
+    overflow: hidden;
+}
+
+.root61 .order-info .ui-switchable-panel {
+    width: 1210px;
+}
+.order-info .ui-switchable-panel {
+    width: 990px;
+}
+
+.root61 .order-info .dl {
+    width: 262px;
+    height: 288px;
+    padding: 0 10px 0 30px;
+    margin: 0 0 0 -1px;
+    border-width: 0 0 0 1px;
+}
+
+.order-info .dl {
+    float: left;
+    padding: 20px 10px 20px 30px;
+    width: 450px;
+    height: 288px;
+    margin: -21px 0 0 -1px;
+    border: 1px solid #f1f1f1;
+    border-width: 1px 0 0 1px;
+}
+
+.order-info .dt {
+    margin-bottom: 5px;
+}
+.order-info .dt h4 {
+    height: 24px;
+    color: #333;
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.order-info .dd {
+    color: #333;
+    line-height: 20px;
+}
+.order-info .item {
+    line-height: 24px;
+    display: inline-block;
+    display: block;
+}
+
+.order-info .label {
+    float: left;
+    width: 84px;
+}
+
+.root61 .order-info .info-rcol {
+    width: 178px;
+}
+
+.order-info .more .txt {
+    color: #333;
+    cursor: pointer;
+}
+#container .m {
+    margin-bottom: 20px;
+}
+.order-goods {
+    position: relative;
+}
+.goods-head {
+    line-height: 24px;
+    overflow: hidden;
+        margin-top: 30px;
+}
+
+.goods-head .shop-name {
+    float: left;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.goods-head #im {
+    float: left;
+}
+
+.order-goods #im {
+    padding-left: 0;
+    height: auto;
+    background: 0 0;
+}
+#im {
+    padding-left: 27px;
+}
+#im, #im s {
+    float: left;
+    height: 21px;
+    line-height: 21px;
+    background: url(../../../Images/CartImg/im.png) 0 -21px no-repeat;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.order-goods #im s {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    line-height: 99em;
+    margin: 4px 0 0 5px;
+    overflow: hidden;
+    background: url(../../../Images/CartImg/sprite-im.png) -26px 0 no-repeat;
+    vertical-align: middle;
+}
+
+.goods-list .tb-order {
+    border-bottom: 1px solid #eee;
+}
+.tb-void {
+    width: 100%;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+user agent stylesheet
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+colgroup {
+    display: table-column-group;
+}
+
+.goods-list .grap {
+    width: 20px;
+    padding: 0;
+}
+
+.root61 .goods-list .col-goods {
+    width: 500px;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.goods-list .grap {
+    width: 20px;
+    padding: 0;
+}
+.goods-list th {
+    height: 32px;
+    line-height: 32px;
+    background: #f9f9f9;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+}
+user agent stylesheet
+th {
+    font-weight: bold;
+    text-align: -internal-center;
+}
+user agent stylesheet
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.root61 .goods-list td.grap {
+    padding: 0;
+}
+.root61 .goods-list td {
+    padding: 17px 0 20px;
+}
+.goods-list td.grap {
+    border-color: #fff;
+}
+.goods-list .first-tr td {
+    border-top: none;
+}
+.goods-list .grap {
+    width: 20px;
+    padding: 0;
+}
+.goods-list td {
+    vertical-align: top;
+    padding: 17px 0 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+    color: #333;
+}
+user agent stylesheet
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+.goods-list .p-item {
+    margin-top: 3px;
+    display: inline-block;
+    display: block;
+}
+
+.goods-list .p-img {
+    float: left;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #eee;
+}
+.p-detail, .p-img, .p-market, .p-name, .p-price {
+    overflow: hidden;
+}
+
+.goods-list td a {
+    color: #333;
+}
+
+.goods-list .p-img img {
+}
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+.root61 .goods-list .p-info {
+    width: 355px;
+}
+.goods-list .p-info {
+    float: left;
+    width: 280px;
+    margin-left: 15px;
+    _display: inline;
+    text-align: left;
+    height: 62px;
+    overflow: hidden;
+}
+
+.goods-list .p-name {
+    position: relative;
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.goods-list .p-name a {
+    vertical-align: middle;
+}
+
+
+.clear, .clr {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+}
+
+.fl {
+    float: left;
+}
+
+.goods-list .p-extra {
+    color: #999;
+}
+
+.goods-list .p-item:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.f-price {
+    font-family: verdana;
+}
+
+.goods-total {
+    display: inline-block;
+    display: block;
+    padding: 20px;
+}
+
+.goods-total ul {
+    float: right;
+}
+ol, ul {
+    list-style: none;
+}
+
+.goods-total li {
+    display: inline-block;
+    display: block;
+    line-height: 28px;
+}
+
+.goods-total .label {
+    float: left;
+    width: 500px;
+    text-align: right;
+}   
+
+.goods-total .txt {
+    float: left;
+    width: 130px;
+    text-align: right;
+    font-family: verdana;
+}
+
+
+
+.goods-total li {
+    display: inline-block;
+    display: block;
+    line-height: 28px;
+}
+.ftx-01, .ftx01 {
+    color: #e4393c;
+}
+
+.goods-total .count {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.goods-total:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}

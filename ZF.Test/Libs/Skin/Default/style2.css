@@ -1,0 +1,14 @@
+.md1{ margin:10px auto; margin:10px auto 0px auto !important;}
+.float-left {
+    float: left;
+    padding: 0px;  
+    margin:0px;
+}
+.text-left{text-align:left; width:600px;}
+.row label{color:#999;}
+.padding30{padding:30px 0px;}
+.labelleft{float:left; width:50px; margin-top:5px; margin-left:0px;}
+.text80{width:80px;}
+.submit{background-color:#999; border-radius:10px;}
+.textl{text-align:left; color:#999; padding-left:0px;}
+.margin-t-5{margin-top:6px;}

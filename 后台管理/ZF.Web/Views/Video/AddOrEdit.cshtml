@@ -1,0 +1,93 @@
+﻿
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <script src="~/Libs/aliyun-upload-sdk-demo-1.3.1/lib/es6-promise.min.js"></script>
+    <script src="~/Libs/aliyun-upload-sdk-demo-1.3.1/lib/aliyun-oss-sdk4.13.2.min.js"></script>
+    <script src="~/Libs/aliyun-upload-sdk-demo-1.3.1/aliyun-upload-sdk1.3.1.min.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <form id="sumbitForm" name="sumbitForm">
+            <div class="box-body">
+                @*点播上传配置*@
+                <table frame=void width="100%" style="display: none;">
+                    <tr>
+                        <td>uploadAuth:</td>
+                        <td><input type="text" id="uploadAuth" size="20" value=""></td>
+                        <td>uploadAddress:</td>
+                        <td><input type="text" id="uploadAddress" size="20" value=""></td>
+                        <td>videoId:</td>
+                        <td><input type="text" id="videoId" size="20" value=""></td>
+                    </tr>
+                </table>
+                @*STS上传配置*@
+                <table frame=void width="100%" style="display: none;">
+                    <tr>
+                        <td>accessKeyId:</td>
+                        <td><input type="text" id="accessKeyId" size="20" value="@ViewBag.AccessKeyId"></td>
+                        <td>accessKeySecret:</td>
+                        <td><input type="text" id="accessKeySecret" size="40" value="@ViewBag.AccessKeySecret"></td>
+                    </tr>
+                    <tr>
+                        <td>secretToken:</td>
+                        <td><input type="text" id="secretToken" size="40" value="@ViewBag.SecurityToken"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>endpoint:</td>
+                        <!-- oss-cn-shanghai.aliyuncs.com -->
+                        <!-- in-20170320144514766-hte7xhqk1t -->
+                        <!-- video/50659345-16127742b75-0004-a1f7-953-f8a30 -->
+                        <td><input type="text" id="endpoint" size="40" value=""></td>
+                        <td>bucket: </td>
+                        <td><input type="text" id="bucket" size="20" value=""></td>
+                    </tr>
+                    <tr>
+                        <td>object路径:</td>
+                        <td><input type="text" id="objectPre" size="20" value=""></td>
+                    </tr>
+                </table>
+                @*文件管理*@
+                @*<hr />
+                    <input type="file" name="file" id="files" multiple />
+                    <button type="button" onclick="clearInputFile()">清空继续选择</button>
+                    <button type="button" onclick="deleteFile()">删除文件</button>
+                    <input type="text" id="deleteIndex" size="3" value="0">
+                    <button type="button" onclick="cancelFile()">取消文件</button>
+                    <input type="text" id="cancelIndex" size="3" value="0">
+                    <button type="button" onclick="resumeFile()">恢复文件</button>
+                    <input type="text" id="resumeIndex" size="3" value="0">
+                    <hr />
+                    列表管理
+                    <hr />
+                    <button type="button" onclick="getList()">获取上传列表</button>
+                    <button type="button" onclick="clearList()">清理上传列表</button>
+                    <hr />*@
+
+                <input type="file" name="file" id="files" multiple />
+                <hr/>
+                <div class="form-group">
+                    <label>视频前缀名：</label>
+                    <input id="VideoAlias" Name="VideoAlias" class="form-control" />
+                </div>
+                <hr />
+                <button type="button" onclick="start()">开始上传</button>
+                <button type="button" onclick="stop()">停止上传</button>
+                <!-- <button type="button" onclick="stop()">停止上传</button> -->
+                @*<button type="button" onclick="resumeWithToken()">token过期恢复上传</button>*@
+                <hr />
+                <select multiple="multiple" id="textarea" style="position: relative; width: 90%; height: 350px; vertical-align: top; border: 1px solid #cccccc;"></select>
+                <script src="~/Views/Video/AddOrEdit.js"></script>
+                @*<button type="button" onclick="clearLog()">清日志</button>*@
+            </div>
+        </form>
+    </div>
+</body>
+</html>

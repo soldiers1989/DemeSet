@@ -1,0 +1,186 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "增值服务";
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>防伪码</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f3f3f3;
+        }
+
+        .clear {
+            clear: both;
+            height: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .fwm_box {
+            width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 30px;
+            background: #fff;
+        }
+
+            .fwm_box h2 {
+                line-height: 60px;
+                font-size: 22px;
+                font-weight: 100;
+            }
+
+        .fwmimg {
+            width: 400px;
+            height: 264px;
+        }
+
+        .fwm_ipt input {
+            width: 600px;
+            height: 55px;
+            line-height: 55px;
+            background: #ffffff;
+            border: 1px solid #e4e4e4;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+            .fwm_ipt input:focus {
+                border: 1px solid #fdd497;
+            }
+
+        .fwm_box p {
+            font-size: 14px;
+            line-height: 65px;
+            color: #666;
+        }
+
+        .fwm_anniu {
+            display: block;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto;
+            background: #ff4343;
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+            .fwm_anniu:hover {
+                background: #fa7575;
+            }
+
+        .fwm_lc {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+
+            .fwm_lc ul {
+                list-style-type: none;
+                width: 96%;
+                margin: 0 auto;
+            }
+
+                .fwm_lc ul li {
+                    width: 25%;
+                    float: left;
+                    font-size: 16px;
+                    color: #666;
+                }
+
+                    .fwm_lc ul li i {
+                        font-size: 36px;
+                        padding-right: 5px;
+                        color: #bfbfbf;
+                    }
+
+        .yanzheng {
+            width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 30px;
+            background-color: #fff;
+        }
+
+            .yanzheng h2 {
+                line-height: 60px;
+                font-size: 30px;
+                font-weight: 100;
+                padding-top: 10px;
+            }
+
+        .fwm_img img {
+        }
+
+        .yanzheng p {
+            font-size: 18px;
+            line-height: 65px;
+            color: #666;
+        }
+
+            .yanzheng p a, .yanzheng p a:hover {
+                color: #f32426;
+                text-decoration: none;
+            }
+
+        .yz_cuowu {
+            width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 30px;
+            background-color: #fff;
+            min-height: 600px;
+        }
+
+            .yz_cuowu h2 {
+                line-height: 60px;
+                font-size: 60px;
+                padding-top: 10px;
+                color: red;
+                margin-bottom: 10px;
+            }
+    </style>
+</head>
+<body>
+    <div class="fwm_box">
+        <h2>验证图书，领取增值服务</h2>
+        <div class="fwm_img"><img class="fwmimg" src="@HttpContext.Current.Application["DefuleDomain"]/Images/CartImg/fwm.png"></div>
+        <div class="fwm_ipt"> <input name="" id="securityCode" type="text" placeholder="请输入防伪码"> </div>
+        <p>您可以在封面上找到二维码下方的防伪涂层。刮开涂层，获得数字防伪码。</p>
+        <a href="javascript:;" class="fwm_anniu">立即查询</a>
+        <div class="fwm_lc">
+            <ul>
+                <li><i>1</i>刮开封面的防伪涂层 </li>
+                <li><i>2</i>输入防伪码查询 </li>
+                <li><i>3</i>领取增值服务  </li>
+                <li><i>4</i>在“增值服务”中使用  </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="yanzheng" style="display:none;">
+        <div class="fwm_img"><img src="@HttpContext.Current.Application["DefuleDomain"]/Images/CartImg/yanzheng_tg.png"></div>
+        <h2 id="showmsg"></h2>
+        <p><a href="~/LearningCenter/Index" class="" target="_blank">去“增值服务”</a></p>
+    </div>
+
+    <div class="yz_cuowu" style="display:none;">
+        <div class="fwm_img"><img src="@HttpContext.Current.Application["DefuleDomain"]/Images/CartImg/yanzheng_cw.png"></div>
+        <h2>打击盗版</h2><br />
+        <h1>请到“中国人事考试图书网”购买正版图书</h1>
+    </div>
+    <script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/SecurityCodeToCollect.js?v=1.0"></script>
+</body>
+</html>

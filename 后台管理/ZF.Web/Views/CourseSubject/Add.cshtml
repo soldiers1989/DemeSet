@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "添加课程试题";
+    Layout = null;
+}
+<div class="col-xs-12 ">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectQuestionFrom" name="selectFrom">
+            <div class="form-group col-xs-12">
+                <input id="QProjectId" value="@ViewBag.ProjectId"   hidden="hidden">
+                <input id="QCourseId" value="@ViewBag.CourseId" name="CourseId" hidden="hidden">
+                <input id="QChapterId" value="@ViewBag.ChapterId" name="ChapterId" hidden="hidden">
+                <input id="QSubjectId" value="@ViewBag.SubjectId" name="SubjectId" hidden="hidden">
+                <label class="">所属知识点：</label>
+                <input type="hidden" class="form-control" value="" id="knowledgeIds" name="KnowledgePointId">
+                <input type="text" id="ParentKnoledgeId"  class="form-control" value="" onclick="showMenu2(); return false;">
+                <div id="menuContent1" class="menuContent" style="display: none; position: absolute; z-index: 9999999; background-color: #fff; width: 100%;border-style:  solid; border-width: 1px;">
+                    <ul id="treeDemo1" class="ztree"></ul>
+                </div>
+                <label class="">试题分类：</label>
+                <select id="QSubjectClassId" name="SubjectClassId"  class="form-control" />
+                <label class="">试题类型：</label>
+                <select id="QSubjectType" name="SubjectType" class="form-control" />
+                <input class="btn btn-success query_btn" id="querySelectQuestion" type="button" value="查询">&nbsp;
+                <input id="addChapterSubject" class="btn btn-success add_btn" type="button" value="添加">&nbsp;
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="questionList"></table>
+        <div id="pager"></div>
+    </div>
+</div>
+
+<script src="~/Views/CourseSubject/Add.js"></script>

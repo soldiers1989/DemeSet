@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "我的错题";
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/Index1.css" rel="stylesheet" />
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/collection.css" rel="stylesheet" />
+    <title>错题集</title>
+</head>
+<body class="body">
+    <div class="ctj_h3">
+        <dl>
+            <dt>加入时间</dt>
+            <dd>共<i id="total"></i>道错题</dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+    <div class="ctj_box" id="errlist">
+
+    </div>
+    <div class="zanwu" style="display:none;">
+        <img src="/Areas/jjs/resources/images/zanwu.png">
+        <p><a href="#">暂无记录</a></p>
+    </div>
+    <div class="alfx-head">
+        <ul>
+            <li class="al-hd01">上一题</li>
+            @*<li class="al-hd02" href="/jjs/HomePage/Index">返回首页</li>*@
+            <li class="al-hd03">下一题</li>
+            <li class="al-hd04">再次练习</li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</body>
+</html>
+
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/ctj.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/MyErrorSubject/Index.js?v=1.0"></script>
+
+

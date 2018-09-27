@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<title>服务条款</title>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Advice/css/TermsService.css" rel="stylesheet" />
+ <span class="title"> </span>
+<div id="container">
+    <div class="clause" id="serviceInfo">
+       
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-2.2.3.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<script type="text/javascript">
+    $(function () {
+        var url = 'api/PublicInfo/GetContentInfo';
+        $("#serviceInfo").html('');
+        topevery.ajax({
+            url: url,
+            data: JSON.stringify({ Code: "fltk" })
+        }, function (data) {
+            if (data.Success) {
+                $("#serviceInfo").html(data.Result.Content);
+            }
+        });
+    })
+</script>

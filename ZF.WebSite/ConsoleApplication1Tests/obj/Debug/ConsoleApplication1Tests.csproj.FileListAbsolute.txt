@@ -1,0 +1,9 @@
+G:\XYZ\ZF.WebSite\ConsoleApplication1Tests\bin\Debug\ConsoleApplication1Tests.dll
+G:\XYZ\ZF.WebSite\ConsoleApplication1Tests\bin\Debug\ConsoleApplication1Tests.pdb
+G:\XYZ\ZF.WebSite\ConsoleApplication1Tests\bin\Debug\ConsoleApplication1.exe
+G:\XYZ\ZF.WebSite\ConsoleApplication1Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+G:\XYZ\ZF.WebSite\ConsoleApplication1Tests\bin\Debug\ConsoleApplication1.pdb
+G:\XYZ\ZF.WebSite\ConsoleApplication1Tests\bin\Debug\zh-Hans\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+G:\XYZ\ZF.WebSite\ConsoleApplication1Tests\obj\Debug\ConsoleApplication1Tests.csprojResolveAssemblyReference.cache
+G:\XYZ\ZF.WebSite\ConsoleApplication1Tests\obj\Debug\ConsoleApplication1Tests.dll
+G:\XYZ\ZF.WebSite\ConsoleApplication1Tests\obj\Debug\ConsoleApplication1Tests.pdb

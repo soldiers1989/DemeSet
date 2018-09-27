@@ -1,0 +1,84 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/mycourse.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<div class="subTit">
+    <label>我的足迹</label>
+    <div class="search right">
+        <input class="layui-input" id="query" />
+        <a class="layui-icon  layui-icon-search" onclick="data.loading()"></a>
+    </div>
+</div>
+<div class="mycourse layui-row layui-col-space20" id="MyFootprint">
+</div>
+<div class="m-style M-box1" style="float: right; padding-right: 6px;"></div>
+<div class="clear"></div>
+<script type="text/html" id="MyFootprint_html">
+    {{if Rows.length>0}}
+    {{each Rows}}
+    <div class="layui-col-xs4">
+        <div class="box">
+            <a class="bookImg" href="/CourseInfo/CourseInfo?courseId={{$value.CourseId}}&courseType={{$value.CourseType}}">
+                <img src="{{$value.CourseIamge}}">
+            </a>
+            <a href="/CourseInfo/CourseInfo?courseId={{$value.CourseId}}&courseType={{$value.CourseType}}" class="details">
+                <p class="bookName">{{$value.CourseName}}</p>
+                <p>
+                    <label>时间：{{$value.BrowsingTime}}</label>
+                    <label class="red">{{$value.ProjectName}}</label>
+                </p>
+            </a>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="normal">您还没有开始相关课程，快去学习吧……</div>
+    {{/if}}
+</script>
+<input type="hidden" Id="Rows" value="9" />
+<input type="hidden" Id="PageIndex" value="1" />
+<script type="text/javascript">
+    var data = {
+        loading: function() {
+            topevery.ajax({
+                url: 'api/MyCollection/GetFootprint',
+                data: JSON.stringify({ Type: 0, query: $("#query").val(), page: $('#PageIndex').val(), rows: $('#Rows').val() })
+            }, function(data1) {
+                if (data1.Success) {
+                    $("#MyFootprint").html(template("MyFootprint_html", data1.Result));
+                    if (data1.Result.Records > 0) {
+                        $('.M-box1').show();
+                        $('.M-box1').pagination({
+                            pageCount: Math.ceil(data1.Result.Records / parseInt($("#Rows").val())),
+                            jump: true,
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function(api) {
+                                $("#PageIndex").val(api.getCurrent());
+                                data.loading1();
+                            }
+                        });
+                    } else {
+                        $('.M-box1').hide();
+                    }
+                }
+            });
+        },    
+        loading1: function() {
+            topevery.ajax({
+                url: 'api/MyCollection/GetFootprint',
+                data: JSON.stringify({ Type: 0, query: $("#query").val(), page: $('#PageIndex').val(), rows: $('#Rows').val() })
+            }, function(data1) {
+                if (data1.Success) {
+                    $("#MyFootprint").html(template("MyFootprint_html", data1.Result));
+                }
+            });
+        }
+    }
+    data.loading();
+</script>

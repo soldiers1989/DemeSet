@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<style>
+    input {
+        border-right: #ffffff 0px solid;
+        border-top: #ffffff 0px solid;
+        font-size: 10pt;
+        border-left: #ffffff 0px solid;
+        border-bottom: #c0c0c0 1px solid;
+        background-color: #ffffff;
+    }
+</style>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/mycenter/message.css" rel="stylesheet" />
+<div class="personTit"><label>基本信息</label></div>
+<div class="pd2">
+
+</div>
+<script type="text/html" id="userInfo_html">
+    <a href="javascript:;" onclick="userEnditi(this)" id="{{Id}}" class="layui-btn layui-btn-primary right editMessage">修改</a>
+    <img src="{{HeadImage}}" width="153" height="153" class="photo" />
+    <div class="message">
+        <div class="layui-form-item layui-text">昵称：  <input type="text" id="NickNanw" value="{{NickNamw}}" /> </div>
+        <div class="layui-form-item layui-text">手机：  <input type="text" id="TelphoneNum" value="{{TelphoneNum}}" /></div>
+        @*<div class="layui-form-item layui-text">QQ：84027752</div>
+            <div class="layui-form-item layui-text">邮箱：84027752@qq.com</div>*@
+    </div>
+</script>
+<script src="~/Views/User/UserSetUp.js"></script>

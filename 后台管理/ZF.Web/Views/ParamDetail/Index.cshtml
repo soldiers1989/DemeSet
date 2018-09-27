@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+<div class="col-xs-12" style="background-color: #000000; height: 3px;"></div>
+<div class="col-xs-3">
+    <ul id="treeDemo" class="ztree"></ul>
+</div>
+<div class="col-xs-6">
+
+    <form id="sumbitForm" name="sumbitForm">
+        <div class="box-body">
+            <input type="hidden" Id="Pid" name="Pid" value="@ViewBag.Pid" />
+            <input type="hidden" Id="PStructureId" name="PStructureId" value="" />
+            <input type="hidden" Id="PSubjectId" name="PSubjectId" value="" />
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>知识点编码</label><span class="text-danger">*</span>
+                    <textarea type="text" class="form-control" disabled="disabled" style="height: 110px;" id="PaperStuctureDetailId" name="PaperStuctureDetailId"></textarea>
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="padding: 0px;">
+                <div class="form-group col-xs-4">
+                    <label>试题数量</label><span class="text-danger">*</span>
+                    <input type="number" class="form-control" id="QuestionCount" name="QuestionCount">
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>难度等级</label><span class="text-danger">*</span>
+                    <select type="text" class="form-control" disabled="disabled" id="DifficultLevel" name="DifficultLevel"></select>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>试题分数</label>
+                    <input type="number" class="form-control" id="QuestionScoreSum" name="QuestionScoreSum">
+                </div>
+            </div>
+            <div class="box-footer col-xs-12">
+                <input type="button" class="btn btn-primary" id="sumbit" style="display:none;" value="保存" />
+                <input type="button" class="btn btn-primary" id="btndel" value="删除" style="display:none;" />
+                <input type="button" class="btn btn-primary" id="btnReset" value="重置" />
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-xs-1">
+    <ul id="treeDemoTwo" class="ztree"></ul>
+</div>
+<script src="~/Views/ParamDetail/Index.js"></script>

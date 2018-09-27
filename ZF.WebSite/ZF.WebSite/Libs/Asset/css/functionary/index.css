@@ -1,0 +1,12 @@
+.title{font-size:26px; color:#027eca;text-align: center; margin:35px auto;}
+.worn{width:809px;height:89px;overflow:hidden; background:url(../../image/functionary/index/dashed.png) no-repeat;margin:0 auto 80px;text-align:center;}
+.worn p{font-size:16px; width:577px;padding-left:75px; margin:0 auto;background:url(../../image/functionary/index/jing.png) no-repeat 0 center;text-align: left;color:red;line-height: 28px;margin-top: 15px;}
+
+.gwy,.jjs,.subGwy{height:96px; padding:0 45px; display:block; margin:0 auto; font-size:22px; color:#fff;text-align: center;line-height: 40px; padding-bottom: 30px;}
+.long{background:url(../../image/functionary/index/btn.png) no-repeat;width:633px; }
+
+.tip{font-size:14px; color:#575757;margin: 35px 0;text-align: center;}
+.subGwy.one{ background:url(../../image/functionary/index/details1.png) no-repeat;}
+.choose{text-align: center;font-size:16px; color:#444444;margin-bottom: 35px;}
+/* .short{width:483px;}
+.short.gwy{ background:url(../../image/functionary/index/details1.png) no-repeat;} */

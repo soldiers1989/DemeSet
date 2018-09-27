@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="aboutTit">
+    <label>法律条款</label>
+</div>
+<div Id="pd2">
+
+</div>
+<script type="text/javascript">
+    $('#pd2').html('');
+    var url = 'api/PublicInfo/GetContentInfo';
+    topevery.ajax({
+        url: url,
+        data: JSON.stringify({ Code: "fltk" })
+    }, function (data) {
+        if (data.Success) {
+            $("#pd2").html(data.Result.Content);
+        }
+    });
+</script>

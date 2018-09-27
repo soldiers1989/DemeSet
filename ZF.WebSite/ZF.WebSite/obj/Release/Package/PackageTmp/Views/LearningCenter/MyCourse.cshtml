@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="subTit">
+    <label>我的课程</label>
+    <div class="search right">
+        <input type="text" class="layui-input" />
+        <a class="layui-icon  layui-icon-search"></a>
+    </div>
+</div>
+
+<div class="mycourse layui-row layui-col-space20" id="myCourse">
+    <script type="text/html" id="MyCourse_hmtl">
+        {{if Result.length>0}}
+        {{each Result}}
+        <div class="layui-col-xs4">
+            <div class="box">
+                <a class="bookImg" href="/CourseInfo/CourseInfo?courseId={{$value.CourseId}}" target="_blank"><img src="{{$value.CourseIamge}}"></a>
+                <a href="javascript:;" class="details">
+                    <p class="bookName">{{$value.CourseName}}</p>
+                    <p>
+                        <label>视频：{{$value.HasLearnCount}}/{{$value.CourseWareCount}}</label>
+                        <label>模拟测评：{{$value.PracticePaperNum}}/{{$value.TotalPaperNum}}</label>
+                        <label>章节练习：{{$value.ChapterPracticeNum}}/{{$value.TotalChapterPractice}}</label>
+                    </p>
+                </a>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="normal kc">您还没有开始相关课程，快去学习吧……</div>
+        {{/if}}
+    </script>
+</div>
+<div class="subTit">
+    <label>推荐课程</label>
+</div>
+
+<div class="recommend layui-row layui-col-space20" id="recommendCourse">
+    <script type="text/html" id="Recommend_hmtl">
+        {{if Result.length>0}}
+        {{each Result}}
+        <li class="layui-col-xs4">
+            <a href="/CourseInfo/CourseInfo?courseId={{$value.Id}}" target="_blank" class="bookImg"><img src="{{$value.CourseIamge}}"></a>
+            <a href="/CourseInfo/CourseInfo?courseId={{$value.Id}}" target="_blank" class="bookName" title="{{$value.CourseName}}">{{$value.CourseName}}</a>
+            <p>
+                <label>{{$value.SubjectName}}</label><label>{{$value.Count}}购买</label>
+            </p>
+            <p class="cost">¥ {{$value.FavourablePrice}}</p>
+        </li>
+        {{/each}}
+        {{else}}
+        <div class="normal">目前尚未有推荐的课程……</div>
+        {{/if}}
+    </script>
+</div>
+
+<script src="~/Views/LearningCenter/MyCourse.js"></script>

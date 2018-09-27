@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="circleChart" id="0"></div>
+    <script src="~/Js/circleChart.js"></script>
+    <script>
+        $(".circleChart#0").circleChart({
+            size: 300,
+            value: 50.5,
+            text: 0,
+            onDraw: function (el, circle) {
+                circle.text(circle.value.toFixed(1));            }
+        });
+        //setInterval(function () {
+        //    $("#0").circleChart({
+        //        value: Math.random() * 100
+        //    });
+        //}, 4000);
+    </script>
+</body>
+</html>

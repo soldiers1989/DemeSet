@@ -1,0 +1,21 @@
+
+
+.banner{background:#0156a1;position:relative;}
+.banner label{position:absolute; color:#fff;    top: 50%; width: 100%; text-align: center; font-size: 42px; font-family: 微软雅黑; line-height: 47px; margin-top: -25px;}
+.time{padding-left:40px; background:url(../../image/economy/index/icon_date.png) no-repeat 0 center;background-size:30px auto;height:40px;line-height: 40px;margin:20px 0;font-size:20px;  font-family: 微软雅黑;}
+.time .dayIn{font-size: 25px; font-weight: bold; margin: 0 10px; color: #da3a1a;}
+.time font{color:#da3a1a;}
+
+.left ul li{float:left; width:21%;padding:20px 2%;}
+.left ul li div{border:2px solid #025ca9;border-radius:5px;height:150px;line-height: 150px;text-align: center;background-position: center center; background-repeat:no-repeat;}
+.left ul li div:hover{background-color:#025ca9;}
+.jian{background-image:url(../../image/economy/index/jian.png);}
+.jian:hover{background-image:url(../../image/economy/index/jianCur.png);}
+.gang{background-image:url(../../image/economy/index/gang.png);}
+.gang:hover{background-image:url(../../image/economy/index/gangCur.png);}
+.book{background-image:url(../../image/economy/index/book.png);}
+.book:hover{background-image:url(../../image/economy/index/bookCur.png);}
+.in{background-image:url(../../image/economy/index/in.png);}
+.in:hover{background-image:url(../../image/economy/index/inCur.png);}
+.left ul li a{display:block;}
+.left li p{font-size:18px; color:#333333;text-align:center;margin:20px 0;}

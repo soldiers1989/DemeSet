@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/study/report.css" rel="stylesheet" />
+<div class="subTit">
+    <label>测评记录</label>
+    <div class="search right">
+        <input class="layui-input" id="query" />
+        <a class="layui-icon  layui-icon-search" onclick="data.loading()" ></a>
+    </div>
+</div>
+<div id="AssessmentRecords">
+
+</div>
+<script type="text/html" id="AssessmentRecords_html">
+    {{if Result.length>0}}
+    {{each Result}}
+    <div class="layui-form-item layui-row box">
+        <div class="layui-col-xs10">
+            <div class="testName layui-elip">{{$value.PaperName}} </div>
+            <div class="details">
+                <span>分数：<font class="red">{{$value.Score}}</font></span>
+                <span>排名：<font class="red">{{$value.RowNumber}}</font></span>
+                <span class="time">{{$value.AddTime}}</span>
+            </div>
+        </div>
+        <div class="layui-col-xs2">
+            <a href="javascript:data.ViewPaper('{{$value.PaperId}}','{{$value.Id}}');" class="look">查看评析</a>
+            <a href="javascript:data.checkPaperRecord('{{$value.PaperId}}','{{$value.Id}}','{{$value.CourseId}}');" class="edit">继续测评</a>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="normal">您还没有进行测评记录，快去测评吧……</div>
+    {{/if}}
+</script>
+<script type="text/javascript">
+    var data = {
+        loading: function () {
+            topevery.ajax({
+                url: 'api/CoursePaperRecord/GetList?query=' + $('#query').val(),
+            }, function (data) {
+                if (data.Success) {
+                    $("#AssessmentRecords").html(template("AssessmentRecords_html", data));
+                }
+            });
+        },
+        checkPaperRecord: function (paperId, paperRecordsId, courseId) {
+            topevery.ajax({
+                url: "api/Economy/InsertIntoPaperRecords?paperId=" + paperId + "&courseId=" + courseId,
+                data: JSON.stringify({})
+            }, function (data) {
+                if (data.Result) {
+                    topevery.myopen("/Answer/Index?paperId=" + paperId + "&paperRecordsId=" + data.Result);
+                } else {
+                    layer.msg("暂无权限练习试卷,请前往购买!", {
+                        time: 4000
+                    });
+                }
+            });
+        },
+        ViewPaper: function (paperId, paperRecordsId) {
+            location.href = "/Answer/IndexView?PaperId=" + paperId + "&PaperRecordsId=" + paperRecordsId;
+        }
+    }
+    data.loading();
+</script>

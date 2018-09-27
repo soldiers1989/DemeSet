@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css" />
+<script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/jquery.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<div class="prism-player" id="J_prismPlayer" style="position: absolute"></div>
+<script>
+    topevery.ajax({
+        url: 'api/CourseVideo/GetVideo',
+        data: JSON.stringify({ Id: "811be280e88b4db3abdbb51c28a3b08d" })
+    }, function (data) {
+        if (data.Result) {
+            console.log(data.Result);
+            var row = data.Result;
+            var player = new Aliplayer({
+                id: 'J_prismPlayer',
+                width: '98%',
+                height: '98%',
+                cover: row.CoverURL,
+                autoplay: false,
+                format: "m3u8",
+                vid: '811be280e88b4db3abdbb51c28a3b08d',
+                playauth: row.PlayAuth,
+            }, function (player) {
+            });
+            player.on('timeupdate', function (e) {
+                if (player.getCurrentTime() > 10) {
+                    player.pause();
+                }
+            });
+            $(function () {
+                $(document).keydown(function (e) {
+                    if (e.keyCode == 32) {
+                        if (player.getStatus() == "playing") {
+                            player.pause();
+                        } else {
+                            player.play();
+                        }
+                    } else if (e.keyCode == 37) {
+                        player.seek(player.getCurrentTime() - 5);
+                    } else if (e.keyCode == 39) {
+                        player.seek(player.getCurrentTime() + 5);
+                    }
+                });
+            });
+        }
+    });
+
+</script>

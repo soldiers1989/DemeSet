@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PressDataModelStoreContainer" CdmEntityContainer="PressDataEntities">
+    <EntitySetMapping Name="t_Article">
+      <EntityTypeMapping TypeName="PressDataModel.t_Article">
+        <MappingFragment StoreEntitySet="t_Article">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArticleTitle" ColumnName="ArticleTitle" />
+          <ScalarProperty Name="ArticleContent" ColumnName="ArticleContent" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="ArticleImage" ColumnName="ArticleImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Base_Menu">
+      <EntityTypeMapping TypeName="PressDataModel.t_Base_Menu">
+        <MappingFragment StoreEntitySet="t_Base_Menu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Base_Module">
+      <EntityTypeMapping TypeName="PressDataModel.t_Base_Module">
+        <MappingFragment StoreEntitySet="t_Base_Module">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Base_RegisterUser">
+      <EntityTypeMapping TypeName="PressDataModel.t_Base_RegisterUser">
+        <MappingFragment StoreEntitySet="t_Base_RegisterUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+          <ScalarProperty Name="TelphoneNum" ColumnName="TelphoneNum" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="RegisterIp" ColumnName="RegisterIp" />
+          <ScalarProperty Name="RegiesterType" ColumnName="RegiesterType" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="NickNamw" ColumnName="NickNamw" />
+          <ScalarProperty Name="WechatId" ColumnName="WechatId" />
+          <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="HeadImage" ColumnName="HeadImage" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Base_User">
+      <EntityTypeMapping TypeName="PressDataModel.t_Base_User">
+        <MappingFragment StoreEntitySet="t_Base_User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="AddUserId" ColumnName="AddUserId" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Base_UserLoginLog">
+      <EntityTypeMapping TypeName="PressDataModel.t_Base_UserLoginLog">
+        <MappingFragment StoreEntitySet="t_Base_UserLoginLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="LoginIp" ColumnName="LoginIp" />
+          <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Base_OperatorLog">
+      <EntityTypeMapping TypeName="PressDataModel.t_Base_OperatorLog">
+        <MappingFragment StoreEntitySet="t_Base_OperatorLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="OperatorName" ColumnName="OperatorName" />
+          <ScalarProperty Name="OperatorDate" ColumnName="OperatorDate" />
+          <ScalarProperty Name="OperatorType" ColumnName="OperatorType" />
+          <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="OperatorIp" ColumnName="OperatorIp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

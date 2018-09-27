@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<link href="~/Libs/select2-4.0.6/css/select2.min.css" rel="stylesheet" />
+
+<div class="col-xs-12 uniqueBox">
+    <!-- 工具栏 -->
+    <div class="content-header form-inline row">
+        <form id="selectFromRecord" name="selectFrom">
+            <div class="form-group col-xs-12">
+                <input id="QCardId"  name="CardId" value="@ViewBag.Id" hidden="hidden"/>
+                <label class="">手机号：</label>
+                <input class="form-control" id="QtelphoneNum" name="TelphoneNum" />
+                @*<label class="">课程：</label>
+                <select class="form-control" id="QCourseId" name="CourseId" />*@
+                <input class="btn btn-success query_btn" id="btn_inner_query" type="button" value="查询">&nbsp;
+            </div>
+        </form>
+    </div>
+    <div class="box-body row">
+        <table id="tblData1"></table>
+        <div id="pager1"></div>
+    </div>
+</div>
+<script src="~/Libs/select2-4.0.6/js/select2.min.js"></script>
+<script src="~/Libs/select2-4.0.6/js/i18n/zh-CN.js"></script>
+<script src="~/Views/UserDiscountCard/Index.js"></script>

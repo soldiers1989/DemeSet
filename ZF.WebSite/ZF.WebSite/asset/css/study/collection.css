@@ -1,0 +1,40 @@
+/*收藏试题-我的错题*/
+.topic{padding:20px 10px 25px;font-size:16px;color:#363636;}
+.topic span{color:#e2231a;border:1px solid #e2231a;padding:0 10px;border-radius: 3px;height:30px;line-height:30px;float:left;}
+.topic div{margin-left:115px;line-height: 32px;}
+.item{border-top:1px solid #d9d9d9;}
+.item li{color:#363636; font-size:14px;line-height:28px;padding-left:50px;}
+.operation{padding:10px; border-top:1px solid #d9d9d9;}
+.operation a{color:#444444;font-size:14px;line-height: 27px;display: inline-block; height:27px;}
+.operation a+a{margin-left:40px;}
+.operation .layui-icon{color:#2481f3;font-size:22px; margin-right:3px;vertical-align: middle;}
+.remove,.edit,.toggle{float:right;}
+.remove .layui-icon{color:#f32b2d;}
+
+/*.toggleWrap{display:none;}*/
+.answer{border-top:1px solid #d9d9d9;display:none;}
+.state{padding:10px; }
+.state label{display: inline-block; margin-right:40px;color:#363636;font-size:16px;}
+.isTrue .layui-icon{    font-size: 30px;vertical-align: middle;}
+.state .layui-icon-close{color:#f32426;}
+.state .layui-icon-ok{color:#2481f3;}
+.details{padding:5px 10px; line-height: 24px; font-size:14px;color:#363636;}
+
+.learnVideo{padding: 10px;border-top: 1px solid #d9d9d9;}
+.learnVideo p{font-size:16px;line-height:26px;;}
+.learnVideo a{color: #ffffff;background: #ff9900;display: inline-block;padding: 2px 5px;font-size: 12px;border-radius: 3px;}
+.learnVideo label{display:inline-block; margin-right:30px;padding-left: 25px;background:url(../../image/study/video.png) 0 center no-repeat;}
+.learnVideo div{line-height: 22px;margin: 5px 0 10px;}
+
+.anli{padding:0 30px;}
+.anli .topicItem{border:1px solid #dcdcdc;margin-bottom: 10px; background: #f3f3f3;}
+.anli .topic div{margin-left:78PX;}
+.anli .item li{padding-left:115px;}
+.correct {
+    background-image: url('../../../Areas/jjs/resources/images/jrdt05.png');
+}
+.delete001 {
+      float:right;
+      cursor:pointer;
+}
+.delete001 img{ width:60px;}

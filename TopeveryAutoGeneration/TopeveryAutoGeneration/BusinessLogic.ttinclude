@@ -1,0 +1,167 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data"#>
+<#@ output extension=".txt" #>
+
+<#+
+    //需要过滤的表名称
+    string sqlWhere = "";  
+
+    //获取类名称
+	string GetClassName(string tableName)
+	{
+		 string[] stringS = tableName.Split('_');
+		 string name=String.Empty;
+		 for (int i = 0; i < stringS.Length; i++)
+		 {
+			if(stringS[i].ToUpper()!="T"&&stringS[i].ToUpper()!="BASE") {
+				name+=stringS[i];
+			}
+		}
+        return name;
+
+
+    }
+
+	//获取类名，判断是否需要继承Abp的实体类
+    string GetClassNameForAbp(string tableName,DataTable table)
+	{
+		//用来判断是否需要继承FullAuditedEntity i == 5.
+	    int i = 0;
+		//用来判断是否需要继承Entity j = 1.
+
+		int j = 0;
+		//除Id行外要删除的行
+	    List<DataRow> rows = new List<DataRow>();
+		//Id行
+		DataRow IdRow = table.NewRow() ;
+		//主键的类型
+		string type = "";
+		//判断是否泛型
+		bool isGenericity = false;
+		foreach(DataRow row in table.Rows)
+        {
+			if(string.Equals(row["字段名"].ToString(), "AddTime", StringComparison.OrdinalIgnoreCase))
+			{
+				i++;
+				rows.Add(row);
+            }
+			if(string.Equals(row["字段名"].ToString(), "AddUserId", StringComparison.OrdinalIgnoreCase))
+			{
+				i++;
+				rows.Add(row);
+            }
+			if(string.Equals(row["字段名"].ToString(), "UpdateTime", StringComparison.OrdinalIgnoreCase))
+			{
+				i++;
+				rows.Add(row);
+            }
+	    	if(string.Equals(row["字段名"].ToString(), "UpdateUserId", StringComparison.OrdinalIgnoreCase))
+			{
+				i++;
+				rows.Add(row);
+            }
+			if(string.Equals(row["字段名"].ToString(), "IsDelete", StringComparison.OrdinalIgnoreCase))
+			{
+				i++;
+				rows.Add(row);
+            }
+			if(string.Equals(GetPropertyName(row["字段名"].ToString()), "ID", StringComparison.OrdinalIgnoreCase))
+			{
+				j++;
+				IdRow = row;
+			    type =TransFromSqlType(row["数据类型"].ToString(),row["长度"].ToString(),row["允许空值"].ToString());
+				if(type != "int" && type != "int?")
+                {
+					isGenericity = true;
+                }
+            }
+        }
+
+		if(i == 5 && j == 1)
+		{ 
+		   foreach(DataRow row in rows)
+		   {
+			  table.Rows.Remove(row);
+		   }
+		   table.Rows.Remove(IdRow);
+		   return tableName + (isGenericity?":FullAuditEntity<Guid>":":FullAuditEntity");
+        }
+	    else if(j == 1 && i != 5)
+		{
+			table.Rows.Remove(IdRow);
+			return tableName + (isGenericity?":BaseEntity<Guid>":":BaseEntity");
+        }
+		return tableName;
+	}
+
+	//获取映射类名称
+	string GetMapClassNameForAbp(string className)
+    {
+	  return className + "Map : BaseClassMapper<"+className + ", Guid>";
+    }
+
+
+	//获取属性名称
+	public string GetPropertyName(string propertyName)
+	{
+        return propertyName;
+    }
+
+	public string ToUpper(string s){
+    return	s.Substring(0,1).ToUpper()+s.Substring(1); 
+	}
+
+	//获取映射属性
+	public string GetMapPropertyName(string columnName)
+    {
+	   if(GetPropertyName(columnName) != "Id")
+		return  "Map(x => x." + GetPropertyName(columnName) + ").Column(\"" + columnName + "\");";
+		return string.Empty;
+    }
+
+    /// <summary>
+    /// 数据库类型转net类型
+    /// </summary>
+    /// <param name="type">数据类型</param>
+	///<param isNull="dataScale">是否为空</param>
+    /// <returns></returns>
+    public string TransFromSqlType(string type,string lenght,string isNull)
+        {
+            if((type=="35"||type=="99"||type=="165"||type=="167"||type=="231"||type=="239")&&lenght!="64"){
+			   type= "string";
+			}
+			if(type=="231"&&lenght=="64"){
+			   type= "Guid";
+			}
+			if(type=="56"){
+			   type= "int";
+			}
+			if(type=="40"||type=="61"){
+			  type= "DateTime";
+			}
+			if(type=="127" ){
+			  type= "long";
+			}
+			if(type=="104"){
+			  type= "bool";
+			} 
+			if(type=="108"){
+			  type= "decimal";
+			} 
+			if(isNull=="1")
+			{
+			 type=type+"?";
+			}
+			if(type=="string?")
+			{
+			type="string";
+			}
+			return type;
+        }
+
+#>

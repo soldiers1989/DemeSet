@@ -1,0 +1,232 @@
+﻿
+@{
+    ViewBag.Title = "我的订单";
+    Layout = null;
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_talk.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/core.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_list.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_note.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_noteIndex.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/course_reply.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Shared/_Layout2Style.css" rel="stylesheet" />
+<script src="http://code.jquery.com/jquery-2.2.3.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/ajax.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/vue.min.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/js/reuglar.0.3.1.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jquery.cookie.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/template.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/base.js?v=1.0"></script>
+<title></title>
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/css/MyOrder.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/css/zui.lite.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/pagination.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/public/layui/css/layui.css">
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/global.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/public/center.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="@HttpContext.Current.Application["DefuleDomain"]/asset/css/mycenter/order.css">
+<style>
+    html, body {
+        min-width:auto;
+    }
+    .m-myOrder .m-data-lists .u-OrderCard {
+        margin: 0px;
+    }
+
+    .j-left-info {
+ 
+    }
+
+    .m-myOrder .m-data-lists .u-OrderCard .info {
+        background: #f5f5f5;
+        color: #333;
+        margin-top: 15px;
+        display: block;
+        height: 38px;
+        line-height: 38px;
+        text-indent:15px;
+    }
+
+    .m-myOrder .u-mounav .order-status .j-tab {
+        border-bottom: 4px solid #fff;
+        margin-right:0;padding:0 40px;
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    .ui-pager div * {
+        height: 40px;
+        line-height: 20px;
+        vertical-align: middle;
+    }
+
+    .m-style a {
+        float: left;
+        margin: 0 5px;
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+        background: #fff;
+        border: 1px solid #ebebeb;
+        color: #bdbdbd;
+        font-size: 14px;
+        text-decoration:none;
+    }
+
+    .m-style .next, .m-style .prev {
+        font-family: "Simsun";
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .m-myOrder{padding:20px;background:#ffffff;}
+    .j-left-info{width:64%;}
+    .right-info{widht:36%;}
+    .sub-order-con .f-fl{width:19%;text-align:center;}
+    .oper{text-align:center;}
+    .orderTime{marign-right:40px;}
+</style>
+<div class="personTit"><label>我的订单</label></div>
+<div class="m-myOrder" id="j-my-orders">
+    <div class="m-myOrders f-cb">
+        <div class="u-mounav f-cb f-bg">
+            <div class="g-flow">
+                <div class="f-cb order-status j-order-status">
+                    <a class="f-fl tab f-pr j-tab current" id="orderAll" name="">全部订单</a>
+                    <a class="f-fl tab f-pr j-tab" id="pendingPayment" name="1">待支付</a>
+                    <a class="f-fl tab f-pr j-tab" id="tradingSuccess" name="0">交易成功</a>
+                    <a class="f-fl tab f-pr j-tab" id="tradingClose" name="2,3">交易关闭</a>
+                </div>
+            </div>
+        </div>
+        <table>
+            <colgroup>
+                <col width="40%">
+                <col width="12%">
+                <col width="12%">
+                <col width="12%">
+                <col width="12%">
+                <col width="12%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>订单信息</th>
+                    <th>单价(元) </th>
+                    <th>课程金额(元) </th>
+                    <th>交易状态 </th>
+                    <th>总金额</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="g-flow">
+            @*<div class="f-cb f-bg header j-header" style="display: block;" id="tdTitle">
+                <span class="header-item first">订单信息</span>
+                <span class="header-item">单价(元)</span>
+                <span class="header-item">课程金额(元)</span>
+                <span class="header-item">交易状态</span>
+                <span class="header-item">总金额</span>
+                <span class="header-item last">操作</span>
+            </div>*@
+            <div class="orderCon">
+                <div class="j-ordersList f-cb listWrap auto-1523169589007-parent" id="isInfo" style="display: block;">
+                    <div class="m-basepool f-cb auto-1523169589007" id="auto-id-1523169589353">
+                        <div class="m-data-lists f-cb f-pr j-data-list" id="orderList" style="">
+                        </div>
+                        <div class="ui-pager auto-1523673907122-parent" id="j-pager">
+                            <div class="m-style M-box1" style="float: right;"></div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="j-empty u-emptybig" id="isNoInfo">
+                    <div class="j-emptytxt emptytext">
+                        <p>暂时还没有该状态的订单</p>
+                        <p class="yq">
+                            去
+                            <a href="~/CourseQueries/IndexQuery" target="_blank">
+                                全部课程
+                            </a>页面学习喜欢的课程吧~
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="orderList_html" type="text/html">
+        {{if Records>0}}
+        
+        {{each Rows}}
+        <div class="box">
+            <div class="orderDetils">
+                <label>{{$value.AddTime}}</label><label>订单号：{{$value.OrderNo}}</label>
+            </div>
+
+            <table class="ui-table">
+                <tr>
+                    <td style="width:64%;border-right:1px solid #dcdcdc;">
+                        <table>
+                            {{each $value.sheetmodelpagedetailoutput}}
+                            <tr style="border-bottom:1px solid #dcdcdc;">@*这个加判断，循环到最后一行的时候不加这个border*@
+                                <td style="width:60%;text-indent:0;padding-left:2%;">
+                                    <div class="num">购买数量：{{$value.Num}}</div>
+                                    <div>
+                                        {{if $value.CourseType==0}}
+                                        <a href="/CourseInfo/CourseInfo?courseId={{$value.CourseId}}" target="_blank"><div class="buyName" title="{{$value.CourseName}}">{{$value.CourseName}}</div></a>
+                                        {{else if $value.CourseType==1}}
+                                        <a href="/CourseInfo/CoursePackInfo?courseId={{$value.CourseId}}" target="_blank"><div class="buyName" title="{{$value.CourseName}}">{{$value.CourseName}}</div></a>
+                                        {{else if $value.CourseType==2}}
+                                        <a href="/FaceToFace/Index?courseId={{$value.CourseId}}" target="_blank"><div class="buyName" title="{{$value.CourseName}}">{{$value.CourseName}}</div></a>
+                                        {{/if}}
+                                        
+                                    </div>
+                                    <div class="red">
+                                        有效期至：{{$value.ValidityEndDate}}
+                                        @*{{ if $value.ValidityPeriod==0}}
+                                        永久有效
+                                        {{/if}}
+                                        {{ if $value.ValidityPeriod>0}}
+                                        {{$value.ValidityPeriod}}
+                                        {{/if}}*@
+                                    </div>
+                                </td>
+                                <td style="width:19%;padding-left:14px;">{{$value.FavourablePrice}}</td>
+                                <td style="width:19%;padding-left:14px;">{{$value.Amount}}</td>
+                            </tr>
+                            {{/each}}
+                        </table>
+                    </td>
+                    <td style="width:12%;border-right:1px solid #dcdcdc;">{{$value.StateVal}}</td>
+                    <td style="width:12%;border-right:1px solid #dcdcdc;padding-left:14px;">{{$value.FavourablePrice}}</td>
+                    <td style="width:12%;text-align:center;text-indent:0;">
+                        {{if $value.State==0}}
+                        <a class="orderDetails" href="/Cart/OrderSheetDetail?OrderNo={{$value.OrderNo}}" target="_blank">订单详情</a>
+                        {{/if}}
+                        {{if $value.State==1}}
+                        <a href="javascript:ToPayMent('{{$value.OrderNo}}')"  class="layui-btn layui-btn-danger layui-btn-sm"><span class="f-cb go-pay" id="auto-id-1523411859886">去付款</span></a>
+                        <a class="layui-btn layui-btn-primary layui-btn-sm"><span class="f-cb j-cancelOrder" onclick="OrderCancel(this)" id="{{$value.OrderNo}}">取消订单</span></a>
+                        <a class="orderDetails" href="/Cart/OrderSheetDetail?OrderNo={{$value.OrderNo}}" target="_blank">订单详情</a>
+                        {{/if}}
+                        {{if $value.State==2 || $value.State==3}}
+                        @*<a target="_blank" href="#"><span class="f-cb go-pay" id="auto-id-1523411859886">交易失败</span></a>*@
+                        <a style="line-height: 45px; color: red;"><span class="f-cb j-cancelOrder" onclick="DelOrder(this)" id="{{$value.OrderNo}}">删除订单</span></a>
+                        @*<a style="line-height: 45px; color: blue;"><span class="f-cb j-cancelOrder" onclick="ReOrder(this)" id="{{$value.OrderNo}}">重新下单</span></a>*@
+                        <a class="orderDetails" href="/Cart/OrderSheetDetail?OrderNo={{$value.OrderNo}}" target="_blank">订单详情</a>
+                        {{/if}}
+                        {{if $value.State==5}}
+                        @*<a target="_blank" href="#"><span class="f-cb go-pay" id="auto-id-1523411859886">交易失败</span></a>*@
+                        {{/if}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+    <input type="hidden" Id="Rows" value="3" />
+    <input type="hidden" Id="PageIndex" value="1" />
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/pagination/jquery.pagination.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/zui/js/zui.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Libs/layer/js/layer.js?v=1.0"></script>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Views/Cart/MyOrder.js?v=1.0"></script>

@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "增值服务";
+    Layout = "~/Areas/jjs/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="pragram" content="no-cache">
+    <link href="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/style/user.css" rel="stylesheet" />
+    <title>增值服务</title>
+</head>
+<input type="hidden" id="SecurityCode" value="@ViewBag.SecurityCode" />
+<body class="body">
+    <div id="myquestion">
+    </div>
+    <script type="text/html" id="MyCourse_html">
+        {{if Result.length>0}}
+        <div class="wdkc_sm">
+            <p>共{{Result.length}}个课程</p>
+        </div>
+        {{each Result}}
+        <div class="zjxx-list_01" href="">
+            <div class="zjxx-nr1_01">
+                <a href="/jjs/CourseInfo/Index?id={{$value.CourseId}}&CourseType={{$value.CourseType}}">
+                    <dl>
+                        <dt><img src="{{$value.CourseIamge}}"></dt>
+                        <dd>{{$value.CourseName}}</dd>
+                        <dd>有效日期:{{$value.EndTime | dataTimeView}}</dd>
+                        <div class="clear"></div>
+                    </dl>
+                </a>
+            </div>
+            <div class="zjxx-nr2_01">
+                <p>
+                    课件:{{$value.HasLearnCount}}/{{$value.CourseWareCount}}<i>测评:{{$value.PracticePaperNum}}/{{$value.TotalPaperNum}}</i>
+                </p>
+                <span>进行中…</span>
+                <div class="clear"></div>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="zanwu">
+            <img src="/Areas/jjs/resources/images/zanwu.png">
+            <p>
+                <a href="#">暂无记录</a>
+            </p>
+        </div>
+        {{/if}}
+        <div class="hei2em"></div>
+    </script>
+    <div class="hei2em"></div>
+    <div class="hei1em"></div>
+    <div class="header-nav">
+        <ul>
+            <li><a href="~/jjs/HomePage/Index" class="img01">首页</a></li>
+            <li style="display: none;"><a href="~/jjs/Information/Index" class="img02">最新资讯</a></li>
+            <li><a href="~/jjs/PersonalCenter/Index" class="img03">个人中心</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/Views/MyCourse/Index.js?v=1.0"></script>
+
+

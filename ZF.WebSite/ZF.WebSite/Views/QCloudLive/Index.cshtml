@@ -1,0 +1,184 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>直播</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+        outline: none;
+        color: #555;
+        text-decoration: none;
+    }
+
+        a:hover, a:active {
+            text-decoration: none;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+    .clear {
+        width: 100%;
+        height: 0;
+        clear: both;
+        overflow: hidden;
+    }
+
+    html, body {
+        height: 100%;
+        background: #302e44;
+        width: 100%;
+    }
+
+    .zb_bg {
+        background: url(~/Images/Live/zbbg01.png) no-repeat 0 0;
+    }
+
+    .zb_bg01 {
+        background: url(~/Images/Live/zbbg02.png) no-repeat right bottom;
+        height: 100%;
+    }
+
+    .zb_video {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+        .zb_video h1 {
+            text-align: center;
+            padding: 50px 0 20px 0;
+        }
+
+    .zb_live {
+        width: 900px;
+    }
+
+        .zb_live .zb_time {
+            color: #a9a9a9;
+            text-align: right;
+            font-size: 16px;
+            font-family: "黑体";
+            line-height: 30px;
+        }
+
+    .zb_livenew {
+        background: #403c63;
+        padding: 10px;
+        width: 880px;
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.58);
+    }
+
+        .zb_livenew img {
+            width: 880px;
+        }
+
+    .zb_jieshao {
+        background: #403c63;
+        padding: 30px;
+        width: 840px;
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.28);
+        margin-top: 30px;
+        color: #c5c5c5;
+    }
+
+    .zb_js_l {
+        width: 410px;
+        float: left;
+        font-size: 14px;
+        font-family: "黑体";
+    }
+
+        .zb_js_l h3 {
+            line-height: 40px;
+            font-weight: 100;
+            font-size: 16px;
+        }
+
+    .zb_js_r {
+        width: 410px;
+        float: right;
+    }
+
+    .zb_js_rimg {
+        width: 100px;
+        height: 100px;
+        float: left;
+    }
+
+        .zb_js_rimg img {
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+        }
+
+    .zb_js_rnew {
+        width: 300px;
+        margin-left: 10px;
+        float: left;
+        font-size: 14px;
+        font-family: "黑体";
+    }
+
+        .zb_js_rnew h3 {
+            line-height: 40px;
+            font-size: 16px;
+        }
+
+        .zb_js_rnew p {
+            line-height: 22px;
+        }
+</style>
+
+<body class="zb_bg">
+    <div class="zb_bg01">
+        <div class="zb_video">
+            <h1><img src="~/Images/Live/zhibotit.png"></h1>
+            <div class="zb_live">
+                <p class="zb_time">直播开始时间：2018.10.25 9：30</p>
+                <div class="zb_livenew" id="id_test_video"> 
+                @*<img src="~/Images/Live/video2.jpg">*@ 
+                </div>
+                <div class="zb_jieshao">
+                    <div class="zb_js_l">
+                        <h3>经济基础知识（初级）</h3>
+                        <p>主讲内容：典型知识点分析</p>
+                    </div>
+                    <div class="zb_js_r">
+                        <div class="zb_js_rimg"> <img src="~/Images/Live/ms005.jpg" alt=""> </div>
+                        <div class="zb_js_rnew">
+                            <h3>潘旭海</h3>
+                            <p>男，1977年8月生，教授，博士，南京工业大学安全科学与工程学院院长，南京工</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://p2d1407024.imwork.net/ZF.WebSite/Js/TcPlayer-2.2.1.js"></script>
+    <script type="text/javascript">
+            var player = new TcPlayer('id_test_video', {
+                //"rtmp": "rtmp://27105.liveplay.myqcloud.com/live/27105_4d7e4f9e8f",
+                //"m3u8": "http://27105.liveplay.myqcloud.com/live/27105_4d7e4f9e8f.m3u8", //请替换成实际可用的播放地址
+                "flv": "http://27105.liveplay.myqcloud.com/live/27105_4d7e4f9e8f.flv", //增加了一个flv的播放地址，用于PC平台的播放 请替换成实际可用的播放地址
+                "autoplay": true,      //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
+                "coverpic": "~/Images/Live/video2.jpg",
+                "width": '720',//视频的显示宽度，请尽量使用视频分辨率宽度
+                "height": '580'//视频的显示高度，请尽量使用视频分辨率高度
+            });
+    </script>
+</body>
+
+</html>

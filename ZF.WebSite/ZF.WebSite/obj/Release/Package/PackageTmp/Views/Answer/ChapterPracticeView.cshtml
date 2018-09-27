@@ -1,0 +1,452 @@
+﻿@{
+    ViewBag.Title = "课程章节练习查看";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/mystudy.css" rel="stylesheet" />
+<link href="@HttpContext.Current.Application["DefuleDomain"]/Libs/CourseInfo/css/subject_collected.css" rel="stylesheet" />
+<style>
+    .contentIn {
+        background: #f3f3f3;
+    }
+    
+     .sub-dotitle > p {
+         float: left !important;
+     }
+
+    .sub-answer dd > p {
+        float: left !important;
+        padding: 5px;
+    }
+
+    .chooseItem .col-xs-12 label {
+        font-weight: 200;
+        cursor: pointer;
+        position: relative;
+        font-family: "微软雅黑","sans-serif";
+        color: black;
+        font-size: 18px;
+        min-width: 600px;
+    }
+
+    .chooseItem .col-xs-6 label {
+        font-weight: 200;
+        cursor: pointer;
+        position: relative;
+        color: black;
+        font-size: 16px;
+    }
+
+    .chooseItem .col-xs-6 {
+        padding: 10px;
+    }
+
+    .chooseItem .col-xs-12 {
+        padding-left: 0px;
+    }
+
+    #container {
+        width: 1200px;
+        min-width: 640px;
+        max-width: 1200px;
+        width: auto;
+        background: #f0f0f0;
+        margin: 20px auto;
+    }
+    /* å·¦ä¾§è¯•å·å†…å®¹ */
+    .ud-main {
+        margin-right: 0px;
+ 
+        _display: inline;
+        padding: 20px 0;
+    }
+    /* è¯•å·æ ‡é¢˜éƒ¨åˆ† */
+    .ud-main h2.ud-title {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        padding-top: 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    .ud-main h2.ud-title .editor_titles {
+        border: none;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .ud-main h2.ud-title input.editor_titles {
+        width: 90%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        background: #f0f0f0;
+        display: none;
+    }
+
+    .ud-main h2.ud-title span.editor_titles {
+        display: inline-block;
+        width: 95%;
+        height: 60px;
+        line-height: 60px;
+        font-weight: lighter;
+        font-size: 22px;
+        letter-spacing: 2px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -icab-text-overflow: ellipsis;
+        -khtml-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+    }
+
+    .ud-main h2.ud-title a.ud-edtior {
+        position: absolute;
+        right: 0;
+        bottom: 15px;
+        display: inline-block;
+        width: 19px;
+        height: 19px;
+        background: url(../images/ud-tit-icon.png) no-repeat center center;
+        margin-left: 20px;
+    }
+
+    .ud-info {
+        font-size: 18px;
+        text-align: center;
+        line-height: 20px;
+        margin-bottom: 20px;
+        line-height:30px;
+    }
+
+    .ud-info b {
+        margin-right: 10px;
+        font-weight: normal;
+    }
+
+    .ud-info a {
+        display: inline-block;
+        padding: 5px 10px 5px 20px;
+    }
+
+    .ud-questionTypes {
+        font-size: 16px;
+        line-height: 50px;
+        font-weight: bold;
+    }
+
+
+    #ud-keep-paper {
+        display: inline-block;
+        padding: 4px 24px;
+        font-size: 14px;
+        font-weight: normal;
+        color: #fff;
+        border-radius: 2px;
+        background: #ff9900;
+    }
+    /* å³ä¾§ç»„å·æŒ‰é’® */
+    .the-right {
+        /* width: 200px; */
+        float: left;
+        _display: inline;
+        position: relative;
+        padding-top: 80px;
+    }
+
+    .right-fixed {
+        /* height: 446px; */
+        position: fixed;
+        z-index: 9;
+        top: 202px;
+        bottom: 375px;
+    }
+
+    .ud-tool-btn {
+        padding: 0 0 0 60px;
+    }
+
+    .ud-tool-btn a {
+        display: block;
+        width: 160px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 18px;
+        font-weight: lighter;
+        color: #fff !important;
+        border-radius: 2px;
+        margin-bottom: 10px;
+    }
+
+    .ud-tool-btn .ud-print {
+        background: #f7645c;
+    }
+
+    .ud-tool-btn .ud-download {
+        background: #4cad51;
+    }
+
+    .ud-tool-btn .ud-record {
+        background: #5b95d8;
+    }
+
+    .ud-tool-btn .ud-choose {
+        background: #665659;
+    }
+
+    .ud-tool-btn .ud-empty {
+        background: #90c03e;
+    }
+    /* é¢˜å· */
+    #right_fixed {
+        /* position: fixed;
+        z-index: 9;
+        top: 420px;
+        bottom: 375px; */
+    }
+
+    .title-number {
+        width: 225px;
+        padding: 10px;
+        background: #9ed4e3;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .tn-time {
+        width: 94%;
+        padding: 0 3% 5px 2%;
+        font-size: 14px;
+        line-height: 40px;
+        background: #fff;
+    }
+
+    .tn-time #minute_show, .tn-time #second_show {
+        display: inline-block;
+        height: 36px;
+        line-height: 36px;
+        width: 45px;
+        height: 36px;
+        text-align: center;
+        font-size: 20px;
+        border-radius: 3px;
+        background: #4599b1;
+        color: #fff;
+        margin: 0 3px;
+        vertical-align: bottom;
+    }
+
+    .tn-ordinal {
+        width: 100%;
+        background: #9ed4e3;
+    }
+
+    .tn-ordinal p.tn-ordinal-num {
+        width: 45%;
+        height: 25px;
+        background: url(http://static.vko.cn/v8/tiku/images/add.png) no-repeat right center;
+        line-height: 25px;
+        color: #4599b1;
+        cursor: pointer;
+    }
+
+    .tn-ordinal p a {
+        display: inline-block;
+        width: 40px;
+        width: 38px\9;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        background: #fff; /* url(http://static.vko.cn/vko/images/tiku/tknum_bg.png) 0 0 no-repeat; */
+        color: #4599b1;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0 6px 6px 5px;
+    }
+
+    .done-high {
+        background: #d1d1d1 !important; /* url(http://static.vko.cn/vko/images/tiku/tknum_bg.png) left -60px no-repeat!important; */
+        /* color: #575757!important; */
+    }
+
+    .checked {
+        background: #FFAB20 !important; /* url(http://static.vko.cn/vko/images/tiku/tknum_bg.png) left -30px no-repeat!important; */
+        /* color: #4599b1!important; */
+    }
+    /* ä¸‰è§’ç®­å¤´ */
+    #triangle {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: -20px;
+        top: 30px;
+    }
+
+    #triangle i {
+        position: absolute;
+        top: 0;
+        border-width: 10px;
+        border-style: dashed solid dashed dashed;
+        border-color: transparent #9ED4E3 transparent transparent;
+    }
+
+    .orders {
+        float: left;
+        line-height: 30px;
+        font-weight: bold;
+        padding-right: 5px;
+    }
+
+    /*
+    #single{
+        background: none;
+    }*/
+    #single_ordinal,
+    #multi_ordinal,
+    #fillblank_ordinal,
+    #answer_ordinal,
+    #closetest_ordinal,
+    #reading_ordinal,
+    #write_ordinal {
+        display: none;
+    }
+
+    .quest_op {
+        width: 43%;
+        padding: 10px 4% 5px 15px;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+        margin: 0px 0 0 !important;
+    }
+    .wenzi{color:##565656;line-height:26px;}
+</style>
+@* 已收藏试题 *@
+<input type="hidden" Id="ChapterQuestionsId" value="@ViewBag.ChapterQuestionsId" />
+<div id="j-cp-box-item" class= "g-flow" style="margin-top: 22px;">
+    @*<div class="subject-title">我的收藏试题</div>*@
+    <div id="questionModule" class="cross-range">
+        <div id="page-con">
+            <ul class="page-body" id="subjectlist" ></ul>
+            <script type="text/html" id="PracticeView_html">
+                <div class="ud-main clearfix">
+                    @*<h2 class="ud-title">不知道干嘛用，没有内容白占空间先注释
+                        <input type="hidden" id="ChapterId" value="{{ChapterId}}"/>
+                        <input class="editor_titles" type="text" value="" placeholder="">
+                        /*<span class="editor_titles" Id="ChapterTiele">{{ChapterTiele}}{{PracticeNo}}</span>*/
+                        <a class="ud-edtior" href="javascript:void(0);"></a>
+                    </h2>*@
+                    <div class="ud-info">
+                        <span>练习时间：</span>
+                        <b id="DateTime">{{DateTime}}</b>
+                        <span>课程名称：</span>
+                        <b value="51" id="CourseName">{{CourseName}}</b>
+                        <span>名称：</span>
+                        <b value="22" id="ChapterName">{{ChapterName}}</b>
+                        <span>题数：</span>
+                        <b id="Count">{{Count}}</b>
+                        <a id="ud-keep-paper" style="float: right;" href="javascript:savePaper();">重新练习</a>
+                    </div>
+                </div>
+                {{each ChapterQuestionsDetailOutput}}
+                <li style="display: block;">
+                    <div class="subject-con bor clearfix m-question disabled" style="">
+                        <div class="subject-con" style="background: inherit">
+                            <div class="sub-content sub-conanswer">
+                                <div class="sub-dotitle" style="display: inline-block;">
+                                    {{#$value.Description}}
+                                </div>
+                                <div class="sub-dotitle">
+                                    <em>{{$index+1}}、<i>{{$value.SubjectName}}</i></em>
+                                    {{#$value.QuestionContent}}
+                                    @*<p>关于道德的说法中，正确的是（ ）</p>*@
+                                </div>
+                                <dl class="sub-answer  sub-answer-no">
+                                    {{each $value.option}}
+                                    <dd class="m-question-option cho-this" data-value="A">
+                                        <i></i>
+                                        {{#$value.content}}
+                                        @*<p>
+                                                <span>A.</span>纵观历史，人类道德几乎没有发生变化
+                                            </p>*@
+                                    </dd>
+                                    {{/each}}
+                                </dl>
+                            </div>
+                            <div class="sub-dotitle" style="position: relative; display: block; display: inline-block; float: right;">
+                                <label>{{#$value.Whether}}</label>
+                            </div>
+                        </div>
+                        <div class="m__answerLine refer-answer clearfix" data-examid="4127629" style="display: block;">
+                            <div class="reck">
+                                参考答案：<em class="right">{{$value.RightAnswer}}</em>
+                                您的答案：<em class="wrong">{{$value.StuAnswer}}</em>
+                            </div>
+                            <ul>
+                                <li class="nobro">
+                                    {{if $value.IsCollection===0 }}
+                                    <a href="javascript:void(0)" data-id="{{$value.QuestionId}}" class="btn__scbt scbt that  shoucan" data="0">
+                                        <i></i>收藏
+                                    </a>
+                                    {{else}}
+                                    <a href="javascript:void(0)" data-id="{{$value.CollectionId}}" class="btn__scbt scbt this shoucan" data="1">
+                                        <i></i>取消收藏
+                                    </a>
+                                    {{/if}}
+                                </li>
+                                @*<li><a href="javascript:;" class="btn__jc jc"><i></i>纠错</a></li>*@
+                                <li>
+                                    <a href="javascript:;" class="btn__zkjx zkjx"><i></i>展开解析</a>
+                                    <a href="javascript:;" class="btn__sqjx sqjx" style="display: none;"><i></i>收起解析</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="m__analyse detail-intro" style="display: none;">
+                            <div class="solution">
+                                <ul>
+                                    <li class="da-list">
+                                        <span class="s-jx"><i></i>参考解析：</span>
+                                        <div class="so-timu">
+                                            <div class="wenzi">
+                                                {{if $value.QuestionTextAnalysis}}
+                                                {{#$value.QuestionTextAnalysis}}
+                                                {{else}}
+                                                暂无
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                </li>
+                {{/each}}
+            </script>
+        </div>
+    </div>
+</div>
+@*<div class="the-right">
+        <div class="right-fixed">
+            <div id="right_fixed">
+                <div class="title-number">
+                    <span id="triangle">
+                        <i></i>
+                    </span>
+                    <div class="tn-time">
+
+                    </div>
+                    <div class="tn-ordinal" id="tn-ordinal">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+<script src="~/Views/Answer/ChapterPracticeView.js"></script>

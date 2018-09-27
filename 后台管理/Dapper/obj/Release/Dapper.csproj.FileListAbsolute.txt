@@ -1,0 +1,6 @@
+E:\出版社\后台管理\Dapper\bin\Release\Dapper.dll
+E:\出版社\后台管理\Dapper\bin\Release\Dapper.pdb
+E:\出版社\后台管理\Dapper\bin\Release\log4net.dll
+E:\出版社\后台管理\Dapper\bin\Release\log4net.xml
+E:\出版社\后台管理\Dapper\obj\Release\Dapper.dll
+E:\出版社\后台管理\Dapper\obj\Release\Dapper.pdb

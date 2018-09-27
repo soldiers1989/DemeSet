@@ -1,0 +1,721 @@
+﻿@{
+    Layout = null;
+}
+
+<style type="text/css">
+    dd a, ul li a {
+        cursor: pointer;
+    }
+</style>
+<input type="hidden" id="code" value="@ViewBag.code" />
+<input type="hidden" id="chapterId" />
+<input type="hidden" id="videoId" />
+
+<div class="spjd" style="display: none;">
+    <div class="zj_bt" style="display:block" data="0">
+        <h4 id="spjdhtml"></h4>
+        <div class="clear"></div>
+    </div>
+    <div class="heigt"></div>
+</div>
+<div class="zj_box">
+</div>
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Js/jweixin-1.0.0.js?v=1.0"></script>
+<script type="text/html" id="chapter_html">
+    {{each Result}}
+    <div class="zj_box1">
+        <div class="zj_bt" style="{{$value.CapterName |isShow}}" data="0">
+            <a class="btn1">
+                <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/jjanniu02@2x.png" alt="">
+            </a>
+            <a class="btn2" style="display: none;">
+                <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/jjanniu01@2x.png" alt="">
+            </a>
+            <h4>{{$value.CapterName}}</h4>
+            <div class="clear"></div>
+        </div>
+        <div class="zj_list" style="display: none;">
+            {{if $value.SubChapterList.length>0}}
+            {{each $value.SubChapterList}}
+            {{if $value.VideoId}}
+            <dl>
+                <dt>{{$value.CapterName}}</dt>
+                <dd>
+                    {{if $value.Count>0}}
+                    <a class="lianxi" onclick="ToPractice('{{$value.VideoId}}')">练习</a>
+                    {{else}}
+                    <a href="#"></a>
+                    {{/if}}
+                    {{if $value.VideoUrl}}
+                    {{if $value.IsTaste==1 && $value.TasteLongTime>0}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}"  class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="playVideo(this)">试听{{$value.TasteLongTime | formatterTasteLongTime}}</a>
+                    {{else if $value.IsTaste==1 && $value.TasteLongTime==0}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}" class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="playVideo(this)">免费试听</a>
+                    {{else if $value.IsTaste==0}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}" data="3" class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="AddToCart()">购买观看</a>
+                    {{/if}}
+                    {{else}}
+                    {{if $value.Count>0}}
+                    {{else}}
+                    <a class="{{$value.VideoId}}"></a>
+                    <span class="f-fr kstime">{{$value.CapterName | formatterUnOnline}}</span>
+                    {{/if}}
+                    {{/if}}
+
+                </dd>
+            </dl>
+            {{/if}}
+            {{if $value.SubChapterList}}
+            <h3>{{$value.CapterName}}</h3>
+            {{ each $value.SubChapterList}}
+            {{if $value.VideoId}}
+            <dl>
+                <dt>{{$value.CapterName}}</dt>
+                <dd>
+                    {{if $value.Count>0}}
+                    <a class="lianxi" onclick="ToPractice('{{$value.VideoId}}')">练习</a>
+                    {{else}}
+                    <a href="#"></a>
+                    {{/if}}
+                    {{if $value.VideoUrl}}
+                    {{if $value.IsTaste==1 && $value.TasteLongTime>0}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}" class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="playVideo(this)">试听{{$value.TasteLongTime | formatterTasteLongTime}}</a>
+                    {{else if $value.IsTaste==1 && $value.TasteLongTime==0}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}" class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="playVideo(this)">免费试听</a>
+                    {{else if $value.IsTaste==0}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}" data="3" class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="AddToCart()">购买观看</a>
+                    {{/if}}
+                    {{else}}
+                    {{if $value.Count>0}}
+                    {{else}}
+                    <a class="{{$value.VideoId}}"></a>
+                    <span class="f-fr kstime">{{$value.CapterName | formatterUnOnline}}</span>
+                    {{/if}}
+                    {{/if}}
+                </dd>
+            </dl>
+            {{/if}}
+            {{/each}}
+            {{/if}}
+            {{/each}}
+            {{/if}}
+        </div>
+        <div class="heigt"></div>
+    </div>
+    {{/each}}
+</script>
+
+<script type="text/html" id="chapter_html2">
+    {{each Result}}
+    <div class="zj_box1">
+        <div class="zj_bt" style="{{$value.CapterName |isShow}}" data="0">
+            <a class="btn1">
+                <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/jjanniu02@2x.png" alt="">
+            </a>
+            <a class="btn2" style="display: none;">
+                <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/jjanniu01@2x.png" alt="">
+            </a>
+            <h4>{{$value.CapterName}}</h4>
+            <div class="clear"></div>
+        </div>
+        <div class="zj_list" style="display: none;">
+            {{if $value.SubChapterList.length>0}}
+            {{each $value.SubChapterList}}
+
+            {{if $value.VideoId}}
+            <dl>
+                <dt>{{$value.CapterName}}</dt>
+                <dd>
+                    {{if $value.Count>0}}
+                    <a class="lianxi" onclick="ToPractice('{{$value.VideoId}}')">练习</a>
+                    {{else}}
+                    <a href="#"></a>
+                    {{/if}}
+                    {{if $value.VideoUrl}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}" class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="playVideo(this)">在线观看</a>
+                    {{else}}
+                    {{if $value.Count>0}}
+                    {{else}}
+                    <a class="{{$value.VideoId}}"></a>
+                    <span class="f-fr kstime">{{$value.CapterName | formatterUnOnline}}</span>
+                    {{/if}}
+                    {{/if}}
+
+                </dd>
+            </dl>
+            {{/if}}
+            {{if $value.SubChapterList}}
+            <h3>{{$value.CapterName}}</h3>
+            {{ each $value.SubChapterList}}
+            {{if $value.VideoId}}
+            <dl>
+                <dt>{{$value.CapterName}}</dt>
+                <dd>
+                    {{if $value.Count>0}}
+                    <a class="lianxi" onclick="ToPractice('{{$value.VideoId}}')">练习</a>
+                    {{else}}
+                    <a href="#"></a>
+                    {{/if}}
+                    {{if $value.VideoUrl}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}" class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="playVideo(this)">在线观看</a>
+                    {{else}}
+                    {{if $value.Count>0}}
+                    {{else}}
+                    <a class="{{$value.VideoId}}"></a>
+                    <span class="f-fr kstime">{{$value.CapterName | formatterUnOnline}}</span>
+                    {{/if}}
+                    {{/if}}
+                </dd>
+            </dl>
+            {{/if}}
+            {{/each}}
+            {{/if}}
+            {{/each}}
+            {{/if}}
+        </div>
+        <div class="heigt"></div>
+    </div>
+    {{/each}}
+</script>
+
+
+<script type="text/html" id="chapter_html3">
+    {{each Result}}
+    <div class="zj_box1">
+        <div class="zj_bt" style="{{$value.CapterName |isShow}}" data="0">
+            <a class="btn1">
+                <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/jjanniu02@2x.png" alt="">
+            </a>
+            <a class="btn2" style="display: none;">
+                <img src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/images/jjanniu01@2x.png" alt="">
+            </a>
+            <h4>{{$value.CapterName}}</h4>
+            <div class="clear"></div>
+        </div>
+        <div class="zj_list" style="display: none;">
+            {{if $value.SubChapterList.length>0}}
+            {{each $value.SubChapterList}}
+
+            {{if $value.VideoId}}
+            <dl>
+                <dt>{{$value.CapterName}}</dt>
+                <dd>
+                    {{if $value.Count>0}}
+                    <a class="lianxi" onclick="ToPractice('{{$value.VideoId}}')">练习</a>
+                    {{else}}
+                    <a href="#"></a>
+                    {{/if}}
+                    {{if $value.VideoUrl}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}" class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="RecieveMessage()">领取观看</a>
+                    {{else}}
+                    {{if $value.Count>0}}
+                    {{else}}
+                    <a class="{{$value.VideoId}}"></a>
+                    <span class="f-fr kstime">{{$value.CapterName | formatterUnOnline}}</span>
+                    {{/if}}
+                    {{/if}}
+
+                </dd>
+            </dl>
+            {{/if}}
+            {{if $value.SubChapterList}}
+            <h3>{{$value.CapterName}}</h3>
+            {{ each $value.SubChapterList}}
+            {{if $value.VideoId}}
+            <dl>
+                <dt>{{$value.CapterName}}</dt>
+                <dd>
+                    {{if $value.Count>0}}
+                    <a class="lianxi" onclick="ToPractice('{{$value.VideoId}}')">练习</a>
+                    {{else}}
+                    <a href="#"></a>
+                    {{/if}}
+                    {{if $value.VideoUrl}}
+                    <a VideoId="{{$value.VideoId}}" ChapterId="{{$value.Id}}" class="shiting {{$value.VideoId}} rowIndex_{{$value.RowsIndex}}" RowsIndex="{{$value.RowsIndex}}" onclick="RecieveMessage()">领取观看</a>
+                    {{else}}
+                    {{if $value.Count>0}}
+                    {{else}}
+                    <a class="{{$value.VideoId}}"></a>
+                    <span class="f-fr kstime">{{$value.CapterName | formatterUnOnline}}</span>
+                    {{/if}}
+                    {{/if}}
+                </dd>
+            </dl>
+            {{/if}}
+            {{/each}}
+            {{/if}}
+            {{/each}}
+            {{/if}}
+        </div>
+        <div class="heigt"></div>
+    </div>
+    {{/each}}
+</script>
+
+<script src="@HttpContext.Current.Application["DefuleDomain"]/Areas/jjs/resources/js/zhangjie.js?v=1.0"></script>
+<script type="text/javascript">
+    $('.jjs-header-nav').attr("style", "display:block;");
+    var courseid = $('#courseId').val();
+    var currentChapter = $('#currentChapter').val();
+    var state = $('#ifPlay').attr("data");
+    if (state == "1") {
+        $("#courseCover").attr("style", "display:block;visibility: hidden;");
+    } else {
+        $("#courseCover").attr("style", "display:block;");
+    }
+    $(function () {
+        topevery.ajaxwx({
+            url: "api/CourseInfo/GetOne",
+            data: JSON.stringify({ Id: courseid })
+        }, function (data) {
+            if (data) {
+                if (data.Success) {
+                    var courseinfo = data.Result;
+                    $('#courseCover').attr('src', courseinfo.CourseIamge);
+                }
+            }
+        });
+        getCourseChapter();
+        function getCourseChapter() {
+            var courseid = $('#courseid').val();
+            topevery.ajaxwx({
+                url: "api/CourseAppraise/GetCourseChapterList1",
+                data: JSON.stringify({ CourseId: $('#courseId').val() })
+            }, function (data) {
+                if (data.Success) {
+                    var hasPay = parseInt($('#hasPay').val());
+                    if (hasPay == 1) {
+                        $('.zj_box').html(template("chapter_html2", data));
+                    } else if (hasPay == 0) {
+                        var isValueAdd = parseInt($('#isValueAdd').val()); 
+                        if (isValueAdd == 1) {
+                            $('.zj_box').html(template("chapter_html3", data));
+                        } else {
+                            $('.zj_box').html(template("chapter_html", data));
+                        }
+                    } else {
+                        $('.zj_box').html(template("chapter_html", data));
+                    }
+
+                    $('.zj_bt').click(function (event) {
+                        var data = $(this).attr("data");
+                        if (data == 0) {
+                            $(this).find(".btn2").show();
+                            $(this).find(".btn1").hide();
+                            $(this).parent().find('.zj_list').show();
+                            $(this).attr('data', 1);
+                        } else if (data == 1) {
+                            $(this).find(".btn1").show();
+                            $(this).find(".btn2").hide();
+                            $(this).parent().find('.zj_list').hide();
+                            $(this).attr('data', 0);
+                        }
+                    });
+                    if (currentChapter) {
+                        $("a[VideoId='" + currentChapter + "']").parent().parent().parent().prev().addClass('red_a');
+                        $("a[VideoId='" + currentChapter + "']").html('<img src="/Areas/jjs/resources/images/zj@2x.png">');
+                    }
+                    var code = $("#code").val();
+                    if (code) {
+                        topevery.ajaxwx({
+                            url: "api/CourseVideo/GetOne",
+                            data: JSON.stringify({ Code: $('#code').val() })
+                        }, function (data) {
+                            if (data.Success) {
+                                $(".spjd").show();
+                                $("#spjdhtml").html("当前视频播放节点为:" + data.Result.VideoName);
+                                try {
+                                    var data1 = $('.' + data.Result.Id).attr('data');
+                                    if (data1 && parseInt(data1) == 3) {
+                                        //通过扫码进入，未购买不加入购物车
+                                    } else {
+                                        $("." + data.Result.Id).click();
+                                    }
+                                } catch (e) {
+
+                                }
+                                try {
+                                    $($("." + data.Result.Id).parent().parent().parent().parent().find(".zj_bt")[0]).click();
+                                } catch (e) {
+
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+
+    })
+
+
+
+    function playVideo(e) {
+        var videoId = $(e).attr('VideoId');
+        var chapterId = $(e).attr("ChapterId");
+        ///当前操作的章节、视频
+        $('#chapterId').val(chapterId);
+        $('#videoId').val(videoId);
+        $('#currentChapter').val(videoId);
+        //$(".shiting").html("播放");
+        $(e).html('<img src="/Areas/jjs/resources/images/zj@2x.png">');
+        $(e).parent().parent().parent().prev().addClass('red_a');
+
+        //location.href = "/jjs/CourseInfo/VideoPlay?CourseId=" + courseid + "&VideoId=" + videoId+"&ChapterId="+chapterId;
+
+        // 判断是否已购买
+        topevery.ajaxwx({
+            url: 'api/Sheet/IfAreadyPay',
+            data: JSON.stringify({ CourseId: courseid })
+        }, function (data) {
+            if (data.Result) {
+                if (videoId) {
+                    //判断是否已购买，已购买则播放视频
+                    topevery.ajax({
+                        url: 'api/CourseVideo/GetOne',
+                        data: JSON.stringify({ Id: videoId })
+                    }, function (data) {
+                        if (data.Success) {
+                            var model = data.Result;
+                            //手动设置视频播放器的视频源
+                            //videoPlayer.src(model.VideoUrl);
+                            videoPlayer(model.VideoUrl, 0);
+                            $(".spjd").show();
+                            $("#spjdhtml").html("当前视频播放节点为:" + data.Result.VideoName);
+                            $('#ifPlay').attr("data", "1");
+                        }
+                    });
+                }
+            } else {
+                if (videoId) {
+                    topevery.ajaxwx({
+                        url: 'api/CourseVideo/GetOne',
+                        data: JSON.stringify({ Id: videoId })
+                    }, function (data) {
+                        var model = data.Result;
+                        $(".spjd").show();
+                        $("#spjdhtml").html("当前视频播放节点为:" + data.Result.VideoName);
+                        //判断是否为试听章节
+                        if (data.Success && model.IsTaste == 1) {
+                            //手动设置视频播放器的视频源
+                            videoPlayer(model.VideoUrl, model.TasteLongTime);
+                            $('#ifPlay').attr("data", "1");
+                            //播放一栏显示试听时间
+                            $('.msg-note').removeClass('hidetips');
+                            $('.tastetime').text(model.TasteLongTime);
+                        } else {
+                            //提示购买观看,显示课程价格信息
+                            topevery.ajaxwx({
+                                url: 'api/CourseInfo/GetOne',
+                                data: JSON.stringify({ Id: courseid })
+                            }, function (data) {
+                                if (data.Result) {
+                                    var obj = data.Result;
+                                    layer.msg("请先购买该课程");
+                                }
+                            });
+                        }
+                    })
+                }
+            }
+        });
+    }
+    var player = new Object();
+    function videoPlayer(VideoUrl, TasteLongTime) {
+        $('#J_prismPlayer').html("");
+        topevery.ajaxwx({
+            url: 'api/CourseVideo/GetVideo',
+            data: JSON.stringify({ Id: VideoUrl })
+        }, function (data) {
+            if (data.Result) {
+                var row = data.Result;
+                if (player._created) {
+                    player.dispose();
+                }
+                player = new Aliplayer({
+                    id: 'J_prismPlayer',
+                    width: '100%',
+                    height: '230px',
+                    cover: row.CoverURL,
+                    autoplay: true,
+                    isLive: false,
+                    format: "m3u8",
+                    playsinline: true,
+                    vid: VideoUrl,
+                    useH5Prism: true,
+                    x5_type: "h5",
+                    x5_video_position: "top",
+                    x5_fullscreen: true,
+                    controlBarVisibility: "always",
+                    playauth: row.PlayAuth,
+                    skinLayout: [{
+                        "name": "controlBar", "align": "blabs", "x": 0, "y": 0, "children": [{ "name": "progress", "align": "blabs", "x": 0, "y": 44 },
+                   { "name": "playButton", "align": "tl", "x": 15, "y": 12 },
+                   { "name": "fullScreenButton", "align": "tr", "x": 10, "y": 10 },
+                   { "name": "timeDisplay", "align": "tl", "x": 10, "y": 7 },
+                   { "name": "speedButton", "align": "tr", "x": 0, "y": 10 },
+                   { "name": "volume", "align": "tr", "x": 10, "y": 10 }]
+                    }]
+                }, function (player) {
+                });
+                this.player.on('requestFullScreen', (e) => {
+
+                    var video = $(player.tag);
+                    video.addClass('center');
+                    if ((/iPhone|iPad|iPod/i).test(navigator.userAgent)) {
+                        $(player.el()).removeClass('prism-fullscreen');
+                    }
+                });
+                wx.ready(function () {
+                    var video = $(player.el()).find('video')[0];
+                    video.play();
+                });
+                this.player.on('x5cancelFullScreen', (e) => {
+
+                    var service = player.fullscreenService;
+                    if (service.getIsFullScreen()) {
+                        service.cancelFullScreen()
+                    }
+                    $(player.el()).removeClass('enter-x5-player');
+                    var layout = player.originalLayout;
+                    if (layout) {
+                        player.tag.style.height = layout.video.height;
+                    }
+
+                });
+
+                this.player.on('x5requestFullScreen', (e) => {
+
+                    //调整视频的位置
+                    $(player.el()).addClass('enter-x5-player');
+                    var screenHeight = document.body.clientHeight * (window.devicePixelRatio || 1) + "px";
+                    player.tag.style.height = screenHeight;
+                    var video = $(player.tag);
+                    video.addClass('enter-x5-player');
+                    setTimeout(() => {
+                        video.removeClass('x5-top-left');
+                    });
+                    player.ended();
+                });
+                this.player.on('cancelFullScreen', (e) => {
+                    var video = $(player.tag);
+                    setTimeout(() => {
+                        video.removeClass('center');
+                        video.removeClass('x5-top-left');
+                    })
+                });
+                //微信左上角退出按钮触发是，关闭页面
+                this.player.tag.addEventListener("x5videoexitfullscreen", () => {
+                    //if (WeixinJSBridge)
+                    //    WeixinJSBridge.call('closeWindow');
+                    //else {
+                    //    try {
+                    //        window.location.refresh();
+                    //    } catch (e)
+                    //    { }
+                    //}
+                });
+                $(document).on('WeixinJSBridgeReady', () => {
+                    var video = $(player.el()).find('video')[0];
+                    video.play();
+                });
+                //ios
+                $('video').on('webkitendfullscreen', function () {
+
+                });
+                player.on('timeupdate', function (e) {
+                    if (TasteLongTime > 0) {
+                        if (player.getCurrentTime() > TasteLongTime) {
+                            player.pause();
+                            topevery.ajaxwx({
+                                url: 'api/CourseInfo/GetOne',
+                                data: JSON.stringify({ Id: courseid })
+                            }, function (data) {
+                                if (data.Result) {
+                                    var obj = data.Result;
+                                    layer.msg("试听已经结束,请购买观看完整视频");
+                                }
+                            });
+                        }
+                    }
+                });
+                this.player.off('ready', function (e) {
+                    console.log('ready');
+                    // 解决ios不自动播放的问题
+                    if ($.os.ios)
+                        this._autoPlay();
+                });
+                this.player.on('play', (e) => {
+                    console.log('play');
+                });
+                player.on('ended', function (e) {
+                    //var isValueAdd = parseInt($('#isValueAdd').val());
+                    //if (isValueAdd == 1) {
+                    //    if (!topevery.IsValueAddedWebApp) {
+                    //        topevery.ajaxwx({
+                    //            url: 'api/CourseInfo/Advertising',
+                    //            data: JSON.stringify({ Id: $("#courseId").val() })
+                    //        }, function (data) {
+                    //            if (data.Result) {
+                    //                var obj = data.Result;
+                    //                if (obj.length > 0) {
+                    //                    topevery.ajaxToThis({ type: "get", url: "/jjs/CourseInfo/Advertising", dataType: "html" }, function (data) {
+                    //                        layer.open({
+                    //                            type: 1,
+                    //                            title: "推荐课程",
+                    //                            area: ['100%', 230 + 'px'], //宽高
+                    //                            content: data,
+                    //                            offset: 'rb'
+                    //                        });
+                    //                    }, true);
+                    //                }
+                    //            }
+                    //        });
+                    //    }
+                    //}
+                    clear();
+                    topevery.ajaxwx({
+                        url: 'api/CourseLearnProgress/IfExist',
+                        data: JSON.stringify({ CourseId: courseid, ChapterId: $('#chapterId').val(), VideoId: $('#videoId').val() })
+                    }, function (data) {
+                        if (!data.Result) {
+                            addLearnRecord();
+                        } else {
+                            updateLearnState();
+                        }
+                    });
+                    var rowIndex = parseInt($("." + $('#videoId').val()).attr("RowsIndex"));
+                    $(".rowIndex_" + getIndex(rowIndex + 1)).click();
+                });
+                player.on('play', function (e) {
+                    clear();
+                    //是否已看过该视频
+                    topevery.ajaxwx({
+                        url: 'api/CourseLearnProgress/IfExist',
+                        data: JSON.stringify({ CourseId: courseid, ChapterId: $('#chapterId').val(), VideoId: $('#videoId').val() })
+                    }, function (data) {
+                        if (!data.Result) {
+                            addLearnRecord();
+                        }
+                    })
+                });
+                player.on('error', function (e) {
+                    clear();
+                });
+            }
+        });
+        $('html, body').animate({ scrollTop: 0 }, 300);//返回顶部
+    }
+    ///添加观看视频记录
+    function addLearnRecord() {
+        topevery.ajaxwx({
+            url: 'api/CourseLearnProgress/Add',
+            data: JSON.stringify({ CourseId: courseid, ChapterId: $('#chapterId').val(), VideoId: $('#videoId').val() })
+        })
+    }
+    //更新视频观看状态-1：已看完
+    function updateLearnState() {
+        topevery.ajaxwx({
+            url: 'api/CourseLearnProgress/UdpateState',
+            data: JSON.stringify({ CourseId: courseid, ChapterId: $('#chapterId').val(), VideoId: $('#videoId').val(), State: 1 })
+        })
+    }
+
+    function ToPractice(ChapterId) {
+        topevery.ajaxwx({
+            url: "api/Economy/InsertChapterQuestions?ChapterId=" + ChapterId + "&courseId=" + courseid,
+            type: "Post",
+            data: JSON.stringify({})
+        }, function (data) {
+            if (data.Success) {
+                if (data.Result) {
+                    location.href = "/jjs/Practice/ChapterPractice?ChapterId=" + ChapterId + "&chapterQuestionsId=" + data.Result.Id;
+                } else {
+
+                    if (parseInt($('#isValueAdd').val()) == 1) {
+                        parent.layer.msg("暂无权限在线练习,请前往个人中心领取增值服务！", {
+                            time: 4000
+                        });
+                    } else {
+                        parent.layer.msg("暂无权限在线练习,请前往购买！", {
+                            time: 4000
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+    var timer = null;
+    function getTime() {
+        var currentTime = player.getCurrentTime();
+        //to do
+        timer = setTimeout(getTime, 1000);
+    }
+    //清除定时器
+    function clear() {
+        if (timer) {
+            clearTimeout(timer);
+            timer = null;
+        }
+    }
+
+    function RecieveMessage() {
+        layer.msg("请前往个人中心领取增值服务！");
+    }
+
+    template.helper("formatterTasteLongTime", function (longtime) {
+        var value = parseInt(longtime);
+        if (value > 0 && value < 1 * 60 * 60) {
+            var minute = Math.floor(value / 60);
+            var second = value % 60;
+            if (minute > 0) {
+                if (second > 0) {
+                    return minute + "分" + second + "秒";
+                } else {
+                    return minute + "分钟"
+                }
+            } else {
+                if (second > 0) {
+                    return second + "秒";
+                }
+                return 0;
+            }
+        }
+        return 0;
+    })
+
+    template.helper('formatterUnOnline', function (chaptername) {
+        if (chaptername) {
+            if (chaptername.indexOf("思维导图") > -1) {
+                return "预计" + topevery.preOnlineDate + "前上线";
+            } else {
+                return "预计" + topevery.onlineDate + "前上线";
+            }
+        }
+        return "暂未上线，敬请期待!";
+    })
+
+    template.helper('isShow', function (chapterName) {
+        if (chapterName && topevery.IsValueAddedWebApp) {
+            var courseName = $('#coursename').val();
+            console.log(chapterName, courseName);
+            if ((courseName.indexOf('同步训练') > -1 || courseName.indexOf('应试指南') > -1) && chapterName.indexOf('试题精解：') > -1) {
+                return "display:none";
+            } else {
+                return "display:block";
+            }
+        }
+        return "display:block";
+
+    })
+    function getIndex(rowIndex) {
+        var length = $(".rowIndex_" + rowIndex).length;
+        if (length === 0) {
+            getIndex(rowIndex + 1);
+        } else {
+            return rowIndex;
+        }
+    }
+</script>
